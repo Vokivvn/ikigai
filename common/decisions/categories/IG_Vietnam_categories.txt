@@ -1,0 +1,22 @@
+VIN_industrialization = {
+	#picture = GFX_decision_vietnam_industrialization
+  allowed = {
+    tag = VIN
+  }
+  visible = {
+    OR = {
+      has_completed_focus = VIN_invest_countryside
+      has_completed_focus = VIN_invest_cities
+    } 
+  }
+  scripted_gui = VIN_industralization_progressbar_scripted_gui
+visible_when_empty = yes
+}
+
+VIN_the_parliament = {
+    allowed = {
+        tag = VIN
+    }
+    visible_when_empty = yes
+    scripted_gui = VIN_parliament_scripted_gui
+}

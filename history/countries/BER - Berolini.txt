@@ -1,0 +1,35 @@
+capital = 20
+
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+}
+
+set_convoys = 20
+
+set_politics = {	
+	ruling_party = moderate_socialist
+	last_election = "1936.1.1"
+	election_frequency = 48
+	elections_allowed = yes
+}	
+	
+set_popularities = {	
+	social_nationalist = 0
+	marxist = 0
+	libertarian = 0
+	moderate_socialist = 100
+	social_democrat = 0
+	social_liberal = 0
+	conservative = 0
+	authoritarian_democrat = 0
+	autocratic = 0
+	fundamentalist = 0
+}	
+	
+create_country_leader = {	
+	name = "Ricardo Sicre"
+	desc = ""
+	picture = "gfx/leaders/Europe/portrait_europe_generic_land_13.dds"
+	ideology = moderate_socialist_subtype
+}	

@@ -1,0 +1,15 @@
+##Starting Focus
+focus_tree = {
+	id = upk_starting_tree
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = UPK
+		}
+	}
+	default = no
+	shared_focus = UPK_Nighthawks
+	shared_focus = UPK_To_the_back_of_our_minds
+	shared_focus = UPK_Eyes_on_Europe
+}

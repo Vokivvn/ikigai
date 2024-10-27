@@ -1,0 +1,23 @@
+GAL_upgrade_foreign_support = {
+	if = {
+		limit = {
+			has_idea = GAL_foreign_support_1
+		}
+		swap_ideas = {
+			remove_idea = GAL_foreign_support_1
+			add_idea = GAL_foreign_support_2
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = GAL_foreign_support_2
+		}
+		swap_ideas = {
+			remove_idea = GAL_foreign_support_2
+			add_idea = GAL_foreign_support_3
+		}
+	}
+	else = {
+		add_ideas = GAL_foreign_support_1
+	}
+}

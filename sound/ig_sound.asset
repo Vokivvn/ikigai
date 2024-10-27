@@ -1,0 +1,20 @@
+########################DEBUG #########################
+
+sound =
+{
+	name = "nice_ok"
+	file = "menu/nice_ok.wav"
+	always_load = yes
+}
+sound =
+{
+	name = "nice_hum"
+	file = "menu/nice_hum.wav"
+	always_load = yes
+}
+sound =
+{
+	name = "nice_open"
+	file = "menu/nice_open.wav"
+	always_load = yes
+}

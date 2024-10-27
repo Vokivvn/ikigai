@@ -1,0 +1,1669 @@
+﻿	shared_focus = {
+		id = ENG_Zombie_Economy
+		icon = dd
+		x = 4
+		y = 2
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+
+		}
+	}
+
+	shared_focus = {
+		id = ENG_The_scars_of_the_Tokyo_Crash
+		icon = dd
+		prerequisite = { focus = ENG_Zombie_Economy }
+		x = 3
+		y = 3
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+		}
+	}
+
+	shared_focus = {
+		id = ENG_Review_our_production
+		icon = dd
+		prerequisite = { focus = ENG_Zombie_Economy }
+		x = 5
+		y = 3
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+		}
+	}
+
+	shared_focus = {
+		id = ENG_The_one_to_blame_is....
+		icon = dd
+		prerequisite = { focus = ENG_Review_our_production }
+		prerequisite = { focus = ENG_The_scars_of_the_Tokyo_Crash }
+
+		x = 4
+		y = 4
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+		}
+	}
+
+	shared_focus = {
+		id = ENG_The_Parliment
+		icon = dd
+		prerequisite = { focus = ENG_The_one_to_blame_is.... }
+		mutually_exclusive = { focus = ENG_The_Private_Companies focus = ENG_The_Royal_Forces }
+		x = 2
+		y = 5
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+		}
+	}
+
+	shared_focus = {
+		id = ENG_The_Royal_Forces
+		icon = dd
+		prerequisite = { focus = ENG_The_one_to_blame_is.... }
+		mutually_exclusive = { focus = ENG_The_Private_Companies focus = ENG_The_Parliment }
+
+		x = 4
+		y = 5
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+		}
+	}
+
+	shared_focus = {
+		id = ENG_The_Private_Companies
+		icon = dd
+		prerequisite = { focus = ENG_The_one_to_blame_is.... }
+		mutually_exclusive = { focus = ENG_The_Parliment focus = ENG_The_Royal_Forces }
+		x = 6
+		y = 5
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+		}
+	}
+	shared_focus = {
+		id = ENG_Execute_the_responsible
+		icon = dd
+		prerequisite = { focus = ENG_The_Private_Companies focus = ENG_The_Royal_Forces focus = ENG_The_Parliment }
+
+		x = 4
+		y = 6
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+		}
+	}
+
+	shared_focus = {
+		id = ENG_Never_Again
+		icon = dd
+		prerequisite = { focus = ENG_Execute_the_responsible }
+
+		x = 4
+		y = 7
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+		}
+	}
+
+
+#####NEP
+
+	shared_focus = {
+		id = ENG_New_Economic_Policies
+		icon = dd
+		prerequisite = { focus = ENG_Never_Again }
+		mutually_exclusive = { focus = ENG_Colonial_Exploitation }
+		x = 2
+		y = 8
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+		}
+	}
+
+	shared_focus = {
+		id = ENG_Invest_in_the_Military_Industry
+		icon = dd
+		prerequisite = { focus = ENG_New_Economic_Policies }
+
+		x = 1
+		y = 9
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+		}
+	}
+
+	shared_focus = {
+		id = ENG_Nationalise_Japanese_Assets 
+		icon = dd
+		prerequisite = { focus = ENG_Invest_in_the_Military_Industry }
+
+		x = 1
+		y = 10
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+		}
+	}
+
+	shared_focus = {
+		id = ENG_Solaris_Law
+		icon = dd
+		prerequisite = { focus = ENG_Nationalise_Japanese_Assets  }
+
+		x = 1
+		y = 11
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+		}
+	}
+
+	shared_focus = {
+		id = ENG_National_Economic_Congress
+		icon = dd
+		prerequisite = { focus = ENG_New_Economic_Policies }
+
+		x = 3
+		y = 9
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+		}
+	}
+
+	shared_focus = {
+		id = ENG_Roman_Sphere
+		icon = dd
+		prerequisite = { focus = ENG_National_Economic_Congress }
+
+		x = 3
+		y = 10
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+		}
+	}
+
+	shared_focus = {
+		id = ENG_The_light_of_the_weak
+		icon = dd
+		prerequisite = { focus = ENG_Roman_Sphere }
+
+		x = 3
+		y = 11
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+		}
+	}
+
+	shared_focus = {
+		id = ENG_Ad_Britanniam_Invicta
+		icon = dd
+		prerequisite = { focus = ENG_The_light_of_the_weak }
+		prerequisite = { focus = ENG_Solaris_Law }
+		x = 2
+		y = 12
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+		}
+	}
+
+####Colonialism
+
+	shared_focus = {
+		id = ENG_Colonial_Exploitation
+		icon = dd
+		prerequisite = { focus = ENG_Never_Again }
+		mutually_exclusive = { focus = ENG_New_Economic_Policies }
+		x = 6
+		y = 8
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+		}
+	}
+
+	shared_focus = {
+		id = ENG_Industrialize_the_German_Concessions
+		icon = dd
+		prerequisite = { focus = ENG_Colonial_Exploitation }
+
+		x = 5
+		y = 9
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+		}
+	}
+
+	shared_focus = {
+		id = ENG_Saint_George_Program
+		icon = dd
+		prerequisite = { focus = ENG_Industrialize_the_German_Concessions }
+
+		x = 5
+		y = 10
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+		}
+	}
+
+	shared_focus = {
+		id = ENG_Impose_Sanctions_on_the_German_Companies
+		icon = dd
+		prerequisite = { focus = ENG_Saint_George_Program }
+
+		x = 5
+		y = 11
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+		}
+	}
+
+
+	shared_focus = {
+		id = ENG_The_State_of_Brittany
+		icon = dd
+		prerequisite = { focus = ENG_Colonial_Exploitation }
+
+		x = 7
+		y = 9
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+		}
+	}
+
+	shared_focus = {
+		id = ENG_Economic_Placebo
+		icon = dd
+		prerequisite = { focus = ENG_The_State_of_Brittany }
+
+		x = 7
+		y = 10
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+		}
+	}
+
+	shared_focus = {
+		id = ENG_Luna_X
+		icon = dd
+		prerequisite = { focus = ENG_Economic_Placebo }
+
+		x = 7
+		y = 11
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+		}
+	}
+
+	shared_focus = {
+		id = ENG_Imperial_Nights
+		icon = dd
+		prerequisite = { focus = ENG_Luna_X }
+		prerequisite = { focus = ENG_Impose_Sanctions_on_the_German_Companies }
+		x = 6
+		y = 12
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+		}
+	}
+
+#
+
+	shared_focus = {
+		id = ENG_Et_Eqi_Lora
+		icon = dd
+		prerequisite = { focus = ENG_Imperial_Nights focus = ENG_Ad_Britanniam_Invicta }
+		x = 4
+		y = 13
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+		}
+	}
+####Politics1
+
+	shared_focus = {
+		id = ENG_In_Britannia_Ortu_Sois
+		icon = dd
+		x = 11
+		y = 1
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+		}
+	}
+
+	shared_focus = {
+		id = ENG_Royal_Bells
+		prerequisite = { focus = ENG_In_Britannia_Ortu_Sois }
+		mutually_exclusive = { focus = ENG_A_Greater_Hold }
+		icon = dd
+		x = 10
+		y = 2
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+		}
+	}
+
+	shared_focus = {
+		id = ENG_A_Greater_Hold
+		prerequisite = { focus = ENG_In_Britannia_Ortu_Sois }
+		mutually_exclusive = { focus = ENG_Royal_Bells }
+		icon = dd
+		x = 12
+		y = 2
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+		}
+	}
+
+	shared_focus = {
+		id = ENG_Impero
+		prerequisite = { focus = ENG_A_Greater_Hold focus = ENG_Royal_Bells }
+		icon = dd
+		x = 11
+		y = 3
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+		}
+	}
+
+	shared_focus = {
+		id = ENG_God_Protects_Britannia
+		prerequisite = { focus = ENG_Impero }
+		icon = dd
+		x = 11
+		y = 4
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+		}
+	}
+
+	shared_focus = {
+		id = ENG_Propoganda_Campaign
+		prerequisite = { focus = ENG_God_Protects_Britannia }
+		mutually_exclusive = { focus = ENG_Columbus_Star }
+		icon = dd
+		x = 10
+		y = 5
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+		}
+	}
+
+	shared_focus = {
+		id = ENG_Columbus_Star
+		prerequisite = { focus = ENG_God_Protects_Britannia }
+		mutually_exclusive = { focus = ENG_Propoganda_Campaign }
+		icon = dd
+		x = 12
+		y = 5
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+		}
+	}
+
+	shared_focus = {
+		id = ENG_Afternoon_Tea_with_the_Prime_Minister
+		prerequisite = { focus = ENG_Columbus_Star focus = ENG_Propoganda_Campaign }
+		icon = dd
+		x = 11
+		y = 6
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+		}
+	}
+
+	shared_focus = {
+		id = ENG_Yes_we_can
+		prerequisite = { focus = ENG_Afternoon_Tea_with_the_Prime_Minister }
+		icon = dd
+		x = 11
+		y = 7
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+		}
+	}
+
+	shared_focus = {
+		id = ENG_Its_just_a_merry_little_thought...
+		prerequisite = { focus = ENG_Yes_we_can }
+		icon = dd
+		x = 11
+		y = 8
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+		}
+	}
+
+	shared_focus = {
+		id = ENG_Eyes_over_the_Channel
+		prerequisite = { focus = ENG_Its_just_a_merry_little_thought... }
+		mutually_exclusive = { focus = ENG_Ears_on_the_Radio }
+		icon = dd
+		x = 10
+		y = 9
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+		}
+	}
+
+	shared_focus = {
+		id = ENG_The_Drums_are_coming
+		prerequisite = { focus = ENG_Eyes_over_the_Channel }
+		icon = dd
+		x = 10
+		y = 10
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+		}
+	}
+
+	shared_focus = {
+		id = ENG_Ears_on_the_Radio
+		prerequisite = { focus = ENG_Its_just_a_merry_little_thought... }
+		mutually_exclusive = { focus = ENG_Eyes_over_the_Channel }
+		icon = dd
+		x = 12
+		y = 9
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+		}
+	}
+
+	shared_focus = {
+		id = ENG_God_help_us
+		prerequisite = { focus = ENG_Ears_on_the_Radio }
+		icon = dd
+		x = 12
+		y = 10
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+		}
+	}
+
+	shared_focus = {
+		id = ENG_The_drums_are_beating
+		prerequisite = { focus = ENG_God_help_us focus = ENG_The_Drums_are_coming }
+		icon = dd
+		x = 11
+		y = 12
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+		}
+	}
+
+#####politics2
+
+	shared_focus = {
+		id = ENG_The_Political_Rift
+		icon = dd
+		x = 18
+		y = 2
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+		}
+	}
+
+	shared_focus = {
+		id = ENG_National_Consolidation
+		prerequisite = { focus = ENG_The_Political_Rift }
+		mutually_exclusive = { focus = ENG_A_Divided_Parliment }
+		icon = dd
+		x = 17
+		y = 3
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+		}
+	}
+
+	shared_focus = {
+		id = ENG_A_Divided_Parliment
+		prerequisite = { focus = ENG_The_Political_Rift }
+		mutually_exclusive = { focus = ENG_A_Divided_Parliment }
+		icon = dd
+		x = 19
+		y = 3
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+		}
+	}
+
+	shared_focus = {
+		id = ENG_Good_news_from_Kaerlud
+		prerequisite = { focus = ENG_A_Divided_Parliment focus = ENG_National_Consolidation }
+		icon = dd
+		x = 18
+		y = 4
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+		}
+	}
+
+	shared_focus = {
+		id = ENG_Whos_our_Enemy
+		prerequisite = { focus = ENG_Good_news_from_Kaerlud }
+		icon = dd
+		x = 18
+		y = 5
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+		}
+	}
+
+	shared_focus = {
+		id = ENG_Consolidate_with_our_Opponents
+		prerequisite = { focus = ENG_Whos_our_Enemy }
+		mutually_exclusive = { focus = ENG_Order_57 }
+		icon = dd
+		x = 17
+		y = 6
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+		}
+	}
+
+	shared_focus = {
+		id = ENG_Third_Congress
+		prerequisite = { focus = ENG_Consolidate_with_our_Opponents }
+		icon = dd
+		x = 17
+		y = 7
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+		}
+	}
+
+	shared_focus = {
+		id = ENG_A_shining_path
+		prerequisite = { focus = ENG_Third_Congress }
+		icon = dd
+		x = 17
+		y = 8
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+		}
+	}
+
+	shared_focus = {
+		id = ENG_Order_57
+		prerequisite = { focus = ENG_Whos_our_Enemy }
+		mutually_exclusive = { focus = ENG_Consolidate_with_our_Opponents }
+		icon = dd
+		x = 19
+		y = 6
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+		}
+	}
+
+	shared_focus = {
+		id = ENG_A_hold_to_the_opposition
+		prerequisite = { focus = ENG_Order_57 }
+		icon = dd
+		x = 19
+		y = 7
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+		}
+	}
+
+	shared_focus = {
+		id = ENG_The_Imperial_Army_above_all
+		prerequisite = { focus = ENG_A_hold_to_the_opposition }
+		icon = dd
+		x = 19
+		y = 8
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+		}
+	}
+
+	shared_focus = {
+		id = ENG_Pass_the_Ludite_Laws
+		prerequisite = { focus = ENG_The_Imperial_Army_above_all focus = ENG_A_shining_path }
+		icon = dd
+		x = 18
+		y = 9
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+		}
+	}
+
+	shared_focus = {
+		id = ENG_We_control_them
+		prerequisite = { focus = ENG_Pass_the_Ludite_Laws }
+		icon = dd
+		x = 18
+		y = 10
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+		}
+	}
+
+	shared_focus = {
+		id = ENG_The_Lion_Awakens
+		prerequisite = { focus = ENG_We_control_them }
+		icon = dd
+		x = 18
+		y = 13
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+		}
+	}
+
+	shared_focus = {
+		id = ENG_The_Border_Incident
+		prerequisite = { focus = ENG_The_Lion_Awakens }
+		prerequisite = { focus = ENG_The_drums_are_beating }
+		prerequisite = { focus = ENG_Et_Eqi_Lora }
+		icon = dd
+
+		relative_position_id = ENG_In_Britannia_Ortu_Sois
+		x = 0
+		y = 13
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+		}
+	}

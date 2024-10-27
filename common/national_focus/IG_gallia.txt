@@ -1,0 +1,977 @@
+focus_tree = {
+	id = gallia_focus_starting
+
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = GAL
+		}
+	}
+
+	default = no
+	continuous_focus_position = { x = 200 y = 850 }
+
+	focus = {
+		id = GAL_recover_from_the_long_march
+		icon = GFX_goal_GAL_longmarch
+		x = 8
+		y = 0
+		cost = 6
+		ai_will_do = {
+			factor = 10
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		select_effect = {
+			country_event = { id = gallia.2 days = 5 }
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus GAL_recover_from_the_long_march"
+			add_war_support = 0.05
+			custom_effect_tooltip = GAL_recover_from_the_long_march_tt
+			hidden_effect = {
+				division_template = {
+					name = "Exercitus Ordinarius"
+					division_names_group = SER_MTN_01
+					regiments = {
+						infantry = { x = 0 y = 0 }
+						infantry = { x = 0 y = 1 }
+						infantry = { x = 0 y = 2 }
+						infantry = { x = 0 y = 3 }
+						infantry = { x = 1 y = 0 }
+						infantry = { x = 1 y = 1 }
+						infantry = { x = 1 y = 2 }
+						artillery_brigade = { x = 1 y = 3 }
+					}
+					priority = 2
+				}
+				random_owned_controlled_state = {
+					prioritize = { 21 }
+					create_unit = {
+						division = "division_template = \"Exercitus Ordinarius\" start_experience_factor = 0.3 start_equipment_factor = 1.0"
+						owner = ROOT
+						count = 2
+					}
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = GAL_nationalism
+		icon = GFX_goal_GAL_Nationalism
+		prerequisite = {
+			focus = GAL_recover_from_the_long_march
+		}
+		relative_position_id = GAL_recover_from_the_long_march
+		x = -5
+		y = 1
+		cost = 6
+		ai_will_do = {
+			factor = 10
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus GAL_nationalism"
+			if = {
+				limit = {
+					has_idea = GAL_tria_decreta_fre
+				}
+				swap_ideas = {
+					remove_idea = GAL_tria_decreta_fre
+					add_idea = GAL_tria_decreta_frenat
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = GAL_tria_decreta_pro
+				}
+				swap_ideas = {
+					remove_idea = GAL_tria_decreta_pro
+					add_idea = GAL_tria_decreta_pronat
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = GAL_tria_decreta_frepro
+				}
+				swap_ideas = {
+					remove_idea = GAL_tria_decreta_frepro
+					add_idea = GAL_tria_decreta_frepronat
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = GAL_tria_decreta_profre
+				}
+				swap_ideas = {
+					remove_idea = GAL_tria_decreta_profre
+					add_idea = GAL_tria_decreta_profrenat
+				}
+			}
+			else = {
+				add_ideas = GAL_tria_decreta_nat
+			}
+		}
+	}
+	
+	focus = {
+		id = GAL_liberty
+		icon = GFX_goal_GAL_Freedom
+		prerequisite = {
+			focus = GAL_recover_from_the_long_march
+		}
+		relative_position_id = GAL_recover_from_the_long_march
+		x = -3
+		y = 1
+		cost = 6
+		ai_will_do = {
+			factor = 10
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus GAL_liberty"
+			if = {
+				limit = {
+					has_idea = GAL_tria_decreta_nat
+				}
+				swap_ideas = {
+					remove_idea = GAL_tria_decreta_nat
+					add_idea = GAL_tria_decreta_natfre
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = GAL_tria_decreta_pro
+				}
+				swap_ideas = {
+					remove_idea = GAL_tria_decreta_pro
+					add_idea = GAL_tria_decreta_profre
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = GAL_tria_decreta_natpro
+				}
+				swap_ideas = {
+					remove_idea = GAL_tria_decreta_natpro
+					add_idea = GAL_tria_decreta_natprofre
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = GAL_tria_decreta_pronat
+				}
+				swap_ideas = {
+					remove_idea = GAL_tria_decreta_pronat
+					add_idea = GAL_tria_decreta_pronatfre
+				}
+			}
+			else = {
+				add_ideas = GAL_tria_decreta_fre
+			}
+		}
+	}
+	
+	focus = {
+		id = GAL_prosperity
+		icon = GFX_goal_GAL_Livelihood
+		prerequisite = {
+			focus = GAL_recover_from_the_long_march
+		}
+		relative_position_id = GAL_recover_from_the_long_march
+		x = -1
+		y = 1
+		cost = 6
+		ai_will_do = {
+			factor = 10
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus GAL_prosperity"
+			if = {
+				limit = {
+					has_idea = GAL_tria_decreta_fre
+				}
+				swap_ideas = {
+					remove_idea = GAL_tria_decreta_fre
+					add_idea = GAL_tria_decreta_frepro
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = GAL_tria_decreta_nat
+				}
+				swap_ideas = {
+					remove_idea = GAL_tria_decreta_nat
+					add_idea = GAL_tria_decreta_natpro
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = GAL_tria_decreta_frenat
+				}
+				swap_ideas = {
+					remove_idea = GAL_tria_decreta_frenat
+					add_idea = GAL_tria_decreta_frenatpro
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = GAL_tria_decreta_natfre
+				}
+				swap_ideas = {
+					remove_idea = GAL_tria_decreta_natfre
+					add_idea = GAL_tria_decreta_natfrepro
+				}
+			}
+			else = {
+				add_ideas = GAL_tria_decreta_pro
+			}
+		}
+	}
+	
+	focus = {
+		id = GAL_three_principles
+		icon = GFX_goal_GAL_Principles_study
+		prerequisite = {
+			focus = GAL_prosperity
+		}
+		prerequisite = {
+			focus = GAL_liberty
+		}
+		prerequisite = {
+			focus = GAL_nationalism
+		}
+		relative_position_id = GAL_recover_from_the_long_march
+		x = -3
+		y = 2
+		cost = 6
+		ai_will_do = {
+			factor = 10
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus GAL_three_principles"
+			add_stability = 0.1
+			add_manpower = 10000
+		}
+	}
+	
+	focus = {
+		id = GAL_political_concerns
+		icon = GFX_goal_GAL_political_concerns
+		prerequisite = {
+			focus = GAL_recover_from_the_long_march
+		}
+		relative_position_id = GAL_recover_from_the_long_march
+		x = 0
+		y = 2
+		cost = 6
+		ai_will_do = {
+			factor = 10
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus GAL_political_concerns"
+			
+		}
+	}
+	
+	focus = {
+		id = GAL_close_republican_border
+		icon = GFX_goal_GAL_close_republican_border
+		prerequisite = {
+			focus = GAL_political_concerns
+		}
+		relative_position_id = GAL_recover_from_the_long_march
+		x = -1
+		y = 3
+		cost = 6
+		ai_will_do = {
+			factor = 10
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus GAL_close_republican_border"
+			swap_ideas = {
+				remove_idea = GAL_political_concerns_idea
+				add_idea = GAL_political_concerns_2
+			}
+		}
+	}
+	
+	focus = {
+		id = GAL_conscription
+		icon = GFX_goal_GAL_conscription
+		prerequisite = {
+			focus = GAL_political_concerns
+		}
+		relative_position_id = GAL_recover_from_the_long_march
+		x = 1
+		y = 3
+		cost = 6
+		ai_will_do = {
+			factor = 10
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus GAL_conscription"
+			increase_conscription = yes
+		}
+	}
+	
+	focus = {
+		id = GAL_telo_martius_academy
+		icon = GFX_goal_GAL_telo_martius_academy
+		prerequisite = {
+			focus = GAL_conscription
+		}
+		prerequisite = {
+			focus = GAL_close_republican_border
+		}
+		relative_position_id = GAL_recover_from_the_long_march
+		x = -3
+		y = 4
+		cost = 6
+		ai_will_do = {
+			factor = 10
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus GAL_telo_martius_academy"
+			add_ideas = GAL_telo_martius_academy
+		}
+	}
+	
+	focus = {
+		id = GAL_seek_support_japan
+		icon = GFX_goal_GAL_seek_support_japan
+		prerequisite = {
+			focus = GAL_telo_martius_academy
+		}
+		relative_position_id = GAL_recover_from_the_long_march
+		x = -4
+		y = 5
+		cost = 6
+		ai_will_do = {
+			factor = 10
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus GAL_seek_support_japan"
+			JAP = {
+				country_event = gallia.10
+			}
+			custom_effect_tooltip = if_accepted
+			effect_tooltip = {
+				JAP = {
+					send_equipment = {
+						target = GAL
+						type = infantry_equipment
+						amount = 2000
+					}
+					send_equipment = {
+						target = GAL
+						type = artillery_equipment
+						amount = 200
+					}
+				}
+				GAL_upgrade_foreign_support = yes
+			}
+		}
+	}
+	
+	focus = {
+		id = GAL_seek_support_kowai
+		icon = GFX_goal_GAL_seek_support_kowai
+		prerequisite = {
+			focus = GAL_telo_martius_academy
+		}
+		relative_position_id = GAL_recover_from_the_long_march
+		x = -6
+		y = 5
+		cost = 6
+		ai_will_do = {
+			factor = 10
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus GAL_seek_support_kowai"
+			UPK = {
+				country_event = gallia.10
+			}
+			custom_effect_tooltip = if_accepted
+			effect_tooltip = {
+				UPK = {
+					send_equipment = {
+						target = GAL
+						type = infantry_equipment
+						amount = 2000
+					}
+					send_equipment = {
+						target = GAL
+						type = artillery_equipment
+						amount = 200
+					}
+				}
+				GAL_upgrade_foreign_support = yes
+			}
+		}
+	}
+	
+	focus = {
+		id = GAL_seek_support_china
+		icon = dd
+		prerequisite = {
+			focus = GAL_telo_martius_academy
+		}
+		relative_position_id = GAL_recover_from_the_long_march
+		x = -8
+		y = 5
+		cost = 6
+		ai_will_do = {
+			factor = 10
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus GAL_seek_support_china"
+			CHI = {
+				country_event = gallia.10
+			}
+			custom_effect_tooltip = if_accepted
+			effect_tooltip = {
+				CHI = {
+					send_equipment = {
+						target = GAL
+						type = infantry_equipment
+						amount = 2000
+					}
+					send_equipment = {
+						target = GAL
+						type = artillery_equipment
+						amount = 200
+					}
+				}
+				GAL_upgrade_foreign_support = yes
+			}
+		}
+	}
+	
+	focus = {
+		id = GAL_prepare_for_expeditions
+		icon = dd
+		prerequisite = {
+			focus = GAL_conscription
+		}
+		prerequisite = {
+			focus = GAL_close_republican_border
+		}
+		relative_position_id = GAL_recover_from_the_long_march
+		x = 3
+		y = 4
+		cost = 6
+		ai_will_do = {
+			factor = 10
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus GAL_prepare_for_expeditions"
+			add_manpower = 20000
+			add_war_support = 0.1
+		}
+	}
+	
+	focus = {
+		id = GAL_dare_to_die
+		icon = dd
+		prerequisite = {
+			focus = GAL_prepare_for_expeditions
+		}
+		relative_position_id = GAL_recover_from_the_long_march
+		x = 3
+		y = 6
+		cost = 6
+		ai_will_do = {
+			factor = 10
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus GAL_dare_to_die"
+			custom_effect_tooltip = CHI_50_cheaper_force_attack
+		}
+	}
+	
+	focus = {
+		id = GAL_inspire_the_exiles
+		icon = dd
+		prerequisite = {
+			focus = GAL_prepare_for_expeditions
+		}
+		relative_position_id = GAL_recover_from_the_long_march
+		x = 4
+		y = 5
+		cost = 6
+		ai_will_do = {
+			factor = 10
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus GAL_inspire_the_exiles"
+			add_ideas = GAL_western_expedition_preps
+		}
+	}
+	
+	focus = {
+		id = GAL_asian_contact_equipment
+		icon = dd
+		prerequisite = {
+			focus = GAL_inspire_the_exiles
+		}
+		relative_position_id = GAL_recover_from_the_long_march
+		x = 5
+		y = 6
+		cost = 6
+		ai_will_do = {
+			factor = 10
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus GAL_asian_contact_equipment"
+			swap_ideas = {
+				remove_idea = GAL_western_expedition_preps
+				add_idea = GAL_western_expedition_preps_2
+			}
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 2000
+				producer = JAP
+			}
+		}
+	}
+	
+	focus = {
+		id = GAL_western_expedition
+		icon = dd
+		prerequisite = {
+			focus = GAL_asian_contact_equipment
+		}
+		prerequisite = {
+			focus = GAL_dare_to_die
+		}
+		relative_position_id = GAL_recover_from_the_long_march
+		x = 4
+		y = 7
+		cost = 6
+		ai_will_do = {
+			factor = 10
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus GAL_western_expedition"
+			
+		}
+	}
+	
+	focus = {
+		id = GAL_legate_emergency
+		icon = dd
+		prerequisite = {
+			focus = GAL_conscription
+		}
+		prerequisite = {
+			focus = GAL_close_republican_border
+		}
+		allow_branch = {
+			has_government = social_democrat
+		}
+		relative_position_id = GAL_recover_from_the_long_march
+		x = 0
+		y = 4
+		cost = 6
+		ai_will_do = {
+			factor = 10
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus GAL_legate_emergency"
+			
+		}
+	}
+	
+	focus = {
+		id = GAL_dismantle_cliques
+		icon = dd
+		prerequisite = {
+			focus = GAL_telo_martius_academy
+		}
+		prerequisite = {
+			focus = GAL_legate_emergency
+		}
+		relative_position_id = GAL_recover_from_the_long_march
+		x = -2
+		y = 5
+		cost = 6
+		ai_will_do = {
+			factor = 10
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus GAL_dismantle_cliques"
+			
+		}
+	}
+	
+	focus = {
+		id = GAL_three_principles_oath
+		icon = dd
+		prerequisite = {
+			focus = GAL_dismantle_cliques
+		}
+		relative_position_id = GAL_recover_from_the_long_march
+		x = -3
+		y = 6
+		cost = 6
+		ai_will_do = {
+			factor = 10
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus GAL_three_principles_oath"
+			
+		}
+	}
+	
+	focus = {
+		id = GAL_liberal_party
+		icon = dd
+		prerequisite = {
+			focus = GAL_legate_emergency
+		}
+		relative_position_id = GAL_recover_from_the_long_march
+		x = 0
+		y = 5
+		cost = 6
+		ai_will_do = {
+			factor = 10
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus GAL_liberal_party"
+			
+		}
+	}
+	
+	focus = {
+		id = GAL_bureau_of_investigation
+		icon = dd
+		prerequisite = {
+			focus = GAL_legate_emergency
+		}
+		relative_position_id = GAL_recover_from_the_long_march
+		x = 2
+		y = 5
+		cost = 6
+		ai_will_do = {
+			factor = 10
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus GAL_bureau_of_investigation"
+			
+		}
+	}
+	
+	focus = {
+		id = GAL_princess_permanent_guard
+		icon = dd
+		prerequisite = {
+			focus = GAL_bureau_of_investigation
+		}
+		relative_position_id = GAL_recover_from_the_long_march
+		x = 1
+		y = 6
+		cost = 6
+		ai_will_do = {
+			factor = 10
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus GAL_princess_permanent_guard"
+			
+		}
+	}
+	
+	focus = {
+		id = GAL_new_local_governments
+		icon = dd
+		prerequisite = {
+			focus = GAL_dismantle_cliques
+		}
+		prerequisite = {
+			focus = GAL_liberal_party
+		}
+		relative_position_id = GAL_recover_from_the_long_march
+		x = -1
+		y = 6
+		cost = 6
+		ai_will_do = {
+			factor = 10
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus GAL_new_local_governments"
+			
+		}
+	}
+	
+	focus = {
+		id = GAL_anarchist_trials
+		icon = dd
+		prerequisite = {
+			focus = GAL_liberal_party
+		}
+		relative_position_id = GAL_recover_from_the_long_march
+		x = 0
+		y = 7
+		cost = 6
+		ai_will_do = {
+			factor = 10
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus GAL_anarchist_trials"
+			
+		}
+	}
+	
+	focus = {
+		id = GAL_democrats_lenient
+		icon = dd
+		prerequisite = {
+			focus = GAL_anarchist_trials
+		}
+		relative_position_id = GAL_recover_from_the_long_march
+		mutually_exclusive = {
+			focus = GAL_democrats_harsh
+		}
+		x = -3
+		y = 8
+		cost = 6
+		ai_will_do = {
+			factor = 10
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus GAL_democrats_lenient"
+			
+		}
+	}
+	focus = {
+		id = GAL_democrats_harsh
+		icon = dd
+		prerequisite = {
+			focus = GAL_anarchist_trials
+		}
+		relative_position_id = GAL_recover_from_the_long_march
+		mutually_exclusive = {
+			focus = GAL_democrats_lenient
+		}
+		x = -1
+		y = 8
+		cost = 6
+		ai_will_do = {
+			factor = 10
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus GAL_democrats_harsh"
+			
+		}
+	}
+	
+	focus = {
+		id = GAL_plebs_lenient
+		icon = dd
+		prerequisite = {
+			focus = GAL_anarchist_trials
+		}
+		relative_position_id = GAL_recover_from_the_long_march
+		mutually_exclusive = {
+			focus = GAL_plebs_harsh
+		}
+		x = 1
+		y = 8
+		cost = 6
+		ai_will_do = {
+			factor = 10
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus GAL_plebs_lenient"
+			
+		}
+	}
+	focus = {
+		id = GAL_plebs_harsh
+		icon = dd
+		prerequisite = {
+			focus = GAL_anarchist_trials
+		}
+		relative_position_id = GAL_recover_from_the_long_march
+		mutually_exclusive = {
+			focus = GAL_plebs_lenient
+		}
+		x = 3
+		y = 8
+		cost = 6
+		ai_will_do = {
+			factor = 10
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus GAL_plebs_harsh"
+			
+		}
+	}
+	
+	focus = {
+		id = GAL_free_empire
+		icon = dd
+		prerequisite = {
+			focus = GAL_plebs_harsh
+			focus = GAL_plebs_lenient
+		}
+		prerequisite = {
+			focus = GAL_democrats_harsh
+			focus = GAL_democrats_lenient
+		}
+		relative_position_id = GAL_recover_from_the_long_march
+		x = 0
+		y = 9
+		cost = 6
+		ai_will_do = {
+			factor = 10
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus GAL_free_empire"
+			
+		}
+	}
+	
+	focus = {
+		id = GAL_renaissance
+		icon = GFX_goal_GAL_Renaissance
+		prerequisite = {
+			focus = GAL_recover_from_the_long_march
+		}
+		relative_position_id = GAL_recover_from_the_long_march
+		x = 3
+		y = 1
+		cost = 6
+		ai_will_do = {
+			factor = 10
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus GAL_renaissance"
+			add_tech_bonus = {
+				name = GAL_renaissance
+				bonus = 1
+				uses = 1
+				category = industry
+			}
+		}
+	}
+	focus = {
+		id = GAL_civilian_industry_1
+		icon = dd
+		prerequisite = {
+			focus = GAL_renaissance
+		}
+		relative_position_id = GAL_recover_from_the_long_march
+		x = 2
+		y = 2
+		cost = 6
+		ai_will_do = {
+			factor = 10
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus GAL_civilian_industry_1"
+			random_owned_controlled_state = {
+				prioritize = { 21 }
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		} 
+	}
+	focus = {
+		id = GAL_military_industry_1
+		icon = dd
+		prerequisite = {
+			focus = GAL_renaissance
+		}
+		relative_position_id = GAL_recover_from_the_long_march
+		x = 4
+		y = 2
+		cost = 6
+		ai_will_do = {
+			factor = 10
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus GAL_military_industry_1"
+			random_owned_controlled_state = {
+				prioritize = { 21 }
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = GAL_renaissance_1_complete
+		icon = dd
+		prerequisite = {
+			focus = GAL_military_industry_1
+		}
+		prerequisite = {
+			focus = GAL_civilian_industry_1
+		}
+		relative_position_id = GAL_recover_from_the_long_march
+		x = 3
+		y = 3
+		cost = 6
+		ai_will_do = {
+			factor = 10
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus GAL_renaissance_1_complete"
+			
+		}
+	}
+}

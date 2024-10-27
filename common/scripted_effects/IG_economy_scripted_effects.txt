@@ -1,0 +1,5333 @@
+initiate_display_vars = {
+	#PURELY FOR DISPLAY PURPOSES
+	set_variable = { GDP_trillion = 0 }
+	set_variable = { GDP_million = 0 }
+	set_variable = { total_budget_billion = 0 }
+	set_variable = { total_budget_thousand = 0 }
+	set_variable = { total_expenditures_billion = 0 }
+	set_variable = { total_expenditures_thousand = 0 }
+	set_variable = { civilian_expenditures_billion = 0 }
+	set_variable = { civilian_expenditures_thousand = 0 }
+	set_variable = { military_expenditures_billion = 0 }
+	set_variable = { military_expenditures_thousand = 0 }
+	set_variable = { construction_expenditures_billion = 0 }
+	set_variable = { construction_expenditures_thousand = 0 }
+	set_variable = { money_reserves_billion = 0 }
+	set_variable = { money_reserves_thousand = 0 }
+	set_variable = { national_debt_trillion = 0 }
+	set_variable = { national_debt_million = 0 }
+	set_variable = { deficit_billion = 0 }
+	set_variable = { deficit_thousand = 0 }
+	set_variable = { manpower_costs_billion = 0 }
+	set_variable = { manpower_costs_thousand = 0 }
+	set_variable = { military_factory_costs_billion = 0 }
+	set_variable = { military_factory_costs_thousand = 0 }
+	set_variable = { misc_costs_billion = 0 }
+	set_variable = { misc_costs_thousand = 0 }
+	set_variable = { misc_income_billion = 0 }
+	set_variable = { misc_income_thousand = 0 }
+	set_variable = { annual_debt_payments_thousand = 0 }
+	set_variable = { annual_debt_payments_billion = 0 }
+}
+calculate_total_budget = {
+	set_variable = { ROOT.total_pop = 0 }
+	every_owned_state = {
+		add_to_variable = { ROOT.total_pop = state_population_k }
+	}
+	set_variable = { ROOT.total_pop_m = ROOT.total_pop }
+	divide_variable = { ROOT.total_pop_m = 1000 }
+
+	set_variable = { ROOT.total_pop = 0 } ### I hate on_startup
+	every_owned_state = {
+		add_to_variable = { ROOT.total_pop = state_population_k }
+	}
+	set_variable = { ROOT.total_pop_m = ROOT.total_pop }
+	divide_variable = { ROOT.total_pop_m = 1000 }
+
+	### Income Taxes
+	calculate_taxable_population = yes
+	multiply_variable = { taxable_population = ROOT.total_pop }
+	set_temp_variable = { income_tax_revenue = taxable_population }
+	multiply_temp_variable = { income_tax_revenue = income_tax_rate }
+	divide_temp_variable = { income_tax_revenue = 95 } 
+
+	set_variable = { income_tax_display = income_tax_rate }
+	multiply_variable = { income_tax_display = 100 }
+
+	### Baseline GDP Contribution
+	set_variable = { gdp_contribution = GDP }
+	multiply_variable = { gdp_contribution = 0.05 }
+	
+	### Business Taxes
+	calculate_industrial_contribution = yes
+	set_variable = { business_tax_display = business_tax_rate }
+	multiply_variable = { business_tax_display = 100 }
+
+	### Debt Payments
+	set_temp_variable = { debt_calc = national_debt }
+	multiply_temp_variable = { debt_calc = interest_rates }
+	set_variable = { annual_debt_payments = debt_calc }
+	if = {
+		limit = { NOT = { check_variable = { debt_calc = 0 } } }
+		divide_temp_variable = { debt_calc = 12 }
+	}
+
+	set_variable = { income_tax_revenue_true = income_tax_revenue }
+
+
+	set_temp_variable = { budget_calc = income_tax_revenue }
+	add_to_temp_variable = { budget_calc = misc_income }
+	add_to_temp_variable = { budget_calc = modifier@misc_income_modifier }
+
+	set_variable = { misc_income_true = misc_income }
+	add_to_variable = { misc_income_true = gdp_contribution }
+	add_to_variable = { misc_income_true = modifier@misc_income_modifier }
+
+	add_to_temp_variable = { budget_calc = gdp_contribution }
+	add_to_temp_variable = { budget_calc = industrial_contribution }
+
+	set_variable = { total_revenue_true = income_tax_revenue }
+	add_to_variable = { total_revenue_true = misc_income_true }
+	add_to_variable = { total_revenue_true = industrial_contribution }
+
+	set_variable = { income_revenue_percent = income_tax_revenue_true }
+	set_variable = { business_revenue_percent = industrial_contribution }
+	set_variable = { other_revenue_percent = misc_income_true }
+
+	divide_variable = { income_revenue_percent = total_revenue_true }
+	divide_variable = { business_revenue_percent = total_revenue_true }
+	divide_variable = { other_revenue_percent = total_revenue_true }
+
+	multiply_variable = { income_revenue_percent = 100 }
+	multiply_variable = { business_revenue_percent = 100 }
+	multiply_variable = { other_revenue_percent = 100 }
+
+	round_variable = income_revenue_percent
+	round_variable = business_revenue_percent
+	round_variable = other_revenue_percent
+
+	set_temp_variable = { income_validator = income_revenue_percent }
+	add_to_temp_variable = { income_validator = business_revenue_percent }
+	add_to_temp_variable = { income_validator = other_revenue_percent }
+
+	if = {
+		limit = {
+			NOT = {
+				check_variable = { income_validator = 100 }
+			}
+		}
+		subtract_from_temp_variable = { income_validator = 100 }
+		subtract_from_variable = { income_revenue_percent = income_validator }
+	}
+
+	subtract_from_temp_variable = { budget_calc = debt_calc }
+
+	set_variable = { total_budget = budget_calc }
+	resolve_negative_cases = yes
+}
+
+calculate_industrial_contribution = {
+	set_variable = { industrial_productivity = 0.250 }
+	
+	if = {
+		limit = { has_idea = ik_industrial_expertise_pre_industrial }
+		multiply_variable = { industrial_productivity = 0.5 }
+	}
+	else_if = {
+		limit = { has_idea = ik_industrial_expertise_incompetent }
+		multiply_variable = { industrial_productivity = 0.75 }
+	}
+	else_if = {
+		limit = { has_idea = ik_industrial_expertise_nascent }
+		multiply_variable = { industrial_productivity = 1.0 }
+	}
+	else_if = {
+		limit = { has_idea = ik_industrial_expertise_experienced }
+		multiply_variable = { industrial_productivity = 1.25 }
+	}
+	else_if = {
+		limit = { has_idea = ik_industrial_expertise_innovative }
+		multiply_variable = { industrial_productivity = 1.50 }
+	}
+	
+	if = {
+		limit = { has_idea = ik_industrial_equipment_hand_tools }
+		multiply_variable = { industrial_productivity = 0.4 }
+	}
+	else_if = {
+		limit = { has_idea = ik_industrial_equipment_power_tools }
+		multiply_variable = { industrial_productivity = 0.6 }
+	}
+	else_if = {
+		limit = { has_idea = ik_industrial_equipment_manufacturing_lines }
+		multiply_variable = { industrial_productivity = 0.8 }
+	}
+	else_if = {
+		limit = { has_idea = ik_industrial_equipment_factory_complexes }
+		multiply_variable = { industrial_productivity = 1.0 }
+	}
+	else_if = {
+		limit = { has_idea = ik_industrial_equipment_modern }
+		multiply_variable = { industrial_productivity = 1.20 }
+	}
+	else_if = {
+		limit = { has_idea = ik_industrial_equipment_cutting_edge }
+		multiply_variable = { industrial_productivity = 1.40 }
+	}
+	
+	multiply_variable = { industrial_productivity = num_of_civilian_factories }
+	set_variable = { industrial_contribution = industrial_productivity }
+	multiply_variable = { industrial_contribution = business_tax_rate }
+}
+
+calculate_taxable_population = {
+	set_variable = { taxable_population = 0.40 }
+	add_to_variable = { taxable_population = modifier@taxable_population_modifier } # Education, women's rights and child labor modifies this
+	if = {
+		limit = {
+			NOT = {
+				check_variable = { modifier@taxable_population_factor = 0 }
+			}
+		}
+		multiply_variable = { taxable_population = modifier@taxable_population_factor } # Poverty socdev affects how much people you can actually tax
+	}
+	set_variable = { poverty_taxable_modifier = 100 }
+	set_temp_variable = { half_poverty_rate = poverty_rate }
+	divide_temp_variable = { half_poverty_rate = 2 }
+	subtract_from_variable = { poverty_taxable_modifier = half_poverty_rate }
+	divide_variable = { poverty_taxable_modifier = 100 }
+	multiply_variable = { taxable_population = poverty_taxable_modifier }
+}
+
+#Budget and expenditures are calculated as if they were ticked annually (and for display purposes), but are recalculated monthly with temp variables for the purposes of actual calculations
+
+calculate_civilian_expenditures = { #Note = in billions
+	calculate_admin_expenditures = yes
+	calculate_research_expenditures = yes
+
+	set_variable = { civilian_expenditures = admin_costs }
+	add_to_variable = { civilian_expenditures = research_costs }
+
+	set_variable = { total_sp_costs = 0 }
+
+	set_variable = { health_care_cost_modified = ik_health_care_policy_proportional_pop_cost_factor }
+	set_variable = { education_cost_modified = ik_education_policy_proportional_pop_cost }
+	set_variable = { security_cost_modified = ik_security_policy_proportional_pop_cost_factor }
+	set_variable = { pensions_cost_modified = ik_pensions_proportional_pop_cost }
+	set_variable = { unemployment_cost_modified = ik_unemployment_proportional_pop_cost }
+	set_variable = { other_program_cost_modified = modifier@ik_other_program_proportional_pop_cost }
+
+	multiply_variable = { health_care_cost_modified = modifier@social_program_cost_factor }
+	multiply_variable = { education_cost_modified = modifier@social_program_cost_factor }
+	multiply_variable = { security_cost_modified = modifier@social_program_cost_factor }
+	multiply_variable = { pensions_cost_modified = modifier@social_program_cost_factor }
+	multiply_variable = { unemployment_cost_modified = modifier@social_program_cost_factor }
+	multiply_variable = { other_program_cost_modified = modifier@social_program_cost_factor }
+
+	multiply_variable = { health_care_cost_modified = total_pop_m }
+	multiply_variable = { education_cost_modified = total_pop_m }
+	multiply_variable = { security_cost_modified = total_pop_m }
+	multiply_variable = { pensions_cost_modified = total_pop_m }
+	multiply_variable = { unemployment_cost_modified = total_pop_m }
+	multiply_variable = { other_program_cost_modified = total_pop_m }
+
+	set_variable = { sp_cost_slider_effect = econ_social_expenditures_slider_value }
+	divide_variable = { sp_cost_slider_effect = 40 }
+	add_to_variable = { sp_cost_slider_effect = 0.75 }
+	
+	multiply_variable = { health_care_cost_modified = sp_cost_slider_effect }
+	multiply_variable = { education_cost_modified = sp_cost_slider_effect }
+	multiply_variable = { security_cost_modified = sp_cost_slider_effect }
+	multiply_variable = { pensions_cost_modified = sp_cost_slider_effect }
+	multiply_variable = { unemployment_cost_modified = sp_cost_slider_effect }
+	multiply_variable = { other_program_cost_modified = sp_cost_slider_effect }
+	
+	add_to_variable = { total_sp_costs = health_care_cost_modified }
+	add_to_variable = { total_sp_costs = education_cost_modified }
+	add_to_variable = { total_sp_costs = security_cost_modified }
+	add_to_variable = { total_sp_costs = pensions_cost_modified }
+	add_to_variable = { total_sp_costs = unemployment_cost_modified }
+	add_to_variable = { total_sp_costs = other_program_cost_modified }
+
+	add_to_variable = { civilian_expenditures = health_care_cost_modified }
+	add_to_variable = { civilian_expenditures = education_cost_modified }
+	add_to_variable = { civilian_expenditures = security_cost_modified }
+	add_to_variable = { civilian_expenditures = pensions_cost_modified }
+	add_to_variable = { civilian_expenditures = unemployment_cost_modified }
+	add_to_variable = { civilian_expenditures = other_program_cost_modified }
+	
+	add_to_variable = { civilian_expenditures = modifier@civilian_annual_cost } # Adds any extra fixed cost
+	multiply_variable = { civilian_expenditures = modifier@civilian_expenditures_factor } # Used by Civ Boost/Austerity ideas, applied on top of total civ spending
+}
+
+calculate_admin_expenditures = {
+	set_variable = { admin_costs = GDP }
+	divide_variable = { admin_costs = 30 }
+	add_to_variable = { admin_costs = 1 }
+	if = {
+		limit = {
+			has_idea = ik_admin_efficiency_organized_chaos
+		}
+		multiply_variable = { admin_costs = 1.3 }
+	}
+	else_if = {
+		limit = {
+			has_idea = ik_admin_efficiency_nonexistent_state_apparatus
+		}
+		multiply_variable = { admin_costs = 1.5 }
+	}
+	else_if = {
+		limit = {
+			has_idea = ik_admin_efficiency_illegitimate_administration
+		}
+		multiply_variable = { admin_costs = 1.4 }
+	}
+	else_if = {
+		limit = {
+			has_idea = ik_admin_efficiency_widespread_corruption
+		}
+		multiply_variable = { admin_costs = 1.2 }
+	}
+	else_if = {
+		limit = {
+			has_idea = ik_admin_efficiency_functional_administrative_systems
+		}
+		multiply_variable = { admin_costs = 1.1 }
+	}
+	else_if = {
+		limit = {
+			has_idea = ik_admin_efficiency_streamlined_bureaucracy
+		}
+		multiply_variable = { admin_costs = 0.95 }
+	}
+	else_if = {
+		limit = {
+			has_idea = ik_admin_efficiency_well_oiled_machine
+		}
+		multiply_variable = { admin_costs = 0.9 }
+	}
+
+	set_variable = { adm_cost_slider_effect = econ_admin_expenditures_slider_value }
+	divide_variable = { adm_cost_slider_effect = 40 }
+	add_to_variable = { adm_cost_slider_effect = 0.75 }
+	multiply_variable = { admin_costs = adm_cost_slider_effect }
+}
+
+calculate_research_expenditures = {
+	set_variable = { research_costs = GDP }
+	divide_variable = { research_costs = 32 }
+	add_to_variable = { research_costs = 1 }
+	if = {
+		limit = {
+			has_idea = ik_research_facilities_makeshift
+		}
+		multiply_variable = { admin_costs = 0.55 }
+	}
+	else_if = {
+		limit = {
+			has_idea = ik_research_facilities_basic
+		}
+		multiply_variable = { admin_costs = 0.70 }
+	}
+	else_if = {
+		limit = {
+			has_idea = ik_research_facilities_outdated
+		}
+		multiply_variable = { admin_costs = 0.85 }
+	}
+	else_if = {
+		limit = {
+			has_idea = ik_research_facilities_modern
+		}
+		multiply_variable = { admin_costs = 1.0 }
+	}
+	else_if = {
+		limit = {
+			has_idea = ik_research_facilities_politicized
+		}
+		multiply_variable = { admin_costs = 1.15 }
+	}
+	else_if = {
+		limit = {
+			has_idea = ik_research_facilities_militarized
+		}
+		multiply_variable = { admin_costs = 1.3 }
+	}
+	else_if = {
+		limit = {
+			has_idea = ik_research_facilities_cutting_edge
+		}
+		multiply_variable = { admin_costs = 1.45 }
+	}
+
+	set_variable = { rsrc_cost_slider_effect = econ_research_expenditures_slider_value }
+	divide_variable = { rsrc_cost_slider_effect = 40 }
+	add_to_variable = { rsrc_cost_slider_effect = 0.75 }
+	multiply_variable = { research_costs = rsrc_cost_slider_effect }
+}
+
+calculate_construction_expenditures = {
+	set_variable = { construction_expenditures = GDP }
+	divide_variable = { construction_expenditures = 3 }
+	#assign_construction_idea = yes
+	set_variable = { construction_expenditures_factor = modifier@construction_costs_modifier } # Set up by the construction budget
+
+	#These laws multiply the expenditure factor#
+
+	#Safety
+	if = {
+		limit = { has_idea = ik_safety_no_regulations }
+		multiply_variable = { construction_expenditures_factor = 0.8 }
+	}
+	else_if = {
+		limit = { has_idea = ik_safety_minimal_regulations }
+		multiply_variable = { construction_expenditures_factor = 0.9 }
+	}
+	else_if = {
+		limit = { has_idea = ik_safety_limited_regulations }
+		multiply_variable = { construction_expenditures_factor = 1.0 }
+	}
+	else_if = {
+		limit = { has_idea = ik_safety_acceptable_regulations }
+		multiply_variable = { construction_expenditures_factor = 1.1 }
+	}
+	else_if = {
+		limit = { has_idea = ik_safety_excellent_regulations }
+		multiply_variable = { construction_expenditures_factor = 1.2 }
+	}
+
+	#Pollution
+	if = {
+		limit = { has_idea = ik_pollution_no_controls }
+		multiply_variable = { construction_expenditures_factor = 0.8 }
+	}
+	else_if = {
+		limit = { has_idea = ik_pollution_few_regulations }
+		multiply_variable = { construction_expenditures_factor = 0.9 }
+	}
+	else_if = {
+		limit = { has_idea = ik_pollution_some_regulations }
+		multiply_variable = { construction_expenditures_factor = 1.0 }
+	}
+	else_if = {
+		limit = { has_idea = ik_pollution_good_regulations }
+		multiply_variable = { construction_expenditures_factor = 1.1 }
+	}
+	else_if = {
+		limit = { has_idea = ik_pollution_strict_regulations }
+		multiply_variable = { construction_expenditures_factor = 1.2 }
+	}
+
+	#Penal System
+	if = {
+		limit = { has_idea = ik_penal_system_penal_slavery }
+		multiply_variable = { construction_expenditures_factor = 0.7 }
+	}
+	else_if = {
+		limit = { has_idea = ik_penal_system_capital_punishment }
+		multiply_variable = { construction_expenditures_factor = 0.8 }
+	}
+	else_if = {
+		limit = { has_idea = ik_penal_system_penal_labor }
+		multiply_variable = { construction_expenditures_factor = 0.9 }
+	}
+	else_if = {
+		limit = { has_idea = ik_penal_system_incarceration }
+		multiply_variable = { construction_expenditures_factor = 0.95 }
+	}
+	else_if = {
+		limit = { has_idea = ik_penal_system_rehabilitation }
+		multiply_variable = { construction_expenditures_factor = 1.0 }
+	}
+
+	#Minimum Wage
+	if = {
+		limit = { has_idea = ik_minimum_wage_no_minimum_wage }
+		multiply_variable = { construction_expenditures_factor = 0.8 }
+	}
+	else_if = {
+		limit = { has_idea = ik_minimum_wage_trinket_minimum_wage }
+		multiply_variable = { construction_expenditures_factor = 0.9 }
+	}
+	else_if = {
+		limit = { has_idea = ik_minimum_wage_low_minimum_wage }
+		multiply_variable = { construction_expenditures_factor = 1.0 }
+	}
+	else_if = {
+		limit = { has_idea = ik_minimum_wage_acceptable_minimum }
+		multiply_variable = { construction_expenditures_factor = 1.1 }
+	}
+	else_if = {
+		limit = { has_idea = ik_minimum_wage_good_minimum_wage }
+		multiply_variable = { construction_expenditures_factor = 1.2 }
+	}
+
+	#Max Workhours
+	if = {
+		limit = { has_idea = ik_max_workhours_unlimited_work_day }
+		multiply_variable = { construction_expenditures_factor = 0.8 }
+	}
+	else_if = {
+		limit = { has_idea = ik_max_workhours_14_hour_work_day }
+		multiply_variable = { construction_expenditures_factor = 0.9 }
+	}
+	else_if = {
+		limit = { has_idea = ik_max_workhours_12_hour_work_day }
+		multiply_variable = { construction_expenditures_factor = 1.0 }
+	}
+	else_if = {
+		limit = { has_idea = ik_max_workhours_8_hour_work_day }
+		multiply_variable = { construction_expenditures_factor = 1.1 }
+	}
+	else_if = {
+		limit = { has_idea = ik_max_workhours_6_hour_work_day }
+		multiply_variable = { construction_expenditures_factor = 1.2 }
+	}
+
+	#Child Labor
+	if = {
+		limit = { has_idea = ik_child_labor_legal }
+		multiply_variable = { construction_expenditures_factor = 0.7 }
+	}
+	else_if = {
+		limit = { has_idea = ik_child_labor_restricted }
+		multiply_variable = { construction_expenditures_factor = 0.85 }
+	}
+	else_if = {
+		limit = { has_idea = ik_child_labor_illegal }
+		multiply_variable = { construction_expenditures_factor = 1.0 }
+	}
+
+	multiply_variable = { construction_expenditures = construction_expenditures_factor }
+}
+calculate_funding_effects = {
+	calculate_army_funding_effects = yes
+	calculate_naval_funding_effects = yes
+	calculate_research_funding_effects = yes
+	calculate_admin_funding_effects = yes
+}
+calculate_army_funding_effects = {
+	set_variable = { IK_army_funding_army_org_factor = econ_army_expenditures_slider_value }
+	subtract_from_variable = { IK_army_funding_army_org_factor = 10 }
+	divide_variable = { IK_army_funding_army_org_factor = 65 }
+	
+	set_variable = { IK_army_funding_army_morale_factor = econ_army_expenditures_slider_value }
+	subtract_from_variable = { IK_army_funding_army_morale_factor = 10 }
+	divide_variable = { IK_army_funding_army_morale_factor = 50 }
+	
+	set_variable = { IK_army_funding_army_attack_factor = econ_army_expenditures_slider_value }
+	subtract_from_variable = { IK_army_funding_army_attack_factor = 10 }
+	divide_variable = { IK_army_funding_army_attack_factor = 50 }
+	
+	set_variable = { IK_army_funding_army_defence_factor = econ_army_expenditures_slider_value }
+	subtract_from_variable = { IK_army_funding_army_defence_factor = 10 }
+	divide_variable = { IK_army_funding_army_defence_factor = 50 }
+	
+	set_variable = { IK_army_funding_war_support_factor = econ_army_expenditures_slider_value }
+	subtract_from_variable = { IK_army_funding_war_support_factor = 10 }
+	divide_variable = { IK_army_funding_war_support_factor = 80 }
+	
+	set_variable = { IK_army_funding_stability_factor = econ_army_expenditures_slider_value }
+	subtract_from_variable = { IK_army_funding_stability_factor = 10 }
+	divide_variable = { IK_army_funding_stability_factor = 80 }
+}
+calculate_naval_funding_effects = {
+	set_variable = { IK_naval_funding_industrial_capacity_dockyard = econ_naval_expenditures_slider_value }
+	subtract_from_variable = { IK_naval_funding_industrial_capacity_dockyard = 10 }
+	divide_variable = { IK_naval_funding_industrial_capacity_dockyard = 65 }
+
+	set_variable = { IK_naval_funding_naval_coordination = econ_naval_expenditures_slider_value }
+	subtract_from_variable = { IK_naval_funding_naval_coordination = 10 }
+	divide_variable = { IK_naval_funding_naval_coordination = 50 }
+	
+	set_variable = { IK_naval_funding_naval_speed_factor = econ_naval_expenditures_slider_value }
+	subtract_from_variable = { IK_naval_funding_naval_speed_factor = 10 }
+	divide_variable = { IK_naval_funding_naval_speed_factor = 65 }
+	
+	set_variable = { IK_naval_funding_navy_max_range_factor = econ_naval_expenditures_slider_value }
+	subtract_from_variable = { IK_naval_funding_navy_max_range_factor = 10 }
+	divide_variable = { IK_naval_funding_navy_max_range_factor = 50 }
+	
+	set_variable = { IK_naval_funding_spotting_chance = econ_naval_expenditures_slider_value }
+	subtract_from_variable = { IK_naval_funding_spotting_chance = 10 }
+	divide_variable = { IK_naval_funding_spotting_chance = 65 }
+	
+	set_variable = { IK_naval_funding_war_support_factor = econ_naval_expenditures_slider_value }
+	subtract_from_variable = { IK_naval_funding_war_support_factor = 10 }
+	divide_variable = { IK_naval_funding_war_support_factor = 80 }
+	
+	set_variable = { IK_naval_funding_stability_factor = econ_naval_expenditures_slider_value }
+	subtract_from_variable = { IK_naval_funding_stability_factor = 10 }
+	divide_variable = { IK_naval_funding_stability_factor = 80 }
+}
+calculate_research_funding_effects = {
+	set_variable = { IK_research_funding_research_speed_factor = econ_research_expenditures_slider_value }
+	subtract_from_variable = { IK_research_funding_research_speed_factor = 10 }
+	divide_variable = { IK_research_funding_research_speed_factor = 65 }
+}
+calculate_admin_funding_effects = {
+	set_variable = { IK_admin_funding_taxable_population_factor = econ_admin_expenditures_slider_value }
+	subtract_from_variable = { IK_admin_funding_taxable_population_factor = 10 }
+	divide_variable = { IK_admin_funding_taxable_population_factor = 240 }
+	
+	set_variable = { IK_admin_funding_stability_factor = econ_admin_expenditures_slider_value }
+	subtract_from_variable = { IK_admin_funding_stability_factor = 10 }
+	divide_variable = { IK_admin_funding_stability_factor = 80 }
+	
+	set_variable = { IK_admin_funding_political_power_factor = econ_admin_expenditures_slider_value }
+	subtract_from_variable = { IK_admin_funding_political_power_factor = 10 }
+	divide_variable = { IK_admin_funding_political_power_factor = 80 }
+}
+
+assign_construction_idea = {
+	if = {
+		limit ={
+			check_variable = { econ_construction_expenditures_slider_value = 0 }
+		}
+		add_ideas = construction_level_0
+	}
+	else_if = {
+		limit ={
+			check_variable = { econ_construction_expenditures_slider_value = 1 }
+		}
+		add_ideas = construction_level_1
+	}
+	else_if = {
+		limit ={
+			check_variable = { econ_construction_expenditures_slider_value = 2 }
+		}
+		add_ideas = construction_level_2
+	}
+	else_if = {
+		limit ={
+			check_variable = { econ_construction_expenditures_slider_value = 3 }
+		}
+		add_ideas = construction_level_3
+	}
+	else_if = {
+		limit ={
+			check_variable = { econ_construction_expenditures_slider_value = 4 }
+		}
+		add_ideas = construction_level_4
+	}
+	else_if = {
+		limit ={
+			check_variable = { econ_construction_expenditures_slider_value = 5 }
+		}
+		add_ideas = construction_level_5
+	}
+	else_if = {
+		limit ={
+			check_variable = { econ_construction_expenditures_slider_value = 6 }
+		}
+		add_ideas = construction_level_6
+	}
+	else_if = {
+		limit ={
+			check_variable = { econ_construction_expenditures_slider_value = 7 }
+		}
+		add_ideas = construction_level_7
+	}
+	else_if = {
+		limit ={
+			check_variable = { econ_construction_expenditures_slider_value = 8 }
+		}
+		add_ideas = construction_level_8
+	}
+	else_if = {
+		limit ={
+			check_variable = { econ_construction_expenditures_slider_value = 9 }
+		}
+		add_ideas = construction_level_9
+	}
+	else_if = {
+		limit ={
+			check_variable = { econ_construction_expenditures_slider_value = 10 }
+		}
+		add_ideas = construction_level_10
+	}
+	else_if = {
+		limit ={
+			check_variable = { econ_construction_expenditures_slider_value = 11 }
+		}
+		add_ideas = construction_level_11
+	}
+	else_if = {
+		limit ={
+			check_variable = { econ_construction_expenditures_slider_value = 12 }
+		}
+		add_ideas = construction_level_12
+	}
+	else_if = {
+		limit ={
+			check_variable = { econ_construction_expenditures_slider_value = 13 }
+		}
+		add_ideas = construction_level_13
+	}
+	else_if = {
+		limit ={
+			check_variable = { econ_construction_expenditures_slider_value = 14 }
+		}
+		add_ideas = construction_level_14
+	}
+	else_if = {
+		limit ={
+			check_variable = { econ_construction_expenditures_slider_value = 15 }
+		}
+		add_ideas = construction_level_15
+	}
+	else_if = {
+		limit ={
+			check_variable = { econ_construction_expenditures_slider_value = 16 }
+		}
+		add_ideas = construction_level_16
+	}
+	else_if = {
+		limit ={
+			check_variable = { econ_construction_expenditures_slider_value = 17 }
+		}
+		add_ideas = construction_level_17
+	}
+	else_if = {
+		limit ={
+			check_variable = { econ_construction_expenditures_slider_value = 18 }
+		}
+		add_ideas = construction_level_18
+	}
+	else_if = {
+		limit ={
+			check_variable = { econ_construction_expenditures_slider_value = 19 }
+		}
+		add_ideas = construction_level_19
+	}
+	else_if = {
+		limit ={
+			check_variable = { econ_construction_expenditures_slider_value = 20 }
+		}
+		add_ideas = construction_level_20
+	}
+}
+
+calculate_military_expenditures = {
+	calculate_army_expenditures = yes
+	calculate_naval_expenditures = yes
+
+	set_variable = { military_expenditures = army_costs }
+	add_to_variable = { military_expenditures = naval_costs }
+
+	#Extra fixed military costs, like nuclear stockpiles
+	add_to_variable = { military_expenditures = modifier@military_annual_cost }
+
+	set_variable = { military_expenditures_factor = total_budget }
+	divide_variable = { military_expenditures_factor = military_expenditures }
+}
+
+calculate_army_expenditures = {
+	set_temp_variable = { num_mil_facs = num_of_military_factories }
+	set_temp_variable = { num_available_mil_facs = num_of_available_military_factories }
+
+	if = {
+		limit = {
+			check_variable = { num_available_mil_facs = 0 }
+		}
+		set_variable = { used_mil_facs = num_mil_facs }
+	}
+	else = {
+		set_variable = { used_mil_facs = num_mil_facs }
+		subtract_from_variable = { used_mil_facs = num_available_mil_facs }
+	}
+	
+	set_variable = { army_costs = used_mil_facs }
+	multiply_variable = { army_costs = 0.52 }
+
+	set_variable = { military_factory_costs = army_costs }
+	
+	#Industrial expertise
+	if = {
+		limit = { has_idea = ik_industrial_expertise_pre_industrial }
+		multiply_variable = { army_costs = 0.2 }
+	}
+	else_if = {
+		limit = { has_idea = ik_industrial_expertise_incompetent }
+		multiply_variable = { army_costs = 0.4 }
+	}
+	else_if = {
+		limit = { has_idea = ik_industrial_expertise_nascent }
+		multiply_variable = { army_costs = 0.6 }
+	}
+	else_if = {
+		limit = { has_idea = ik_industrial_expertise_experienced }
+		multiply_variable = { army_costs = 0.8 }
+	}
+	else_if = {
+		limit = { has_idea = ik_industrial_expertise_innovative }
+		multiply_variable = { army_costs = 1.0 }
+	}
+
+	#Industrial equipment
+	if = {
+		limit = { has_idea = ik_industrial_equipment_hand_tools }
+		multiply_variable = { army_costs = 0.3 }
+	}
+	else_if = {
+		limit = { has_idea = ik_industrial_equipment_power_tools }
+		multiply_variable = { army_costs = 0.45 }
+	}
+	else_if = {
+		limit = { has_idea = ik_industrial_equipment_manufacturing_lines }
+		multiply_variable = { army_costs = 0.6 }
+	}
+	else_if = {
+		limit = { has_idea = ik_industrial_equipment_factory_complexes }
+		multiply_variable = { army_costs = 0.75 }
+	}
+	else_if = {
+		limit = { has_idea = ik_industrial_equipment_modern }
+		multiply_variable = { army_costs = 0.9 }
+	}
+	else_if = {
+		limit = { has_idea = ik_industrial_equipment_cutting_edge }
+		multiply_variable = { army_costs = 1.05 }
+	}
+
+	calculate_fielded_manpower = yes
+	set_variable = { manpower_costs = fielded_manpower_k }
+	multiply_variable = { manpower_costs = 0.017 }
+
+	#training level
+	if = {
+		limit = { has_idea = ik_training_none }
+		multiply_variable = { manpower_costs = 0.2 }
+	}
+	else_if = {
+		limit = { has_idea = ik_training_minimal_training }
+		multiply_variable = { manpower_costs = 0.4 }
+	}
+	else_if = {
+		limit = { has_idea = ik_training_basic_training }
+		multiply_variable = { manpower_costs = 0.6 }
+	}
+	else_if = {
+		limit = { has_idea = ik_training_combat_schooling }
+		multiply_variable = { manpower_costs = 0.8 }
+	}
+	else_if = {
+		limit = { has_idea = ik_training_advanced_training_methods }
+		multiply_variable = { manpower_costs = 1.0 }
+	}
+
+	#supervision level
+	if = {
+		limit = { has_idea = ik_military_supervision_kill_em_all }
+		multiply_variable = { manpower_costs = 0.7 }
+	}
+	else_if = {
+		limit = { has_idea = ik_military_supervision_no_supervision }
+		multiply_variable = { manpower_costs = 0.8 }
+	}
+	else_if = {
+		limit = { has_idea = ik_military_supervision_military_policing }
+		multiply_variable = { manpower_costs = 0.9 }
+	}
+	else_if = {
+		limit = { has_idea = ik_military_supervision_rules_of_engagement }
+		multiply_variable = { manpower_costs = 1.0 }
+	}
+	else_if = {
+		limit = { has_idea = ik_military_supervision_watchdog_groups }
+		multiply_variable = { manpower_costs = 1.1 }
+	}
+	else_if = {
+		limit = { has_idea = ik_military_supervision_total_supervision }
+		multiply_variable = { manpower_costs = 1.2 }
+	}
+	
+	#Multiplicative factor currently only used by the Oil Crisis modifier
+	multiply_variable = { manpower_costs = modifier@personnel_cost_modifier }
+
+	#Boosts/Austerity
+	multiply_variable = { manpower_costs = modifier@military_expenditures_factor }
+	multiply_variable = { military_factory_costs = modifier@military_expenditures_factor }
+
+	add_to_variable = { army_costs = manpower_costs }
+
+	set_variable = { num_MBTs = num_equipment@MBT_equipment }
+	set_variable = { num_IFVs = num_equipment@IFV_equipment }
+	set_variable = { num_APCs = num_equipment@APC_equipment }
+
+	set_variable = { num_gunships = num_equipment@strat_bomber_equipment }
+	set_variable = { num_strat_bombers = num_equipment@strat_bomber_equipment }
+	set_variable = { num_tac_bombers = num_equipment@tac_bomber_equipment }
+	set_variable = { num_CASs = num_equipment@CAS_equipment }
+	set_variable = { num_interceptors = num_equipment@interceptor_equipment }
+	set_variable = { num_fighters = num_equipment@fighter_equipment }
+	set_variable = { num_SRBMs = num_equipment@SRBM_equipment }
+	set_variable = { num_MRBMs = num_equipment@MRBM_equipment }
+	set_variable = { num_ICBMs = num_equipment@ICBM_equipment }
+
+	set_temp_variable = { MBT_costs = num_MBTs }
+	set_temp_variable = { IFV_costs = num_IFVs }
+	set_temp_variable = { APC_costs = num_APCs }
+	
+	set_temp_variable = { gunship_costs = num_gunships }
+	set_temp_variable = { strat_bomber_costs = num_strat_bombers }
+	set_temp_variable = { tac_bomber_costs = num_tac_bombers }
+	set_temp_variable = { CAS_costs = num_CASs }
+	set_temp_variable = { interceptor_costs = num_interceptors }
+	set_temp_variable = { fighter_costs = num_fighters }
+	set_temp_variable = { SRBM_costs = num_SRBMs }
+	set_temp_variable = { MRBM_costs = num_MRBMs }
+	set_temp_variable = { ICBM_costs = num_ICBMs }
+	
+	divide_temp_variable = { MBT_costs = 1000 }
+	divide_temp_variable = { IFV_costs = 1000 }
+	divide_temp_variable = { APC_costs = 1000 }
+	
+	divide_temp_variable = { gunship_costs = 100 }
+	divide_temp_variable = { strat_bomber_costs = 100 }
+	divide_temp_variable = { tac_bomber_costs = 100 }
+	divide_temp_variable = { CAS_costs = 100 }
+	divide_temp_variable = { interceptor_costs = 100 }
+	divide_temp_variable = { fighter_costs = 100 }
+	divide_temp_variable = { SRBM_costs = 100 }
+	divide_temp_variable = { MRBM_costs = 100 }
+	divide_temp_variable = { ICBM_costs = 100 }
+
+	multiply_temp_variable = { gunship_costs = 0.090 }
+	multiply_temp_variable = { strat_bomber_costs = 0.100 }
+	multiply_temp_variable = { tac_bomber_costs = 0.085 }
+	multiply_temp_variable = { CAS_costs = 0.045 }
+	multiply_temp_variable = { interceptor_costs = 0.050 }
+	multiply_temp_variable = { fighter_costs = 0.045 }
+	multiply_temp_variable = { SRBM_costs = 0.090 }
+	multiply_temp_variable = { MRBM_costs = 0.125 }
+	multiply_temp_variable = { ICBM_costs = 0.200 }
+
+	add_to_variable = { army_costs = MBT_costs }
+	add_to_variable = { army_costs = IFV_costs }
+	add_to_variable = { army_costs = APC_costs }
+	
+	add_to_variable = { army_costs = gunship_costs }
+	add_to_variable = { army_costs = strat_bomber_costs }
+	add_to_variable = { army_costs = tac_bomber_costs }
+	add_to_variable = { army_costs = CAS_costs }
+	add_to_variable = { army_costs = interceptor_costs }
+	add_to_variable = { army_costs = fighter_costs }
+	add_to_variable = { army_costs = SRBM_costs }
+	add_to_variable = { army_costs = MRBM_costs }
+	add_to_variable = { army_costs = ICBM_costs }
+
+	set_variable = { army_cost_slider_effect = econ_army_expenditures_slider_value }
+	divide_variable = { army_cost_slider_effect = 40 }
+	add_to_variable = { army_cost_slider_effect = 0.75 }
+	multiply_variable = { army_costs = army_cost_slider_effect }
+}
+
+calculate_naval_expenditures = {
+
+	set_temp_variable = { num_naval_facs = num_of_naval_factories }
+	set_temp_variable = { num_available_naval_facs = num_of_available_naval_factories }
+	
+	if = {
+		limit = {
+			check_variable = { num_available_naval_facs = 0 }
+		}
+		set_variable = { used_naval_facs = num_naval_facs }
+	}
+	else = {
+		set_variable = { used_naval_facs = num_naval_facs }
+		subtract_from_variable = { used_naval_facs = num_available_naval_facs }
+	}
+	
+	set_variable = { naval_costs = num_naval_facs }
+	multiply_variable = { naval_costs = 0.50 }
+	
+	set_variable = { naval_factory_costs = naval_costs }
+
+	#Industrial expertise
+	if = {
+		limit = { has_idea = ik_industrial_expertise_pre_industrial }
+		multiply_variable = { naval_costs = 0.2 }
+	}
+	else_if = {
+		limit = { has_idea = ik_industrial_expertise_incompetent }
+		multiply_variable = { naval_costs = 0.4 }
+	}
+	else_if = {
+		limit = { has_idea = ik_industrial_expertise_nascent }
+		multiply_variable = { naval_costs = 0.6 }
+	}
+	else_if = {
+		limit = { has_idea = ik_industrial_expertise_experienced }
+		multiply_variable = { naval_costs = 0.8 }
+	}
+	else_if = {
+		limit = { has_idea = ik_industrial_expertise_innovative }
+		multiply_variable = { naval_costs = 1.0 }
+	}
+
+	#Industrial equipment
+	if = {
+		limit = { has_idea = ik_industrial_equipment_hand_tools }
+		multiply_variable = { naval_costs = 0.3 }
+	}
+	else_if = {
+		limit = { has_idea = ik_industrial_equipment_power_tools }
+		multiply_variable = { naval_costs = 0.45 }
+	}
+	else_if = {
+		limit = { has_idea = ik_industrial_equipment_manufacturing_lines }
+		multiply_variable = { naval_costs = 0.6 }
+	}
+	else_if = {
+		limit = { has_idea = ik_industrial_equipment_factory_complexes }
+		multiply_variable = { naval_costs = 0.75 }
+	}
+	else_if = {
+		limit = { has_idea = ik_industrial_equipment_modern }
+		multiply_variable = { naval_costs = 0.9 }
+	}
+	else_if = {
+		limit = { has_idea = ik_industrial_equipment_cutting_edge }
+		multiply_variable = { naval_costs = 1.05 }
+	}
+
+	set_variable = { num_carriers = num_equipment@ship_hull_carrier }
+	set_variable = { num_battleships = num_equipment@ship_hull_heavy }
+	set_variable = { num_cruisers = num_equipment@ship_hull_cruiser }
+	set_variable = { num_destroyers = num_equipment@ship_hull_light }
+	set_variable = { num_frigate = num_equipment@ship_hull_more_light }
+	set_variable = { num_corvette = num_equipment@ship_hull_very_light }
+	set_variable = { num_submarine = num_equipment@ship_hull_submarine }
+
+	set_temp_variable = { carrier_costs = num_carriers }
+	set_temp_variable = { battleship_costs = num_battleships }
+	set_temp_variable = { cruiser_costs = num_cruisers }
+	set_temp_variable = { destroyer_costs = num_destroyers }
+	set_temp_variable = { frigate_costs = num_frigate }
+	set_temp_variable = { corvette_costs = num_corvette }
+	set_temp_variable = { submarine_costs = num_submarine }
+
+	multiply_temp_variable = { carrier_costs = 0.100 }
+	multiply_temp_variable = { battleship_costs = 0.095 }
+	multiply_temp_variable = { cruiser_costs = 0.065 }
+	multiply_temp_variable = { destroyer_costs = 0.045 }
+	multiply_temp_variable = { frigate_costs = 0.035 }
+	multiply_temp_variable = { corvette_costs = 0.025 }
+	multiply_temp_variable = { submarine_costs = 0.040 }
+
+	add_to_variable = { naval_costs = carrier_costs }
+	add_to_variable = { naval_costs = battleship_costs }
+	add_to_variable = { naval_costs = cruiser_costs }
+	add_to_variable = { naval_costs = destroyer_costs }
+	add_to_variable = { naval_costs = frigate_costs }
+	add_to_variable = { naval_costs = corvette_costs }
+	add_to_variable = { naval_costs = submarine_costs }
+
+	#Boosts/Austerity
+	multiply_variable = { naval_factory_costs = modifier@military_expenditures_factor }
+	
+	set_variable = { naval_cost_slider_effect = econ_naval_expenditures_slider_value }
+	divide_variable = { naval_cost_slider_effect = 40 }
+	add_to_variable = { naval_cost_slider_effect = 0.75 }
+	multiply_variable = { naval_costs = naval_cost_slider_effect }
+}
+
+calculate_total_expenditures = {
+	add_country_specific_idea_costs = yes
+	set_variable = { total_expenditures = civilian_expenditures }
+	add_to_variable = { total_expenditures = construction_expenditures }
+	add_to_variable = { total_expenditures = military_expenditures }
+	add_to_variable = { total_expenditures = misc_costs }
+	add_to_variable = { total_expenditures = modifier@misc_costs_modifier }
+	set_variable = { misc_costs_true = misc_costs }
+	add_to_variable = { misc_costs_true = modifier@misc_costs_modifier }
+
+	set_variable = { military_expenditures_percent = military_expenditures }
+	set_variable = { civilian_expenditures_percent = civilian_expenditures }
+	set_variable = { construction_expenditures_percent = construction_expenditures }
+	set_variable = { misc_expenditures_percent = misc_costs_true }
+
+	divide_variable = { military_expenditures_percent = total_expenditures }
+	divide_variable = { civilian_expenditures_percent = total_expenditures }
+	divide_variable = { construction_expenditures_percent = total_expenditures }
+	divide_variable = { misc_expenditures_percent = total_expenditures }
+
+	multiply_variable = { military_expenditures_percent = 100 }
+	multiply_variable = { civilian_expenditures_percent = 100 }
+	multiply_variable = { construction_expenditures_percent = 100 }
+	multiply_variable = { misc_expenditures_percent = 100 }
+
+	round_variable = military_expenditures_percent
+	round_variable = civilian_expenditures_percent
+	round_variable = construction_expenditures_percent
+	round_variable = misc_expenditures_percent
+
+	set_temp_variable = { expenditures_validator = military_expenditures_percent }
+	add_to_temp_variable = { expenditures_validator = civilian_expenditures_percent }
+	add_to_temp_variable = { expenditures_validator = construction_expenditures_percent }
+	add_to_temp_variable = { expenditures_validator = misc_expenditures_percent }
+
+	if = {
+		limit = {
+			NOT = {
+				check_variable = { expenditures_validator = 100 }
+			}
+		}
+		subtract_from_temp_variable = { expenditures_validator = 100 }
+		subtract_from_variable = { civilian_expenditures_percent = expenditures_validator }
+	}
+}
+
+calculate_total_expenditures_factor = {
+	set_variable = { total_expenditures_factor = total_expenditures }
+	divide_variable = { total_expenditures_factor = total_budget }
+}
+
+calculate_GDP_growth = {
+	#Finding the ratio of deficit to total budget
+	set_variable = { deficit_ratio = deficit }
+	set_temp_variable = { deficit_ratio_temp = deficit_ratio }
+
+	if = {
+		limit = { NOT = { check_variable = { deficit_ratio = 0 } } }
+		divide_temp_variable = { deficit_ratio_temp = total_budget }
+	}
+
+	set_temp_variable = { actual_GDP_growth = GDP_growth }
+	add_to_temp_variable = { actual_GDP_growth = modifier@gdp_growth_modifier }
+
+	#Growth Benefits from deficit spending
+	if = {
+		limit = { NOT = { check_variable = { deficit_ratio_temp = 0 } } }
+		divide_temp_variable = { deficit_ratio_temp = 4 }
+	}
+	if = { #Checking that there is deficit spending and that the country isn't in economic crisis
+		limit = { NOT = { check_variable = { deficit_ratio_temp < 0 } } }
+		add_to_temp_variable = { deficit_ratio_temp = 1 }
+		multiply_temp_variable = { actual_GDP_growth = deficit_ratio_temp }
+	}
+
+	# Annual growth modifier
+	multiply_variable = { actual_GDP_growth = modifier@annual_gdp_growth_factor }
+
+	divide_temp_variable = { actual_GDP_growth = 12 }
+	add_to_temp_variable = { actual_GDP_growth = 1 } #need to add 1 because GDP growth is given between 0 and 1
+
+
+	#GDP growth checks
+	multiply_variable = { GDP = actual_GDP_growth }
+}
+
+calculate_deficit = {
+	set_variable = { deficit = 0 }
+	set_variable = { deficit = total_expenditures }
+	subtract_from_variable = { deficit = total_budget }
+
+	#deficit is calculated for annual cycles, while monthly deficit is what is actually used for calculations (and is recalculated every month)
+
+	set_temp_variable = { monthly_deficit = deficit }
+	if = {
+		limit = { NOT = { check_variable = { monthly_deficit = 0 } } }
+		divide_temp_variable = { monthly_deficit = 12 }
+	}
+
+	if = { #running a deficit
+		limit = {
+			check_variable = { monthly_deficit > 0 }
+		}
+		if = {
+			limit = {
+				check_variable = { money_reserves > 0.0 } #already converted to billion
+			}
+			subtract_from_temp_variable = { monthly_deficit = money_reserves }
+			if = {
+				limit = {
+					check_variable = { monthly_deficit < 0 }
+				}
+				#add money back to reserves if we haven't used all of them
+				set_temp_variable = { deficit_to_reserves = monthly_deficit }
+				multiply_temp_variable = { deficit_to_reserves = -1 }
+				set_variable = { money_reserves = deficit_to_reserves }
+			}
+			else_if = {
+				limit = {
+					check_variable = { monthly_deficit > 0 }
+				}
+				#use the national debt to make up the rest if we've used up all our reserves
+				set_variable = { money_reserves = 0.0 } #already converted to billion
+				add_to_variable = { national_debt = monthly_deficit }
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = { check_variable = { money_reserves > 0.0 } }  #already converted to billion
+			}
+			add_to_variable = { national_debt = monthly_deficit }
+		}
+	}
+	else = { #in the black
+		multiply_temp_variable = { monthly_deficit = -1 }
+#		if = {
+#			limit = { check_variable = { national_debt > 0.0 } } #already converted to billion
+#			subtract_from_variable = { national_debt = monthly_deficit }
+#			if = {
+#				limit = { check_variable = { national_debt < 0.0 } } #already converted to billion
+#				#put money into monthly reserves if we paid off all our national debt
+#				add_to_variable = { money_reserves = monthly_deficit }
+#				set_variable = { national_debt = 0.0 } #already converted to billion
+#			}
+#		}
+#		else_if = {
+#			limit = { NOT = { check_variable = { national_debt > 0.0 } } } #already converted to billion
+#			add_to_variable = { money_reserves = monthly_deficit }
+#		}
+		add_to_variable = { money_reserves = monthly_deficit }
+	}
+}
+
+resolve_negative_cases = {
+	if = { 
+		limit = {
+			check_variable = { ROOT.money_reserves < -1000.0 } #already converted to billion
+		}
+		set_variable = { money_reserves = 0.1 } #already converted to billion
+		log = "[GetDateText]: [THIS.GetName]: a pretty obvious overflow bug occured - money reserves reset to 100."		
+	}
+	if = { 
+		limit = {
+			check_variable = { ROOT.money_reserves < 0.0 } #already converted to billion
+		}
+		set_variable = { liquidinverter = 0 }
+		subtract_from_variable = { liquidinverter = ROOT.money_reserves }
+		add_to_variable = { national_debt = liquidinverter } 
+		set_variable = { ROOT.money_reserves = 0.0 } #already converted to billion
+	}
+	if = { 
+		limit = {
+			check_variable = { ROOT.national_debt < -1000.0 } #already converted to billion
+		}
+		set_variable = { national_debt = 0.1 } #already converted to billion
+		log = "[GetDateText]: [THIS.GetName]: a pretty obvious overflow bug occured - national debt reset to 100."
+	}
+	if = { 
+		limit = {
+			check_variable = { ROOT.national_debt < 0.0 } #already converted to billion
+		}
+		set_variable = { debtinverter = 0 }
+		subtract_from_variable = { debtinverter = ROOT.national_debt }
+		add_to_variable = { money_reserves = debtinverter } 
+		set_variable = { ROOT.national_debt = 0.0 } #already converted to billion
+	}
+	if = { 
+		limit = {
+			check_variable = { ROOT.GDP < 0.0 } #already converted to billion
+		}
+		set_variable = { GDP = 0.1 } #already converted to billion
+	}
+
+	### Debt Ratio ###
+	set_variable = { debt_ratio = national_debt }
+	divide_variable = { debt_ratio = GDP }
+}
+
+calculate_fielded_manpower = {
+	#fuck you paradox why can't we just have an army_manpower variable?
+	#this gives you a rough estimate of how much manpower is in the field
+	set_variable = { approx_fielded_manpower = 1 }
+	if = {
+		limit = { has_army_manpower = { size < 500000 } }
+		#For those with small armies, between 0 and 500k men
+		if = {
+			limit = { has_army_manpower = { size = 0 } }
+			set_variable = { approx_fielded_manpower = 0 }
+		}
+		else_if = {
+			limit = { has_army_manpower = { size < 25000 } }
+			set_variable = { approx_fielded_manpower = 12500 }
+		}
+		else_if = {
+			limit = { has_army_manpower = { size < 50000 } }
+			set_variable = { approx_fielded_manpower = 37500 }
+		}
+		else_if = {
+			limit = { has_army_manpower = { size < 75000 } }
+			set_variable = { approx_fielded_manpower = 62500 }
+		}
+		else_if = {
+			limit = { has_army_manpower = { size < 100000 } }
+			set_variable = { approx_fielded_manpower = 87500 }
+		}
+		else_if = {
+			limit = { has_army_manpower = { size < 125000 } }
+			set_variable = { approx_fielded_manpower = 112500 }
+		}
+		else_if = {
+			limit = { has_army_manpower = { size < 150000 } }
+			set_variable = { approx_fielded_manpower = 137500 }
+		}
+		else_if = {
+			limit = { has_army_manpower = { size < 175000 } }
+			set_variable = { approx_fielded_manpower = 162500 }
+		}
+		else_if = {
+			limit = { has_army_manpower = { size < 200000 } }
+			set_variable = { approx_fielded_manpower = 187500 }
+		}
+		else_if = {
+			limit = { has_army_manpower = { size < 225000 } }
+			set_variable = { approx_fielded_manpower = 212500 }
+		}
+		else_if = {
+			limit = { has_army_manpower = { size < 250000 } }
+			set_variable = { approx_fielded_manpower = 237500 }
+		}
+		else_if = {
+			limit = { has_army_manpower = { size < 275000 } }
+			set_variable = { approx_fielded_manpower = 262500 }
+		}
+		else_if = {
+			limit = { has_army_manpower = { size < 300000 } }
+			set_variable = { approx_fielded_manpower = 287500 }
+		}
+		else_if = {
+			limit = { has_army_manpower = { size < 325000 } }
+			set_variable = { approx_fielded_manpower = 312500 }
+		}
+		else_if = {
+			limit = { has_army_manpower = { size < 350000 } }
+			set_variable = { approx_fielded_manpower = 337500 }
+		}
+		else_if = {
+			limit = { has_army_manpower = { size < 375000 } }
+			set_variable = { approx_fielded_manpower = 362500 }
+		}
+		else_if = {
+			limit = { has_army_manpower = { size < 400000 } }
+			set_variable = { approx_fielded_manpower = 387500 }
+		}
+		else_if = {
+			limit = { has_army_manpower = { size < 425000 } }
+			set_variable = { approx_fielded_manpower = 412500 }
+		}
+		else_if = {
+			limit = { has_army_manpower = { size < 450000 } }
+			set_variable = { approx_fielded_manpower = 437500 }
+		}
+		else_if = {
+			limit = { has_army_manpower = { size < 475000 } }
+			set_variable = { approx_fielded_manpower = 462500 }
+		}
+		else_if = {
+			limit = { has_army_manpower = { size < 500000 } }
+			set_variable = { approx_fielded_manpower = 487500 }
+		}
+	}
+	else_if = {
+		limit = { has_army_manpower = { size < 1000000 } }
+		#Medium sized armies, between 500k and 1M men
+		if = {
+			limit = { has_army_manpower = { size < 550000 } }
+			set_variable = { approx_fielded_manpower = 525000 }
+		}
+		else_if = {
+			limit = { has_army_manpower = { size < 600000 } }
+			set_variable = { approx_fielded_manpower = 575000 }
+		}
+		else_if = {
+			limit = { has_army_manpower = { size < 650000 } }
+			set_variable = { approx_fielded_manpower = 625000 }
+		}
+		else_if = {
+			limit = { has_army_manpower = { size < 700000 } }
+			set_variable = { approx_fielded_manpower = 675000 }
+		}
+		else_if = {
+			limit = { has_army_manpower = { size < 750000 } }
+			set_variable = { approx_fielded_manpower = 725000 }
+		}
+		else_if = {
+			limit = { has_army_manpower = { size < 800000 } }
+			set_variable = { approx_fielded_manpower = 775000 }
+		}
+		else_if = {
+			limit = { has_army_manpower = { size < 850000 } }
+			set_variable = { approx_fielded_manpower = 825000 }
+		}
+		else_if = {
+			limit = { has_army_manpower = { size < 900000 } }
+			set_variable = { approx_fielded_manpower = 875000 }
+		}
+		else_if = {
+			limit = { has_army_manpower = { size < 950000 } }
+			set_variable = { approx_fielded_manpower = 925000 }
+		}
+		else_if = {
+			limit = { has_army_manpower = { size < 1000000 } }
+			set_variable = { approx_fielded_manpower = 975000 }
+		}
+	}
+	else_if = {
+		limit = { has_army_manpower = { size < 2000000 } }
+		#Large armies, between 1M and 2M men
+		if = {
+			limit = { has_army_manpower = { size < 1100000 } }
+			set_variable = { approx_fielded_manpower = 1050000 }
+		}
+		else_if = {
+			limit = { has_army_manpower = { size < 1200000 } }
+			set_variable = { approx_fielded_manpower = 1150000 }
+		}
+		else_if = {
+			limit = { has_army_manpower = { size < 1300000 } }
+			set_variable = { approx_fielded_manpower = 1250000 }
+		}
+		else_if = {
+			limit = { has_army_manpower = { size < 1400000 } }
+			set_variable = { approx_fielded_manpower = 1350000 }
+		}
+		else_if = {
+			limit = { has_army_manpower = { size < 1500000 } }
+			set_variable = { approx_fielded_manpower = 1450000 }
+		}
+		else_if = {
+			limit = { has_army_manpower = { size < 1600000 } }
+			set_variable = { approx_fielded_manpower = 1550000 }
+		}
+		else_if = {
+			limit = { has_army_manpower = { size < 1700000 } }
+			set_variable = { approx_fielded_manpower = 1650000 }
+		}
+		else_if = {
+			limit = { has_army_manpower = { size < 1800000 } }
+			set_variable = { approx_fielded_manpower = 1750000 }
+		}
+		else_if = {
+			limit = { has_army_manpower = { size < 1900000 } }
+			set_variable = { approx_fielded_manpower = 1850000 }
+		}
+		else_if = {
+			limit = { has_army_manpower = { size < 2000000 } }
+			set_variable = { approx_fielded_manpower = 1950000 }
+		}
+	}
+	else = {
+		#2M and above (fucking integer limit)
+		set_variable = { approx_fielded_manpower = 2000000 }
+	}
+
+	set_variable = { fielded_manpower_k = approx_fielded_manpower }
+	divide_variable = { fielded_manpower_k = 1000 }
+}
+
+
+#These variables are just here to look pretty, and not have a billion places after numbers
+#i.e. they're purely for display so if they overflow sometimes that's ok it's just life
+calculate_display_variables = {
+	set_variable = { GDP_trillion = GDP }
+	set_variable = { GDP_million = GDP }
+	set_variable = { total_budget_billion = total_budget }
+	set_variable = { total_budget_thousand = total_budget }
+	set_variable = { total_expenditures_billion = total_expenditures }
+	set_variable = { total_expenditures_thousand = total_expenditures }
+	set_variable = { civilian_expenditures_billion = civilian_expenditures }
+	set_variable = { civilian_expenditures_thousand = civilian_expenditures }
+	set_variable = { military_expenditures_billion = military_expenditures }
+	set_variable = { military_expenditures_thousand = military_expenditures }
+	set_variable = { construction_expenditures_billion = construction_expenditures }
+	set_variable = { construction_expenditures_thousand = construction_expenditures }
+	set_variable = { money_reserves_billion = money_reserves }
+	set_variable = { money_reserves_thousand = money_reserves }
+	set_variable = { national_debt_trillion = national_debt }
+	set_variable = { national_debt_million = national_debt }
+	set_variable = { deficit_billion = deficit }
+	set_variable = { deficit_thousand = deficit }
+	set_variable = { manpower_costs_billion = manpower_costs }
+	set_variable = { manpower_costs_thousand = manpower_costs }
+	set_variable = { military_factory_costs_billion = military_factory_costs }
+	set_variable = { military_factory_costs_thousand = military_factory_costs }
+	set_variable = { misc_costs_billion = misc_costs }
+	add_to_variable = { misc_costs_billion = modifier@misc_costs_modifier }
+	set_variable = { misc_costs_thousand = misc_costs }
+	add_to_variable = { misc_costs_thousand = modifier@misc_costs_modifier }
+	set_variable = { misc_income_billion = misc_income }
+	add_to_variable = { misc_income_billion = modifier@misc_income_modifier }
+	set_variable = { misc_income_thousand = misc_income }
+	add_to_variable = { misc_income_thousand = modifier@misc_income_modifier }
+	set_variable = { annual_debt_payments_thousand = annual_debt_payments }
+	set_variable = { annual_debt_payments_billion = annual_debt_payments }
+
+	set_variable = { COMECON_collective_defense_value_billion = misc_costs }
+	add_to_variable = { COMECON_collective_defense_value_billion = modifier@misc_costs_modifier }
+	set_variable = { COMECON_collective_defense_value_thousand = misc_costs }
+	add_to_variable = { COMECON_collective_defense_value_thousand = modifier@misc_costs_modifier }
+	set_variable = { COMECON_monetary_fund_value_billion = misc_costs }
+	add_to_variable = { COMECON_monetary_fund_value_billion = modifier@misc_costs_modifier }
+	set_variable = { COMECON_monetary_fund_value_thousand = misc_costs }
+	add_to_variable = { COMECON_monetary_fund_value_thousand = modifier@misc_costs_modifier }
+
+	multiply_variable = { GDP_trillion = 0.001 }
+	multiply_variable = { GDP_million = 1000 }
+	multiply_variable = { total_budget_billion = 0.001 }
+	multiply_variable = { total_budget_thousand = 1000 }
+	multiply_variable = { total_expenditures_billion = 0.001 }
+	multiply_variable = { total_expenditures_thousand = 1000 }
+	multiply_variable = { civilian_expenditures_billion = 0.001 }
+	multiply_variable = { civilian_expenditures_thousand = 1000 }
+	multiply_variable = { military_expenditures_billion = 0.001 }
+	multiply_variable = { military_expenditures_thousand = 1000 }
+	multiply_variable = { construction_expenditures_billion = 0.001 }
+	multiply_variable = { construction_expenditures_thousand = 1000 }
+	multiply_variable = { money_reserves_billion = 0.001 }
+	multiply_variable = { money_reserves_thousand = 1000 }
+	multiply_variable = { national_debt_trillion = 0.001 }
+	multiply_variable = { national_debt_million = 1000 }
+	multiply_variable = { deficit_billion = 0.001 }
+	multiply_variable = { deficit_thousand = 1000 }
+	multiply_variable = { manpower_costs_billion = 0.001 }
+	multiply_variable = { manpower_costs_thousand = 1000 }
+	multiply_variable = { military_factory_costs_billion = 0.001 }
+	multiply_variable = { military_factory_costs_thousand = 1000 }
+	multiply_variable = { misc_costs_billion = 0.001 }
+	multiply_variable = { misc_costs_thousand = 1000 }
+	multiply_variable = { misc_income_billion = 0.001 }
+	multiply_variable = { misc_income_thousand = 1000 }
+	multiply_variable = { annual_debt_payments_billion = 0.001 }
+	multiply_variable = { annual_debt_payments_thousand = 1000 }
+
+	multiply_variable = { COMECON_collective_defense_value_billion = 0.001 }
+	multiply_variable = { COMECON_collective_defense_value_thousand = 1000 }
+	multiply_variable = { COMECON_monetary_fund_value_billion = 0.001 }
+	multiply_variable = { COMECON_monetary_fund_value_thousand = 1000 }
+
+	set_variable = { GDP_growth_display = GDP_growth }
+	add_to_variable = { GDP_growth_display = modifier@gdp_growth_modifier }
+	multiply_variable = { GDP_growth_display = modifier@annual_gdp_growth_factor }
+	set_variable = { misc_income_display = misc_income }
+	add_to_variable = { misc_income_display = modifier@misc_income_modifier }
+	set_variable = { misc_costs_display = misc_costs }
+	add_to_variable = { misc_costs_display = modifier@misc_costs_modifier }
+}
+
+#Covert money reserves to GDP at a 1:2 ratio
+invest_money_reserves = {
+	set_temp_variable = { temp_money_reserves = money_reserves }
+	multiply_temp_variable = { temp_money_reserves = 0.001 } #already converted to billion
+	add_to_variable = { GDP = temp_money_reserves }
+	set_variable = { money_reserves = 0.0 } #already converted to billion
+}
+
+#using your money reserves to pay off any debt you have
+money_reserves_to_debt = {
+	subtract_from_variable = { national_debt = money_reserves }
+	if = {
+		limit = { check_variable = { national_debt < 0.0 } } #more reserves than national debt #already converted to billion
+		set_variable = { money_reserves = national_debt }
+		multiply_variable = { money_reserves = -0.001 } #already converted to billion
+		set_variable = { national_debt = 0.0 } #already converted to billion
+	}
+	else = {
+		set_variable = { money_reserves = 0.0 } #already converted to billion
+	}
+}
+
+increase_construction_budget = {
+	if = {
+		limit = { has_idea = construction_level_0 }
+		swap_ideas = {
+			remove_idea = construction_level_0
+			add_idea = construction_level_1
+		}
+	}
+	else_if = {
+		limit = { has_idea = construction_level_1 }
+		swap_ideas = {
+			remove_idea = construction_level_1
+			add_idea = construction_level_2
+		}
+	}
+	else_if = {
+		limit = { has_idea = construction_level_2 }
+		swap_ideas = {
+			remove_idea = construction_level_2
+			add_idea = construction_level_3
+		}
+	}
+	else_if = {
+		limit = { has_idea = construction_level_3 }
+		swap_ideas = {
+			remove_idea = construction_level_3
+			add_idea = construction_level_4
+		}
+	}
+	else_if = {
+		limit = { has_idea = construction_level_4 }
+		swap_ideas = {
+			remove_idea = construction_level_4
+			add_idea = construction_level_5
+		}
+	}
+	else_if = {
+		limit = { has_idea = construction_level_5 }
+		swap_ideas = {
+			remove_idea = construction_level_5
+			add_idea = construction_level_6
+		}
+	}
+	else_if = {
+		limit = { has_idea = construction_level_6 }
+		swap_ideas = {
+			remove_idea = construction_level_6
+			add_idea = construction_level_7
+		}
+	}
+	else_if = {
+		limit = { has_idea = construction_level_7 }
+		swap_ideas = {
+			remove_idea = construction_level_7
+			add_idea = construction_level_8
+		}
+	}
+	else_if = {
+		limit = { has_idea = construction_level_8 }
+		swap_ideas = {
+			remove_idea = construction_level_8
+			add_idea = construction_level_9
+		}
+	}
+	else_if = {
+		limit = { has_idea = construction_level_9 }
+		swap_ideas = {
+			remove_idea = construction_level_9
+			add_idea = construction_level_10
+		}
+	}
+	else_if = {
+		limit = { has_idea = construction_level_10 }
+		swap_ideas = {
+			remove_idea = construction_level_10
+			add_idea = construction_level_11
+		}
+	}
+	else_if = {
+		limit = { has_idea = construction_level_11 }
+		swap_ideas = {
+			remove_idea = construction_level_11
+			add_idea = construction_level_12
+		}
+	}
+	else_if = {
+		limit = { has_idea = construction_level_12 }
+		swap_ideas = {
+			remove_idea = construction_level_12
+			add_idea = construction_level_13
+		}
+	}
+	else_if = {
+		limit = { has_idea = construction_level_13 }
+		swap_ideas = {
+			remove_idea = construction_level_13
+			add_idea = construction_level_14
+		}
+	}
+	else_if = {
+		limit = { has_idea = construction_level_14 }
+		swap_ideas = {
+			remove_idea = construction_level_14
+			add_idea = construction_level_15
+		}
+	}
+	else_if = {
+		limit = { has_idea = construction_level_15 }
+		swap_ideas = {
+			remove_idea = construction_level_15
+			add_idea = construction_level_16
+		}
+	}
+	else_if = {
+		limit = { has_idea = construction_level_16 }
+		swap_ideas = {
+			remove_idea = construction_level_16
+			add_idea = construction_level_17
+		}
+	}
+	else_if = {
+		limit = { has_idea = construction_level_17 }
+		swap_ideas = {
+			remove_idea = construction_level_17
+			add_idea = construction_level_18
+		}
+	}
+	else_if = {
+		limit = { has_idea = construction_level_18 }
+		swap_ideas = {
+			remove_idea = construction_level_18
+			add_idea = construction_level_19
+		}
+	}
+	else_if = {
+		limit = { has_idea = construction_level_19 }
+		swap_ideas = {
+			remove_idea = construction_level_19
+			add_idea = construction_level_20
+		}
+	}
+}
+
+decrease_construction_budget = {
+	if = {
+		limit = { has_idea = construction_level_20 }
+		swap_ideas = {
+			remove_idea = construction_level_20
+			add_idea = construction_level_19
+		}
+	}
+	else_if = {
+		limit = { has_idea = construction_level_19 }
+		swap_ideas = {
+			remove_idea = construction_level_19
+			add_idea = construction_level_18
+		}
+	}
+	else_if = {
+		limit = { has_idea = construction_level_18 }
+		swap_ideas = {
+			remove_idea = construction_level_18
+			add_idea = construction_level_17
+		}
+	}
+	else_if = {
+		limit = { has_idea = construction_level_17 }
+		swap_ideas = {
+			remove_idea = construction_level_17
+			add_idea = construction_level_16
+		}
+	}
+	else_if = {
+		limit = { has_idea = construction_level_16 }
+		swap_ideas = {
+			remove_idea = construction_level_16
+			add_idea = construction_level_15
+		}
+	}
+	else_if = {
+		limit = { has_idea = construction_level_15 }
+		swap_ideas = {
+			remove_idea = construction_level_15
+			add_idea = construction_level_14
+		}
+	}
+	else_if = {
+		limit = { has_idea = construction_level_14 }
+		swap_ideas = {
+			remove_idea = construction_level_14
+			add_idea = construction_level_13
+		}
+	}
+	else_if = {
+		limit = { has_idea = construction_level_13 }
+		swap_ideas = {
+			remove_idea = construction_level_13
+			add_idea = construction_level_12
+		}
+	}
+	else_if = {
+		limit = { has_idea = construction_level_12 }
+		swap_ideas = {
+			remove_idea = construction_level_12
+			add_idea = construction_level_11
+		}
+	}
+	else_if = {
+		limit = { has_idea = construction_level_11 }
+		swap_ideas = {
+			remove_idea = construction_level_11
+			add_idea = construction_level_10
+		}
+	}
+	else_if = {
+		limit = { has_idea = construction_level_10 }
+		swap_ideas = {
+			remove_idea = construction_level_10
+			add_idea = construction_level_9
+		}
+	}
+	else_if = {
+		limit = { has_idea = construction_level_9 }
+		swap_ideas = {
+			remove_idea = construction_level_9
+			add_idea = construction_level_8
+		}
+	}
+	else_if = {
+		limit = { has_idea = construction_level_8 }
+		swap_ideas = {
+			remove_idea = construction_level_8
+			add_idea = construction_level_7
+		}
+	}
+	else_if = {
+		limit = { has_idea = construction_level_7 }
+		swap_ideas = {
+			remove_idea = construction_level_7
+			add_idea = construction_level_6
+		}
+	}
+	else_if = {
+		limit = { has_idea = construction_level_6 }
+		swap_ideas = {
+			remove_idea = construction_level_6
+			add_idea = construction_level_5
+		}
+	}
+	else_if = {
+		limit = { has_idea = construction_level_5 }
+		swap_ideas = {
+			remove_idea = construction_level_5
+			add_idea = construction_level_4
+		}
+	}
+	else_if = {
+		limit = { has_idea = construction_level_4 }
+		swap_ideas = {
+			remove_idea = construction_level_4
+			add_idea = construction_level_3
+		}
+	}
+	else_if = {
+		limit = { has_idea = construction_level_3 }
+		swap_ideas = {
+			remove_idea = construction_level_3
+			add_idea = construction_level_2
+		}
+	}
+	else_if = {
+		limit = { has_idea = construction_level_2 }
+		swap_ideas = {
+			remove_idea = construction_level_2
+			add_idea = construction_level_1
+		}
+	}
+	else_if = {
+		limit = { has_idea = construction_level_1 }
+		swap_ideas = {
+			remove_idea = construction_level_1
+			add_idea = construction_level_0
+		}
+	}
+}
+
+#A purely visual update, for whenever you change things/open the econ tab
+update_economy_tab = {
+	calculate_funding_effects = yes
+	calculate_total_budget = yes
+	calculate_civilian_expenditures = yes
+	calculate_construction_expenditures = yes
+	calculate_military_expenditures = yes
+	calculate_total_expenditures = yes
+	validate_maximal_minimal_positions = yes
+
+	set_variable = { deficit = 0 }
+	set_variable = { deficit = total_expenditures }
+	subtract_from_variable = { deficit = total_budget }
+
+	set_variable = { deficit_ratio = deficit }
+	divide_variable = { deficit_ratio = total_budget }
+	
+	set_variable = { debt_10_percent = national_debt }
+	divide_variable = { debt_10_percent = 10 }
+
+	set_variable = { debt_20_percent = national_debt }
+	divide_variable = { debt_20_percent = 5 }
+	
+	calculate_display_variables = yes
+	update_all_econ_pie_charts = yes
+	generate_econ_rankings = yes
+}
+
+validate_maximal_minimal_positions = {
+	if = {
+		limit = {
+			check_variable = { econ_army_expenditures_minimal_x < 34 }
+		}
+		set_variable = { econ_army_expenditures_minimal_x = 34 }
+	}
+	if = {
+		limit = {
+			check_variable = { econ_army_expenditures_maximal_x > 228 }
+		}
+		set_variable = { econ_army_expenditures_maximal_x = 228 }
+	}
+	if = {
+		limit = {
+			check_variable = { econ_naval_expenditures_minimal_x < 34 }
+		}
+		set_variable = { econ_naval_expenditures_minimal_x = 34 }
+	}
+	if = {
+		limit = {
+			check_variable = { econ_naval_expenditures_maximal_x > 228 }
+		}
+		set_variable = { econ_naval_expenditures_maximal_x = 228 }
+	}
+	if = {
+		limit = {
+			check_variable = { econ_research_expenditures_minimal_x < 34 }
+		}
+		set_variable = { econ_research_expenditures_minimal_x = 34 }
+	}
+	if = {
+		limit = {
+			check_variable = { econ_research_expenditures_maximal_x > 228 }
+		}
+		set_variable = { econ_research_expenditures_maximal_x = 228 }
+	}
+	if = {
+		limit = {
+			check_variable = { econ_construction_expenditures_minimal_x < 34 }
+		}
+		set_variable = { econ_construction_expenditures_minimal_x = 34 }
+	}
+	if = {
+		limit = {
+			check_variable = { econ_construction_expenditures_maximal_x > 228 }
+		}
+		set_variable = { econ_construction_expenditures_maximal_x = 228 }
+	}
+	if = {
+		limit = {
+			check_variable = { econ_social_expenditures_minimal_x < 34 }
+		}
+		set_variable = { econ_social_expenditures_minimal_x = 34 }
+	}
+	if = {
+		limit = {
+			check_variable = { econ_social_expenditures_maximal_x > 228 }
+		}
+		set_variable = { econ_social_expenditures_maximal_x = 228 }
+	}
+	if = {
+		limit = {
+			check_variable = { econ_admin_expenditures_minimal_x < 34 }
+		}
+		set_variable = { econ_admin_expenditures_minimal_x = 34 }
+	}
+	if = {
+		limit = {
+			check_variable = { econ_admin_expenditures_maximal_x > 228 }
+		}
+		set_variable = { econ_admin_expenditures_maximal_x = 228 }
+	}
+	if = {
+		limit = {
+			check_variable = { econ_army_expenditures_minimal_x > econ_army_expenditures_maximal_x }
+		}
+		set_variable = { econ_army_expenditures_minimal_x = econ_army_expenditures_maximal_x }
+	}
+	if = {
+		limit = {
+			check_variable = { econ_naval_expenditures_minimal_x > econ_naval_expenditures_maximal_x }
+		}
+		set_variable = { econ_naval_expenditures_minimal_x = econ_naval_expenditures_maximal_x }
+	}
+	if = {
+		limit = {
+			check_variable = { econ_research_expenditures_minimal_x > econ_research_expenditures_maximal_x }
+		}
+		set_variable = { econ_research_expenditures_minimal_x = econ_research_expenditures_maximal_x }
+	}
+	if = {
+		limit = {
+			check_variable = { econ_construction_expenditures_minimal_x > econ_construction_expenditures_maximal_x }
+		}
+		set_variable = { econ_construction_expenditures_minimal_x = econ_construction_expenditures_maximal_x }
+	}
+	if = {
+		limit = {
+			check_variable = { econ_social_expenditures_minimal_x > econ_social_expenditures_maximal_x }
+		}
+		set_variable = { econ_social_expenditures_minimal_x = econ_social_expenditures_maximal_x }
+	}
+	if = {
+		limit = {
+			check_variable = { econ_admin_expenditures_minimal_x > econ_admin_expenditures_maximal_x }
+		}
+		set_variable = { econ_admin_expenditures_minimal_x = econ_admin_expenditures_maximal_x }
+	}
+}
+
+
+
+#####################################
+## COUNTRY-SPECIFIC MODIFIERS HERE ##
+#####################################
+
+## EXAMPLE
+#china_idea_costs = {
+#	if = {
+#		limit = { has_idea = idea_1 }
+#		add_to_variable = { military_expenditures = 100 }
+#	}
+#	else_if = {
+#		limit = { has_idea = idea_2 }
+#		add_to_variable = { military_expenditures = 50 }
+#	}
+#}
+
+# SUGGESTED VARIABLES TO ADD TO:
+# civilian_expenditures
+# military_expenditures
+# construction_expenditures
+# total_budget
+
+# NOTE:
+# DO NOT ADD TO misc_costs or misc_income
+# This fires monthly, or even more, and those two ARE NOT reset every month, meaning it will compound
+# Example: Adding 50 to misc_costs this way will have a 50 misc_costs the first month, 100 the second month, etc. etc.
+# You can do that if that's intentional
+
+
+add_country_specific_idea_costs = {
+	if = {
+		limit = { original_tag = USA }
+		USA_idea_costs = yes
+	}
+	else_if = {
+		limit = { original_tag = GER }
+		germany_idea_costs = yes
+	}
+	else_if = {
+		limit = { original_tag = JAP }
+		japan_idea_costs = yes
+		japan_master_idea_income = yes
+	}
+	else_if = {
+		limit = {
+			OR = {
+				original_tag = RAJ 
+				original_tag = INC
+				original_tag = INF
+				original_tag = RAO
+				original_tag = BEN
+			}
+		}
+		india_idea_costs = yes
+	}
+	else_if = {
+		limit = { original_tag = ITA }
+		italy_idea_costs = yes
+	}
+	else_if = {
+		limit = { original_tag = IBR }
+		iberia_idea_costs = yes
+	}
+	else_if = {
+		limit = {
+			is_in_faction_with = JAP
+			NOT = {
+				original_tag = JAP
+			}
+		}
+		if = {
+			limit = { original_tag = CHI }
+			china_idea_costs = yes
+		}
+		sphere_puppet_idea_costs = yes
+	}
+	# Vietnam
+	else_if = {
+		limit = { original_tag = VIN }
+		VIN_sphere_costs = yes
+	}
+}
+
+#Chinese idea costs
+china_idea_costs = {
+	if = {
+		limit = {
+			OR = {
+				has_idea = CHI_Excavation_Projects_1
+				has_idea = CHI_Excavation_Projects_1_w
+			}
+		}
+		add_to_variable = {civilian_expenditures = 1440}
+	}
+	else_if = {
+		limit = {
+			OR = {
+				has_idea = CHI_Excavation_Projects_2
+				has_idea = CHI_Excavation_Projects_2_w
+			}
+		}
+		add_to_variable = {civilian_expenditures = 1200}
+	}
+	else_if = {
+		limit = {
+			OR = {
+				has_idea = CHI_Excavation_Projects_3
+				has_idea = CHI_Excavation_Projects_3_w
+			}
+		}
+		add_to_variable = {civilian_expenditures = 960}
+	}
+	else_if = {
+		limit = {
+			OR = {
+				has_idea = CHI_Excavation_Projects_4
+				has_idea = CHI_Excavation_Projects_4_w
+			}
+		}
+		add_to_variable = {civilian_expenditures = 720}
+	}
+	else_if = {
+		limit = {
+			OR = {
+				has_idea = CHI_Excavation_Projects_5
+				has_idea = CHI_Excavation_Projects_5_w
+			}
+		}
+		add_to_variable = {civilian_expenditures = 480}
+	}
+	else_if = {
+		limit = {
+			OR = {
+				has_idea = CHI_Excavation_Projects_6
+				has_idea = CHI_Excavation_Projects_6_w
+			}
+		}
+		add_to_variable = {civilian_expenditures = 240}
+	}
+	if = {
+		limit = {has_idea = CHI_slave_of_the_samurai_0}
+		add_to_variable = {civilian_expenditures = 2500}
+	}
+	else_if = {
+		limit = {has_idea = CHI_slave_of_the_samurai_1}
+		add_to_variable = {civilian_expenditures = 2000}
+	}
+	else_if = {
+		limit = {has_idea = CHI_slave_of_the_samurai_2}
+		add_to_variable = {civilian_expenditures = 1500}
+	}
+	else_if = {
+		limit = {has_idea = CHI_slave_of_the_samurai_3}
+		add_to_variable = {civilian_expenditures = 1000}
+	}
+	else_if = {
+		limit = {has_idea = CHI_slave_of_the_samurai_4}
+		add_to_variable = {civilian_expenditures = 500}
+	}
+	if = {
+		limit = {has_idea = CHI_Sphere_Energy}
+		add_to_variable = {total_budget = 750}
+	}
+}
+
+japan_idea_costs = {
+	
+}
+
+sphere_puppet_idea_costs = {
+	if = {
+		limit = {has_idea = Sphere_Economic_Dependent} #15% of income deducted
+		if = {
+			limit = {
+					original_tag = CHI
+					check_variable = {var = CHI.faction_pro_japan_opinion value = 40 compare = less_than_or_equals}
+				}
+				if = {
+					limit = {
+						check_variable = {var = CHI.faction_pro_japan_influence value = 0.70 compare = greater_than_or_equals}
+					}
+					set_temp_variable = {sphere_member_payment_calc = total_budget}
+					multiply_temp_variable = {sphere_member_payment_calc = 0.35}
+					add_to_variable = {civilian_expenditures = sphere_member_payment_calc}
+				}
+				else_if = {
+					limit = {
+						check_variable = {var = CHI.faction_pro_japan_influence value = 0.50 compare = greater_than_or_equals}
+					}
+					set_temp_variable = {sphere_member_payment_calc = total_budget}
+					multiply_temp_variable = {sphere_member_payment_calc = 0.25}
+					add_to_variable = {civilian_expenditures = sphere_member_payment_calc}
+				}
+				else = {
+					set_temp_variable = {sphere_member_payment_calc = total_budget}
+					multiply_temp_variable = {sphere_member_payment_calc = 0.20}
+					add_to_variable = {civilian_expenditures = sphere_member_payment_calc}
+				}
+		}
+		else = {
+			set_temp_variable = {sphere_member_payment_calc = total_budget}
+			multiply_temp_variable = {sphere_member_payment_calc = 0.15}
+			add_to_variable = {civilian_expenditures = sphere_member_payment_calc}
+		}
+	}
+	else_if = {
+		limit = {has_idea = Sphere_Fully_Dependent} #25% of income deducted
+		set_temp_variable = {sphere_member_payment_calc = total_budget}
+		multiply_temp_variable = {sphere_member_payment_calc = 0.25}
+		add_to_variable = {civilian_expenditures = sphere_member_payment_calc}
+	}
+	else_if = {
+		limit = {has_idea = Sphere_Imp_Protectorate} #40% of income deducted
+		set_temp_variable = {sphere_member_payment_calc = total_budget}
+		multiply_temp_variable = {sphere_member_payment_calc = 0.40}
+		add_to_variable = {civilian_expenditures = sphere_member_payment_calc}
+	}
+	else_if = {
+		limit = {has_idea = Sphere_Special_Econ_Zone} #60% of income deducted
+		set_temp_variable = {sphere_member_payment_calc = total_budget}
+		multiply_temp_variable = {sphere_member_payment_calc = 0.60}
+		add_to_variable = {civilian_expenditures = sphere_member_payment_calc}
+	}
+}
+
+japan_master_idea_income = {
+	subtract_from_variable = { misc_income = JAP_calc_sphere_member_income_old }
+	clear_variable = JAP_calc_sphere_member_income_old
+	set_variable = {JAP_calc_sphere_member_income = 0}
+	every_country = {
+		limit = {
+			is_in_faction_with = JAP
+			NOT = {
+				original_tag = JAP
+			}
+		}
+		if = {
+			limit = {
+				has_idea = Sphere_Economic_Dependent
+			}
+			if = {
+				limit = {
+					original_tag = CHI
+					check_variable = {var = CHI.faction_pro_japan_opinion value = 40 compare = less_than_or_equals}
+				}
+				if = {
+					limit = {
+						check_variable = {var = CHI.faction_pro_japan_influence value = 0.70 compare = greater_than_or_equals}
+					}
+					set_temp_variable = {sphere_member_payment_calc = total_budget}
+					multiply_temp_variable = {sphere_member_payment_calc = 0.35}
+					add_to_variable = {JAP.JAP_calc_sphere_member_income = sphere_member_payment_calc}
+				}
+				else_if = {
+					limit = {
+						check_variable = {var = CHI.faction_pro_japan_influence value = 0.50 compare = greater_than_or_equals}
+					}
+					set_temp_variable = {sphere_member_payment_calc = total_budget}
+					multiply_temp_variable = {sphere_member_payment_calc = 0.25}
+					add_to_variable = {JAP.JAP_calc_sphere_member_income = sphere_member_payment_calc}
+				}
+				else = {
+					set_temp_variable = {sphere_member_payment_calc = total_budget}
+					multiply_temp_variable = {sphere_member_payment_calc = 0.20}
+					add_to_variable = {JAP.JAP_calc_sphere_member_income = sphere_member_payment_calc}
+				}
+			}
+			else = {
+				set_temp_variable = {sphere_member_payment_calc = total_budget}
+				multiply_temp_variable = {sphere_member_payment_calc = 0.15}
+				add_to_variable = {JAP.JAP_calc_sphere_member_income = sphere_member_payment_calc}
+			}
+		}
+		else_if = {
+			limit = {
+				has_idea = Sphere_Fully_Dependent
+			}
+			set_temp_variable = {sphere_member_payment_calc = total_budget}
+			multiply_temp_variable = {sphere_member_payment_calc = 0.25}
+			add_to_variable = {JAP.JAP_calc_sphere_member_income = sphere_member_payment_calc}
+		}
+		else_if = {
+			limit = {
+				has_idea = Sphere_Imp_Protectorate
+			}
+			set_temp_variable = {sphere_member_payment_calc = total_budget}
+			multiply_temp_variable = {sphere_member_payment_calc = 0.40}
+			add_to_variable = {JAP.JAP_calc_sphere_member_income = sphere_member_payment_calc}
+		}
+		else_if = {
+			limit = {
+				has_idea = Sphere_Special_Econ_Zone
+			}
+			set_temp_variable = {sphere_member_payment_calc = total_budget}
+			multiply_temp_variable = {sphere_member_payment_calc = 0.60}
+			add_to_variable = {JAP.JAP_calc_sphere_member_income = sphere_member_payment_calc}
+		}
+	}
+	if = {
+		limit = {
+			has_completed_focus = JAP_tampering_with_national_renovationists
+		}
+		multiply_variable = {JAP_calc_sphere_member_income = 0.95}
+	}
+	set_variable = { JAP_calc_sphere_member_income_old = JAP_calc_sphere_member_income }
+	add_to_variable = { misc_income = JAP_calc_sphere_member_income }
+	clear_variable = JAP_calc_sphere_member_income
+}
+
+USA_idea_costs = {
+	if = {
+		limit = { has_idea = USA_HAR_the_hunger_bill }
+		add_to_variable = { civilian_expenditures = 1000 }
+	}
+	if = {
+		limit = { has_idea = USA_HAR_OFN_welfare_fund }
+		add_to_variable = { civilian_expenditures = 100 }
+	}
+	if = {
+		limit = {
+			RAJ = {
+				has_idea = RAJ_perth_subsidies_poor
+			}
+		}
+		set_variable = {india_subsidies = RAJ.gdp}
+		multiply_variable = {india_subsidies = 0.01}
+		add_to_variable = {civilian_expenditures = india_subsidies}
+	}
+	if = {
+		limit = {has_idea = USA_minutemen}
+		subtract_from_variable = { military_expenditures = 30}
+	}
+}
+
+germany_idea_costs = {
+	
+}
+
+india_idea_costs = {
+	if = {
+		limit = {has_idea = RAJ_perth_subsidies_poor}
+		subtract_from_variable = {misc_income = old_subsidy_value}
+		set_variable = {india_subsidies = RAJ.gdp}
+		multiply_variable = {india_subsidies = 0.01}
+		add_to_variable = {misc_income = india_subsidies}
+		set_variable = {old_subsidy_value = india_subsidies}
+		clear_variable = india_subsidies
+	}
+}
+
+italy_idea_costs = {
+	if = {
+		limit = { has_idea = ITA_socdem_66_agsub }
+		add_to_variable = { civilian_expenditures = 3 }
+	}
+	else_if = {
+		limit = { has_idea = ITA_socdem_66_work_harder }
+		add_to_variable = { civilian_expenditures = 10 }
+	}
+	else_if = {
+		limit = { has_idea = ITA_scorza_bureaucrats_and_barons1 }
+		add_to_variable = { construction_expenditures = 300 }
+	}
+	else_if = {
+		limit = { has_idea = ITA_scorza_bureaucrats_and_barons2 }
+		add_to_variable = { construction_expenditures = 750 }
+	}
+	else_if = {
+		limit = { has_idea = ITA_scorza_bureaucrats_and_barons3 }
+		add_to_variable = { construction_expenditures = 1100 }
+	}
+	else_if = {
+		limit = { has_idea = ITA_scorza_bureaucrats_and_barons4 }
+		add_to_variable = { construction_expenditures = 1600 }
+	}
+	else_if = {
+		limit = { has_idea = ITA_scorza_bureaucrats_and_barons5 }
+		add_to_variable = { construction_expenditures = 2000 }
+	}
+}
+
+iberia_idea_costs = {
+
+}
+
+
+
+# Other handy effects #
+
+#HOW TO USE:
+#First enter the scope of the country the GDP is being TAKEN FROM
+#Then enter the scope of the country the GDP is being transfered to
+
+#EXAMPLE:
+#
+#MEX = {
+#	USA = {
+#		transfer_GDP = yes
+#	}
+#}
+#This will transfer Mexico's GDP to the US
+
+#transfer_GDP = {
+#	set_temp_variable = { temp_GDP = PREV.GDP }
+#	multiply_temp_variable = { temp_GDP = 0.001 } #already converted to billion
+
+#	set_variable = { PREV.GDP = 0.0 } #already converted to billion
+#	add_to_variable = { GDP = temp_GDP }
+#}
+
+debug_grow_civs = {
+	every_country = {
+		limit = {
+			NOT = { is_warlord = yes }
+		}
+		save_event_target_as = my_country	
+		#log = "[GetDateText]: [This.GetName]: running civ growth effect"
+		set_temp_variable = { civs_to_build = 0 }
+		add_to_variable = { civ_buildup = GDP_growth }
+		set_temp_variable = { civ_proportion = 1 }
+		set_temp_variable = { num_civs = num_of_civilian_factories }
+		add_to_temp_variable = { num_civs = 1 }
+		divide_temp_variable = { civ_proportion = num_civs }
+		#log = "[GetDateText]: [This.GetName]: civ_buildup = [?civ_buildup]; civ_proportion = [?civ_proportion];"
+		resize_array = {
+    		array = while_array
+    		size = 100
+		}
+		for_each_loop = {
+			array = while_array
+			if = {
+				limit = {
+						check_variable = { civ_buildup > civ_proportion }
+				}
+				subtract_from_variable = { civ_buildup = civ_proportion }
+				add_to_temp_variable = { civs_to_build = 1 }
+				else = {
+					set_temp_variable = { break = 0 }
+				}
+			}
+		}
+		clear_array = while_array
+		#log = "[GetDateText]: [This.GetName]: civ_buildup = [?civ_buildup]; civ_proportion = [?civ_proportion];"
+		#log = "[GetDateText]: [This.GetName]: civs_to_build = [?civs_to_build];"
+		for_each_scope_loop = {
+			array = owned_controlled_states
+
+			set_temp_variable = { civ_weight = industrial_complex_level }
+			divide_temp_variable = { civ_weight = event_target:my_country.num_civs }
+			set_temp_variable = { civ_chance = random }
+			divide_temp_variable = { civ_chance = 2 }
+			clamp_temp_variable = {
+    			var = civ_chance
+				min = 0
+    			max = 0.5
+			}
+			if = {
+				limit = {
+					var:owned_controlled_states^v = { has_state_category = megalopolis }
+				}
+				multiply_temp_variable = { civ_weight = 5 }
+			}
+			else_if = {
+				limit = {
+					var:owned_controlled_states^v = { has_state_category = metropolis }
+				}
+				multiply_temp_variable = { civ_weight = 4 }
+			}
+			else_if = {
+				limit = {
+					var:owned_controlled_states^v = { has_state_category = large_city }
+				}
+				multiply_temp_variable = { civ_weight = 3 }
+				else = {
+					multiply_temp_variable = { civ_weight = 2 }
+				}
+			}
+			#log = "[GetDateText]: [This.Owner.GetName]: [This.GetName]: civ_chance = [?civ_chance]; civ_weight = [?civ_weight]"
+			if = {
+				limit = {
+					check_variable = { event_target:my_country.civs_to_build > 0 }
+					var:owned_controlled_states^v = {
+						free_building_slots = {
+							building = industrial_complex
+							size > 0
+							include_locked = yes
+						}
+					}
+					check_variable = { civ_chance < civ_weight }
+				}
+				#log = "[GetDateText]: [This.Owner.GetName]: all criteria met."
+				var:owned_controlled_states^v = {
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+					subtract_from_temp_variable = { event_target:my_country.civs_to_build = 1 }
+					log = "[GetDateText]: [This.Owner.GetName]: Civilian Factory Built in [This.GetName]"
+				}
+			}
+			else_if = {
+				limit = {
+					check_variable = { PREV.civs_to_build < 1 }
+				}
+				#log = "[GetDateText]: [This.Owner.GetName]: No Civilian Factory Built in [This.GetName]"
+				set_temp_variable = { break = 0 }
+			}
+		}
+		if = {
+			limit = {
+				check_variable = { civs_to_build > 0 }
+			}
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = civs_to_build
+				add_building_construction = {
+					type = industrial_complex
+					level = civs_to_build
+					instant_build = yes
+				}
+				log = "[GetDateText]: [This.Owner.GetName]: Backup Civilian Factories Built in [This.GetName]"
+				set_temp_variable = { civs_to_build = 0 }
+			}
+		}
+	}
+}
+
+generate_state_gdps = {
+		set_variable = { THIS.state_value = 0.025 }
+		set_variable = { THIS.state_value_factor = 1 }
+		#State population block
+		set_variable = { state_population_value_factor = 1 }
+		set_variable = { state_population_value = state_population_k }
+		if = {
+			limit = { owner = { has_idea = ik_poverty_rate_spartan_ideal } }
+			multiply_variable = { state_population_value_factor = 0.5 }
+		}
+		else_if = {
+			limit = { owner = { has_idea = ik_poverty_rate_80 } }
+			multiply_variable = { state_population_value_factor = 0.1 }
+		}
+		else_if = {
+			limit = { owner = { has_idea = ik_poverty_rate_50 } }
+			multiply_variable = { state_population_value_factor = 0.3 }
+		}
+		else_if = {
+			limit = { owner = { has_idea = ik_poverty_rate_25 } }
+			multiply_variable = { state_population_value_factor = 0.7 }
+		}
+		else_if = {
+			limit = { owner = { has_idea = ik_poverty_rate_15 } }
+			multiply_variable = { state_population_value_factor = 1 }
+		}
+		else_if = {
+			limit = { owner = { has_idea = ik_poverty_rate_10 } }
+			multiply_variable = { state_population_value_factor = 1.3 }
+		}
+		else_if = {
+			limit = { owner = { has_idea = ik_poverty_rate_10 } }
+			multiply_variable = { state_population_value_factor = 1.5 }
+		}
+		else_if = {
+			limit = { owner = { has_idea = ik_poverty_rate_10 } }
+			multiply_variable = { state_population_value_factor = 1.7 }
+		}
+		else_if = {
+			limit = { owner = { has_idea = ik_poverty_rate_10 } }
+			multiply_variable = { state_population_value_factor = 2 }
+		}
+		else = {
+			multiply_variable = { state_population_value_factor = 0.7 }
+		}
+		divide_variable = { state_population_value = 100 }
+		multiply_variable = { state_population_value = state_population_value_factor }
+		
+		#industry block
+		if = {
+			limit = {
+				THIS = {
+					arms_factory > 9
+				}
+			}
+			add_to_variable = { state_value_factor = 2 }
+		}
+		else_if = {
+			limit = {
+				THIS = {
+					arms_factory > 8
+				}
+			}
+			add_to_variable = { state_value_factor = 1.75 }
+		}
+		else_if = {
+			limit = {
+				THIS = {
+					arms_factory > 7
+				}
+			}
+			add_to_variable = { state_value_factor = 1.5 }
+		}
+		else_if = {
+			limit = {
+				THIS = {
+					arms_factory > 6
+				}
+			}
+			add_to_variable = { state_value_factor = 1.25 }
+		}
+		else_if = {
+			limit = {
+				THIS = {
+					arms_factory > 5
+				}
+			}
+			add_to_variable = { state_value_factor = 1 }
+		}
+		else_if = {
+			limit = {
+				THIS = {
+					arms_factory > 4
+				}
+			}
+			add_to_variable = { state_value_factor = 0.75 }
+		}
+		else_if = {
+			limit = {
+				THIS = {
+					arms_factory > 3
+				}
+			}
+			add_to_variable = { state_value_factor = 0.6 }
+		}
+		else_if = {
+			limit = {
+				THIS = {
+					arms_factory > 2
+				}
+			}
+			add_to_variable = { state_value_factor = 0.5 }
+		}
+		else_if = {
+			limit = {
+				THIS = {
+					arms_factory > 1
+				}
+			}
+			add_to_variable = { state_value_factor = 0.4 }
+		}
+		else = {
+			add_to_variable = { state_value_factor = 0 }
+		}
+		
+		if = {
+			limit = {
+				THIS = {
+					infrastructure > 9
+				}
+			}
+			add_to_variable = { state_value_factor = 1.5 }
+		}
+		else_if = {
+			limit = {
+				THIS = {
+					infrastructure > 8
+				}
+			}
+			add_to_variable = { state_value_factor = 1.25 }
+		}
+		else_if = {
+			limit = {
+				THIS = {
+					infrastructure > 7
+				}
+			}
+			add_to_variable = { state_value_factor = 1 }
+		}
+		else_if = {
+			limit = {
+				THIS = {
+					infrastructure > 6
+				}
+			}
+			add_to_variable = { state_value_factor = 0.8 }
+		}
+		else_if = {
+			limit = {
+				THIS = {
+					infrastructure > 5
+				}
+			}
+			add_to_variable = { state_value_factor = 0.6 }
+		}
+		else_if = {
+			limit = {
+				THIS = {
+					infrastructure > 4
+				}
+			}
+			add_to_variable = { state_value_factor = 0.4 }
+		}
+		else_if = {
+			limit = {
+				THIS = {
+					infrastructure > 3
+				}
+			}
+			add_to_variable = { state_value_factor = 0.2 }
+		}
+		else_if = {
+			limit = {
+				THIS = {
+					infrastructure > 2
+				}
+			}
+			add_to_variable = { state_value_factor = -0.2 }
+		}
+		else_if = {
+			limit = {
+				THIS = {
+					infrastructure > 1
+				}
+			}
+			add_to_variable = { state_value_factor = -0.4 }
+		}
+		else = {
+			add_to_variable = { state_value_factor = -1 }
+		}
+		
+		if = {
+			limit = {
+				THIS = {
+					industrial_complex > 9
+				}
+			}
+			add_to_variable = { state_value_factor = 2 }
+		}
+		else_if = {
+			limit = {
+				THIS = {
+					industrial_complex > 8
+				}
+			}
+			add_to_variable = { state_value_factor = 1.75 }
+		}
+		else_if = {
+			limit = {
+				THIS = {
+					industrial_complex > 7
+				}
+			}
+			add_to_variable = { state_value_factor = 1.5 }
+		}
+		else_if = {
+			limit = {
+				THIS = {
+					industrial_complex > 6
+				}
+			}
+			add_to_variable = { state_value_factor = 1.25 }
+		}
+		else_if = {
+			limit = {
+				THIS = {
+					industrial_complex > 5
+				}
+			}
+			add_to_variable = { state_value_factor = 1 }
+		}
+		else_if = {
+			limit = {
+				THIS = {
+					industrial_complex > 4
+				}
+			}
+			add_to_variable = { state_value_factor = 0.75 }
+		}
+		else_if = {
+			limit = {
+				THIS = {
+					industrial_complex > 3
+				}
+			}
+			add_to_variable = { state_value_factor = 0.6 }
+		}
+		else_if = {
+			limit = {
+				THIS = {
+					industrial_complex > 2
+				}
+			}
+			add_to_variable = { state_value_factor = 0.5 }
+		}
+		else_if = {
+			limit = {
+				THIS = {
+					industrial_complex > 1
+				}
+			}
+			add_to_variable = { state_value_factor = 0.4 }
+		}
+		else = {
+			add_to_variable = { state_value_factor = 0 }
+		}
+		
+		#Various socdev blocks
+		
+		#Industrial expertise
+		if = {
+			limit = { owner = { has_idea = ik_industrial_expertise_pre_industrial } }
+			add_to_variable = { state_value_factor = -1.9 }
+		}
+		else_if = {
+			limit = { owner = { has_idea = ik_industrial_expertise_incompetent } }
+			add_to_variable = { state_value_factor = -1.5 }
+		}
+		else_if = {
+			limit = { owner = { has_idea = ik_industrial_expertise_nascent } }
+			add_to_variable = { state_value_factor = -0.75 }
+		}
+		else_if = {
+			limit = { owner = { has_idea = ik_industrial_expertise_experienced } }
+			add_to_variable = { state_value_factor = 1 }
+		}
+		else_if = {
+			limit = { owner = { has_idea = ik_industrial_expertise_innovative } }
+			add_to_variable = { state_value_factor = 1.75 }
+		}
+		else = {
+			add_to_variable = { state_value_factor = 0 }
+		}
+		
+		#State category block
+		if = {
+			limit = {
+				THIS = {
+					has_state_category = megalopolis
+				}
+			}
+			multiply_variable = { state_value_factor = 3 }
+		}
+		else_if = {
+			limit = {
+				THIS = {
+					has_state_category = metropolis
+				}
+			}
+			multiply_variable = { state_value_factor = 2 }
+		}
+		else_if = {
+			limit = {
+				THIS = {
+					has_state_category = large_city
+				}
+			}
+			multiply_variable = { state_value_factor = 1.5 }
+		}
+		else_if = {
+			limit = {
+				THIS = {
+					has_state_category = city
+				}
+			}
+			multiply_variable = { state_value_factor = 1.25 }
+		}
+		else_if = {
+			limit = {
+				THIS = {
+					has_state_category = large_town
+				}
+			}
+			multiply_variable = { state_value_factor = 0.8 }
+		}
+		else_if = {
+			limit = {
+				THIS = {
+					has_state_category = town
+				}
+			}
+			multiply_variable = { state_value_factor = 0.7 }
+		}
+		else = {
+			multiply_variable = { state_value_factor = 0.2 }
+		}
+		if = {
+			limit = {
+				check_variable = { state_value_factor < 0 }
+			}
+			set_variable = { state_value_factor = 0.1 }
+		}
+		multiply_variable = { state_value_factor = state_population_value }
+		multiply_variable = { state_value = state_value_factor }
+}
+
+generate_country_gdp = {
+	set_variable = { tempGDP = 0.0 } #already converted to billion
+	every_owned_state = {
+		add_to_variable = { PREV.tempGDP = state_value }
+	}
+	set_variable = { GDP = tempGDP }
+	set_variable = { GDP_growth = 0.03 }
+	if = {
+		limit = {
+			NOT = {
+				has_global_flag = log_spammed_with_gdp
+			}
+		}
+		log = "[GetDateText]: [THIS.GetName]: ran GDP generation script - GDP is $[?GDP] million. GDP growth is [?GDP_growth]%."
+	}
+}
+
+calculate_total_gdp = {
+	set_variable = { totalstateGDP = 0.0 } #already converted to billion
+	every_owned_state = {
+		add_to_variable = { PREV.totalstateGDP = state_value }
+	}
+	#log = "[GetDateText]: [THIS.GetName]: ran total state GDP calculation script - GDP is $[?totalstateGDP] million. GDP growth is [?GDP_growth]%."
+}
+
+resolve_excessive_state_gdp = {
+	if = {
+		limit = { 
+			check_variable = { totalstateGDP > GDP } 
+		}
+		set_variable = { formerGDP = totalstateGDP }
+		set_variable = { excessGDP = totalstateGDP }
+		subtract_from_variable = { excessGDP = GDP }
+		set_temp_variable = { excessGDPtemp = excessGDP }
+		divide_variable = { excessGDP = num_owned_controlled_states }
+		every_owned_state = {
+			subtract_from_variable = { state_value = PREV.excessGDP }
+			if = {
+				limit = {	
+					check_variable = { state_value < 0 }
+				}
+				set_variable = { state_value = 0 }
+			}
+		}
+		#log = "[GetDateText]: [THIS.GetName]: ran excess GDP removal script - excess GDP is $[?excessGDPtemp] million. Former GDP was $[?formerGDP] million."
+		calculate_total_gdp = yes
+	}
+	if = {
+		limit = { 
+			check_variable = { GDP > totalstateGDP } 
+		}
+		set_variable = { formerGDP = totalstateGDP }
+		set_variable = { GDP2 = GDP }
+		subtract_from_variable = { GDP2 = totalstateGDP }
+		set_variable = { neededGDP = GDP2 }
+		divide_variable = { neededGDP = num_owned_controlled_states }
+		every_owned_state = {
+			add_to_variable = { state_value = PREV.neededGDP }
+		}
+		#log = "[GetDateText]: [THIS.GetName]: ran underestimated GDP addition script - additional GDP is $[?GDP2] million. Former GDP was $[?formerGDP] million."
+		calculate_total_gdp = yes
+	}
+}
+
+generate_russia_state_gdp = {
+	hidden_effect = {
+		every_owned_state = {
+			generate_state_gdps = yes
+		}
+		calculate_total_gdp = yes
+		generate_country_gdp = yes
+		set_variable = { GDP_growth = 0.05 }
+		set_variable = { interest_rates = 0.12 }
+		multiply_variable = { GDP = 0.025 } #already converted to billion
+		resolve_excessive_state_gdp = yes
+	}
+}
+
+IK_improve_poverty_low = {
+	custom_effect_tooltip = improve_poverty_small
+	add_to_variable = { poverty_monthly_change = 0.03 }
+}
+
+IK_improve_poverty_med = {
+	custom_effect_tooltip = improve_poverty_medium
+	add_to_variable = { poverty_monthly_change = 0.06 }
+}
+
+IK_improve_poverty_high = {
+	custom_effect_tooltip = improve_poverty_big
+	add_to_variable = { poverty_monthly_change = 0.1 }
+}
+
+IK_worsen_poverty_low = {
+	custom_effect_tooltip = worsen_poverty_small
+	add_to_variable = { poverty_monthly_change = -0.03 }
+}
+
+IK_worsen_poverty_med = {
+	custom_effect_tooltip = worsen_poverty_medium
+	add_to_variable = { poverty_monthly_change = -0.06 }
+}
+
+IK_worsen_poverty_high = {
+	custom_effect_tooltip = worsen_poverty_big
+	add_to_variable = { poverty_monthly_change = -0.1 }
+}
+
+army_funding_maximal_increase_low = {
+	custom_effect_tooltip = army_funding_maximal_increase_low_tt
+	add_to_variable = { econ_army_expenditures_maximal_x = 9 }
+    update_economy_tab = yes
+}
+
+army_funding_maximal_increase_med = {
+	custom_effect_tooltip = army_funding_maximal_increase_med_tt
+	add_to_variable = { econ_army_expenditures_maximal_x = 18 }
+    update_economy_tab = yes
+}
+
+army_funding_maximal_increase_high = {
+	custom_effect_tooltip = army_funding_maximal_increase_high_tt
+	add_to_variable = { econ_army_expenditures_maximal_x = 27 }
+    update_economy_tab = yes
+}
+
+army_funding_maximal_decrease_low = {
+	custom_effect_tooltip = army_funding_maximal_decrease_low_tt
+	add_to_variable = { econ_army_expenditures_maximal_x = -9 }
+    update_economy_tab = yes
+}
+
+army_funding_maximal_decrease_med = {
+	custom_effect_tooltip = army_funding_maximal_decrease_med_tt
+	add_to_variable = { econ_army_expenditures_maximal_x = -18 }
+    update_economy_tab = yes
+}
+
+army_funding_maximal_decrease_high = {
+	custom_effect_tooltip = army_funding_maximal_decrease_high_tt
+	add_to_variable = { econ_army_expenditures_maximal_x = -27 }
+    update_economy_tab = yes
+}
+
+army_funding_minimal_increase_low = {
+	custom_effect_tooltip = army_funding_minimal_increase_low_tt
+	add_to_variable = { econ_army_expenditures_minimal_x = 9 }
+    update_economy_tab = yes
+}
+
+army_funding_minimal_increase_med = {
+	custom_effect_tooltip = army_funding_minimal_increase_med_tt
+	add_to_variable = { econ_army_expenditures_minimal_x = 18 }
+    update_economy_tab = yes
+}
+
+army_funding_minimal_increase_high = {
+	custom_effect_tooltip = army_funding_minimal_increase_high_tt
+	add_to_variable = { econ_army_expenditures_minimal_x = 27 }
+    update_economy_tab = yes
+}
+
+army_funding_minimal_decrease_low = {
+	custom_effect_tooltip = army_funding_minimal_decrease_low_tt
+	add_to_variable = { econ_army_expenditures_minimal_x = -9 }
+    update_economy_tab = yes
+}
+
+army_funding_minimal_decrease_med = {
+	custom_effect_tooltip = army_funding_minimal_decrease_med_tt
+	add_to_variable = { econ_army_expenditures_minimal_x = -18 }
+    update_economy_tab = yes
+}
+
+army_funding_minimal_decrease_high = {
+	custom_effect_tooltip = army_funding_minimal_decrease_high_tt
+	add_to_variable = { econ_army_expenditures_minimal_x = -27 }
+    update_economy_tab = yes
+}
+
+army_funding_maximal_set_position_0 = {
+	set_variable = { econ_army_expenditures_maximal_x = 48 }
+    update_economy_tab = yes
+}
+
+army_funding_maximal_set_position_1 = {
+	set_variable = { econ_army_expenditures_maximal_x = 57 }
+    update_economy_tab = yes
+}
+
+army_funding_maximal_set_position_2 = {
+	set_variable = { econ_army_expenditures_maximal_x = 66 }
+    update_economy_tab = yes
+}
+
+army_funding_maximal_set_position_3 = {
+	set_variable = { econ_army_expenditures_maximal_x = 75 }
+    update_economy_tab = yes
+}
+
+army_funding_maximal_set_position_4 = {
+	set_variable = { econ_army_expenditures_maximal_x = 84 }
+    update_economy_tab = yes
+}
+
+army_funding_maximal_set_position_5 = {
+	set_variable = { econ_army_expenditures_maximal_x = 93  }
+    update_economy_tab = yes
+}
+
+army_funding_maximal_set_position_6 = {
+	set_variable = { econ_army_expenditures_maximal_x = 102 }
+    update_economy_tab = yes
+}
+
+army_funding_maximal_set_position_7 = {
+	set_variable = { econ_army_expenditures_maximal_x = 111 }
+    update_economy_tab = yes
+}
+
+army_funding_maximal_set_position_8 = {
+	set_variable = { econ_army_expenditures_maximal_x = 120 }
+    update_economy_tab = yes
+}
+
+army_funding_maximal_set_position_9 = {
+	set_variable = { econ_army_expenditures_maximal_x = 129 }
+    update_economy_tab = yes
+}
+
+army_funding_maximal_set_position_10 = {
+	set_variable = { econ_army_expenditures_maximal_x = 138 }
+    update_economy_tab = yes
+}
+
+army_funding_maximal_set_position_11 = {
+	set_variable = { econ_army_expenditures_maximal_x = 147 }
+    update_economy_tab = yes
+}
+
+army_funding_maximal_set_position_12 = {
+	set_variable = { econ_army_expenditures_maximal_x = 156 }
+    update_economy_tab = yes
+}
+
+army_funding_maximal_set_position_13 = {
+	set_variable = { econ_army_expenditures_maximal_x = 165 }
+    update_economy_tab = yes
+}
+
+army_funding_maximal_set_position_14 = {
+	set_variable = { econ_army_expenditures_maximal_x = 174 }
+    update_economy_tab = yes
+}
+
+army_funding_maximal_set_position_15 = {
+	set_variable = { econ_army_expenditures_maximal_x = 183  }
+    update_economy_tab = yes
+}
+
+army_funding_maximal_set_position_16 = {
+	set_variable = { econ_army_expenditures_maximal_x = 192 }
+    update_economy_tab = yes
+}
+
+army_funding_maximal_set_position_17 = {
+	set_variable = { econ_army_expenditures_maximal_x = 201 }
+    update_economy_tab = yes
+}
+
+army_funding_maximal_set_position_18 = {
+	set_variable = { econ_army_expenditures_maximal_x = 210 }
+    update_economy_tab = yes
+}
+
+army_funding_maximal_set_position_19 = {
+	set_variable = { econ_army_expenditures_maximal_x = 219 }
+    update_economy_tab = yes
+}
+
+army_funding_maximal_set_position_20 = {
+	set_variable = { econ_army_expenditures_maximal_x = 228 }
+    update_economy_tab = yes
+}
+
+army_funding_minimal_set_position_0 = {
+	set_variable = { econ_army_expenditures_minimal_x = 48 }
+    update_economy_tab = yes
+}
+
+army_funding_minimal_set_position_1 = {
+	set_variable = { econ_army_expenditures_minimal_x = 57 }
+    update_economy_tab = yes
+}
+
+army_funding_minimal_set_position_2 = {
+	set_variable = { econ_army_expenditures_minimal_x = 66 }
+    update_economy_tab = yes
+}
+
+army_funding_minimal_set_position_3 = {
+	set_variable = { econ_army_expenditures_minimal_x = 75 }
+    update_economy_tab = yes
+}
+
+army_funding_minimal_set_position_4 = {
+	set_variable = { econ_army_expenditures_minimal_x = 84 }
+    update_economy_tab = yes
+}
+
+army_funding_minimal_set_position_5 = {
+	set_variable = { econ_army_expenditures_minimal_x = 93  }
+    update_economy_tab = yes
+}
+
+army_funding_minimal_set_position_6 = {
+	set_variable = { econ_army_expenditures_minimal_x = 102 }
+    update_economy_tab = yes
+}
+
+army_funding_minimal_set_position_7 = {
+	set_variable = { econ_army_expenditures_minimal_x = 111 }
+    update_economy_tab = yes
+}
+
+army_funding_minimal_set_position_8 = {
+	set_variable = { econ_army_expenditures_minimal_x = 120 }
+    update_economy_tab = yes
+}
+
+army_funding_minimal_set_position_9 = {
+	set_variable = { econ_army_expenditures_minimal_x = 129 }
+    update_economy_tab = yes
+}
+
+army_funding_minimal_set_position_10 = {
+	set_variable = { econ_army_expenditures_minimal_x = 138 }
+    update_economy_tab = yes
+}
+
+army_funding_minimal_set_position_11 = {
+	set_variable = { econ_army_expenditures_minimal_x = 147 }
+    update_economy_tab = yes
+}
+
+army_funding_minimal_set_position_12 = {
+	set_variable = { econ_army_expenditures_minimal_x = 156 }
+    update_economy_tab = yes
+}
+
+army_funding_minimal_set_position_13 = {
+	set_variable = { econ_army_expenditures_minimal_x = 165 }
+    update_economy_tab = yes
+}
+
+army_funding_minimal_set_position_14 = {
+	set_variable = { econ_army_expenditures_minimal_x = 174 }
+    update_economy_tab = yes
+}
+
+army_funding_minimal_set_position_15 = {
+	set_variable = { econ_army_expenditures_minimal_x = 183  }
+    update_economy_tab = yes
+}
+
+army_funding_minimal_set_position_16 = {
+	set_variable = { econ_army_expenditures_minimal_x = 192 }
+    update_economy_tab = yes
+}
+
+army_funding_minimal_set_position_17 = {
+	set_variable = { econ_army_expenditures_minimal_x = 201 }
+    update_economy_tab = yes
+}
+
+army_funding_minimal_set_position_18 = {
+	set_variable = { econ_army_expenditures_minimal_x = 210 }
+    update_economy_tab = yes
+}
+
+army_funding_minimal_set_position_19 = {
+	set_variable = { econ_army_expenditures_minimal_x = 219 }
+    update_economy_tab = yes
+}
+
+army_funding_minimal_set_position_20 = {
+	set_variable = { econ_army_expenditures_minimal_x = 228 }
+    update_economy_tab = yes
+}
+
+naval_funding_maximal_increase_low = {
+	custom_effect_tooltip = naval_funding_maximal_increase_low_tt
+	add_to_variable = { econ_naval_expenditures_maximal_x = 9 }
+    update_economy_tab = yes
+}
+
+naval_funding_maximal_increase_med = {
+	custom_effect_tooltip = naval_funding_maximal_increase_med_tt
+	add_to_variable = { econ_naval_expenditures_maximal_x = 18 }
+    update_economy_tab = yes
+}
+
+naval_funding_maximal_increase_high = {
+	custom_effect_tooltip = naval_funding_maximal_increase_high_tt
+	add_to_variable = { econ_naval_expenditures_maximal_x = 27 }
+    update_economy_tab = yes
+}
+
+naval_funding_maximal_decrease_low = {
+	custom_effect_tooltip = naval_funding_maximal_decrease_low_tt
+	add_to_variable = { econ_naval_expenditures_maximal_x = -9 }
+    update_economy_tab = yes
+}
+
+naval_funding_maximal_decrease_med = {
+	custom_effect_tooltip = naval_funding_maximal_decrease_med_tt
+	add_to_variable = { econ_naval_expenditures_maximal_x = -18 }
+    update_economy_tab = yes
+}
+
+naval_funding_maximal_decrease_high = {
+	custom_effect_tooltip = naval_funding_maximal_decrease_high_tt
+	add_to_variable = { econ_naval_expenditures_maximal_x = -27 }
+    update_economy_tab = yes
+}
+
+naval_funding_minimal_increase_low = {
+	custom_effect_tooltip = naval_funding_minimal_increase_low_tt
+	add_to_variable = { econ_naval_expenditures_minimal_x = 9 }
+    update_economy_tab = yes
+}
+
+naval_funding_minimal_increase_med = {
+	custom_effect_tooltip = naval_funding_minimal_increase_med_tt
+	add_to_variable = { econ_naval_expenditures_minimal_x = 18 }
+    update_economy_tab = yes
+}
+
+naval_funding_minimal_increase_high = {
+	custom_effect_tooltip = naval_funding_minimal_increase_high_tt
+	add_to_variable = { econ_naval_expenditures_minimal_x = 27 }
+    update_economy_tab = yes
+}
+
+naval_funding_minimal_decrease_low = {
+	custom_effect_tooltip = naval_funding_minimal_decrease_low_tt
+	add_to_variable = { econ_naval_expenditures_minimal_x = -9 }
+    update_economy_tab = yes
+}
+
+naval_funding_minimal_decrease_med = {
+	custom_effect_tooltip = naval_funding_minimal_decrease_med_tt
+	add_to_variable = { econ_naval_expenditures_minimal_x = -18 }
+    update_economy_tab = yes
+}
+
+naval_funding_minimal_decrease_high = {
+	custom_effect_tooltip = naval_funding_minimal_decrease_high_tt
+	add_to_variable = { econ_naval_expenditures_minimal_x = -27 }
+    update_economy_tab = yes
+}
+
+naval_funding_maximal_set_position_0 = {
+	set_variable = { econ_naval_expenditures_maximal_x = 48 }
+    update_economy_tab = yes
+}
+
+naval_funding_maximal_set_position_1 = {
+	set_variable = { econ_naval_expenditures_maximal_x = 57 }
+    update_economy_tab = yes
+}
+
+naval_funding_maximal_set_position_2 = {
+	set_variable = { econ_naval_expenditures_maximal_x = 66 }
+    update_economy_tab = yes
+}
+
+naval_funding_maximal_set_position_3 = {
+	set_variable = { econ_naval_expenditures_maximal_x = 75 }
+    update_economy_tab = yes
+}
+
+naval_funding_maximal_set_position_4 = {
+	set_variable = { econ_naval_expenditures_maximal_x = 84 }
+    update_economy_tab = yes
+}
+
+naval_funding_maximal_set_position_5 = {
+	set_variable = { econ_naval_expenditures_maximal_x = 93  }
+    update_economy_tab = yes
+}
+
+naval_funding_maximal_set_position_6 = {
+	set_variable = { econ_naval_expenditures_maximal_x = 102 }
+    update_economy_tab = yes
+}
+
+naval_funding_maximal_set_position_7 = {
+	set_variable = { econ_naval_expenditures_maximal_x = 111 }
+    update_economy_tab = yes
+}
+
+naval_funding_maximal_set_position_8 = {
+	set_variable = { econ_naval_expenditures_maximal_x = 120 }
+    update_economy_tab = yes
+}
+
+naval_funding_maximal_set_position_9 = {
+	set_variable = { econ_naval_expenditures_maximal_x = 129 }
+    update_economy_tab = yes
+}
+
+naval_funding_maximal_set_position_10 = {
+	set_variable = { econ_naval_expenditures_maximal_x = 138 }
+    update_economy_tab = yes
+}
+
+naval_funding_maximal_set_position_11 = {
+	set_variable = { econ_naval_expenditures_maximal_x = 147 }
+    update_economy_tab = yes
+}
+
+naval_funding_maximal_set_position_12 = {
+	set_variable = { econ_naval_expenditures_maximal_x = 156 }
+    update_economy_tab = yes
+}
+
+naval_funding_maximal_set_position_13 = {
+	set_variable = { econ_naval_expenditures_maximal_x = 165 }
+    update_economy_tab = yes
+}
+
+naval_funding_maximal_set_position_14 = {
+	set_variable = { econ_naval_expenditures_maximal_x = 174 }
+    update_economy_tab = yes
+}
+
+naval_funding_maximal_set_position_15 = {
+	set_variable = { econ_naval_expenditures_maximal_x = 183  }
+    update_economy_tab = yes
+}
+
+naval_funding_maximal_set_position_16 = {
+	set_variable = { econ_naval_expenditures_maximal_x = 192 }
+    update_economy_tab = yes
+}
+
+naval_funding_maximal_set_position_17 = {
+	set_variable = { econ_naval_expenditures_maximal_x = 201 }
+    update_economy_tab = yes
+}
+
+naval_funding_maximal_set_position_18 = {
+	set_variable = { econ_naval_expenditures_maximal_x = 210 }
+    update_economy_tab = yes
+}
+
+naval_funding_maximal_set_position_19 = {
+	set_variable = { econ_naval_expenditures_maximal_x = 219 }
+    update_economy_tab = yes
+}
+
+naval_funding_maximal_set_position_20 = {
+	set_variable = { econ_naval_expenditures_maximal_x = 228 }
+    update_economy_tab = yes
+}
+
+naval_funding_minimal_set_position_0 = {
+	set_variable = { econ_naval_expenditures_minimal_x = 48 }
+    update_economy_tab = yes
+}
+
+naval_funding_minimal_set_position_1 = {
+	set_variable = { econ_naval_expenditures_minimal_x = 57 }
+    update_economy_tab = yes
+}
+
+naval_funding_minimal_set_position_2 = {
+	set_variable = { econ_naval_expenditures_minimal_x = 66 }
+    update_economy_tab = yes
+}
+
+naval_funding_minimal_set_position_3 = {
+	set_variable = { econ_naval_expenditures_minimal_x = 75 }
+    update_economy_tab = yes
+}
+
+naval_funding_minimal_set_position_4 = {
+	set_variable = { econ_naval_expenditures_minimal_x = 84 }
+    update_economy_tab = yes
+}
+
+naval_funding_minimal_set_position_5 = {
+	set_variable = { econ_naval_expenditures_minimal_x = 93  }
+    update_economy_tab = yes
+}
+
+naval_funding_minimal_set_position_6 = {
+	set_variable = { econ_naval_expenditures_minimal_x = 102 }
+    update_economy_tab = yes
+}
+
+naval_funding_minimal_set_position_7 = {
+	set_variable = { econ_naval_expenditures_minimal_x = 111 }
+    update_economy_tab = yes
+}
+
+naval_funding_minimal_set_position_8 = {
+	set_variable = { econ_naval_expenditures_minimal_x = 120 }
+    update_economy_tab = yes
+}
+
+naval_funding_minimal_set_position_9 = {
+	set_variable = { econ_naval_expenditures_minimal_x = 129 }
+    update_economy_tab = yes
+}
+
+naval_funding_minimal_set_position_10 = {
+	set_variable = { econ_naval_expenditures_minimal_x = 138 }
+    update_economy_tab = yes
+}
+
+naval_funding_minimal_set_position_11 = {
+	set_variable = { econ_naval_expenditures_minimal_x = 147 }
+    update_economy_tab = yes
+}
+
+naval_funding_minimal_set_position_12 = {
+	set_variable = { econ_naval_expenditures_minimal_x = 156 }
+    update_economy_tab = yes
+}
+
+naval_funding_minimal_set_position_13 = {
+	set_variable = { econ_naval_expenditures_minimal_x = 165 }
+    update_economy_tab = yes
+}
+
+naval_funding_minimal_set_position_14 = {
+	set_variable = { econ_naval_expenditures_minimal_x = 174 }
+    update_economy_tab = yes
+}
+
+naval_funding_minimal_set_position_15 = {
+	set_variable = { econ_naval_expenditures_minimal_x = 183  }
+    update_economy_tab = yes
+}
+
+naval_funding_minimal_set_position_16 = {
+	set_variable = { econ_naval_expenditures_minimal_x = 192 }
+    update_economy_tab = yes
+}
+
+naval_funding_minimal_set_position_17 = {
+	set_variable = { econ_naval_expenditures_minimal_x = 201 }
+    update_economy_tab = yes
+}
+
+naval_funding_minimal_set_position_18 = {
+	set_variable = { econ_naval_expenditures_minimal_x = 210 }
+    update_economy_tab = yes
+}
+
+naval_funding_minimal_set_position_19 = {
+	set_variable = { econ_naval_expenditures_minimal_x = 219 }
+    update_economy_tab = yes
+}
+
+naval_funding_minimal_set_position_20 = {
+	set_variable = { econ_naval_expenditures_minimal_x = 228 }
+    update_economy_tab = yes
+}
+
+research_funding_maximal_increase_low = {
+	custom_effect_tooltip = research_funding_maximal_increase_low_tt
+	add_to_variable = { econ_research_expenditures_maximal_x = 9 }
+    update_economy_tab = yes
+}
+
+research_funding_maximal_increase_med = {
+	custom_effect_tooltip = research_funding_maximal_increase_med_tt
+	add_to_variable = { econ_research_expenditures_maximal_x = 18 }
+    update_economy_tab = yes
+}
+
+research_funding_maximal_increase_high = {
+	custom_effect_tooltip = research_funding_maximal_increase_high_tt
+	add_to_variable = { econ_research_expenditures_maximal_x = 27 }
+    update_economy_tab = yes
+}
+
+research_funding_maximal_decrease_low = {
+	custom_effect_tooltip = research_funding_maximal_decrease_low_tt
+	add_to_variable = { econ_research_expenditures_maximal_x = -9 }
+    update_economy_tab = yes
+}
+
+research_funding_maximal_decrease_med = {
+	custom_effect_tooltip = research_funding_maximal_decrease_med_tt
+	add_to_variable = { econ_research_expenditures_maximal_x = -18 }
+    update_economy_tab = yes
+}
+
+research_funding_maximal_decrease_high = {
+	custom_effect_tooltip = research_funding_maximal_decrease_high_tt
+	add_to_variable = { econ_research_expenditures_maximal_x = -27 }
+    update_economy_tab = yes
+}
+
+research_funding_minimal_increase_low = {
+	custom_effect_tooltip = research_funding_minimal_increase_low_tt
+	add_to_variable = { econ_research_expenditures_minimal_x = 9 }
+    update_economy_tab = yes
+}
+
+research_funding_minimal_increase_med = {
+	custom_effect_tooltip = research_funding_minimal_increase_med_tt
+	add_to_variable = { econ_research_expenditures_minimal_x = 18 }
+    update_economy_tab = yes
+}
+
+research_funding_minimal_increase_high = {
+	custom_effect_tooltip = research_funding_minimal_increase_high_tt
+	add_to_variable = { econ_research_expenditures_minimal_x = 27 }
+    update_economy_tab = yes
+}
+
+research_funding_minimal_decrease_low = {
+	custom_effect_tooltip = research_funding_minimal_decrease_low_tt
+	add_to_variable = { econ_research_expenditures_minimal_x = -9 }
+    update_economy_tab = yes
+}
+
+research_funding_minimal_decrease_med = {
+	custom_effect_tooltip = research_funding_minimal_decrease_med_tt
+	add_to_variable = { econ_research_expenditures_minimal_x = -18 }
+    update_economy_tab = yes
+}
+
+research_funding_minimal_decrease_high = {
+	custom_effect_tooltip = research_funding_minimal_decrease_high_tt
+	add_to_variable = { econ_research_expenditures_minimal_x = -27 }
+    update_economy_tab = yes
+}
+
+research_funding_maximal_set_position_0 = {
+	set_variable = { econ_research_expenditures_maximal_x = 48 }
+    update_economy_tab = yes
+}
+
+research_funding_maximal_set_position_1 = {
+	set_variable = { econ_research_expenditures_maximal_x = 57 }
+    update_economy_tab = yes
+}
+
+research_funding_maximal_set_position_2 = {
+	set_variable = { econ_research_expenditures_maximal_x = 66 }
+    update_economy_tab = yes
+}
+
+research_funding_maximal_set_position_3 = {
+	set_variable = { econ_research_expenditures_maximal_x = 75 }
+    update_economy_tab = yes
+}
+
+research_funding_maximal_set_position_4 = {
+	set_variable = { econ_research_expenditures_maximal_x = 84 }
+    update_economy_tab = yes
+}
+
+research_funding_maximal_set_position_5 = {
+	set_variable = { econ_research_expenditures_maximal_x = 93  }
+    update_economy_tab = yes
+}
+
+research_funding_maximal_set_position_6 = {
+	set_variable = { econ_research_expenditures_maximal_x = 102 }
+    update_economy_tab = yes
+}
+
+research_funding_maximal_set_position_7 = {
+	set_variable = { econ_research_expenditures_maximal_x = 111 }
+    update_economy_tab = yes
+}
+
+research_funding_maximal_set_position_8 = {
+	set_variable = { econ_research_expenditures_maximal_x = 120 }
+    update_economy_tab = yes
+}
+
+research_funding_maximal_set_position_9 = {
+	set_variable = { econ_research_expenditures_maximal_x = 129 }
+    update_economy_tab = yes
+}
+
+research_funding_maximal_set_position_10 = {
+	set_variable = { econ_research_expenditures_maximal_x = 138 }
+    update_economy_tab = yes
+}
+
+research_funding_maximal_set_position_11 = {
+	set_variable = { econ_research_expenditures_maximal_x = 147 }
+    update_economy_tab = yes
+}
+
+research_funding_maximal_set_position_12 = {
+	set_variable = { econ_research_expenditures_maximal_x = 156 }
+    update_economy_tab = yes
+}
+
+research_funding_maximal_set_position_13 = {
+	set_variable = { econ_research_expenditures_maximal_x = 165 }
+    update_economy_tab = yes
+}
+
+research_funding_maximal_set_position_14 = {
+	set_variable = { econ_research_expenditures_maximal_x = 174 }
+    update_economy_tab = yes
+}
+
+research_funding_maximal_set_position_15 = {
+	set_variable = { econ_research_expenditures_maximal_x = 183  }
+    update_economy_tab = yes
+}
+
+research_funding_maximal_set_position_16 = {
+	set_variable = { econ_research_expenditures_maximal_x = 192 }
+    update_economy_tab = yes
+}
+
+research_funding_maximal_set_position_17 = {
+	set_variable = { econ_research_expenditures_maximal_x = 201 }
+    update_economy_tab = yes
+}
+
+research_funding_maximal_set_position_18 = {
+	set_variable = { econ_research_expenditures_maximal_x = 210 }
+    update_economy_tab = yes
+}
+
+research_funding_maximal_set_position_19 = {
+	set_variable = { econ_research_expenditures_maximal_x = 219 }
+    update_economy_tab = yes
+}
+
+research_funding_maximal_set_position_20 = {
+	set_variable = { econ_research_expenditures_maximal_x = 228 }
+    update_economy_tab = yes
+}
+
+research_funding_minimal_set_position_0 = {
+	set_variable = { econ_research_expenditures_minimal_x = 48 }
+    update_economy_tab = yes
+}
+
+research_funding_minimal_set_position_1 = {
+	set_variable = { econ_research_expenditures_minimal_x = 57 }
+    update_economy_tab = yes
+}
+
+research_funding_minimal_set_position_2 = {
+	set_variable = { econ_research_expenditures_minimal_x = 66 }
+    update_economy_tab = yes
+}
+
+research_funding_minimal_set_position_3 = {
+	set_variable = { econ_research_expenditures_minimal_x = 75 }
+    update_economy_tab = yes
+}
+
+research_funding_minimal_set_position_4 = {
+	set_variable = { econ_research_expenditures_minimal_x = 84 }
+    update_economy_tab = yes
+}
+
+research_funding_minimal_set_position_5 = {
+	set_variable = { econ_research_expenditures_minimal_x = 93  }
+    update_economy_tab = yes
+}
+
+research_funding_minimal_set_position_6 = {
+	set_variable = { econ_research_expenditures_minimal_x = 102 }
+    update_economy_tab = yes
+}
+
+research_funding_minimal_set_position_7 = {
+	set_variable = { econ_research_expenditures_minimal_x = 111 }
+    update_economy_tab = yes
+}
+
+research_funding_minimal_set_position_8 = {
+	set_variable = { econ_research_expenditures_minimal_x = 120 }
+    update_economy_tab = yes
+}
+
+research_funding_minimal_set_position_9 = {
+	set_variable = { econ_research_expenditures_minimal_x = 129 }
+    update_economy_tab = yes
+}
+
+research_funding_minimal_set_position_10 = {
+	set_variable = { econ_research_expenditures_minimal_x = 138 }
+    update_economy_tab = yes
+}
+
+research_funding_minimal_set_position_11 = {
+	set_variable = { econ_research_expenditures_minimal_x = 147 }
+    update_economy_tab = yes
+}
+
+research_funding_minimal_set_position_12 = {
+	set_variable = { econ_research_expenditures_minimal_x = 156 }
+    update_economy_tab = yes
+}
+
+research_funding_minimal_set_position_13 = {
+	set_variable = { econ_research_expenditures_minimal_x = 165 }
+    update_economy_tab = yes
+}
+
+research_funding_minimal_set_position_14 = {
+	set_variable = { econ_research_expenditures_minimal_x = 174 }
+    update_economy_tab = yes
+}
+
+research_funding_minimal_set_position_15 = {
+	set_variable = { econ_research_expenditures_minimal_x = 183  }
+    update_economy_tab = yes
+}
+
+research_funding_minimal_set_position_16 = {
+	set_variable = { econ_research_expenditures_minimal_x = 192 }
+    update_economy_tab = yes
+}
+
+research_funding_minimal_set_position_17 = {
+	set_variable = { econ_research_expenditures_minimal_x = 201 }
+    update_economy_tab = yes
+}
+
+research_funding_minimal_set_position_18 = {
+	set_variable = { econ_research_expenditures_minimal_x = 210 }
+    update_economy_tab = yes
+}
+
+research_funding_minimal_set_position_19 = {
+	set_variable = { econ_research_expenditures_minimal_x = 219 }
+    update_economy_tab = yes
+}
+
+research_funding_minimal_set_position_20 = {
+	set_variable = { econ_research_expenditures_minimal_x = 228 }
+    update_economy_tab = yes
+}
+
+construction_funding_maximal_increase_low = {
+	custom_effect_tooltip = construction_funding_maximal_increase_low_tt
+	add_to_variable = { econ_construction_expenditures_maximal_x = 9 }
+    update_economy_tab = yes
+}
+
+construction_funding_maximal_increase_med = {
+	custom_effect_tooltip = construction_funding_maximal_increase_med_tt
+	add_to_variable = { econ_construction_expenditures_maximal_x = 18 }
+    update_economy_tab = yes
+}
+
+construction_funding_maximal_increase_high = {
+	custom_effect_tooltip = construction_funding_maximal_increase_high_tt
+	add_to_variable = { econ_construction_expenditures_maximal_x = 27 }
+    update_economy_tab = yes
+}
+
+construction_funding_maximal_decrease_low = {
+	custom_effect_tooltip = construction_funding_maximal_decrease_low_tt
+	add_to_variable = { econ_construction_expenditures_maximal_x = -9 }
+    update_economy_tab = yes
+}
+
+construction_funding_maximal_decrease_med = {
+	custom_effect_tooltip = construction_funding_maximal_decrease_med_tt
+	add_to_variable = { econ_construction_expenditures_maximal_x = -18 }
+    update_economy_tab = yes
+}
+
+construction_funding_maximal_decrease_high = {
+	custom_effect_tooltip = construction_funding_maximal_decrease_high_tt
+	add_to_variable = { econ_construction_expenditures_maximal_x = -27 }
+    update_economy_tab = yes
+}
+
+construction_funding_minimal_increase_low = {
+	custom_effect_tooltip = construction_funding_minimal_increase_low_tt
+	add_to_variable = { econ_construction_expenditures_minimal_x = 9 }
+    update_economy_tab = yes
+}
+
+construction_funding_minimal_increase_med = {
+	custom_effect_tooltip = construction_funding_minimal_increase_med_tt
+	add_to_variable = { econ_construction_expenditures_minimal_x = 18 }
+    update_economy_tab = yes
+}
+
+construction_funding_minimal_increase_high = {
+	custom_effect_tooltip = construction_funding_minimal_increase_high_tt
+	add_to_variable = { econ_construction_expenditures_minimal_x = 27 }
+    update_economy_tab = yes
+}
+
+construction_funding_minimal_decrease_low = {
+	custom_effect_tooltip = construction_funding_minimal_decrease_low_tt
+	add_to_variable = { econ_construction_expenditures_minimal_x = -9 }
+    update_economy_tab = yes
+}
+
+construction_funding_minimal_decrease_med = {
+	custom_effect_tooltip = construction_funding_minimal_decrease_med_tt
+	add_to_variable = { econ_construction_expenditures_minimal_x = -18 }
+    update_economy_tab = yes
+}
+
+construction_funding_minimal_decrease_high = {
+	custom_effect_tooltip = construction_funding_minimal_decrease_high_tt
+	add_to_variable = { econ_construction_expenditures_minimal_x = -27 }
+    update_economy_tab = yes
+}
+
+construction_funding_maximal_set_position_0 = {
+	set_variable = { econ_construction_expenditures_maximal_x = 48 }
+    update_economy_tab = yes
+}
+
+construction_funding_maximal_set_position_1 = {
+	set_variable = { econ_construction_expenditures_maximal_x = 57 }
+    update_economy_tab = yes
+}
+
+construction_funding_maximal_set_position_2 = {
+	set_variable = { econ_construction_expenditures_maximal_x = 66 }
+    update_economy_tab = yes
+}
+
+construction_funding_maximal_set_position_3 = {
+	set_variable = { econ_construction_expenditures_maximal_x = 75 }
+    update_economy_tab = yes
+}
+
+construction_funding_maximal_set_position_4 = {
+	set_variable = { econ_construction_expenditures_maximal_x = 84 }
+    update_economy_tab = yes
+}
+
+construction_funding_maximal_set_position_5 = {
+	set_variable = { econ_construction_expenditures_maximal_x = 93  }
+    update_economy_tab = yes
+}
+
+construction_funding_maximal_set_position_6 = {
+	set_variable = { econ_construction_expenditures_maximal_x = 102 }
+    update_economy_tab = yes
+}
+
+construction_funding_maximal_set_position_7 = {
+	set_variable = { econ_construction_expenditures_maximal_x = 111 }
+    update_economy_tab = yes
+}
+
+construction_funding_maximal_set_position_8 = {
+	set_variable = { econ_construction_expenditures_maximal_x = 120 }
+    update_economy_tab = yes
+}
+
+construction_funding_maximal_set_position_9 = {
+	set_variable = { econ_construction_expenditures_maximal_x = 129 }
+    update_economy_tab = yes
+}
+
+construction_funding_maximal_set_position_10 = {
+	set_variable = { econ_construction_expenditures_maximal_x = 138 }
+    update_economy_tab = yes
+}
+
+construction_funding_maximal_set_position_11 = {
+	set_variable = { econ_construction_expenditures_maximal_x = 147 }
+    update_economy_tab = yes
+}
+
+construction_funding_maximal_set_position_12 = {
+	set_variable = { econ_construction_expenditures_maximal_x = 156 }
+    update_economy_tab = yes
+}
+
+construction_funding_maximal_set_position_13 = {
+	set_variable = { econ_construction_expenditures_maximal_x = 165 }
+    update_economy_tab = yes
+}
+
+construction_funding_maximal_set_position_14 = {
+	set_variable = { econ_construction_expenditures_maximal_x = 174 }
+    update_economy_tab = yes
+}
+
+construction_funding_maximal_set_position_15 = {
+	set_variable = { econ_construction_expenditures_maximal_x = 183  }
+    update_economy_tab = yes
+}
+
+construction_funding_maximal_set_position_16 = {
+	set_variable = { econ_construction_expenditures_maximal_x = 192 }
+    update_economy_tab = yes
+}
+
+construction_funding_maximal_set_position_17 = {
+	set_variable = { econ_construction_expenditures_maximal_x = 201 }
+    update_economy_tab = yes
+}
+
+construction_funding_maximal_set_position_18 = {
+	set_variable = { econ_construction_expenditures_maximal_x = 210 }
+    update_economy_tab = yes
+}
+
+construction_funding_maximal_set_position_19 = {
+	set_variable = { econ_construction_expenditures_maximal_x = 219 }
+    update_economy_tab = yes
+}
+
+construction_funding_maximal_set_position_20 = {
+	set_variable = { econ_construction_expenditures_maximal_x = 228 }
+    update_economy_tab = yes
+}
+
+construction_funding_minimal_set_position_0 = {
+	set_variable = { econ_construction_expenditures_minimal_x = 48 }
+    update_economy_tab = yes
+}
+
+construction_funding_minimal_set_position_1 = {
+	set_variable = { econ_construction_expenditures_minimal_x = 57 }
+    update_economy_tab = yes
+}
+
+construction_funding_minimal_set_position_2 = {
+	set_variable = { econ_construction_expenditures_minimal_x = 66 }
+    update_economy_tab = yes
+}
+
+construction_funding_minimal_set_position_3 = {
+	set_variable = { econ_construction_expenditures_minimal_x = 75 }
+    update_economy_tab = yes
+}
+
+construction_funding_minimal_set_position_4 = {
+	set_variable = { econ_construction_expenditures_minimal_x = 84 }
+    update_economy_tab = yes
+}
+
+construction_funding_minimal_set_position_5 = {
+	set_variable = { econ_construction_expenditures_minimal_x = 93  }
+    update_economy_tab = yes
+}
+
+construction_funding_minimal_set_position_6 = {
+	set_variable = { econ_construction_expenditures_minimal_x = 102 }
+    update_economy_tab = yes
+}
+
+construction_funding_minimal_set_position_7 = {
+	set_variable = { econ_construction_expenditures_minimal_x = 111 }
+    update_economy_tab = yes
+}
+
+construction_funding_minimal_set_position_8 = {
+	set_variable = { econ_construction_expenditures_minimal_x = 120 }
+    update_economy_tab = yes
+}
+
+construction_funding_minimal_set_position_9 = {
+	set_variable = { econ_construction_expenditures_minimal_x = 129 }
+    update_economy_tab = yes
+}
+
+construction_funding_minimal_set_position_10 = {
+	set_variable = { econ_construction_expenditures_minimal_x = 138 }
+    update_economy_tab = yes
+}
+
+construction_funding_minimal_set_position_11 = {
+	set_variable = { econ_construction_expenditures_minimal_x = 147 }
+    update_economy_tab = yes
+}
+
+construction_funding_minimal_set_position_12 = {
+	set_variable = { econ_construction_expenditures_minimal_x = 156 }
+    update_economy_tab = yes
+}
+
+construction_funding_minimal_set_position_13 = {
+	set_variable = { econ_construction_expenditures_minimal_x = 165 }
+    update_economy_tab = yes
+}
+
+construction_funding_minimal_set_position_14 = {
+	set_variable = { econ_construction_expenditures_minimal_x = 174 }
+    update_economy_tab = yes
+}
+
+construction_funding_minimal_set_position_15 = {
+	set_variable = { econ_construction_expenditures_minimal_x = 183  }
+    update_economy_tab = yes
+}
+
+construction_funding_minimal_set_position_16 = {
+	set_variable = { econ_construction_expenditures_minimal_x = 192 }
+    update_economy_tab = yes
+}
+
+construction_funding_minimal_set_position_17 = {
+	set_variable = { econ_construction_expenditures_minimal_x = 201 }
+    update_economy_tab = yes
+}
+
+construction_funding_minimal_set_position_18 = {
+	set_variable = { econ_construction_expenditures_minimal_x = 210 }
+    update_economy_tab = yes
+}
+
+construction_funding_minimal_set_position_19 = {
+	set_variable = { econ_construction_expenditures_minimal_x = 219 }
+    update_economy_tab = yes
+}
+
+construction_funding_minimal_set_position_20 = {
+	set_variable = { econ_construction_expenditures_minimal_x = 228 }
+    update_economy_tab = yes
+}
+
+social_funding_maximal_increase_low = {
+	custom_effect_tooltip = social_funding_maximal_increase_low_tt
+	add_to_variable = { econ_social_expenditures_maximal_x = 9 }
+    update_economy_tab = yes
+}
+
+social_funding_maximal_increase_med = {
+	custom_effect_tooltip = social_funding_maximal_increase_med_tt
+	add_to_variable = { econ_social_expenditures_maximal_x = 18 }
+    update_economy_tab = yes
+}
+
+social_funding_maximal_increase_high = {
+	custom_effect_tooltip = social_funding_maximal_increase_high_tt
+	add_to_variable = { econ_social_expenditures_maximal_x = 27 }
+    update_economy_tab = yes
+}
+
+social_funding_maximal_decrease_low = {
+	custom_effect_tooltip = social_funding_maximal_decrease_low_tt
+	add_to_variable = { econ_social_expenditures_maximal_x = -9 }
+    update_economy_tab = yes
+}
+
+social_funding_maximal_decrease_med = {
+	custom_effect_tooltip = social_funding_maximal_decrease_med_tt
+	add_to_variable = { econ_social_expenditures_maximal_x = -18 }
+    update_economy_tab = yes
+}
+
+social_funding_maximal_decrease_high = {
+	custom_effect_tooltip = social_funding_maximal_decrease_high_tt
+	add_to_variable = { econ_social_expenditures_maximal_x = -27 }
+    update_economy_tab = yes
+}
+
+social_funding_minimal_increase_low = {
+	custom_effect_tooltip = social_funding_minimal_increase_low_tt
+	add_to_variable = { econ_social_expenditures_minimal_x = 9 }
+    update_economy_tab = yes
+}
+
+social_funding_minimal_increase_med = {
+	custom_effect_tooltip = social_funding_minimal_increase_med_tt
+	add_to_variable = { econ_social_expenditures_minimal_x = 18 }
+    update_economy_tab = yes
+}
+
+social_funding_minimal_increase_high = {
+	custom_effect_tooltip = social_funding_minimal_increase_high_tt
+	add_to_variable = { econ_social_expenditures_minimal_x = 27 }
+    update_economy_tab = yes
+}
+
+social_funding_minimal_decrease_low = {
+	custom_effect_tooltip = social_funding_minimal_decrease_low_tt
+	add_to_variable = { econ_social_expenditures_minimal_x = -9 }
+    update_economy_tab = yes
+}
+
+social_funding_minimal_decrease_med = {
+	custom_effect_tooltip = social_funding_minimal_decrease_med_tt
+	add_to_variable = { econ_social_expenditures_minimal_x = -18 }
+    update_economy_tab = yes
+}
+
+social_funding_minimal_decrease_high = {
+	custom_effect_tooltip = social_funding_minimal_decrease_high_tt
+	add_to_variable = { econ_social_expenditures_minimal_x = -27 }
+    update_economy_tab = yes
+}
+
+social_funding_maximal_set_position_0 = {
+	set_variable = { econ_social_expenditures_maximal_x = 48 }
+    update_economy_tab = yes
+}
+
+social_funding_maximal_set_position_1 = {
+	set_variable = { econ_social_expenditures_maximal_x = 57 }
+    update_economy_tab = yes
+}
+
+social_funding_maximal_set_position_2 = {
+	set_variable = { econ_social_expenditures_maximal_x = 66 }
+    update_economy_tab = yes
+}
+
+social_funding_maximal_set_position_3 = {
+	set_variable = { econ_social_expenditures_maximal_x = 75 }
+    update_economy_tab = yes
+}
+
+social_funding_maximal_set_position_4 = {
+	set_variable = { econ_social_expenditures_maximal_x = 84 }
+    update_economy_tab = yes
+}
+
+social_funding_maximal_set_position_5 = {
+	set_variable = { econ_social_expenditures_maximal_x = 93  }
+    update_economy_tab = yes
+}
+
+social_funding_maximal_set_position_6 = {
+	set_variable = { econ_social_expenditures_maximal_x = 102 }
+    update_economy_tab = yes
+}
+
+social_funding_maximal_set_position_7 = {
+	set_variable = { econ_social_expenditures_maximal_x = 111 }
+    update_economy_tab = yes
+}
+
+social_funding_maximal_set_position_8 = {
+	set_variable = { econ_social_expenditures_maximal_x = 120 }
+    update_economy_tab = yes
+}
+
+social_funding_maximal_set_position_9 = {
+	set_variable = { econ_social_expenditures_maximal_x = 129 }
+    update_economy_tab = yes
+}
+
+social_funding_maximal_set_position_10 = {
+	set_variable = { econ_social_expenditures_maximal_x = 138 }
+    update_economy_tab = yes
+}
+
+social_funding_maximal_set_position_11 = {
+	set_variable = { econ_social_expenditures_maximal_x = 147 }
+    update_economy_tab = yes
+}
+
+social_funding_maximal_set_position_12 = {
+	set_variable = { econ_social_expenditures_maximal_x = 156 }
+    update_economy_tab = yes
+}
+
+social_funding_maximal_set_position_13 = {
+	set_variable = { econ_social_expenditures_maximal_x = 165 }
+    update_economy_tab = yes
+}
+
+social_funding_maximal_set_position_14 = {
+	set_variable = { econ_social_expenditures_maximal_x = 174 }
+    update_economy_tab = yes
+}
+
+social_funding_maximal_set_position_15 = {
+	set_variable = { econ_social_expenditures_maximal_x = 183  }
+    update_economy_tab = yes
+}
+
+social_funding_maximal_set_position_16 = {
+	set_variable = { econ_social_expenditures_maximal_x = 192 }
+    update_economy_tab = yes
+}
+
+social_funding_maximal_set_position_17 = {
+	set_variable = { econ_social_expenditures_maximal_x = 201 }
+    update_economy_tab = yes
+}
+
+social_funding_maximal_set_position_18 = {
+	set_variable = { econ_social_expenditures_maximal_x = 210 }
+    update_economy_tab = yes
+}
+
+social_funding_maximal_set_position_19 = {
+	set_variable = { econ_social_expenditures_maximal_x = 219 }
+    update_economy_tab = yes
+}
+
+social_funding_maximal_set_position_20 = {
+	set_variable = { econ_social_expenditures_maximal_x = 228 }
+    update_economy_tab = yes
+}
+
+social_funding_minimal_set_position_0 = {
+	set_variable = { econ_social_expenditures_minimal_x = 48 }
+    update_economy_tab = yes
+}
+
+social_funding_minimal_set_position_1 = {
+	set_variable = { econ_social_expenditures_minimal_x = 57 }
+    update_economy_tab = yes
+}
+
+social_funding_minimal_set_position_2 = {
+	set_variable = { econ_social_expenditures_minimal_x = 66 }
+    update_economy_tab = yes
+}
+
+social_funding_minimal_set_position_3 = {
+	set_variable = { econ_social_expenditures_minimal_x = 75 }
+    update_economy_tab = yes
+}
+
+social_funding_minimal_set_position_4 = {
+	set_variable = { econ_social_expenditures_minimal_x = 84 }
+    update_economy_tab = yes
+}
+
+social_funding_minimal_set_position_5 = {
+	set_variable = { econ_social_expenditures_minimal_x = 93  }
+    update_economy_tab = yes
+}
+
+social_funding_minimal_set_position_6 = {
+	set_variable = { econ_social_expenditures_minimal_x = 102 }
+    update_economy_tab = yes
+}
+
+social_funding_minimal_set_position_7 = {
+	set_variable = { econ_social_expenditures_minimal_x = 111 }
+    update_economy_tab = yes
+}
+
+social_funding_minimal_set_position_8 = {
+	set_variable = { econ_social_expenditures_minimal_x = 120 }
+    update_economy_tab = yes
+}
+
+social_funding_minimal_set_position_9 = {
+	set_variable = { econ_social_expenditures_minimal_x = 129 }
+    update_economy_tab = yes
+}
+
+social_funding_minimal_set_position_10 = {
+	set_variable = { econ_social_expenditures_minimal_x = 138 }
+    update_economy_tab = yes
+}
+
+social_funding_minimal_set_position_11 = {
+	set_variable = { econ_social_expenditures_minimal_x = 147 }
+    update_economy_tab = yes
+}
+
+social_funding_minimal_set_position_12 = {
+	set_variable = { econ_social_expenditures_minimal_x = 156 }
+    update_economy_tab = yes
+}
+
+social_funding_minimal_set_position_13 = {
+	set_variable = { econ_social_expenditures_minimal_x = 165 }
+    update_economy_tab = yes
+}
+
+social_funding_minimal_set_position_14 = {
+	set_variable = { econ_social_expenditures_minimal_x = 174 }
+    update_economy_tab = yes
+}
+
+social_funding_minimal_set_position_15 = {
+	set_variable = { econ_social_expenditures_minimal_x = 183  }
+    update_economy_tab = yes
+}
+
+social_funding_minimal_set_position_16 = {
+	set_variable = { econ_social_expenditures_minimal_x = 192 }
+    update_economy_tab = yes
+}
+
+social_funding_minimal_set_position_17 = {
+	set_variable = { econ_social_expenditures_minimal_x = 201 }
+    update_economy_tab = yes
+}
+
+social_funding_minimal_set_position_18 = {
+	set_variable = { econ_social_expenditures_minimal_x = 210 }
+    update_economy_tab = yes
+}
+
+social_funding_minimal_set_position_19 = {
+	set_variable = { econ_social_expenditures_minimal_x = 219 }
+    update_economy_tab = yes
+}
+
+social_funding_minimal_set_position_20 = {
+	set_variable = { econ_social_expenditures_minimal_x = 228 }
+    update_economy_tab = yes
+}
+
+admin_funding_maximal_increase_low = {
+	custom_effect_tooltip = admin_funding_maximal_increase_low_tt
+	add_to_variable = { econ_admin_expenditures_maximal_x = 9 }
+    update_economy_tab = yes
+}
+
+admin_funding_maximal_increase_med = {
+	custom_effect_tooltip = admin_funding_maximal_increase_med_tt
+	add_to_variable = { econ_admin_expenditures_maximal_x = 18 }
+    update_economy_tab = yes
+}
+
+admin_funding_maximal_increase_high = {
+	custom_effect_tooltip = admin_funding_maximal_increase_high_tt
+	add_to_variable = { econ_admin_expenditures_maximal_x = 27 }
+    update_economy_tab = yes
+}
+
+admin_funding_maximal_decrease_low = {
+	custom_effect_tooltip = admin_funding_maximal_decrease_low_tt
+	add_to_variable = { econ_admin_expenditures_maximal_x = -9 }
+    update_economy_tab = yes
+}
+
+admin_funding_maximal_decrease_med = {
+	custom_effect_tooltip = admin_funding_maximal_decrease_med_tt
+	add_to_variable = { econ_admin_expenditures_maximal_x = -18 }
+    update_economy_tab = yes
+}
+
+admin_funding_maximal_decrease_high = {
+	custom_effect_tooltip = admin_funding_maximal_decrease_high_tt
+	add_to_variable = { econ_admin_expenditures_maximal_x = -27 }
+    update_economy_tab = yes
+}
+
+admin_funding_minimal_increase_low = {
+	custom_effect_tooltip = admin_funding_minimal_increase_low_tt
+	add_to_variable = { econ_admin_expenditures_minimal_x = 9 }
+    update_economy_tab = yes
+}
+
+admin_funding_minimal_increase_med = {
+	custom_effect_tooltip = admin_funding_minimal_increase_med_tt
+	add_to_variable = { econ_admin_expenditures_minimal_x = 18 }
+    update_economy_tab = yes
+}
+
+admin_funding_minimal_increase_high = {
+	custom_effect_tooltip = admin_funding_minimal_increase_high_tt
+	add_to_variable = { econ_admin_expenditures_minimal_x = 27 }
+    update_economy_tab = yes
+}
+
+admin_funding_minimal_decrease_low = {
+	custom_effect_tooltip = admin_funding_minimal_decrease_low_tt
+	add_to_variable = { econ_admin_expenditures_minimal_x = -9 }
+    update_economy_tab = yes
+	update_economy_tab = yes
+}
+
+admin_funding_minimal_decrease_med = {
+	custom_effect_tooltip = admin_funding_minimal_decrease_med_tt
+	add_to_variable = { econ_admin_expenditures_minimal_x = -18 }
+    update_economy_tab = yes
+	update_economy_tab = yes
+}
+
+admin_funding_minimal_decrease_high = {
+	custom_effect_tooltip = admin_funding_minimal_decrease_high_tt
+	add_to_variable = { econ_admin_expenditures_minimal_x = -27 }
+    update_economy_tab = yes
+	update_economy_tab = yes
+}
+
+admin_funding_maximal_set_position_0 = {
+	set_variable = { econ_admin_expenditures_maximal_x = 48 }
+    update_economy_tab = yes
+}
+
+admin_funding_maximal_set_position_1 = {
+	set_variable = { econ_admin_expenditures_maximal_x = 57 }
+    update_economy_tab = yes
+}
+
+admin_funding_maximal_set_position_2 = {
+	set_variable = { econ_admin_expenditures_maximal_x = 66 }
+    update_economy_tab = yes
+}
+
+admin_funding_maximal_set_position_3 = {
+	set_variable = { econ_admin_expenditures_maximal_x = 75 }
+    update_economy_tab = yes
+}
+
+admin_funding_maximal_set_position_4 = {
+	set_variable = { econ_admin_expenditures_maximal_x = 84 }
+    update_economy_tab = yes
+}
+
+admin_funding_maximal_set_position_5 = {
+	set_variable = { econ_admin_expenditures_maximal_x = 93  }
+    update_economy_tab = yes
+}
+
+admin_funding_maximal_set_position_6 = {
+	set_variable = { econ_admin_expenditures_maximal_x = 102 }
+    update_economy_tab = yes
+}
+
+admin_funding_maximal_set_position_7 = {
+	set_variable = { econ_admin_expenditures_maximal_x = 111 }
+    update_economy_tab = yes
+}
+
+admin_funding_maximal_set_position_8 = {
+	set_variable = { econ_admin_expenditures_maximal_x = 120 }
+    update_economy_tab = yes
+}
+
+admin_funding_maximal_set_position_9 = {
+	set_variable = { econ_admin_expenditures_maximal_x = 129 }
+    update_economy_tab = yes
+}
+
+admin_funding_maximal_set_position_10 = {
+	set_variable = { econ_admin_expenditures_maximal_x = 138 }
+    update_economy_tab = yes
+}
+
+admin_funding_maximal_set_position_11 = {
+	set_variable = { econ_admin_expenditures_maximal_x = 147 }
+    update_economy_tab = yes
+}
+
+admin_funding_maximal_set_position_12 = {
+	set_variable = { econ_admin_expenditures_maximal_x = 156 }
+    update_economy_tab = yes
+}
+
+admin_funding_maximal_set_position_13 = {
+	set_variable = { econ_admin_expenditures_maximal_x = 165 }
+    update_economy_tab = yes
+}
+
+admin_funding_maximal_set_position_14 = {
+	set_variable = { econ_admin_expenditures_maximal_x = 174 }
+    update_economy_tab = yes
+}
+
+admin_funding_maximal_set_position_15 = {
+	set_variable = { econ_admin_expenditures_maximal_x = 183  }
+    update_economy_tab = yes
+}
+
+admin_funding_maximal_set_position_16 = {
+	set_variable = { econ_admin_expenditures_maximal_x = 192 }
+    update_economy_tab = yes
+}
+
+admin_funding_maximal_set_position_17 = {
+	set_variable = { econ_admin_expenditures_maximal_x = 201 }
+    update_economy_tab = yes
+}
+
+admin_funding_maximal_set_position_18 = {
+	set_variable = { econ_admin_expenditures_maximal_x = 210 }
+    update_economy_tab = yes
+}
+
+admin_funding_maximal_set_position_19 = {
+	set_variable = { econ_admin_expenditures_maximal_x = 219 }
+    update_economy_tab = yes
+}
+
+admin_funding_maximal_set_position_20 = {
+	set_variable = { econ_admin_expenditures_maximal_x = 228 }
+    update_economy_tab = yes
+}
+
+admin_funding_minimal_set_position_0 = {
+	set_variable = { econ_admin_expenditures_minimal_x = 48 }
+    update_economy_tab = yes
+}
+
+admin_funding_minimal_set_position_1 = {
+	set_variable = { econ_admin_expenditures_minimal_x = 57 }
+    update_economy_tab = yes
+}
+
+admin_funding_minimal_set_position_2 = {
+	set_variable = { econ_admin_expenditures_minimal_x = 66 }
+    update_economy_tab = yes
+}
+
+admin_funding_minimal_set_position_3 = {
+	set_variable = { econ_admin_expenditures_minimal_x = 75 }
+    update_economy_tab = yes
+}
+
+admin_funding_minimal_set_position_4 = {
+	set_variable = { econ_admin_expenditures_minimal_x = 84 }
+    update_economy_tab = yes
+}
+
+admin_funding_minimal_set_position_5 = {
+	set_variable = { econ_admin_expenditures_minimal_x = 93  }
+    update_economy_tab = yes
+}
+
+admin_funding_minimal_set_position_6 = {
+	set_variable = { econ_admin_expenditures_minimal_x = 102 }
+    update_economy_tab = yes
+}
+
+admin_funding_minimal_set_position_7 = {
+	set_variable = { econ_admin_expenditures_minimal_x = 111 }
+    update_economy_tab = yes
+}
+
+admin_funding_minimal_set_position_8 = {
+	set_variable = { econ_admin_expenditures_minimal_x = 120 }
+    update_economy_tab = yes
+}
+
+admin_funding_minimal_set_position_9 = {
+	set_variable = { econ_admin_expenditures_minimal_x = 129 }
+    update_economy_tab = yes
+}
+
+admin_funding_minimal_set_position_10 = {
+	set_variable = { econ_admin_expenditures_minimal_x = 138 }
+    update_economy_tab = yes
+}
+
+admin_funding_minimal_set_position_11 = {
+	set_variable = { econ_admin_expenditures_minimal_x = 147 }
+    update_economy_tab = yes
+}
+
+admin_funding_minimal_set_position_12 = {
+	set_variable = { econ_admin_expenditures_minimal_x = 156 }
+    update_economy_tab = yes
+}
+
+admin_funding_minimal_set_position_13 = {
+	set_variable = { econ_admin_expenditures_minimal_x = 165 }
+    update_economy_tab = yes
+}
+
+admin_funding_minimal_set_position_14 = {
+	set_variable = { econ_admin_expenditures_minimal_x = 174 }
+    update_economy_tab = yes
+}
+
+admin_funding_minimal_set_position_15 = {
+	set_variable = { econ_admin_expenditures_minimal_x = 183  }
+    update_economy_tab = yes
+}
+
+admin_funding_minimal_set_position_16 = {
+	set_variable = { econ_admin_expenditures_minimal_x = 192 }
+    update_economy_tab = yes
+}
+
+admin_funding_minimal_set_position_17 = {
+	set_variable = { econ_admin_expenditures_minimal_x = 201 }
+    update_economy_tab = yes
+}
+
+admin_funding_minimal_set_position_18 = {
+	set_variable = { econ_admin_expenditures_minimal_x = 210 }
+    update_economy_tab = yes
+}
+
+admin_funding_minimal_set_position_19 = {
+	set_variable = { econ_admin_expenditures_minimal_x = 219 }
+    update_economy_tab = yes
+}
+
+admin_funding_minimal_set_position_20 = {
+	set_variable = { econ_admin_expenditures_minimal_x = 228 }
+    update_economy_tab = yes
+}
+
+# Test
+SAMPLE_add_random_point_to_line = {
+	# Adds a random point to the line graph
+
+	# This count is displayed as an x-axis label, increment it
+	add_to_variable = { SAMPLE_count = 1 }
+
+	# We keep track of the last y position so we can calculate the slope
+	set_variable = { SAMPLE_last_y_position = SAMPLE_y_position }
+	
+	# Random new y position, 10-90
+	set_variable = { SAMPLE_y_position = random }
+	multiply_variable = { SAMPLE_y_position = 80 }
+	add_to_variable = { SAMPLE_y_position = 10 }
+	round_variable = SAMPLE_y_position
+
+	# Prune arrays so they hold at most 20 elements
+	if = {
+		limit = {
+			check_variable = { SAMPLE_count > 20 }
+		}
+		remove_from_array = { array = SAMPLE_graph_offsets index = 0 }
+		remove_from_array = { array = SAMPLE_graph_slopes index = 0 }
+		remove_from_array = { array = SAMPLE_numbers index = 0 }
+	}
+
+	# The y position offset is the inverse of the y position
+	set_temp_variable = { offset = SAMPLE_last_y_position }
+	multiply_temp_variable = { offset = -1 }
+	add_to_array = { SAMPLE_graph_offsets = offset }
+
+	# The 'slope' here is simply the difference between the current y value and the last one, divided by 2 plus 50
+	# These last two changes are needed for the shader
+	set_temp_variable = { diff = SAMPLE_y_position }
+	subtract_from_temp_variable = { diff = SAMPLE_last_y_position }
+	divide_temp_variable = { diff = 2 }
+	add_to_temp_variable = { diff = 50 }
+	add_to_array = { SAMPLE_graph_slopes = diff }
+	
+	add_to_array = { SAMPLE_numbers = SAMPLE_count }
+	add_to_variable = { IK_economy_GUI_dirty = 1 }
+}
+
+econ_add_gdp_to_graph = {
+	add_to_array = { gdp_numbers = gdp }
+	if = {
+		limit = { 
+			check_variable = { gdp_numbers^num > 21 }
+		}
+		remove_from_array = { array = gdp_numbers index = 0 }
+	}
+
+	econ_rerender_gdp_graph = yes
+}
+
+econ_rerender_gdp_graph = {
+	clear_array = gdp_graph_offsets
+	clear_array = gdp_graph_slopes
+
+	# Find the maximum and minimum GDP values for the graph
+	set_temp_variable = { min = gdp_numbers^0 }
+    set_temp_variable = { max = gdp_numbers^0 }
+    for_loop_effect = {
+        start = 1
+        end = gdp_numbers^num
+        value = i
+
+        if = {
+            limit = { check_variable = { gdp_numbers^i > max } }
+            set_temp_variable = { max = gdp_numbers^i }
+        }
+        if = {
+            limit = { check_variable = { gdp_numbers^i < min } }
+            set_temp_variable = { min = gdp_numbers^i }
+        }
+    }
+
+	# Simplified version of the range-finding code from Brazil
+	# Feel free to move or modify
+	# Our range is (min value / 1.1) - (max value * 1.1)
+	multiply_temp_variable = { max = 1.1 }
+	divide_temp_variable = { min = 1.1 }
+
+	set_temp_variable = { range = max }
+    subtract_from_temp_variable = { range = min }
+
+	# Divide the range into 5 equally sized chunks
+	set_temp_variable = { display_increment = range }
+	divide_temp_variable = { display_increment = 5 }
+
+	set_variable = { gdp_band_1_display = min }
+	set_variable = { gdp_band_2_display = gdp_band_1_display }
+	add_to_variable = { gdp_band_2_display = display_increment }
+	set_variable = { gdp_band_3_display = gdp_band_2_display }
+	add_to_variable = { gdp_band_3_display = display_increment }
+	set_variable = { gdp_band_4_display = gdp_band_3_display }
+	add_to_variable = { gdp_band_4_display = display_increment }
+	set_variable = { gdp_band_5_display = gdp_band_4_display }
+	add_to_variable = { gdp_band_5_display = display_increment }
+	set_variable = { gdp_band_6_display = gdp_band_5_display }
+	add_to_variable = { gdp_band_6_display = display_increment }
+
+	for_loop_effect = {
+        start = 1
+        end = gdp_numbers^num
+		value = j
+
+		set_temp_variable = { i = j }
+		subtract_from_temp_variable = { i = 1 }
+
+		# Grab the two points we'll use for each line segment
+		set_temp_variable = { vi = gdp_numbers^i }
+		set_temp_variable = { vj = gdp_numbers^j }
+
+		# The adjusted value is in the range 0-100
+		# v' = 100 * ((v - min) / range)
+		subtract_from_temp_variable = { vi = min }
+		subtract_from_temp_variable = { vj = min }
+		divide_temp_variable = { vi = range }
+		divide_temp_variable = { vj = range }
+		multiply_temp_variable = { vi = 100 }
+		multiply_temp_variable = { vj = 100 }
+		round_variable = vi
+		round_variable = vj
+
+		set_temp_variable = { offset = vi }
+		multiply_temp_variable = { offset = -1 }
+		add_to_array = { gdp_graph_offsets = offset }
+
+		set_temp_variable = { diff = vj }
+		subtract_from_temp_variable = { diff = vi }
+		divide_temp_variable = { diff = 2 }
+		add_to_temp_variable = { diff = 50 }
+		add_to_array = { gdp_graph_slopes = diff }
+	}
+
+	add_to_variable = { IK_economy_GUI_dirty = 1 }
+}
+
+econ_calculate_graph_month = {
+	
+    add_to_array = { econ_graph_months = econ_graph_month }
+
+	if = {
+		limit = { 
+			check_variable = { econ_graph_months^num > 21 }
+		}
+		remove_from_array = { array = econ_graph_months index = 0 }
+	}
+
+    add_to_variable = { econ_graph_month = 1 }
+}
+
+econ_add_debt_to_graph = {
+	add_to_array = { debt_numbers = national_debt }
+	if = {
+		limit = { 
+			check_variable = { debt_numbers^num > 21 }
+		}
+		remove_from_array = { array = debt_numbers index = 0 }
+	}
+
+	econ_rerender_debt_graph = yes
+}
+
+econ_rerender_debt_graph = {
+	clear_array = debt_graph_offsets
+	clear_array = debt_graph_slopes
+
+	# Find the maximum and minimum debt values for the graph
+	set_temp_variable = { min = debt_numbers^0 }
+    set_temp_variable = { max = debt_numbers^0 }
+    for_loop_effect = {
+        start = 1
+        end = debt_numbers^num
+        value = i
+
+        if = {
+            limit = { check_variable = { debt_numbers^i > max } }
+            set_temp_variable = { max = debt_numbers^i }
+        }
+        if = {
+            limit = { check_variable = { debt_numbers^i < min } }
+            set_temp_variable = { min = debt_numbers^i }
+        }
+    }
+
+	# Simplified version of the range-finding code from Brazil
+	# Feel free to move or modify
+	# Our range is (min value / 1.1) - (max value * 1.1)
+	multiply_temp_variable = { max = 1.1 }
+	divide_temp_variable = { min = 1.1 }
+
+	set_temp_variable = { range = max }
+    subtract_from_temp_variable = { range = min }
+
+	# Divide the range into 5 equally sized chunks
+	set_temp_variable = { display_increment = range }
+	divide_temp_variable = { display_increment = 5 }
+
+	set_variable = { debt_band_1_display = min }
+	set_variable = { debt_band_2_display = debt_band_1_display }
+	add_to_variable = { debt_band_2_display = display_increment }
+	set_variable = { debt_band_3_display = debt_band_2_display }
+	add_to_variable = { debt_band_3_display = display_increment }
+	set_variable = { debt_band_4_display = debt_band_3_display }
+	add_to_variable = { debt_band_4_display = display_increment }
+	set_variable = { debt_band_5_display = debt_band_4_display }
+	add_to_variable = { debt_band_5_display = display_increment }
+	set_variable = { debt_band_6_display = debt_band_5_display }
+	add_to_variable = { debt_band_6_display = display_increment }
+
+	for_loop_effect = {
+        start = 1
+        end = debt_numbers^num
+		value = j
+
+		set_temp_variable = { i = j }
+		subtract_from_temp_variable = { i = 1 }
+
+		# Grab the two points we'll use for each line segment
+		set_temp_variable = { vi = debt_numbers^i }
+		set_temp_variable = { vj = debt_numbers^j }
+
+		# The adjusted value is in the range 0-100
+		# v' = 100 * ((v - min) / range)
+		subtract_from_temp_variable = { vi = min }
+		subtract_from_temp_variable = { vj = min }
+		divide_temp_variable = { vi = range }
+		divide_temp_variable = { vj = range }
+		multiply_temp_variable = { vi = 100 }
+		multiply_temp_variable = { vj = 100 }
+		round_variable = vi
+		round_variable = vj
+
+		set_temp_variable = { offset = vi }
+		multiply_temp_variable = { offset = -1 }
+		add_to_array = { debt_graph_offsets = offset }
+
+		set_temp_variable = { diff = vj }
+		subtract_from_temp_variable = { diff = vi }
+		divide_temp_variable = { diff = 2 }
+		add_to_temp_variable = { diff = 50 }
+		add_to_array = { debt_graph_slopes = diff }
+	}
+
+	add_to_variable = { IK_economy_GUI_dirty = 1 }
+}
+
+# NOTE: We no longer rely on these values since we compute them every time the graph is redrawn
+econ_simulate_dynamic_y_value = {
+	### This is PhD worthy coding right here y'all
+	### - Pacifica
+	set_variable = { gdp_graph_divisor = 33 }
+	set_variable = { gdp_y_position = gdp }
+	divide_variable = { gdp_graph_divisor = gdp_y_position }
+	
+	set_variable = { debt_graph_divisor = 10 }
+	set_variable = { debt_y_position = national_debt }
+	divide_variable = { debt_graph_divisor = debt_y_position }
+
+	### Yes, it actually works this way. Tell my CompSci professor I'm sorry.
+	### Fucking code SUCKS
+	set_variable = { gdp_band_1_display = gdp_y_position }
+	set_variable = { gdp_band_2_display = gdp_y_position }
+	set_variable = { gdp_band_3_display = gdp_y_position }
+	set_variable = { gdp_band_4_display = gdp_y_position }
+	set_variable = { gdp_band_5_display = gdp_y_position }
+	set_variable = { gdp_band_6_display = gdp_y_position }
+
+	multiply_variable = { gdp_band_1_display = 0.667 }
+	multiply_variable = { gdp_band_3_display = 1.5 }
+	multiply_variable = { gdp_band_4_display = 2 }
+	multiply_variable = { gdp_band_5_display = 2.5 }
+	multiply_variable = { gdp_band_6_display = 3 }
+
+	if = {
+		limit = {
+			check_variable = { gdp_band_1_display > 100 }
+		}
+		divide_variable = { gdp_band_1_display = 10 }
+	}
+	else = {
+		set_country_flag = gdp_1_div_10
+	}
+	
+	if = {
+		limit = {
+			check_variable = { gdp_band_2_display > 100 }
+		}
+		divide_variable = { gdp_band_2_display = 10 }
+	}
+	else = {
+		set_country_flag = gdp_2_div_10
+	}
+	
+	if = {
+		limit = {
+			check_variable = { gdp_band_3_display > 100 }
+		}
+		divide_variable = { gdp_band_3_display = 10 }
+	}
+	else = {
+		set_country_flag = gdp_3_div_10
+	}
+	
+	if = {
+		limit = {
+			check_variable = { gdp_band_4_display > 100 }
+		}
+		divide_variable = { gdp_band_4_display = 10 }
+	}
+	else = {
+		set_country_flag = gdp_4_div_10
+	}
+
+	if = {
+		limit = {
+			check_variable = { gdp_band_5_display > 100 }
+		}
+		divide_variable = { gdp_band_5_display = 10 }
+	}
+	else = {
+		set_country_flag = gdp_5_div_10
+	}
+	
+	if = {
+		limit = {
+			check_variable = { gdp_band_6_display > 100 }
+		}
+		divide_variable = { gdp_band_6_display = 10 }
+	}
+	else = {
+		set_country_flag = gdp_6_div_10
+	}
+
+	round_variable = gdp_band_1_display
+	round_variable = gdp_band_2_display
+	round_variable = gdp_band_3_display
+	round_variable = gdp_band_4_display
+	round_variable = gdp_band_5_display
+	round_variable = gdp_band_6_display
+	
+	if = {
+		limit = {
+			NOT = {
+				has_country_flag = gdp_1_div_10
+			}
+		}
+		multiply_variable = { gdp_band_1_display = 10 }
+	}
+	
+	if = {
+		limit = {
+			NOT = {
+				has_country_flag = gdp_2_div_10
+			}
+		}
+		multiply_variable = { gdp_band_2_display = 10 }
+	}
+	
+	if = {
+		limit = {
+			NOT = {
+				has_country_flag = gdp_3_div_10
+			}
+		}
+		multiply_variable = { gdp_band_3_display = 10 }
+	}
+	
+	if = {
+		limit = {
+			NOT = {
+				has_country_flag = gdp_4_div_10
+			}
+		}
+		multiply_variable = { gdp_band_4_display = 10 }
+	}
+
+	if = {
+		limit = {
+			NOT = {
+				has_country_flag = gdp_5_div_10
+			}
+		}
+		multiply_variable = { gdp_band_5_display = 10 }
+	}
+	
+	if = {
+		limit = {
+			NOT = {
+				has_country_flag = gdp_6_div_10
+			}
+		}
+		multiply_variable = { gdp_band_6_display = 10 }
+	}
+	
+	set_variable = { debt_band_1_display = debt_y_position }
+	set_variable = { debt_band_2_display = debt_y_position }
+	set_variable = { debt_band_3_display = debt_y_position }
+	set_variable = { debt_band_4_display = debt_y_position }
+	set_variable = { debt_band_5_display = debt_y_position }
+	set_variable = { debt_band_6_display = debt_y_position }
+
+	multiply_variable = { debt_band_1_display = 0.5 }
+	multiply_variable = { debt_band_3_display = 2 }
+	multiply_variable = { debt_band_4_display = 4 }
+	multiply_variable = { debt_band_5_display = 6 }
+	multiply_variable = { debt_band_6_display = 8 }
+
+	if = {
+		limit = {
+			check_variable = { debt_band_1_display > 100 }
+		}
+		divide_variable = { debt_band_1_display = 10 }
+	}
+	else = {
+		set_country_flag = debt_1_div_10
+	}
+	
+	if = {
+		limit = {
+			check_variable = { debt_band_2_display > 100 }
+		}
+		divide_variable = { debt_band_2_display = 10 }
+	}
+	else = {
+		set_country_flag = debt_2_div_10
+	}
+	
+	if = {
+		limit = {
+			check_variable = { debt_band_3_display > 100 }
+		}
+		divide_variable = { debt_band_3_display = 10 }
+	}
+	else = {
+		set_country_flag = debt_3_div_10
+	}
+	
+	if = {
+		limit = {
+			check_variable = { debt_band_4_display > 100 }
+		}
+		divide_variable = { debt_band_4_display = 10 }
+	}
+	else = {
+		set_country_flag = debt_4_div_10
+	}
+
+	if = {
+		limit = {
+			check_variable = { debt_band_5_display > 100 }
+		}
+		divide_variable = { debt_band_5_display = 10 }
+	}
+	else = {
+		set_country_flag = debt_5_div_10
+	}
+	
+	if = {
+		limit = {
+			check_variable = { debt_band_6_display > 100 }
+		}
+		divide_variable = { debt_band_6_display = 10 }
+	}
+	else = {
+		set_country_flag = debt_6_div_10
+	}
+
+	round_variable = debt_band_1_display
+	round_variable = debt_band_2_display
+	round_variable = debt_band_3_display
+	round_variable = debt_band_4_display
+	round_variable = debt_band_5_display
+	round_variable = debt_band_6_display
+
+	if = {
+		limit = {
+			NOT = {
+				has_country_flag = debt_1_div_10
+			}
+		}
+		multiply_variable = { debt_band_1_display = 10 }
+	}
+	
+	if = {
+		limit = {
+			NOT = {
+				has_country_flag = debt_2_div_10
+			}
+		}
+		multiply_variable = { debt_band_2_display = 10 }
+	}
+	
+	if = {
+		limit = {
+			NOT = {
+				has_country_flag = debt_3_div_10
+			}
+		}
+		multiply_variable = { debt_band_3_display = 10 }
+	}
+	
+	if = {
+		limit = {
+			NOT = {
+				has_country_flag = debt_4_div_10
+			}
+		}
+		multiply_variable = { debt_band_4_display = 10 }
+	}
+
+	if = {
+		limit = {
+			NOT = {
+				has_country_flag = debt_5_div_10
+			}
+		}
+		multiply_variable = { debt_band_5_display = 10 }
+	}
+	
+	if = {
+		limit = {
+			NOT = {
+				has_country_flag = debt_6_div_10
+			}
+		}
+		multiply_variable = { debt_band_6_display = 10 }
+	}
+	
+	clr_country_flag = gdp_1_div_10
+	clr_country_flag = gdp_2_div_10
+	clr_country_flag = gdp_3_div_10
+	clr_country_flag = gdp_4_div_10
+	clr_country_flag = gdp_5_div_10
+	clr_country_flag = gdp_6_div_10
+
+	clr_country_flag = debt_1_div_10
+	clr_country_flag = debt_2_div_10
+	clr_country_flag = debt_3_div_10
+	clr_country_flag = debt_4_div_10
+	clr_country_flag = debt_5_div_10
+	clr_country_flag = debt_6_div_10
+}
+
+generate_econ_rankings = {
+	every_country = {
+		limit = { econ_can_use_economy_system = yes }
+		add_to_array = { ZZZ.econ_countries = THIS }
+	}
+	
+	ZZZ = {
+		# ===================================== #
+		# Randomized Iterative Quicksort by Yard1
+		# ALL CREDIT GOES TO YARD1
+		# Modifications done by Lamounier
+	
+			set_variable = { high = econ_countries^num }
+			subtract_from_variable = { high = 1 }
+			set_variable = { low = 0 }
+	
+			set_temp_variable = { stack_size = high }
+			subtract_from_temp_variable = { stack_size = low }
+			add_to_temp_variable = { stack_size = 1 }
+			resize_temp_array = {
+				array = stack
+				value = 0
+				size = stack_size
+			}
+	
+			set_temp_variable = { top = 0 }
+			set_temp_variable = { stack^top = low }
+			add_to_temp_variable = { top = 1 }
+			set_temp_variable = { stack^top = high }
+			while_loop_effect = {
+				limit = { 
+					check_variable = {
+						var = top
+						value = 0
+						compare = greater_than_or_equals
+					}
+				}
+				set_variable = { high = stack^top }
+				subtract_from_temp_variable = { top = 1 }
+				set_variable = { low = stack^top }
+				subtract_from_temp_variable = { top = 1 }
+	
+				##### PARTITON #####
+				set_variable = { random_pivot = random }
+				multiply_variable = { random_pivot = high }
+				round_variable = random_pivot
+				add_to_variable = { random_pivot = low }
+				clamp_variable = {
+					var = random_pivot
+					min = low
+					max = high
+				}
+				set_temp_variable = { swap = econ_countries^high }
+				set_variable = { econ_countries^high = econ_countries^random_pivot }
+				set_variable = { econ_countries^random_pivot = swap }
+	
+				set_temp_variable = { idx = low }
+				subtract_from_temp_variable = { idx = 1 }
+	
+				var:econ_countries^high = {
+					set_variable = { PREV.min = GDP }
+				}
+			
+				for_loop_effect = {
+					start = low
+					end = high
+					var:econ_countries^v = {
+						set_variable = { PREV.tmp = GDP }
+					}
+					if = {
+						limit = {
+							check_variable = {
+								var = tmp
+								value = min
+								compare = greater_than_or_equals
+							}
+						}
+						add_to_temp_variable = { idx = 1 }
+						set_temp_variable = { swap = econ_countries^idx }
+						set_variable = { econ_countries^idx = econ_countries^v }
+						set_variable = { econ_countries^v = swap }
+					}
+				}
+	
+				add_to_temp_variable = { idx = 1 }
+				set_temp_variable = { swap = econ_countries^idx }
+				set_variable = { econ_countries^idx = econ_countries^high }
+				set_variable = { econ_countries^high = swap }
+	
+				set_temp_variable = { qs_partition_return = idx }
+				##### ======== #####
+				
+				set_temp_variable = { qs_partition_return_plus_1 = qs_partition_return }
+				set_temp_variable = { qs_partition_return_minus_1 = qs_partition_return }
+				add_to_temp_variable = { qs_partition_return_plus_1 = 1 } 
+				subtract_from_temp_variable = { qs_partition_return_minus_1 = 1 } 
+	
+				if = {
+					limit = { check_variable = { qs_partition_return_minus_1 > low } }
+					add_to_temp_variable = { top = 1 }
+					set_temp_variable = { stack^top = low }
+					add_to_temp_variable = { top = 1 }
+					set_temp_variable = { stack^top = qs_partition_return_minus_1 }
+				}
+	
+				if = {
+					limit = { check_variable = { qs_partition_return_plus_1 < high } }
+					add_to_temp_variable = { top = 1 }
+					set_temp_variable = { stack^top = qs_partition_return_plus_1 }
+					add_to_temp_variable = { top = 1 }
+					set_temp_variable = { stack^top = high }
+				}
+			}
+			clear_variable = min
+			clear_variable = tmp
+			clear_variable = random_pivot
+			clear_variable = high
+			clear_variable = low
+		# ===================================== #
+	
+		# Set up ranking positions
+		for_each_scope_loop = {
+			array = econ_countries
+			add_to_variable = { ZZZ.econ_countries_index = 1 }
+			set_variable = { econ_ranking = ZZZ.econ_countries_index }
+		}
+		clear_variable = econ_countries_index
+		clear_array = econ_countries
+	}
+}

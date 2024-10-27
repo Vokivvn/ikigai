@@ -1,0 +1,164 @@
+# Credit to Yard1 for Pie Chart Framework - https://github.com/Yard1/HoI4-Scripted-GUI-Pie-Chart
+
+update_all_econ_pie_charts = {
+	create_pie_chart_economic_revenue = yes
+	create_pie_chart_economic_employment = yes
+	create_pie_chart_economic_expenditures = yes
+}
+
+create_pie_chart_economic_revenue = {
+	log = "---BEGIN PIE CHART SET UP---"
+	clear_array = pie_chart_economic_revenue
+	resize_array = {
+		array = pie_chart_economic_revenue
+		value = 1 # 1 is value for communist frame, so we don't have to make a loop for it
+		size = 100 # 100 pieces, each percent is one piece
+	}
+	
+	set_temp_variable = { revenue_income = income_revenue_percent } # This is where the variable is set, put the correct value here and rename the temp_var
+	round_temp_variable = revenue_income
+	log = "revenue_income is [?revenue_income]"
+
+	set_temp_variable = { revenue_business = business_revenue_percent } # This is where the variable is set, put the correct value here and rename the temp_var
+	round_temp_variable = revenue_business 
+	log = "revenue_business is [?revenue_business]"
+	set_variable = { ROOT.last_idx = revenue_income }
+	add_to_temp_variable = { revenue_business = ROOT.last_idx }
+	log = "ROOT.last_idx is [?ROOT.last_idx]"
+	for_loop_effect = {
+		start = ROOT.last_idx
+		end = revenue_business
+		set_variable = { pie_chart_economic_revenue^v = 2 }
+		add_to_variable = { ROOT.last_idx = 1 }
+	}
+
+	set_temp_variable = { revenue_other = other_revenue_percent } # This is where the variable is set, put the correct value here and rename the temp_var
+	round_temp_variable = revenue_other
+	log = "revenue_other is [?revenue_other]"
+	add_to_temp_variable = { revenue_other = ROOT.last_idx }
+	log = "ROOT.last_idx is [?ROOT.last_idx]"
+	for_loop_effect = {
+		start = ROOT.last_idx
+		end = revenue_other
+		set_variable = { pie_chart_economic_revenue^v = 3 }
+		add_to_variable = { ROOT.last_idx = 1 }
+	}
+
+	clear_variable = ROOT.last_idx
+	add_to_variable = { IK_economy_GUI_dirty = 1 }
+	log = "---END PIE CHART SET UP---"
+}
+
+create_pie_chart_economic_expenditures = {
+	log = "---BEGIN PIE CHART SET UP---"
+	clear_array = pie_chart_economic_expenditures
+	resize_array = {
+		array = pie_chart_economic_expenditures
+		value = 1 # 1 is value for communist frame, so we don't have to make a loop for it
+		size = 100 # 100 pieces, each percent is one piece
+	}
+	
+	set_temp_variable = { expenditures_mil = military_expenditures_percent } # This is where the variable is set, put the correct value here and rename the temp_var
+	round_temp_variable = expenditures_mil
+	log = "expenditures_mil is [?expenditures_mil]"
+
+	set_temp_variable = { expenditures_civ = civilian_expenditures_percent } # This is where the variable is set, put the correct value here and rename the temp_var
+	round_temp_variable = expenditures_civ 
+	log = "expenditures_civ is [?expenditures_civ]"
+	set_variable = { ROOT.last_idx = expenditures_mil }
+	add_to_temp_variable = { expenditures_civ = ROOT.last_idx }
+	log = "ROOT.last_idx is [?ROOT.last_idx]"
+	for_loop_effect = {
+		start = ROOT.last_idx
+		end = expenditures_civ
+		set_variable = { pie_chart_economic_expenditures^v = 2 }
+		add_to_variable = { ROOT.last_idx = 1 }
+	}
+
+	set_temp_variable = { expenditures_con = construction_expenditures_percent } # This is where the variable is set, put the correct value here and rename the temp_var
+	round_temp_variable = expenditures_con
+	log = "expenditures_con is [?expenditures_con]"
+	add_to_temp_variable = { expenditures_con = ROOT.last_idx }
+	log = "ROOT.last_idx is [?ROOT.last_idx]"
+	for_loop_effect = {
+		start = ROOT.last_idx
+		end = expenditures_con
+		set_variable = { pie_chart_economic_expenditures^v = 3 }
+		add_to_variable = { ROOT.last_idx = 1 }
+	}
+	
+	set_temp_variable = { expenditures_mis = misc_expenditures_percent } # This is where the variable is set, put the correct value here and rename the temp_var
+	round_temp_variable = expenditures_mis
+	log = "expenditures_con is [?expenditures_mis]"
+	add_to_temp_variable = { expenditures_mis = ROOT.last_idx }
+	log = "ROOT.last_idx is [?ROOT.last_idx]"
+	for_loop_effect = {
+		start = ROOT.last_idx
+		end = expenditures_mis
+		set_variable = { pie_chart_economic_expenditures^v = 4 }
+		add_to_variable = { ROOT.last_idx = 1 }
+	}
+
+	clear_variable = ROOT.last_idx
+	add_to_variable = { IK_economy_GUI_dirty = 1 }
+	log = "---END PIE CHART SET UP---"
+}
+
+create_pie_chart_economic_employment = {
+	log = "---BEGIN PIE CHART SET UP---"
+	clear_array = pie_chart_economic_employment
+	resize_array = {
+		array = pie_chart_economic_employment
+		value = 1 # 1 is value for communist frame, so we don't have to make a loop for it
+		size = 100 # 100 pieces, each percent is one piece
+	}
+	
+	set_temp_variable = { employment_1 = 0.30 } # This is where the variable is set, put the correct value here and rename the temp_var
+	multiply_temp_variable = { employment_1 = 100 }
+	round_temp_variable = employment_1
+	log = "employment_1 is [?employment_1]"
+
+	set_temp_variable = { employment_2 = 0.55 } # This is where the variable is set, put the correct value here and rename the temp_var
+	multiply_temp_variable = { employment_2 = 100 }
+	round_temp_variable = employment_2 
+	log = "employment_2 is [?employment_2]"
+	set_variable = { ROOT.last_idx = employment_1 }
+	add_to_temp_variable = { employment_2 = ROOT.last_idx }
+	log = "ROOT.last_idx is [?ROOT.last_idx]"
+	for_loop_effect = {
+		start = ROOT.last_idx
+		end = employment_2
+		set_variable = { pie_chart_economic_employment^v = 2 }
+		add_to_variable = { ROOT.last_idx = 1 }
+	}
+
+	set_temp_variable = { employment_3 = 0.05 } # This is where the variable is set, put the correct value here and rename the temp_var
+	multiply_temp_variable = { employment_3 = 100 }
+	round_temp_variable = employment_3
+	log = "employment_3 is [?employment_3]"
+	add_to_temp_variable = { employment_3 = ROOT.last_idx }
+	log = "ROOT.last_idx is [?ROOT.last_idx]"
+	for_loop_effect = {
+		start = ROOT.last_idx
+		end = employment_3
+		set_variable = { pie_chart_economic_employment^v = 3 }
+		add_to_variable = { ROOT.last_idx = 1 }
+	}
+	
+	set_temp_variable = { employment_4 = 0.10 } # This is where the variable is set, put the correct value here and rename the temp_var
+	multiply_temp_variable = { employment_4 = 100 }
+	round_temp_variable = employment_4
+	log = "employment_3 is [?employment_4]"
+	add_to_temp_variable = { employment_4 = ROOT.last_idx }
+	log = "ROOT.last_idx is [?ROOT.last_idx]"
+	for_loop_effect = {
+		start = ROOT.last_idx
+		end = employment_4
+		set_variable = { pie_chart_economic_employment^v = 4 }
+		add_to_variable = { ROOT.last_idx = 1 }
+	}
+
+	clear_variable = ROOT.last_idx
+	add_to_variable = { IK_economy_GUI_dirty = 1 }
+	log = "---END PIE CHART SET UP---"
+}

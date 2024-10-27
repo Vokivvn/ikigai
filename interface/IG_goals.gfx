@@ -1,0 +1,273 @@
+spriteTypes = {
+	
+	SpriteType = {
+		name = "GFX_goal_UPK_Nighthawks"
+		texturefile = "gfx/interface/goals/nighthawks.dds"
+	}
+	SpriteType = {
+		name = "GFX_goal_UPK_Kowaian_Gothic"
+		texturefile = "gfx/interface/goals/kowaian_gothic.dds"
+	}
+	SpriteType = {
+		name = "GFX_goal_UPK_Game_Of_Cards"
+		texturefile = "gfx/interface/goals/game_of_cards.dds"
+	}
+	SpriteType = {
+		name = "GFX_goal_UPK_Kowaian_Stagnation"
+		texturefile = "gfx/interface/goals/kowaian_stagnation.dds"
+	}
+	SpriteType = {
+		name = "GFX_goal_UPK_Review_Department_of_Agriculture"
+		texturefile = "gfx/interface/goals/review_department_of_agriculture.dds"
+	}
+	SpriteType = {
+		name = "GFX_goal_UPK_Talk_with_the_Senators"
+		texturefile = "gfx/interface/goals/talk_with_the_senators.dds"
+	}
+	SpriteType = {
+		name = "GFX_goal_UPK_Pull_the_Strings"
+		texturefile = "gfx/interface/goals/pull_the_strings.dds"
+	}
+	SpriteType = {
+		name = "GFX_goal_UPK_Agricultural_Spiral"
+		texturefile = "gfx/interface/goals/agricultural_spiral.dds"
+	}
+	SpriteType = {
+		name = "GFX_goal_UPK_The_Dust_Bowl"
+		texturefile = "gfx/interface/goals/the_dust_bowl.dds"
+	}
+	SpriteType = {
+		name = "GFX_goal_UPK_Blight_Management"
+		texturefile = "gfx/interface/goals/blight_management.dds"
+	}
+	SpriteType = {
+		name = "GFX_goal_UPK_Pass_the_Resolution"
+		texturefile = "gfx/interface/goals/pass_the_resolution.dds"
+	}
+	SpriteType = {
+		name = "GFX_goal_UPK_Bad_can_be_Good"
+		texturefile = "gfx/interface/goals/bad_can_be_good.dds"
+	}
+	SpriteType = {
+		name = "GFX_goal_UPK_A_Presidential_Scare"
+		texturefile = "gfx/interface/goals/a_presidential_scare.dds"
+	}
+	SpriteType = {
+		name = "GFX_goal_UPK_Meet_with_the_Agriculture_Secretary"
+		texturefile = "gfx/interface/goals/meet_with_the_agriculture_secretary.dds"
+	}
+	SpriteType = {
+		name = "GFX_goal_UPK_The_Keys_to_success_are_Lost"
+		texturefile = "gfx/interface/goals/the_keys_to_success_are_lost.dds"
+	}
+	SpriteType = {
+		name = "GFX_goal_UPK_The_Kowaian_Way"
+		texturefile = "gfx/interface/goals/the_kowaian_way.dds"
+	}
+	SpriteType = {
+		name = "GFX_goal_UPK_And_the_Loop_starts_Again"
+		texturefile = "gfx/interface/goals/and_the_loop_starts_again.dds"
+	}
+	SpriteType = {
+		name = "GFX_goal_UPK_To_the_back_of_our_minds"
+		texturefile = "gfx/interface/goals/UPK_To_the_back_of_our_minds.dds"
+	}
+	SpriteType = {
+		name = "GFX_goal_UPK_Eyes_on_Europe"
+		texturefile = "gfx/interface/goals/UPK_Eyes_on_Europe.dds"
+	}
+	SpriteType = {
+		name = "GFX_goal_UPK_Its_Never_going_to_Stop"
+		texturefile = "gfx/interface/goals/UPK_Its_Never_going_to_Stop.dds"
+	}
+	SpriteType = {
+		name = "GFX_goal_UPK_More_support_to_the_Romans"
+		texturefile = "gfx/interface/goals/UPK_More_support_to_the_Romans.dds"
+	}
+	SpriteType = {
+		name = "GFX_goal_UPK_Let_the_Sailors_Sleep"
+		texturefile = "gfx/interface/goals/UPK_Let_the_Sailors_Sleep.dds"
+	}
+	SpriteType = {
+		name = "GFX_goal_UPK_Interijensu_Shirei_in_Germania"
+		texturefile = "gfx/interface/goals/UPK_Interijensu_Shirei_in_Germania.dds"
+	}
+	SpriteType = {
+		name = "GFX_goal_UPK_Where_No_One_Cares"
+		texturefile = "gfx/interface/goals/UPK_Where_No_One_Cares.dds"
+	}
+	SpriteType = {
+		name = "GFX_goal_UPK_Ignore_the_Strikes"
+		texturefile = "gfx/interface/goals/UPK_Ignore_the_Strikes.dds"
+	}
+	SpriteType = {
+		name = "GFX_goal_UPK_Track_Down_the_Opponents_in_the_Army"
+		texturefile = "gfx/interface/goals/UPK_Track_Down_the_Opponents_in_the_Army.dds"
+	}
+	SpriteType = {
+		name = "GFX_goal_UPK_The_Endless_Dreams"
+		texturefile = "gfx/interface/goals/UPK_The_Endless_Dreams.dds"
+	}
+	SpriteType = {
+		name = "GFX_goal_UPK_Change_can_come_later"
+		texturefile = "gfx/interface/goals/UPK_Change_can_come_later.dds"
+	}
+	
+	# Gallia
+	SpriteType = {
+		name = "GFX_goal_GAL_longmarch"
+		texturefile = "gfx/interface/goals/GAL_longmarch.tga"
+	}
+	SpriteType = {
+		name = "GFX_goal_GAL_Nationalism"
+		texturefile = "gfx/interface/goals/GAL_Nationalism.tga"
+	}
+	SpriteType = {
+		name = "GFX_goal_GAL_Freedom"
+		texturefile = "gfx/interface/goals/GAL_Freedom.tga"
+	}
+	SpriteType = {
+		name = "GFX_goal_GAL_Livelihood"
+		texturefile = "gfx/interface/goals/GAL_Livelihood.tga"
+	}
+	SpriteType = {
+		name = "GFX_goal_GAL_Renaissance"
+		texturefile = "gfx/interface/goals/GAL_Renaissance.tga"
+	}
+	SpriteType = {
+		name = "GFX_goal_GAL_Principles_study"
+		texturefile = "gfx/interface/goals/GAL_Principles_study.tga"
+	}
+	SpriteType = {
+		name = "GFX_goal_GAL_political_concerns"
+		texturefile = "gfx/interface/goals/GAL_political_concerns.tga"
+	}
+	SpriteType = {
+		name = "GFX_goal_GAL_close_republican_border"
+		texturefile = "gfx/interface/goals/GAL_close_republican_border.tga"
+	}
+	SpriteType = {
+		name = "GFX_goal_GAL_conscription"
+		texturefile = "gfx/interface/goals/GAL_conscription.tga"
+	}
+	SpriteType = {
+		name = "GFX_goal_GAL_telo_martius_academy"
+		texturefile = "gfx/interface/goals/GAL_telo_martius_academy.tga"
+	}
+	SpriteType = {
+		name = "GFX_goal_GAL_seek_support_japan"
+		texturefile = "gfx/interface/goals/GAL_seek_support_japan.tga"
+	}
+	SpriteType = {
+		name = "GFX_goal_GAL_seek_support_kowai"
+		texturefile = "gfx/interface/goals/GAL_seek_support_kowai.tga"
+	}
+
+
+	### Vietnam
+
+	SpriteType = {
+		name = "GFX_goal_VIN_status_of_economy"
+		texturefile = "gfx/interface/goals/VIN_status_of_economy.dds"
+	}
+
+	SpriteType = {
+		name = "GFX_goal_VIN_securing_new_trade_opportunities"
+		texturefile = "gfx/interface/goals/VIN_securing_new_trade_opportunities.dds"
+	}
+
+	SpriteType = {
+		name = "GFX_goal_VIN_invest_into_cities"
+		texturefile = "gfx/interface/goals/VIN_invest_into_cities.dds"
+	}
+
+	SpriteType = {
+		name = "GFX_goal_VIN_invest_into_countryside"
+		texturefile = "gfx/interface/goals/VIN_invest_into_countryside.dds"
+	}
+
+	SpriteType = {
+		name = "GFX_goal_VIN_stop_mekong_floods"
+		texturefile = "gfx/interface/goals/VIN_stop_mekong_floods.dds"
+	}
+
+	SpriteType = {
+		name = "GFX_goal_VIN_compensate_farmers"
+		texturefile = "gfx/interface/goals/VIN_compensate_farmers.dds"
+	}
+
+	SpriteType = {
+		name = "GFX_goal_VIN_rebuild_the_villages"
+		texturefile = "gfx/interface/goals/VIN_rebuild_the_villages.dds"
+	}
+
+	SpriteType = {
+		name = "GFX_goal_VIN_full_recovery"
+		texturefile = "gfx/interface/goals/VIN_full_recovery.dds"
+	}
+
+	SpriteType = {
+		name = "GFX_goal_VIN_invest_into_coast"
+		texturefile = "gfx/interface/goals/VIN_invest_into_coast.dds"
+	}
+
+	SpriteType = {
+		name = "GFX_goal_VIN_help_farmers_on_red_river_delta"
+		texturefile = "gfx/interface/goals/VIN_help_farmers_on_red_river_delta.dds"
+	}
+
+	SpriteType = {
+		name = "GFX_goal_VIN_clear_the_jungles_of_indochina"
+		texturefile = "gfx/interface/goals/VIN_clear_the_jungles_of_indochina.dds"
+	}
+
+	SpriteType = {
+		name = "GFX_goal_VIN_build_up_hainan"
+		texturefile = "gfx/interface/goals/VIN_build_up_hainan.dds"
+	}
+	
+	SpriteType = {
+		name = "GFX_goal_VIN_riches_of_indies"
+		texturefile = "gfx/interface/goals/VIN_riches_of_indies.dds"
+	}
+
+	SpriteType = {
+		name = "GFX_goal_VIN_exploiting_the_colonies"
+		texturefile = "gfx/interface/goals/VIN_exploiting_the_colonies.dds"
+	}
+
+	SpriteType = {
+		name = "GFX_goal_VIN_bornean_rubber_rush"
+		texturefile = "gfx/interface/goals/VIN_bornean_rubber_rush.dds"
+	}
+
+	SpriteType = {
+		name = "GFX_goal_VIN_form_vcc"
+		texturefile = "gfx/interface/goals/VIN_form_vcc.dds"
+	}
+
+	SpriteType = {
+		name = "GFX_goal_VIN_build_up_hanoi"
+		texturefile = "gfx/interface/goals/VIN_build_up_hanoi.dds"
+	}
+
+	SpriteType = {
+		name = "GFX_goal_VIN_expand_saigons_ports"
+		texturefile = "gfx/interface/goals/VIN_expand_saigons_ports.dds"
+	}
+
+	SpriteType = {
+		name = "GFX_goal_VIN_help_bangkoks_harbours"
+		texturefile = "gfx/interface/goals/VIN_help_bangkoks_harbours.dds"
+	}
+
+	SpriteType = {
+		name = "GFX_goal_VIN_triangle_railway"
+		texturefile = "gfx/interface/goals/VIN_triangle_railway.dds"
+	}
+
+	SpriteType = {
+		name = "GFX_goal_VIN_complete_indochinese_industrialization"
+		texturefile = "gfx/interface/goals/VIN_complete_indochinese_industrialization.dds"
+	}
+}

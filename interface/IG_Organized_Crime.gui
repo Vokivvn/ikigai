@@ -1,0 +1,23 @@
+guiTypes = {
+  containerWindowType = {
+      name = "IG_KOW_organized_crime_container"
+      position = { x = 0 y = 20}
+      size = {
+          width = 500
+          height = 220
+      }
+
+      iconType = {
+          name = "kowai_north_seattle"
+          spriteType = "GFX_IG_kowai_north_seattle"
+          position = {x = 115 y = 0}
+      }
+      iconType = {
+          name = "kowai_south_seattle"
+          spriteType = "GFX_IG_kowai_south_seattle"
+          position = {x = 100 y = 64}
+      }
+
+
+  }
+}

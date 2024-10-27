@@ -1,0 +1,103 @@
+##Credits to Pacifica
+on_actions = {
+	on_startup = {
+		effect = {
+			UPK = {
+				##Variable Initiation
+				set_variable = { GDP = 421.563 } #in billions #already converted to billion
+				set_variable = { GDP_growth = 0.035 }
+				set_variable = { income_tax_rate = 0.138 }
+				set_variable = { business_tax_rate = 0.53 }
+				set_variable = { purchasing_power_gold = 0.0 }
+				set_variable = { unemployment_rate = 0.01 }
+				set_variable = { agri_employment = 0.33 }
+				set_variable = { inds_employment = 0.33 }
+				set_variable = { serv_employment = 0.33 }
+				set_variable = { poverty_rate = 20.4 }
+				set_variable = { econ_poverty_rate_change = 0.15 }
+				set_variable = { total_budget = 0 } #also in billions
+				set_variable = { total_expenditures = 0 }
+				set_variable = { total_expenditures_factor = 0 }
+				set_variable = { civilian_expenditures = 0 }
+				set_variable = { military_expenditures = 0 }
+				set_variable = { construction_expenditures = 0 }
+				set_variable = { civilian_expenditures_factor = 0 }
+				set_variable = { military_expenditures_factor = 0 }
+				set_variable = { construction_expenditures_factor = 0 }
+				set_variable = { money_reserves = 0.0 } #in billions #already converted to billion
+				set_variable = { national_debt = 130.456 } #in billions #already converted to billion
+				set_variable = { debt_ratio = 0 }
+				set_variable = { interest_rates = 0.02 }
+				set_variable = { deficit = 0 }
+				set_variable = { deficit_ratio = 0 }
+				set_variable = { manpower_costs = 0 }
+				set_variable = { military_factory_costs = 0 }
+				set_variable = { misc_income = 0.0 } #already converted to billion
+				set_variable = { misc_costs = 0.0 } #already converted to billion
+
+				initiate_display_vars = yes
+			}
+			JAP = {
+				##Variable Initiation
+				set_variable = { GDP = 365.678 } #in billions #already converted to billion
+				set_variable = { GDP_growth = 0.04 }
+				set_variable = { income_tax_rate = 0.05 }
+				set_variable = { business_tax_rate = 0.05 }
+				set_variable = { total_budget = 0 } #also in billions
+				set_variable = { total_expenditures = 0 }
+				set_variable = { total_expenditures_factor = 0 }
+				set_variable = { civilian_expenditures = 0 }
+				set_variable = { military_expenditures = 0 }
+				set_variable = { construction_expenditures = 0 }
+				set_variable = { civilian_expenditures_factor = 0 }
+				set_variable = { military_expenditures_factor = 0 }
+				set_variable = { construction_expenditures_factor = 0 }
+				set_variable = { money_reserves = 0.0 } #in billions #already converted to billion
+				set_variable = { national_debt = 469.949 } #in billions #already converted to billion
+				set_variable = { debt_ratio = 0 }
+				set_variable = { interest_rates = 0.02 }
+				set_variable = { deficit = 0 }
+				set_variable = { deficit_ratio = 0 }
+				set_variable = { manpower_costs = 0 }
+				set_variable = { military_factory_costs = 0 }
+				set_variable = { misc_income = 0.0 } #already converted to billion
+				set_variable = { misc_costs = 14.0 } #already converted to billion
+
+				initiate_display_vars = yes
+			}
+			VIN = {
+				##Variable Initiation
+				set_variable = { GDP = 289.326 } #in billions #already converted to billion
+				set_variable = { GDP_growth = 0.035 }
+				set_variable = { income_tax_rate = 0.04 }
+				set_variable = { business_tax_rate = 0.04 }
+				set_variable = { total_budget = 0 } #also in billions
+				set_variable = { total_expenditures = 0 }
+				set_variable = { total_expenditures_factor = 0 }
+				set_variable = { civilian_expenditures = 0 }
+				set_variable = { military_expenditures = 0 }
+				set_variable = { construction_expenditures = 0 }
+				set_variable = { civilian_expenditures_factor = 0 }
+				set_variable = { military_expenditures_factor = 0 }
+				set_variable = { construction_expenditures_factor = 0 }
+				set_variable = { money_reserves = 0.0 } #in billions #already converted to billion
+				set_variable = { national_debt = 367.982 } #in billions #already converted to billion
+				set_variable = { debt_ratio = 0 }
+				set_variable = { interest_rates = 0.025 }
+				set_variable = { deficit = 0 }
+				set_variable = { deficit_ratio = 0 }
+				set_variable = { manpower_costs = 0 }
+				set_variable = { military_factory_costs = 0 }
+				set_variable = { misc_income = 0.0 } #already converted to billion
+				set_variable = { misc_costs = 9.0 } #already converted to billion
+
+				initiate_display_vars = yes
+			}
+		}
+	}
+
+	on_startup = {
+		effect = {
+		}
+	}
+}

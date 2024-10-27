@@ -1,0 +1,1218 @@
+# subject id guide
+# 828 - Kongo
+# 822 - Laupula
+# 295 - Leopoldville
+# 660 - Equatorial Africa
+# 819 - South Sudan
+# 539 - Gabon
+# 274 - Ghana
+# 671 - Vietnam
+# 591 - Hainan
+# 670 - Laos
+# 741 - Cambodia
+# 285 - East Xi Feng
+# 325 - Yunnan
+# 289 - Siam
+# 336 - Malaya
+# 334 - Borneo
+# 673 - Sulawesi
+# 668 - The Moluccas
+# 669 - Papua
+# 522 - West Xi Feng
+
+# initial setup of the sphere
+VIN_sphere_initial = {
+	# array of sphere subjects
+	add_to_array = { sphere_array = 828 }
+	add_to_array = { sphere_array = 822 }
+	add_to_array = { sphere_array = 295 }
+	add_to_array = { sphere_array = 660 }
+	add_to_array = { sphere_array = 819 }
+	add_to_array = { sphere_array = 539 }
+	add_to_array = { sphere_array = 274 }
+	add_to_array = { sphere_array = 671 }
+	add_to_array = { sphere_array = 591 }
+	add_to_array = { sphere_array = 670 }
+	add_to_array = { sphere_array = 741 }
+	add_to_array = { sphere_array = 285 }
+	add_to_array = { sphere_array = 325 }
+	add_to_array = { sphere_array = 289 }
+	add_to_array = { sphere_array = 336 }
+	add_to_array = { sphere_array = 334 }
+	add_to_array = { sphere_array = 673 }
+	add_to_array = { sphere_array = 668 }
+	add_to_array = { sphere_array = 669 }
+	add_to_array = { sphere_array = 522 }
+
+	for_each_scope_loop = {
+		array = sphere_array
+
+		generate_state_gdps = yes
+		set_variable = { default_max_loyalty_payment = state_value }
+		multiply_variable = { default_max_loyalty_payment = 0.05 }
+
+		# 0 payments no no no
+		if = {
+			limit = {
+				check_variable = { default_max_loyalty_payment < 0.01 }
+			}
+			set_variable = { default_max_loyalty_payment = 0.005 }
+		}
+
+		multiply_variable = { default_max_loyalty_payment = 1000 } # change to k
+		round_variable = default_max_loyalty_payment
+
+		set_variable = { default_max_suppression_manpower = state_population_k }
+		multiply_variable = { default_max_suppression_manpower = 10 } # approximately 1% of state pop
+		round_variable = default_max_suppression_manpower
+	}
+
+	# Kongo
+	828 = {
+		set_variable = { sphere_loyalty = 43 } # starting loyalty %
+		set_variable = { max_loyalty_payment = default_max_loyalty_payment } # expenses in M needed for 100% loyalty
+
+		set_variable = { sphere_suppression = 57 } # starting suppression %
+		set_variable = { max_suppression_manpower = default_max_suppression_manpower } # manpower needed for 100% suppression
+	}
+	# Laupula
+	822 = {
+		set_variable = { sphere_loyalty = 64 }
+		set_variable = { max_loyalty_payment = default_max_loyalty_payment }
+
+		set_variable = { sphere_suppression = 69 }
+		set_variable = { max_suppression_manpower = default_max_suppression_manpower }
+	}
+	# Leopoldville
+	295 = {
+		set_variable = { sphere_loyalty = 18 }
+		set_variable = { max_loyalty_payment = default_max_loyalty_payment }
+
+		set_variable = { sphere_suppression = 26 }
+		set_variable = { max_suppression_manpower = default_max_suppression_manpower }
+	}
+	# Equatorial Africa
+	660 = {
+		set_variable = { sphere_loyalty = 70 }
+		set_variable = { max_loyalty_payment = default_max_loyalty_payment }
+
+		set_variable = { sphere_suppression = 86 }
+		set_variable = { max_suppression_manpower = default_max_suppression_manpower }
+	}
+	# South Sudan
+	819 = {
+		set_variable = { sphere_loyalty = 12 }
+		set_variable = { max_loyalty_payment = default_max_loyalty_payment }
+
+		set_variable = { sphere_suppression = 22 }
+		set_variable = { max_suppression_manpower = default_max_suppression_manpower }
+	}
+	# Gabon
+	539 = {
+		set_variable = { sphere_loyalty = 25 }
+		set_variable = { max_loyalty_payment = default_max_loyalty_payment }
+
+		set_variable = { sphere_suppression = 42 }
+		set_variable = { max_suppression_manpower = default_max_suppression_manpower }
+	}
+	# Ghana
+	274 = {
+		set_variable = { sphere_loyalty = 76 }
+		set_variable = { max_loyalty_payment = default_max_loyalty_payment }
+
+		set_variable = { sphere_suppression = 53 }
+		set_variable = { max_suppression_manpower = default_max_suppression_manpower }
+	}
+	# Vietnam
+	671 = {
+		set_variable = { sphere_loyalty = 100 }
+		set_variable = { max_loyalty_payment = default_max_loyalty_payment }
+
+		set_variable = { sphere_suppression = 100 }
+		set_variable = { max_suppression_manpower = default_max_suppression_manpower }
+	}
+	# Hainan
+	591 = {
+		set_variable = { sphere_loyalty = 23 }
+		set_variable = { max_loyalty_payment = default_max_loyalty_payment }
+
+		set_variable = { sphere_suppression = 37 }
+		set_variable = { max_suppression_manpower = default_max_suppression_manpower }
+	}
+	# Laos
+	670 = {
+		set_variable = { sphere_loyalty = 95 }
+		set_variable = { max_loyalty_payment = default_max_loyalty_payment }
+
+		set_variable = { sphere_suppression = 95 }
+		set_variable = { max_suppression_manpower = default_max_suppression_manpower }
+	}
+	# Cambodia
+	741 = {
+		set_variable = { sphere_loyalty = 95 }
+		set_variable = { max_loyalty_payment = default_max_loyalty_payment }
+
+		set_variable = { sphere_suppression = 95 }
+		set_variable = { max_suppression_manpower = default_max_suppression_manpower }
+	}
+	# New South Wales
+	285 = {
+		set_variable = { sphere_loyalty = 44 }
+		set_variable = { max_loyalty_payment = default_max_loyalty_payment }
+
+		set_variable = { sphere_suppression = 51 }
+		set_variable = { max_suppression_manpower = default_max_suppression_manpower }
+	}
+	# Yunnan
+	325 = {
+		set_variable = { sphere_loyalty = 23 }
+		set_variable = { max_loyalty_payment = default_max_loyalty_payment }
+
+		set_variable = { sphere_suppression = 57 }
+		set_variable = { max_suppression_manpower = default_max_suppression_manpower }
+	}
+	# Siam
+	289 = {
+		set_variable = { sphere_loyalty = 87 }
+		set_variable = { max_loyalty_payment = default_max_loyalty_payment }
+
+		set_variable = { sphere_suppression = 79 }
+		set_variable = { max_suppression_manpower = default_max_suppression_manpower }
+	}
+	# Singapore
+	336 = {
+		set_variable = { sphere_loyalty = 56 }
+		set_variable = { max_loyalty_payment = default_max_loyalty_payment }
+
+		set_variable = { sphere_suppression = 81 }
+		set_variable = { max_suppression_manpower = default_max_suppression_manpower }
+	}
+	# Borneo
+	334 = {
+		set_variable = { sphere_loyalty = 23 }
+		set_variable = { max_loyalty_payment = default_max_loyalty_payment }
+
+		set_variable = { sphere_suppression = 57 }
+		set_variable = { max_suppression_manpower = default_max_suppression_manpower }
+	}
+	# Sulawesi
+	673 = {
+		set_variable = { sphere_loyalty = 38 }
+		set_variable = { max_loyalty_payment = default_max_loyalty_payment }
+
+		set_variable = { sphere_suppression = 47 }
+		set_variable = { max_suppression_manpower = default_max_suppression_manpower }
+	}
+	# The Moluccas
+	668 = {
+		set_variable = { sphere_loyalty = 23 }
+		set_variable = { max_loyalty_payment = default_max_loyalty_payment }
+
+		set_variable = { sphere_suppression = 57 }
+		set_variable = { max_suppression_manpower = default_max_suppression_manpower }
+	}
+	# Papua
+	669 = {
+		set_variable = { sphere_loyalty = 14 }
+		set_variable = { max_loyalty_payment = default_max_loyalty_payment }
+
+		set_variable = { sphere_suppression = 11 }
+		set_variable = { max_suppression_manpower = default_max_suppression_manpower }
+	}
+	# Western Australia
+	522 = {
+		set_variable = { sphere_loyalty = 62 }
+		set_variable = { max_loyalty_payment = default_max_loyalty_payment }
+
+		set_variable = { sphere_suppression = 55 }
+		set_variable = { max_suppression_manpower = default_max_suppression_manpower }
+	}
+
+	for_each_scope_loop = {
+		array = sphere_array
+
+		# set expenses currently needed for loyalty
+		set_variable = { loyalty_payment = max_loyalty_payment }
+		multiply_variable = { loyalty_payment = sphere_loyalty }
+		divide_variable = { loyalty_payment = 100 }
+		round_variable = loyalty_payment
+
+		clamp_variable = {
+			var = loyalty_payment
+			min = 0
+			max = max_loyalty_payment
+		}
+
+		add_to_variable = { VIN.total_loyalty_payments = loyalty_payment }
+
+		# set manpower currently needed for suppression
+		set_variable = { suppression_manpower = max_suppression_manpower }
+		multiply_variable = { suppression_manpower = sphere_suppression }
+		divide_variable = { suppression_manpower = 100 }
+		round_variable = suppression_manpower
+
+		clamp_variable = {
+			var = suppression_manpower
+			min = 0
+			max = max_suppression_manpower
+		}
+
+		# negative of manpower
+		set_temp_variable = { temp = suppression_manpower }
+		multiply_temp_variable = { temp = -1 }
+
+		VIN = { add_manpower = var:temp }
+
+		# scroll position
+		set_variable = { slider_x_position = 72 }
+		set_temp_variable = { temp_x = sphere_loyalty }
+		multiply_temp_variable = { temp_x = 245 }
+		divide_temp_variable = { temp_x = 100 }
+		round_temp_variable = temp_x
+		add_to_variable = { slider_x_position = temp_x }
+
+		clamp_variable = {
+			var = slider_x_position
+			max = 317
+		}
+	}
+}
+
+VIN_modify_loyalty = {
+	add_to_variable = { sphere_loyalty = temp_value }
+
+	# remove old loyalty payment value
+	subtract_from_variable = { VIN.total_loyalty_payments = loyalty_payment }
+
+	# set expenses currently needed for loyalty
+	set_variable = { loyalty_payment = max_loyalty_payment }
+	multiply_variable = { loyalty_payment = sphere_loyalty }
+	divide_variable = { loyalty_payment = 100 }
+	round_variable = loyalty_payment
+
+	clamp_variable = {
+		var = loyalty_payment
+		min = 0
+		max = max_loyalty_payment
+	}
+
+	add_to_variable = { VIN.total_loyalty_payments = loyalty_payment }
+
+	# scroll position
+	set_variable = { slider_x_position = 72 }
+	set_temp_variable = { temp_x = sphere_loyalty }
+	multiply_temp_variable = { temp_x = 245 }
+	divide_temp_variable = { temp_x = 100 }
+	round_temp_variable = temp_x
+	add_to_variable = { slider_x_position = temp_x }
+
+	clamp_variable = {
+		var = slider_x_position
+		max = 317
+	}
+
+	# refresh gui
+	add_to_variable = { VIN.show_sphere_subject_dirty = 1 }
+}
+
+VIN_modify_suppression = {
+	add_to_variable = { sphere_suppression = temp_value }
+	
+	# remove old manpower needed
+	VIN = { add_manpower = var:suppression_manpower }
+
+	# set manpower currently needed for suppression
+	set_variable = { suppression_manpower = max_suppression_manpower }
+	multiply_variable = { suppression_manpower = sphere_suppression }
+	divide_variable = { suppression_manpower = 100 }
+	round_variable = suppression_manpower
+
+	clamp_variable = {
+		var = suppression_manpower
+		min = 0
+		max = max_suppression_manpower
+	}
+
+	# negative of manpower
+	set_temp_variable = { temp = suppression_manpower }
+	multiply_temp_variable = { temp = -1 }
+
+	VIN = { add_manpower = var:temp }
+
+	# refresh gui
+	add_to_variable = { VIN.show_sphere_subject_dirty = 1 }
+}
+
+# sets up the target for the sphere interactions screen
+VIN_sphere_subject_display = {
+	if = {
+		limit = {
+			check_variable = { temp = show_VIN_sphere_subject }
+		}
+		clear_variable = show_VIN_sphere_subject
+		clear_array = sphere_subject_target_array
+	}
+	else = {
+		set_variable = { show_VIN_sphere_subject = temp }
+		clear_array = sphere_subject_target_array
+		add_to_array = { sphere_subject_target_array = show_VIN_sphere_subject }
+		add_to_variable = { show_sphere_subject_dirty = 1 }
+	}
+}
+
+# Usage Example
+# <SUBJECT_ID> = {
+# 	set_temp_variable = { temp_loyalty_cost = 2 } # in thousands
+# 	VIN_modify_loyalty_cost = yes
+# }
+
+# takes in two arguments (temp_loyalty_cost, temp_subject), modifying payment needed
+VIN_modify_loyalty_cost = {
+	custom_effect_tooltip = VIN_modify_loyalty_cost_tt
+
+	add_to_variable = { max_loyalty_payment = temp_loyalty_cost }
+
+	# make sure payment does not reach 0
+	clamp_variable = {
+		var = max_loyalty_payment
+		min = 1
+	}
+
+	# refresh gui
+	if = {
+		limit = {
+			check_variable = { VIN.show_sphere_subject_dirty > 0 }
+		}
+		add_to_variable = { VIN.show_sphere_subject_dirty = 1 }
+	}
+}
+
+# Usage Example
+# <SUBJECT_ID> = {
+# 	set_temp_variable = { temp_suppression_cost = -5000 } # manpower needed
+# 	VIN_modify_suppression_cost = yes
+# }
+
+# takes in two arguments (temp_suppression_cost, temp_subject), modifying manpower requirement
+VIN_modify_suppression_cost = {
+	custom_effect_tooltip = VIN_modify_suppression_cost_tt
+
+	add_to_variable = { max_suppression_manpower = temp_suppression_cost }
+
+	# make sure manpower does not reach 0
+	clamp_variable = {
+		var = max_suppression_manpower
+		min = 1
+	}
+
+	# refresh gui
+	if = {
+		limit = {
+			check_variable = { VIN.show_sphere_subject_dirty > 0 }
+		}
+		add_to_variable = { VIN.show_sphere_subject_dirty = 1 }
+	}
+}
+
+# monthly/weekly check for suppression/loyalty status (WIP)
+VIN_suppresion_loyalty_status = {
+	for_each_scope_loop = {
+		array = sphere_array
+
+		# 0 loyalty
+		if = {
+			limit = {
+				check_variable = { sphere_loyalty = 0 }
+			}
+		}
+		# 0 suppression effects
+		if = {
+			limit = {
+				check_variable = { sphere_suppression = 0 }
+			}
+		}
+	}
+}
+
+# add loyalty payments to economy expenditures
+VIN_sphere_costs = {
+	set_temp_variable = { temp_civilian_expenditures = total_loyalty_payments }
+	divide_temp_variable = { temp_civilian_expenditures = 1000 } # change to k
+
+	log = "Vietnam costs added - [?total_loyalty_payments]k/[?temp_civilian_expenditures]M"
+	add_to_variable = { civilian_expenditures = temp_civilian_expenditures }
+}
+
+# debug shizzle
+
+# type check_invalid_values in console to get list of missing values
+d_VIN_check_invalid_values = {
+	for_each_scope_loop = {
+		array = sphere_array
+
+		if = {
+			limit = {
+				check_variable = { sphere_loyalty = 0 }
+			}
+			log = "[THIS.GetName] has missing sphere_loyalty value"
+		}
+
+		if = {
+			limit = {
+				check_variable = { sphere_suppression = 0 }
+			}
+			log = "[THIS.GetName] has missing sphere_suppression value"
+		}
+	}
+}
+
+# type d_VIN_sphere_clear in console to clear all arrays
+d_VIN_sphere_clear = {
+	log = "Sphere has been cleared"
+	clear_array = sphere_array
+}
+
+modify_vietnam_parliament_seats = {
+    set_variable = { vietnam_parliament_party1_seats = USVP_seats }
+	set_variable = { vietnam_parliament_party2_seats = NA_seats }
+	set_variable = { vietnam_parliament_party3_seats = CSU_seats }
+	set_variable = { vietnam_parliament_party4_seats = WPV_seats }
+    
+    set_temp_variable = { total = vietnam_parliament_party1_seats }
+	add_to_temp_variable = { total = vietnam_parliament_party2_seats }
+	add_to_temp_variable = { total = vietnam_parliament_party3_seats }
+	add_to_temp_variable = { total = vietnam_parliament_party4_seats }
+	divide_variable = { vietnam_parliament_party1_seats = total }
+	divide_variable = { vietnam_parliament_party2_seats = total }
+	divide_variable = { vietnam_parliament_party3_seats = total }
+
+	multiply_variable = { vietnam_parliament_party1_seats = 300 }
+	multiply_variable = { vietnam_parliament_party2_seats = 300 }
+	multiply_variable = { vietnam_parliament_party3_seats = 300 }
+	round_variable = vietnam_parliament_party1_seats
+	round_variable = vietnam_parliament_party2_seats
+	round_variable = vietnam_parliament_party3_seats
+
+	set_variable = { vietnam_parliament_party4_seats = 300 }
+	subtract_from_variable = { vietnam_parliament_party4_seats = vietnam_parliament_party1_seats }
+	subtract_from_variable = { vietnam_parliament_party4_seats = vietnam_parliament_party2_seats }
+	subtract_from_variable = { vietnam_parliament_party4_seats = vietnam_parliament_party3_seats }
+    
+    set_temp_variable = { t1 = vietnam_parliament_party1_seats }
+	set_temp_variable = { t2 = vietnam_parliament_party1_seats }
+	set_temp_variable = { t3 = vietnam_parliament_party3_seats }
+	set_temp_variable = { t4 = 300 }
+
+	add_to_temp_variable = { t2 = t1 }
+	add_to_temp_variable = { t3 = t2 }
+
+
+	clear_array = vietnam_parliament_seat_frame
+
+	# Resize array to t1 seats, setting P1 frame numbers to 1 (Party 1 color)
+	resize_array = {
+		array = vietnam_parliament_seat_frame
+		value = 1
+		size = t1
+	}
+	# Resize array to t2 seats, setting P2 frame numbers to 2 (Party 2 color)
+	resize_array = {
+		array = vietnam_parliament_seat_frame
+		value = 2
+		size = t2
+	}
+	# Resize array to t3 seats, setting P3 frame numbers to 3 (Party 3 color)
+	resize_array = {
+		array = vietnam_parliament_seat_frame
+		value = 3
+		size = t3
+	}
+	# Resize array to all 300 seats, setting remaining frame numbers to 4 (Party 4 color)
+	resize_array = {
+		array = vietnam_parliament_seat_frame
+		value = 4
+		size = t4
+	}
+
+}
+
+
+vietnam_parliament_generate_party_seats = {
+	set_variable = { USVP_seats = 138 } ##libsoc
+	set_variable = { NA_seats = 97 } ##conservative
+	set_variable = { CSU_seats = 54 } ##authdem
+	set_variable = { WPV_seats = 32 }
+	
+	set_variable = { vietnam_parliament_party1_seats = USVP_seats }
+	set_variable = { vietnam_parliament_party2_seats = NA_seats }
+	set_variable = { vietnam_parliament_party3_seats = CSU_seats }
+	set_variable = { vietnam_parliament_party4_seats = WPV_seats }
+
+	set_temp_variable = { total = vietnam_parliament_party1_seats }
+	add_to_temp_variable = { total = vietnam_parliament_party2_seats }
+	add_to_temp_variable = { total = vietnam_parliament_party3_seats }
+	add_to_temp_variable = { total = vietnam_parliament_party4_seats }
+	divide_variable = { vietnam_parliament_party1_seats = total }
+	divide_variable = { vietnam_parliament_party2_seats = total }
+	divide_variable = { vietnam_parliament_party3_seats = total }
+
+	multiply_variable = { vietnam_parliament_party1_seats = 300 }
+	multiply_variable = { vietnam_parliament_party2_seats = 300 }
+	multiply_variable = { vietnam_parliament_party3_seats = 300 }
+	round_variable = vietnam_parliament_party1_seats
+	round_variable = vietnam_parliament_party2_seats
+	round_variable = vietnam_parliament_party3_seats
+
+	set_variable = { vietnam_parliament_party4_seats = 300 }
+	subtract_from_variable = { vietnam_parliament_party4_seats = vietnam_parliament_party1_seats }
+	subtract_from_variable = { vietnam_parliament_party4_seats = vietnam_parliament_party2_seats }
+	subtract_from_variable = { vietnam_parliament_party4_seats = vietnam_parliament_party3_seats }
+}
+
+vietnam_parliament_init_parliament = {
+	vietnam_parliament_generate_party_seats = yes
+	
+	# Generate partial sums t1 = (P1), t2 = (P1 + P2), t3 = (P1 + P2 + P3)
+	# so that we can use resize_array to fill our array with the right number of seats for each party
+	set_temp_variable = { t1 = vietnam_parliament_party1_seats }
+	set_temp_variable = { t2 = vietnam_parliament_party1_seats }
+	set_temp_variable = { t3 = vietnam_parliament_party3_seats }
+	set_temp_variable = { t4 = 300 }
+
+	add_to_temp_variable = { t2 = t1 }
+	add_to_temp_variable = { t3 = t2 }
+
+
+	clear_array = vietnam_parliament_seat_frame
+
+	# Resize array to t1 seats, setting P1 frame numbers to 1 (Party 1 color)
+	resize_array = {
+		array = vietnam_parliament_seat_frame
+		value = 1
+		size = t1
+	}
+	# Resize array to t2 seats, setting P2 frame numbers to 2 (Party 2 color)
+	resize_array = {
+		array = vietnam_parliament_seat_frame
+		value = 2
+		size = t2
+	}
+	# Resize array to t3 seats, setting P3 frame numbers to 3 (Party 3 color)
+	resize_array = {
+		array = vietnam_parliament_seat_frame
+		value = 3
+		size = t3
+	}
+	# Resize array to all 300 seats, setting remaining frame numbers to 4 (Party 4 color)
+	resize_array = {
+		array = vietnam_parliament_seat_frame
+		value = 4
+		size = t4
+	}
+
+	# Setup positions (ideally only done once in a history file or game-start event, this is inefficient)
+	
+	clear_array = vietnam_parliament_seat_x
+	clear_array = vietnam_parliament_seat_y
+
+	add_to_array = { vietnam_parliament_seat_x = 0 }
+	add_to_array = { vietnam_parliament_seat_y = 160 }
+	add_to_array = { vietnam_parliament_seat_x = 12 }
+	add_to_array = { vietnam_parliament_seat_y = 160 }
+	add_to_array = { vietnam_parliament_seat_x = 24 }
+	add_to_array = { vietnam_parliament_seat_y = 160 }
+	add_to_array = { vietnam_parliament_seat_x = 36 }
+	add_to_array = { vietnam_parliament_seat_y = 160 }
+	add_to_array = { vietnam_parliament_seat_x = 48 }
+	add_to_array = { vietnam_parliament_seat_y = 160 }
+	add_to_array = { vietnam_parliament_seat_x = 60 }
+	add_to_array = { vietnam_parliament_seat_y = 160 }
+	add_to_array = { vietnam_parliament_seat_x = 71 }
+	add_to_array = { vietnam_parliament_seat_y = 160 }
+	add_to_array = { vietnam_parliament_seat_x = 83 }
+	add_to_array = { vietnam_parliament_seat_y = 160 }
+	add_to_array = { vietnam_parliament_seat_x = 95 }
+	add_to_array = { vietnam_parliament_seat_y = 160 }
+	add_to_array = { vietnam_parliament_seat_x = 1 }
+	add_to_array = { vietnam_parliament_seat_y = 148 }
+	add_to_array = { vietnam_parliament_seat_x = 13 }
+	add_to_array = { vietnam_parliament_seat_y = 147 }
+	add_to_array = { vietnam_parliament_seat_x = 25 }
+	add_to_array = { vietnam_parliament_seat_y = 147 }
+	add_to_array = { vietnam_parliament_seat_x = 37 }
+	add_to_array = { vietnam_parliament_seat_y = 147 }
+	add_to_array = { vietnam_parliament_seat_x = 49 }
+	add_to_array = { vietnam_parliament_seat_y = 147 }
+	add_to_array = { vietnam_parliament_seat_x = 3 }
+	add_to_array = { vietnam_parliament_seat_y = 137 }
+	add_to_array = { vietnam_parliament_seat_x = 61 }
+	add_to_array = { vietnam_parliament_seat_y = 147 }
+	add_to_array = { vietnam_parliament_seat_x = 73 }
+	add_to_array = { vietnam_parliament_seat_y = 147 }
+	add_to_array = { vietnam_parliament_seat_x = 15 }
+	add_to_array = { vietnam_parliament_seat_y = 135 }
+	add_to_array = { vietnam_parliament_seat_x = 27 }
+	add_to_array = { vietnam_parliament_seat_y = 135 }
+	add_to_array = { vietnam_parliament_seat_x = 85 }
+	add_to_array = { vietnam_parliament_seat_y = 148 }
+	add_to_array = { vietnam_parliament_seat_x = 40 }
+	add_to_array = { vietnam_parliament_seat_y = 135 }
+	add_to_array = { vietnam_parliament_seat_x = 5 }
+	add_to_array = { vietnam_parliament_seat_y = 125 }
+	add_to_array = { vietnam_parliament_seat_x = 52 }
+	add_to_array = { vietnam_parliament_seat_y = 135 }
+	add_to_array = { vietnam_parliament_seat_x = 98 }
+	add_to_array = { vietnam_parliament_seat_y = 148 }
+	add_to_array = { vietnam_parliament_seat_x = 18 }
+	add_to_array = { vietnam_parliament_seat_y = 123 }
+	add_to_array = { vietnam_parliament_seat_x = 64 }
+	add_to_array = { vietnam_parliament_seat_y = 135 }
+	add_to_array = { vietnam_parliament_seat_x = 31 }
+	add_to_array = { vietnam_parliament_seat_y = 123 }
+	add_to_array = { vietnam_parliament_seat_x = 9 }
+	add_to_array = { vietnam_parliament_seat_y = 114 }
+	add_to_array = { vietnam_parliament_seat_x = 76 }
+	add_to_array = { vietnam_parliament_seat_y = 135 }
+	add_to_array = { vietnam_parliament_seat_x = 43 }
+	add_to_array = { vietnam_parliament_seat_y = 123 }
+	add_to_array = { vietnam_parliament_seat_x = 22 }
+	add_to_array = { vietnam_parliament_seat_y = 111 }
+	add_to_array = { vietnam_parliament_seat_x = 56 }
+	add_to_array = { vietnam_parliament_seat_y = 123 }
+	add_to_array = { vietnam_parliament_seat_x = 89 }
+	add_to_array = { vietnam_parliament_seat_y = 136 }
+	add_to_array = { vietnam_parliament_seat_x = 12 }
+	add_to_array = { vietnam_parliament_seat_y = 103 }
+	add_to_array = { vietnam_parliament_seat_x = 35 }
+	add_to_array = { vietnam_parliament_seat_y = 111 }
+	add_to_array = { vietnam_parliament_seat_x = 68 }
+	add_to_array = { vietnam_parliament_seat_y = 124 }
+	add_to_array = { vietnam_parliament_seat_x = 102 }
+	add_to_array = { vietnam_parliament_seat_y = 136 }
+	add_to_array = { vietnam_parliament_seat_x = 47 }
+	add_to_array = { vietnam_parliament_seat_y = 112 }
+	add_to_array = { vietnam_parliament_seat_x = 27 }
+	add_to_array = { vietnam_parliament_seat_y = 100 }
+	add_to_array = { vietnam_parliament_seat_x = 81 }
+	add_to_array = { vietnam_parliament_seat_y = 124 }
+	add_to_array = { vietnam_parliament_seat_x = 17 }
+	add_to_array = { vietnam_parliament_seat_y = 93 }
+	add_to_array = { vietnam_parliament_seat_x = 60 }
+	add_to_array = { vietnam_parliament_seat_y = 112 }
+	add_to_array = { vietnam_parliament_seat_x = 40 }
+	add_to_array = { vietnam_parliament_seat_y = 100 }
+	add_to_array = { vietnam_parliament_seat_x = 94 }
+	add_to_array = { vietnam_parliament_seat_y = 124 }
+	add_to_array = { vietnam_parliament_seat_x = 74 }
+	add_to_array = { vietnam_parliament_seat_y = 112 }
+	add_to_array = { vietnam_parliament_seat_x = 53 }
+	add_to_array = { vietnam_parliament_seat_y = 101 }
+	add_to_array = { vietnam_parliament_seat_x = 32 }
+	add_to_array = { vietnam_parliament_seat_y = 89 }
+	add_to_array = { vietnam_parliament_seat_x = 22 }
+	add_to_array = { vietnam_parliament_seat_y = 82 }
+	add_to_array = { vietnam_parliament_seat_x = 46 }
+	add_to_array = { vietnam_parliament_seat_y = 89 }
+	add_to_array = { vietnam_parliament_seat_x = 66 }
+	add_to_array = { vietnam_parliament_seat_y = 101 }
+	add_to_array = { vietnam_parliament_seat_x = 87 }
+	add_to_array = { vietnam_parliament_seat_y = 113 }
+	add_to_array = { vietnam_parliament_seat_x = 107 }
+	add_to_array = { vietnam_parliament_seat_y = 125 }
+	add_to_array = { vietnam_parliament_seat_x = 28 }
+	add_to_array = { vietnam_parliament_seat_y = 72 }
+	add_to_array = { vietnam_parliament_seat_x = 39 }
+	add_to_array = { vietnam_parliament_seat_y = 78 }
+	add_to_array = { vietnam_parliament_seat_x = 59 }
+	add_to_array = { vietnam_parliament_seat_y = 90 }
+	add_to_array = { vietnam_parliament_seat_x = 80 }
+	add_to_array = { vietnam_parliament_seat_y = 102 }
+	add_to_array = { vietnam_parliament_seat_x = 101 }
+	add_to_array = { vietnam_parliament_seat_y = 114 }
+	add_to_array = { vietnam_parliament_seat_x = 53 }
+	add_to_array = { vietnam_parliament_seat_y = 79 }
+	add_to_array = { vietnam_parliament_seat_x = 35 }
+	add_to_array = { vietnam_parliament_seat_y = 63 }
+	add_to_array = { vietnam_parliament_seat_x = 73 }
+	add_to_array = { vietnam_parliament_seat_y = 91 }
+	add_to_array = { vietnam_parliament_seat_x = 46 }
+	add_to_array = { vietnam_parliament_seat_y = 68 }
+	add_to_array = { vietnam_parliament_seat_x = 94 }
+	add_to_array = { vietnam_parliament_seat_y = 103 }
+	add_to_array = { vietnam_parliament_seat_x = 67 }
+	add_to_array = { vietnam_parliament_seat_y = 80 }
+	add_to_array = { vietnam_parliament_seat_x = 60 }
+	add_to_array = { vietnam_parliament_seat_y = 69 }
+	add_to_array = { vietnam_parliament_seat_x = 87 }
+	add_to_array = { vietnam_parliament_seat_y = 92 }
+	add_to_array = { vietnam_parliament_seat_x = 115 }
+	add_to_array = { vietnam_parliament_seat_y = 115 }
+	add_to_array = { vietnam_parliament_seat_x = 42 }
+	add_to_array = { vietnam_parliament_seat_y = 54 }
+	add_to_array = { vietnam_parliament_seat_x = 54 }
+	add_to_array = { vietnam_parliament_seat_y = 58 }
+	add_to_array = { vietnam_parliament_seat_x = 81 }
+	add_to_array = { vietnam_parliament_seat_y = 81 }
+	add_to_array = { vietnam_parliament_seat_x = 108 }
+	add_to_array = { vietnam_parliament_seat_y = 104 }
+	add_to_array = { vietnam_parliament_seat_x = 75 }
+	add_to_array = { vietnam_parliament_seat_y = 71 }
+	add_to_array = { vietnam_parliament_seat_x = 50 }
+	add_to_array = { vietnam_parliament_seat_y = 45 }
+	add_to_array = { vietnam_parliament_seat_x = 102 }
+	add_to_array = { vietnam_parliament_seat_y = 93 }
+	add_to_array = { vietnam_parliament_seat_x = 68 }
+	add_to_array = { vietnam_parliament_seat_y = 60 }
+	add_to_array = { vietnam_parliament_seat_x = 62 }
+	add_to_array = { vietnam_parliament_seat_y = 49 }
+	add_to_array = { vietnam_parliament_seat_x = 96 }
+	add_to_array = { vietnam_parliament_seat_y = 83 }
+	add_to_array = { vietnam_parliament_seat_x = 90 }
+	add_to_array = { vietnam_parliament_seat_y = 72 }
+	add_to_array = { vietnam_parliament_seat_x = 58 }
+	add_to_array = { vietnam_parliament_seat_y = 37 }
+	add_to_array = { vietnam_parliament_seat_x = 84 }
+	add_to_array = { vietnam_parliament_seat_y = 62 }
+	add_to_array = { vietnam_parliament_seat_x = 123 }
+	add_to_array = { vietnam_parliament_seat_y = 106 }
+	add_to_array = { vietnam_parliament_seat_x = 78 }
+	add_to_array = { vietnam_parliament_seat_y = 51 }
+	add_to_array = { vietnam_parliament_seat_x = 117 }
+	add_to_array = { vietnam_parliament_seat_y = 96 }
+	add_to_array = { vietnam_parliament_seat_x = 71 }
+	add_to_array = { vietnam_parliament_seat_y = 41 }
+	add_to_array = { vietnam_parliament_seat_x = 111 }
+	add_to_array = { vietnam_parliament_seat_y = 85 }
+	add_to_array = { vietnam_parliament_seat_x = 67 }
+	add_to_array = { vietnam_parliament_seat_y = 29 }
+	add_to_array = { vietnam_parliament_seat_x = 105 }
+	add_to_array = { vietnam_parliament_seat_y = 75 }
+	add_to_array = { vietnam_parliament_seat_x = 99 }
+	add_to_array = { vietnam_parliament_seat_y = 64 }
+	add_to_array = { vietnam_parliament_seat_x = 93 }
+	add_to_array = { vietnam_parliament_seat_y = 54 }
+	add_to_array = { vietnam_parliament_seat_x = 87 }
+	add_to_array = { vietnam_parliament_seat_y = 44 }
+	add_to_array = { vietnam_parliament_seat_x = 81 }
+	add_to_array = { vietnam_parliament_seat_y = 33 }
+	add_to_array = { vietnam_parliament_seat_x = 76 }
+	add_to_array = { vietnam_parliament_seat_y = 22 }
+	add_to_array = { vietnam_parliament_seat_x = 133 }
+	add_to_array = { vietnam_parliament_seat_y = 98 }
+	add_to_array = { vietnam_parliament_seat_x = 127 }
+	add_to_array = { vietnam_parliament_seat_y = 88 }
+	add_to_array = { vietnam_parliament_seat_x = 121 }
+	add_to_array = { vietnam_parliament_seat_y = 78 }
+	add_to_array = { vietnam_parliament_seat_x = 115 }
+	add_to_array = { vietnam_parliament_seat_y = 68 }
+	add_to_array = { vietnam_parliament_seat_x = 109 }
+	add_to_array = { vietnam_parliament_seat_y = 57 }
+	add_to_array = { vietnam_parliament_seat_x = 103 }
+	add_to_array = { vietnam_parliament_seat_y = 47 }
+	add_to_array = { vietnam_parliament_seat_x = 97 }
+	add_to_array = { vietnam_parliament_seat_y = 37 }
+	add_to_array = { vietnam_parliament_seat_x = 92 }
+	add_to_array = { vietnam_parliament_seat_y = 26 }
+	add_to_array = { vietnam_parliament_seat_x = 86 }
+	add_to_array = { vietnam_parliament_seat_y = 16 }
+	add_to_array = { vietnam_parliament_seat_x = 96 }
+	add_to_array = { vietnam_parliament_seat_y = 10 }
+	add_to_array = { vietnam_parliament_seat_x = 102 }
+	add_to_array = { vietnam_parliament_seat_y = 20 }
+	add_to_array = { vietnam_parliament_seat_x = 108 }
+	add_to_array = { vietnam_parliament_seat_y = 31 }
+	add_to_array = { vietnam_parliament_seat_x = 114 }
+	add_to_array = { vietnam_parliament_seat_y = 41 }
+	add_to_array = { vietnam_parliament_seat_x = 120 }
+	add_to_array = { vietnam_parliament_seat_y = 51 }
+	add_to_array = { vietnam_parliament_seat_x = 126 }
+	add_to_array = { vietnam_parliament_seat_y = 61 }
+	add_to_array = { vietnam_parliament_seat_x = 132 }
+	add_to_array = { vietnam_parliament_seat_y = 72 }
+	add_to_array = { vietnam_parliament_seat_x = 138 }
+	add_to_array = { vietnam_parliament_seat_y = 82 }
+	add_to_array = { vietnam_parliament_seat_x = 144 }
+	add_to_array = { vietnam_parliament_seat_y = 92 }
+	add_to_array = { vietnam_parliament_seat_x = 107 }
+	add_to_array = { vietnam_parliament_seat_y = 5 }
+	add_to_array = { vietnam_parliament_seat_x = 114 }
+	add_to_array = { vietnam_parliament_seat_y = 15 }
+	add_to_array = { vietnam_parliament_seat_x = 120 }
+	add_to_array = { vietnam_parliament_seat_y = 25 }
+	add_to_array = { vietnam_parliament_seat_x = 126 }
+	add_to_array = { vietnam_parliament_seat_y = 36 }
+	add_to_array = { vietnam_parliament_seat_x = 131 }
+	add_to_array = { vietnam_parliament_seat_y = 46 }
+	add_to_array = { vietnam_parliament_seat_x = 137 }
+	add_to_array = { vietnam_parliament_seat_y = 57 }
+	add_to_array = { vietnam_parliament_seat_x = 117 }
+	add_to_array = { vietnam_parliament_seat_y = 1 }
+	add_to_array = { vietnam_parliament_seat_x = 143 }
+	add_to_array = { vietnam_parliament_seat_y = 67 }
+	add_to_array = { vietnam_parliament_seat_x = 125 }
+	add_to_array = { vietnam_parliament_seat_y = 11 }
+	add_to_array = { vietnam_parliament_seat_x = 150 }
+	add_to_array = { vietnam_parliament_seat_y = 77 }
+	add_to_array = { vietnam_parliament_seat_x = 131 }
+	add_to_array = { vietnam_parliament_seat_y = 21 }
+	add_to_array = { vietnam_parliament_seat_x = 137 }
+	add_to_array = { vietnam_parliament_seat_y = 32 }
+	add_to_array = { vietnam_parliament_seat_x = 156 }
+	add_to_array = { vietnam_parliament_seat_y = 88 }
+	add_to_array = { vietnam_parliament_seat_x = 128 }
+	add_to_array = { vietnam_parliament_seat_y = -3 }
+	add_to_array = { vietnam_parliament_seat_x = 143 }
+	add_to_array = { vietnam_parliament_seat_y = 42 }
+	add_to_array = { vietnam_parliament_seat_x = 137 }
+	add_to_array = { vietnam_parliament_seat_y = 7 }
+	add_to_array = { vietnam_parliament_seat_x = 149 }
+	add_to_array = { vietnam_parliament_seat_y = 53 }
+	add_to_array = { vietnam_parliament_seat_x = 143 }
+	add_to_array = { vietnam_parliament_seat_y = 18 }
+	add_to_array = { vietnam_parliament_seat_x = 155 }
+	add_to_array = { vietnam_parliament_seat_y = 64 }
+	add_to_array = { vietnam_parliament_seat_x = 140 }
+	add_to_array = { vietnam_parliament_seat_y = -6 }
+	add_to_array = { vietnam_parliament_seat_x = 149 }
+	add_to_array = { vietnam_parliament_seat_y = 28 }
+	add_to_array = { vietnam_parliament_seat_x = 161 }
+	add_to_array = { vietnam_parliament_seat_y = 74 }
+	add_to_array = { vietnam_parliament_seat_x = 155 }
+	add_to_array = { vietnam_parliament_seat_y = 39 }
+	add_to_array = { vietnam_parliament_seat_x = 149 }
+	add_to_array = { vietnam_parliament_seat_y = 4 }
+	add_to_array = { vietnam_parliament_seat_x = 151 }
+	add_to_array = { vietnam_parliament_seat_y = -8 }
+	add_to_array = { vietnam_parliament_seat_x = 155 }
+	add_to_array = { vietnam_parliament_seat_y = 15 }
+	add_to_array = { vietnam_parliament_seat_x = 161 }
+	add_to_array = { vietnam_parliament_seat_y = 50 }
+	add_to_array = { vietnam_parliament_seat_x = 168 }
+	add_to_array = { vietnam_parliament_seat_y = 85 }
+	add_to_array = { vietnam_parliament_seat_x = 161 }
+	add_to_array = { vietnam_parliament_seat_y = 26 }
+	add_to_array = { vietnam_parliament_seat_x = 168 }
+	add_to_array = { vietnam_parliament_seat_y = 61 }
+	add_to_array = { vietnam_parliament_seat_x = 161 }
+	add_to_array = { vietnam_parliament_seat_y = 2 }
+	add_to_array = { vietnam_parliament_seat_x = 163 }
+	add_to_array = { vietnam_parliament_seat_y = -10 }
+	add_to_array = { vietnam_parliament_seat_x = 168 }
+	add_to_array = { vietnam_parliament_seat_y = 38 }
+	add_to_array = { vietnam_parliament_seat_x = 168 }
+	add_to_array = { vietnam_parliament_seat_y = 14 }
+	add_to_array = { vietnam_parliament_seat_x = 174 }
+	add_to_array = { vietnam_parliament_seat_y = 73 }
+	add_to_array = { vietnam_parliament_seat_x = 174 }
+	add_to_array = { vietnam_parliament_seat_y = 49 }
+	add_to_array = { vietnam_parliament_seat_x = 174 }
+	add_to_array = { vietnam_parliament_seat_y = 25 }
+	add_to_array = { vietnam_parliament_seat_x = 174 }
+	add_to_array = { vietnam_parliament_seat_y = 1 }
+	add_to_array = { vietnam_parliament_seat_x = 174 }
+	add_to_array = { vietnam_parliament_seat_y = -10 }
+	add_to_array = { vietnam_parliament_seat_x = 180 }
+	add_to_array = { vietnam_parliament_seat_y = 84 }
+	add_to_array = { vietnam_parliament_seat_x = 180 }
+	add_to_array = { vietnam_parliament_seat_y = 61 }
+	add_to_array = { vietnam_parliament_seat_x = 180 }
+	add_to_array = { vietnam_parliament_seat_y = 37 }
+	add_to_array = { vietnam_parliament_seat_x = 180 }
+	add_to_array = { vietnam_parliament_seat_y = 13 }
+	add_to_array = { vietnam_parliament_seat_x = 186 }
+	add_to_array = { vietnam_parliament_seat_y = -10 }
+	add_to_array = { vietnam_parliament_seat_x = 186 }
+	add_to_array = { vietnam_parliament_seat_y = 1 }
+	add_to_array = { vietnam_parliament_seat_x = 186 }
+	add_to_array = { vietnam_parliament_seat_y = 25 }
+	add_to_array = { vietnam_parliament_seat_x = 186 }
+	add_to_array = { vietnam_parliament_seat_y = 49 }
+	add_to_array = { vietnam_parliament_seat_x = 186 }
+	add_to_array = { vietnam_parliament_seat_y = 73 }
+	add_to_array = { vietnam_parliament_seat_x = 192 }
+	add_to_array = { vietnam_parliament_seat_y = 14 }
+	add_to_array = { vietnam_parliament_seat_x = 192 }
+	add_to_array = { vietnam_parliament_seat_y = 38 }
+	add_to_array = { vietnam_parliament_seat_x = 197 }
+	add_to_array = { vietnam_parliament_seat_y = -10 }
+	add_to_array = { vietnam_parliament_seat_x = 199 }
+	add_to_array = { vietnam_parliament_seat_y = 2 }
+	add_to_array = { vietnam_parliament_seat_x = 192 }
+	add_to_array = { vietnam_parliament_seat_y = 61 }
+	add_to_array = { vietnam_parliament_seat_x = 199 }
+	add_to_array = { vietnam_parliament_seat_y = 26 }
+	add_to_array = { vietnam_parliament_seat_x = 192 }
+	add_to_array = { vietnam_parliament_seat_y = 85 }
+	add_to_array = { vietnam_parliament_seat_x = 199 }
+	add_to_array = { vietnam_parliament_seat_y = 50 }
+	add_to_array = { vietnam_parliament_seat_x = 205 }
+	add_to_array = { vietnam_parliament_seat_y = 15 }
+	add_to_array = { vietnam_parliament_seat_x = 209 }
+	add_to_array = { vietnam_parliament_seat_y = -8 }
+	add_to_array = { vietnam_parliament_seat_x = 211 }
+	add_to_array = { vietnam_parliament_seat_y = 4 }
+	add_to_array = { vietnam_parliament_seat_x = 205 }
+	add_to_array = { vietnam_parliament_seat_y = 39 }
+	add_to_array = { vietnam_parliament_seat_x = 198 }
+	add_to_array = { vietnam_parliament_seat_y = 74 }
+	add_to_array = { vietnam_parliament_seat_x = 211 }
+	add_to_array = { vietnam_parliament_seat_y = 28 }
+	add_to_array = { vietnam_parliament_seat_x = 220 }
+	add_to_array = { vietnam_parliament_seat_y = -6 }
+	add_to_array = { vietnam_parliament_seat_x = 205 }
+	add_to_array = { vietnam_parliament_seat_y = 64 }
+	add_to_array = { vietnam_parliament_seat_x = 217 }
+	add_to_array = { vietnam_parliament_seat_y = 18 }
+	add_to_array = { vietnam_parliament_seat_x = 211 }
+	add_to_array = { vietnam_parliament_seat_y = 53 }
+	add_to_array = { vietnam_parliament_seat_x = 223 }
+	add_to_array = { vietnam_parliament_seat_y = 7 }
+	add_to_array = { vietnam_parliament_seat_x = 217 }
+	add_to_array = { vietnam_parliament_seat_y = 42 }
+	add_to_array = { vietnam_parliament_seat_x = 232 }
+	add_to_array = { vietnam_parliament_seat_y = -3 }
+	add_to_array = { vietnam_parliament_seat_x = 204 }
+	add_to_array = { vietnam_parliament_seat_y = 88 }
+	add_to_array = { vietnam_parliament_seat_x = 223 }
+	add_to_array = { vietnam_parliament_seat_y = 32 }
+	add_to_array = { vietnam_parliament_seat_x = 229 }
+	add_to_array = { vietnam_parliament_seat_y = 21 }
+	add_to_array = { vietnam_parliament_seat_x = 210 }
+	add_to_array = { vietnam_parliament_seat_y = 77 }
+	add_to_array = { vietnam_parliament_seat_x = 235 }
+	add_to_array = { vietnam_parliament_seat_y = 11 }
+	add_to_array = { vietnam_parliament_seat_x = 216 }
+	add_to_array = { vietnam_parliament_seat_y = 67 }
+	add_to_array = { vietnam_parliament_seat_x = 243 }
+	add_to_array = { vietnam_parliament_seat_y = 1 }
+	add_to_array = { vietnam_parliament_seat_x = 222 }
+	add_to_array = { vietnam_parliament_seat_y = 57 }
+	add_to_array = { vietnam_parliament_seat_x = 228 }
+	add_to_array = { vietnam_parliament_seat_y = 46 }
+	add_to_array = { vietnam_parliament_seat_x = 234 }
+	add_to_array = { vietnam_parliament_seat_y = 36 }
+	add_to_array = { vietnam_parliament_seat_x = 240 }
+	add_to_array = { vietnam_parliament_seat_y = 25 }
+	add_to_array = { vietnam_parliament_seat_x = 246 }
+	add_to_array = { vietnam_parliament_seat_y = 15 }
+	add_to_array = { vietnam_parliament_seat_x = 253 }
+	add_to_array = { vietnam_parliament_seat_y = 5 }
+	add_to_array = { vietnam_parliament_seat_x = 216 }
+	add_to_array = { vietnam_parliament_seat_y = 92 }
+	add_to_array = { vietnam_parliament_seat_x = 222 }
+	add_to_array = { vietnam_parliament_seat_y = 82 }
+	add_to_array = { vietnam_parliament_seat_x = 228 }
+	add_to_array = { vietnam_parliament_seat_y = 72 }
+	add_to_array = { vietnam_parliament_seat_x = 234 }
+	add_to_array = { vietnam_parliament_seat_y = 61 }
+	add_to_array = { vietnam_parliament_seat_x = 240 }
+	add_to_array = { vietnam_parliament_seat_y = 51 }
+	add_to_array = { vietnam_parliament_seat_x = 246 }
+	add_to_array = { vietnam_parliament_seat_y = 41 }
+	add_to_array = { vietnam_parliament_seat_x = 252 }
+	add_to_array = { vietnam_parliament_seat_y = 31 }
+	add_to_array = { vietnam_parliament_seat_x = 258 }
+	add_to_array = { vietnam_parliament_seat_y = 20 }
+	add_to_array = { vietnam_parliament_seat_x = 264 }
+	add_to_array = { vietnam_parliament_seat_y = 10 }
+	add_to_array = { vietnam_parliament_seat_x = 274 }
+	add_to_array = { vietnam_parliament_seat_y = 16 }
+	add_to_array = { vietnam_parliament_seat_x = 268 }
+	add_to_array = { vietnam_parliament_seat_y = 26 }
+	add_to_array = { vietnam_parliament_seat_x = 262 }
+	add_to_array = { vietnam_parliament_seat_y = 37 }
+	add_to_array = { vietnam_parliament_seat_x = 257 }
+	add_to_array = { vietnam_parliament_seat_y = 47 }
+	add_to_array = { vietnam_parliament_seat_x = 251 }
+	add_to_array = { vietnam_parliament_seat_y = 57 }
+	add_to_array = { vietnam_parliament_seat_x = 245 }
+	add_to_array = { vietnam_parliament_seat_y = 68 }
+	add_to_array = { vietnam_parliament_seat_x = 239 }
+	add_to_array = { vietnam_parliament_seat_y = 78 }
+	add_to_array = { vietnam_parliament_seat_x = 233 }
+	add_to_array = { vietnam_parliament_seat_y = 88 }
+	add_to_array = { vietnam_parliament_seat_x = 227 }
+	add_to_array = { vietnam_parliament_seat_y = 98 }
+	add_to_array = { vietnam_parliament_seat_x = 284 }
+	add_to_array = { vietnam_parliament_seat_y = 22 }
+	add_to_array = { vietnam_parliament_seat_x = 279 }
+	add_to_array = { vietnam_parliament_seat_y = 33 }
+	add_to_array = { vietnam_parliament_seat_x = 273 }
+	add_to_array = { vietnam_parliament_seat_y = 44 }
+	add_to_array = { vietnam_parliament_seat_x = 267 }
+	add_to_array = { vietnam_parliament_seat_y = 54 }
+	add_to_array = { vietnam_parliament_seat_x = 261 }
+	add_to_array = { vietnam_parliament_seat_y = 64 }
+	add_to_array = { vietnam_parliament_seat_x = 255 }
+	add_to_array = { vietnam_parliament_seat_y = 75 }
+	add_to_array = { vietnam_parliament_seat_x = 293 }
+	add_to_array = { vietnam_parliament_seat_y = 29 }
+	add_to_array = { vietnam_parliament_seat_x = 249 }
+	add_to_array = { vietnam_parliament_seat_y = 85 }
+	add_to_array = { vietnam_parliament_seat_x = 288 }
+	add_to_array = { vietnam_parliament_seat_y = 41 }
+	add_to_array = { vietnam_parliament_seat_x = 243 }
+	add_to_array = { vietnam_parliament_seat_y = 96 }
+	add_to_array = { vietnam_parliament_seat_x = 282 }
+	add_to_array = { vietnam_parliament_seat_y = 51 }
+	add_to_array = { vietnam_parliament_seat_x = 237 }
+	add_to_array = { vietnam_parliament_seat_y = 106 }
+	add_to_array = { vietnam_parliament_seat_x = 276 }
+	add_to_array = { vietnam_parliament_seat_y = 62 }
+	add_to_array = { vietnam_parliament_seat_x = 302 }
+	add_to_array = { vietnam_parliament_seat_y = 37 }
+	add_to_array = { vietnam_parliament_seat_x = 270 }
+	add_to_array = { vietnam_parliament_seat_y = 72 }
+	add_to_array = { vietnam_parliament_seat_x = 264 }
+	add_to_array = { vietnam_parliament_seat_y = 83 }
+	add_to_array = { vietnam_parliament_seat_x = 298 }
+	add_to_array = { vietnam_parliament_seat_y = 49 }
+	add_to_array = { vietnam_parliament_seat_x = 291 }
+	add_to_array = { vietnam_parliament_seat_y = 60 }
+	add_to_array = { vietnam_parliament_seat_x = 258 }
+	add_to_array = { vietnam_parliament_seat_y = 93 }
+	add_to_array = { vietnam_parliament_seat_x = 310 }
+	add_to_array = { vietnam_parliament_seat_y = 45 }
+	add_to_array = { vietnam_parliament_seat_x = 285 }
+	add_to_array = { vietnam_parliament_seat_y = 71 }
+	add_to_array = { vietnam_parliament_seat_x = 252 }
+	add_to_array = { vietnam_parliament_seat_y = 104 }
+	add_to_array = { vietnam_parliament_seat_x = 279 }
+	add_to_array = { vietnam_parliament_seat_y = 81 }
+	add_to_array = { vietnam_parliament_seat_x = 306 }
+	add_to_array = { vietnam_parliament_seat_y = 58 }
+	add_to_array = { vietnam_parliament_seat_x = 318 }
+	add_to_array = { vietnam_parliament_seat_y = 54 }
+	add_to_array = { vietnam_parliament_seat_x = 245 }
+	add_to_array = { vietnam_parliament_seat_y = 115 }
+	add_to_array = { vietnam_parliament_seat_x = 273 }
+	add_to_array = { vietnam_parliament_seat_y = 92 }
+	add_to_array = { vietnam_parliament_seat_x = 300 }
+	add_to_array = { vietnam_parliament_seat_y = 69 }
+	add_to_array = { vietnam_parliament_seat_x = 293 }
+	add_to_array = { vietnam_parliament_seat_y = 80 }
+	add_to_array = { vietnam_parliament_seat_x = 266 }
+	add_to_array = { vietnam_parliament_seat_y = 103 }
+	add_to_array = { vietnam_parliament_seat_x = 314 }
+	add_to_array = { vietnam_parliament_seat_y = 68 }
+	add_to_array = { vietnam_parliament_seat_x = 287 }
+	add_to_array = { vietnam_parliament_seat_y = 91 }
+	add_to_array = { vietnam_parliament_seat_x = 325 }
+	add_to_array = { vietnam_parliament_seat_y = 63 }
+	add_to_array = { vietnam_parliament_seat_x = 307 }
+	add_to_array = { vietnam_parliament_seat_y = 79 }
+	add_to_array = { vietnam_parliament_seat_x = 259 }
+	add_to_array = { vietnam_parliament_seat_y = 114 }
+	add_to_array = { vietnam_parliament_seat_x = 280 }
+	add_to_array = { vietnam_parliament_seat_y = 102 }
+	add_to_array = { vietnam_parliament_seat_x = 301 }
+	add_to_array = { vietnam_parliament_seat_y = 90 }
+	add_to_array = { vietnam_parliament_seat_x = 321 }
+	add_to_array = { vietnam_parliament_seat_y = 78 }
+	add_to_array = { vietnam_parliament_seat_x = 332 }
+	add_to_array = { vietnam_parliament_seat_y = 72 }
+	add_to_array = { vietnam_parliament_seat_x = 253 }
+	add_to_array = { vietnam_parliament_seat_y = 125 }
+	add_to_array = { vietnam_parliament_seat_x = 273 }
+	add_to_array = { vietnam_parliament_seat_y = 113 }
+	add_to_array = { vietnam_parliament_seat_x = 294 }
+	add_to_array = { vietnam_parliament_seat_y = 101 }
+	add_to_array = { vietnam_parliament_seat_x = 314 }
+	add_to_array = { vietnam_parliament_seat_y = 89 }
+	add_to_array = { vietnam_parliament_seat_x = 338 }
+	add_to_array = { vietnam_parliament_seat_y = 82 }
+	add_to_array = { vietnam_parliament_seat_x = 328 }
+	add_to_array = { vietnam_parliament_seat_y = 89 }
+	add_to_array = { vietnam_parliament_seat_x = 307 }
+	add_to_array = { vietnam_parliament_seat_y = 101 }
+	add_to_array = { vietnam_parliament_seat_x = 286 }
+	add_to_array = { vietnam_parliament_seat_y = 112 }
+	add_to_array = { vietnam_parliament_seat_x = 266 }
+	add_to_array = { vietnam_parliament_seat_y = 124 }
+	add_to_array = { vietnam_parliament_seat_x = 320 }
+	add_to_array = { vietnam_parliament_seat_y = 100 }
+	add_to_array = { vietnam_parliament_seat_x = 300 }
+	add_to_array = { vietnam_parliament_seat_y = 112 }
+	add_to_array = { vietnam_parliament_seat_x = 343 }
+	add_to_array = { vietnam_parliament_seat_y = 93 }
+	add_to_array = { vietnam_parliament_seat_x = 279 }
+	add_to_array = { vietnam_parliament_seat_y = 124 }
+	add_to_array = { vietnam_parliament_seat_x = 333 }
+	add_to_array = { vietnam_parliament_seat_y = 100 }
+	add_to_array = { vietnam_parliament_seat_x = 312 }
+	add_to_array = { vietnam_parliament_seat_y = 112 }
+	add_to_array = { vietnam_parliament_seat_x = 258 }
+	add_to_array = { vietnam_parliament_seat_y = 136 }
+	add_to_array = { vietnam_parliament_seat_x = 292 }
+	add_to_array = { vietnam_parliament_seat_y = 124 }
+	add_to_array = { vietnam_parliament_seat_x = 325 }
+	add_to_array = { vietnam_parliament_seat_y = 111 }
+	add_to_array = { vietnam_parliament_seat_x = 348 }
+	add_to_array = { vietnam_parliament_seat_y = 103 }
+	add_to_array = { vietnam_parliament_seat_x = 271 }
+	add_to_array = { vietnam_parliament_seat_y = 136 }
+	add_to_array = { vietnam_parliament_seat_x = 304 }
+	add_to_array = { vietnam_parliament_seat_y = 123 }
+	add_to_array = { vietnam_parliament_seat_x = 338 }
+	add_to_array = { vietnam_parliament_seat_y = 111 }
+	add_to_array = { vietnam_parliament_seat_x = 317 }
+	add_to_array = { vietnam_parliament_seat_y = 123 }
+	add_to_array = { vietnam_parliament_seat_x = 283 }
+	add_to_array = { vietnam_parliament_seat_y = 135 }
+	add_to_array = { vietnam_parliament_seat_x = 351 }
+	add_to_array = { vietnam_parliament_seat_y = 114 }
+	add_to_array = { vietnam_parliament_seat_x = 329 }
+	add_to_array = { vietnam_parliament_seat_y = 123 }
+	add_to_array = { vietnam_parliament_seat_x = 296 }
+	add_to_array = { vietnam_parliament_seat_y = 135 }
+	add_to_array = { vietnam_parliament_seat_x = 342 }
+	add_to_array = { vietnam_parliament_seat_y = 123 }
+	add_to_array = { vietnam_parliament_seat_x = 262 }
+	add_to_array = { vietnam_parliament_seat_y = 148 }
+	add_to_array = { vietnam_parliament_seat_x = 308 }
+	add_to_array = { vietnam_parliament_seat_y = 135 }
+	add_to_array = { vietnam_parliament_seat_x = 355 }
+	add_to_array = { vietnam_parliament_seat_y = 125 }
+	add_to_array = { vietnam_parliament_seat_x = 320 }
+	add_to_array = { vietnam_parliament_seat_y = 135 }
+	add_to_array = { vietnam_parliament_seat_x = 275 }
+	add_to_array = { vietnam_parliament_seat_y = 148 }
+	add_to_array = { vietnam_parliament_seat_x = 333 }
+	add_to_array = { vietnam_parliament_seat_y = 135 }
+	add_to_array = { vietnam_parliament_seat_x = 345 }
+	add_to_array = { vietnam_parliament_seat_y = 135 }
+	add_to_array = { vietnam_parliament_seat_x = 287 }
+	add_to_array = { vietnam_parliament_seat_y = 147 }
+	add_to_array = { vietnam_parliament_seat_x = 299 }
+	add_to_array = { vietnam_parliament_seat_y = 147 }
+	add_to_array = { vietnam_parliament_seat_x = 357 }
+	add_to_array = { vietnam_parliament_seat_y = 137 }
+	add_to_array = { vietnam_parliament_seat_x = 311 }
+	add_to_array = { vietnam_parliament_seat_y = 147 }
+	add_to_array = { vietnam_parliament_seat_x = 323 }
+	add_to_array = { vietnam_parliament_seat_y = 147 }
+	add_to_array = { vietnam_parliament_seat_x = 335 }
+	add_to_array = { vietnam_parliament_seat_y = 147 }
+	add_to_array = { vietnam_parliament_seat_x = 347 }
+	add_to_array = { vietnam_parliament_seat_y = 147 }
+	add_to_array = { vietnam_parliament_seat_x = 359 }
+	add_to_array = { vietnam_parliament_seat_y = 148 }
+	add_to_array = { vietnam_parliament_seat_x = 265 }
+	add_to_array = { vietnam_parliament_seat_y = 160 }
+	add_to_array = { vietnam_parliament_seat_x = 277 }
+	add_to_array = { vietnam_parliament_seat_y = 160 }
+	add_to_array = { vietnam_parliament_seat_x = 289 }
+	add_to_array = { vietnam_parliament_seat_y = 160 }
+	add_to_array = { vietnam_parliament_seat_x = 300 }
+	add_to_array = { vietnam_parliament_seat_y = 160 }
+	add_to_array = { vietnam_parliament_seat_x = 312 }
+	add_to_array = { vietnam_parliament_seat_y = 160 }
+	add_to_array = { vietnam_parliament_seat_x = 324 }
+	add_to_array = { vietnam_parliament_seat_y = 160 }
+	add_to_array = { vietnam_parliament_seat_x = 336 }
+	add_to_array = { vietnam_parliament_seat_y = 160 }
+	add_to_array = { vietnam_parliament_seat_x = 348 }
+	add_to_array = { vietnam_parliament_seat_y = 160 }
+	add_to_array = { vietnam_parliament_seat_x = 360 }
+	add_to_array = { vietnam_parliament_seat_y = 160 }
+}

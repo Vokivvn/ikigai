@@ -1,0 +1,8 @@
+RMR_PRNP_factions = {
+  allowed = {
+    tag = RMR
+  }
+  visible = {
+  }
+  visible_when_empty = yes
+}

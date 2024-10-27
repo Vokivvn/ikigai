@@ -1,0 +1,202 @@
+ideas = {
+	
+	country = {
+		VIN_mekong_floods = {
+			#picture = 
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = no
+			}	
+			
+			modifier = {
+				production_speed_buildings_factor = -0.2
+				stability_factor = -0.10
+			}
+		}
+		VIN_mekong_floods_1 = {
+			#picture = 
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = no
+			}	
+			
+			modifier = {
+				production_speed_buildings_factor = -0.15
+				stability_factor = -0.075
+			}
+		}
+		VIN_mekong_floods_2 = {
+			#picture = 
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = no
+			}	
+			
+			modifier = {
+				production_speed_buildings_factor = -0.10
+				stability_factor = -0.05
+			}
+		}
+		VIN_mekong_floods_3 = {
+			#picture = 
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = no
+			}	
+			
+			modifier = {
+				production_speed_buildings_factor = -0.05
+				stability_factor = -0.025
+			}
+		}
+		VIN_indochinese_tourism = {
+			#picture = 
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = no
+			}	
+			
+			modifier = {
+				stability_factor = 0.025
+				custom_modifier_tooltip = VIN_indochinese_tourism_tt
+			}
+		}
+		VIN_indochinese_tourism_1 = {
+			#picture = 
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = no
+			}	
+			
+			modifier = {
+				stability_factor = 0.05
+				custom_modifier_tooltip = VIN_indochinese_tourism_1_tt
+			}
+		}
+		VIN_increased_harvests = {
+			#picture = 
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = no
+			}	
+			
+			modifier = {
+				stability_factor = 0.05
+				consumer_goods_factor = -0.02
+			}
+		}
+		VIN_vcc = {
+			#picture = 
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = no
+			}	
+			
+			modifier = {
+				local_resources_factor = 0.1
+			}
+		}
+		VIN_complete_railway = {
+			#picture = 
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = no
+			}	
+			
+			modifier = {
+				army_speed_factor = 0.10
+			}
+		}
+		VIN_incomplete_industrialization = {
+			#picture = 
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = no
+			}	
+			
+			modifier = {
+				production_speed_buildings_factor = -0.2
+				local_resources_factor = -0.2
+				consumer_goods_factor = 0.15
+				industrial_capacity_factory	= -0.25
+				line_change_production_efficiency_factor = -0.2
+				custom_modifier_tooltip = VIN_incomplete_industrialization_tt
+			}
+		}
+		VIN_half_complete_industrialization = {
+			#picture = 
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = no
+			}	
+			
+			modifier = {
+				production_speed_buildings_factor = -0.05
+				local_resources_factor = -0.05
+				industrial_capacity_factory	= -0.05
+			}
+		}
+		VIN_complete_industrialization = {
+			#picture = 
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = no
+			}	
+			
+			modifier = {
+				production_speed_buildings_factor = 0.2
+				consumer_goods_factor = -0.1
+				industrial_capacity_factory	= 0.15
+				custom_modifier_tooltip = VIN_complete_industrialization_tt
+			}
+		}
+	}
+}

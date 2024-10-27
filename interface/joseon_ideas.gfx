@@ -1,0 +1,14 @@
+spriteTypes = {
+	SpriteType = {
+		name = "GFX_idea_political_violence"
+		texturefile = "gfx/interface/ideas/political_violence.dds"
+	}
+		SpriteType = {
+		name = "GFX_idea_disjointed_government"
+		texturefile = "gfx/interface/ideas/disjointed_government.dds"
+	}
+		SpriteType = {
+		name = "GFX_idea_far_east_holdings"
+		texturefile = "gfx/interface/ideas/far_east_holdings.dds"
+	}
+}

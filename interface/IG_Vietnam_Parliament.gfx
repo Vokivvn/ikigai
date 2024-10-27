@@ -1,0 +1,14 @@
+spriteTypes = {
+
+	spriteType = {
+		name = "GFX_Vietnam_Parliament_Background"
+		textureFile = "/gfx/interface/vietnam_parliament/parliament_background.dds"
+	}
+
+	spriteType = {
+		name = "GFX_Vietnam_Parliament_Seat"
+		textureFile = "/gfx/interface/vietnam_parliament/parliament_seat.dds"
+		noOfFrames = 4
+	}
+
+}

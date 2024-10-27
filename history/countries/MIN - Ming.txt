@@ -1,0 +1,41 @@
+capital = 593
+
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+}
+
+set_convoys = 20
+
+set_politics = {
+	ruling_party = fundamentalist
+	last_election = "1936.1.1"
+	election_frequency = 48
+	elections_allowed = yes
+}
+
+add_ideas = {
+	MIN_political_dissidents
+	MIN_sunset_crash
+	MIN_treaty_of_seoul
+}
+
+set_popularities = {
+	social_nationalist = 2.5
+	marxist = 2.5
+	libertarian = 0
+	moderate_socialist = 0
+	social_democrat = 5
+	social_liberal = 5
+	conservative = 5
+	authoritarian_democrat = 0
+	autocratic = 0
+	fundamentalist = 80
+}
+
+create_country_leader = {
+	name = "Chiang Kai-shek"
+	desc = ""
+	picture = "gfx/leaders/MIN/Portrait_MIN_Chiang_Kai-shek.dds"
+	ideology = fundamentalist_subtype
+}

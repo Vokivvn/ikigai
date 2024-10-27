@@ -1,0 +1,53 @@
+capital = 728
+
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+}
+
+##Chinese Influence
+set_variable = {
+	var = AGU_CHI_Influence
+	value = 0
+}
+set_variable = {
+	var = MNG_CHI_Influence
+	value = 0
+}
+set_variable = {
+	var = DEI_CHI_Influence
+	value = 0
+}
+set_variable = {
+	var = PTK_CHI_Influence
+	value = 200
+}
+set_variable = {
+	var = RME_CHI_Influence
+	value = 0
+}
+set_variable = {
+	var = KRO_CHI_Influence
+	value = 0
+}
+
+set_convoys = 20
+
+set_politics = {
+	ruling_party = democratic
+	last_election = "1936.1.1"
+	election_frequency = 48
+	elections_allowed = yes
+}
+
+set_popularities = {
+	democratic = 80
+	fascism = 20
+}
+
+create_country_leader = {
+	name = "Carlos Alberto Brenes"
+	desc = ""
+	picture = "carlosalbertobrenes.dds"
+	ideology = liberalism
+}

@@ -1,0 +1,86 @@
+capital = 336
+
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+}
+
+set_convoys = 20
+
+set_politics = {
+	ruling_party = conservative
+	last_election = "1936.1.1"
+	election_frequency = 48
+	elections_allowed = yes
+}
+
+VIN = { puppet = MAY }
+
+set_popularities = {
+	social_nationalist = 0
+	marxist = 0
+	libertarian = 0
+	moderate_socialist = 0
+	social_democrat = 15
+	social_liberal = 20
+	conservative = 40
+	authoritarian_democrat = 0
+	autocratic = 20
+	fundamentalist = 5
+}
+
+create_country_leader = {
+	name = "Tunku Abdul Rahman"
+	desc = ""
+	picture = "gfx/leaders/MAY/Portrait_MAY_Tunku_Abdul_Rahman.dds"
+	ideology = conservative_subtype
+}
+
+create_country_leader = {
+	name = "Social Liberal Leader"
+	desc = ""
+	picture = "carlosalbertobrenes.dds"
+	ideology = social_liberal_subtype
+}
+
+create_country_leader = {
+	name = "Social Democrat Leader"
+	desc = ""
+	picture = "carlosalbertobrenes.dds"
+	ideology = social_democrat_subtype
+}
+
+create_country_leader = {
+	name = "Authoritarian Democrat Leader"
+	desc = ""
+	picture = "carlosalbertobrenes.dds"
+	ideology = authoritarian_democrat_subtype
+}
+
+create_country_leader = {
+	name = "Fundamentalist Leader"
+	desc = ""
+	picture = "carlosalbertobrenes.dds"
+	ideology = fundamentalist_subtype
+}
+
+create_country_leader = {
+	name = "Moderate Socialist Leader"
+	desc = ""
+	picture = "carlosalbertobrenes.dds"
+	ideology = moderate_socialist_subtype
+}
+
+create_country_leader = {
+	name = "Marxist Leader"
+	desc = ""
+	picture = "carlosalbertobrenes.dds"
+	ideology = marxist_subtype
+}
+
+create_country_leader = {
+	name = "Social Nationalist Leader"
+	desc = ""
+	picture = "carlosalbertobrenes.dds"
+	ideology = social_nationalist_subtype
+}

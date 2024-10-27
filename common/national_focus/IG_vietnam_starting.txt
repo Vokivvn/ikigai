@@ -1,0 +1,2083 @@
+shared_focus = {
+	id = VIN_vietnamese_modern_struggle
+	
+	#icon = 
+	x = 10
+	y = 1
+
+	
+	cost = 1
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	cancel_if_invalid = yes
+
+	completion_reward = {
+		country_event = vietnam.1
+	}
+}
+
+shared_focus = {
+	id = VIN_corruption
+	prerequisite = { focus = VIN_vietnamese_modern_struggle }
+	relative_position_id = VIN_vietnamese_modern_struggle
+	
+	#icon = 
+	x = 0
+	y = 1
+
+	cost = 1
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	cancel_if_invalid = yes
+
+	completion_reward = {
+		country_event = vietnam.2
+	}
+}
+#############
+# Economy
+#############
+shared_focus = {
+	id = VIN_status_economy
+	prerequisite = { focus = VIN_corruption }
+	relative_position_id = VIN_corruption
+	
+	icon = GFX_goal_VIN_status_of_economy
+	x = -9
+	y = 1
+
+	cost = 1
+
+	ai_will_do = {
+		factor = 2
+	}
+	cancel_if_invalid = yes
+
+	completion_reward = {
+		country_event = vietnam.3
+	}
+}
+
+shared_focus = {
+	id = VIN_new_trade
+	prerequisite = { focus = VIN_status_economy }
+	relative_position_id = VIN_status_economy
+	
+	icon = GFX_goal_VIN_securing_new_trade_opportunities
+	x = 0
+	y = 1
+
+	cost = 1
+
+	ai_will_do = {
+		factor = 2
+	}
+	cancel_if_invalid = yes
+
+	completion_reward = {
+		hidden_effect = {
+			country_event = vietnam.4
+		}
+		custom_effect_tooltip = VIN_new_trade_tt
+	}
+}
+
+shared_focus = {
+	id = VIN_invest_countryside
+	prerequisite = { focus = VIN_new_trade }
+	relative_position_id = VIN_new_trade
+	
+	icon = GFX_goal_VIN_invest_into_countryside
+	x = -2
+	y = 1
+
+	cost = 2
+
+	ai_will_do = {
+		factor = 2
+	}
+	cancel_if_invalid = yes
+	completion_reward = {
+		custom_effect_tooltip = VIN_invest_countryside_tt
+	}
+}
+
+shared_focus = {
+	id = VIN_invest_cities
+	prerequisite = { focus = VIN_new_trade }
+	relative_position_id = VIN_new_trade
+	
+	icon = GFX_goal_VIN_invest_into_cities
+	x = 2
+	y = 1
+
+	cost = 2
+
+	ai_will_do = {
+		factor = 2
+	}
+	cancel_if_invalid = yes
+	completion_reward = {
+		custom_effect_tooltip = VIN_invest_cities_tt
+	}
+}
+
+shared_focus = {
+	id = VIN_stop_mekong_floods
+	prerequisite = { focus = VIN_invest_countryside }
+	relative_position_id = VIN_invest_countryside
+	
+	icon = GFX_goal_VIN_stop_mekong_floods
+	x = -2
+	y = 1
+
+	cost = 3
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	cancel_if_invalid = yes
+	available_if_capitulated = yes
+
+	completion_reward = {
+		swap_ideas = {
+			remove_idea = VIN_mekong_floods
+			add_idea = VIN_mekong_floods_1
+		}
+	}
+}
+
+shared_focus = {
+	id = VIN_compensate_farmers
+	prerequisite = { focus = VIN_stop_mekong_floods }
+	relative_position_id = VIN_stop_mekong_floods
+	
+	icon = GFX_goal_VIN_compensate_farmers
+	x = 0
+	y = 1
+
+	cost = 3
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	cancel_if_invalid = yes
+	available_if_capitulated = yes
+
+	completion_reward = {
+		swap_ideas = {
+			remove_idea = VIN_mekong_floods_1
+			add_idea = VIN_mekong_floods_2
+		}
+		subtract_from_variable = { GDP = 0.1 }
+		custom_effect_tooltip = VIN_compensate_farmers_tt
+	}
+}
+
+shared_focus = {
+	id = VIN_rebuild_villages
+	prerequisite = { focus = VIN_compensate_farmers }
+	relative_position_id = VIN_compensate_farmers
+	
+	icon = GFX_goal_VIN_rebuild_the_villages
+	x = 0
+	y = 1
+
+	cost = 3
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	cancel_if_invalid = yes
+	available_if_capitulated = yes
+
+	completion_reward = {
+		swap_ideas = {
+			remove_idea = VIN_mekong_floods_2
+			add_idea = VIN_mekong_floods_3
+		}
+		subtract_from_variable = { GDP = 0.5 }
+		custom_effect_tooltip = VIN_rebuild_villages_tt
+	}
+}
+
+shared_focus = {
+	id = VIN_full_recovery
+	prerequisite = { focus = VIN_rebuild_villages }
+	relative_position_id = VIN_rebuild_villages
+	
+	icon = GFX_goal_VIN_full_recovery
+	x = 0
+	y = 1
+
+	cost = 4
+
+	ai_will_do = {
+		factor = 2
+	}
+	cancel_if_invalid = yes
+	available_if_capitulated = yes
+
+	completion_reward = {
+		remove_ideas = { VIN_mekong_floods_3 }
+		add_to_variable = { GDP_growth = 0.001 }
+		custom_effect_tooltip = VIN_full_recovery_tt
+	}
+}
+
+shared_focus = {
+	id = VIN_invest_coast
+	prerequisite = { focus = VIN_invest_countryside }
+	relative_position_id = VIN_invest_countryside
+	
+	icon = GFX_goal_VIN_invest_into_coast
+	x = 0
+	y = 1
+
+	cost = 2
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	cancel_if_invalid = yes
+	available_if_capitulated = yes
+
+	completion_reward = {
+		custom_effect_tooltip = VIN_invest_coast_tt
+		add_political_power = 35
+	}
+}
+
+shared_focus = {
+	id = VIN_help_farmers_red_river
+	prerequisite = { focus = VIN_invest_coast }
+	relative_position_id = VIN_invest_coast
+	
+	icon = GFX_goal_VIN_help_farmers_on_red_river_delta
+	x = 0
+	y = 1
+
+	cost = 2
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	cancel_if_invalid = yes
+	available_if_capitulated = yes
+
+	completion_reward = {
+		custom_effect_tooltip = VIN_help_red_river_farmers_tt
+		add_stability = 0.015
+	}
+}
+
+shared_focus = {
+	id = VIN_clear_jungles
+	prerequisite = { focus = VIN_help_farmers_red_river }
+	relative_position_id = VIN_help_farmers_red_river
+	
+	icon = GFX_goal_VIN_clear_the_jungles_of_indochina
+	x = 0
+	y = 1
+
+	cost = 3
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	cancel_if_invalid = yes
+	available_if_capitulated = yes
+
+	completion_reward = {
+		898 = {
+			add_extra_state_shared_building_slots = 1
+		}
+		893 = {
+			add_extra_state_shared_building_slots = 1
+		}
+		896 = {
+			add_extra_state_shared_building_slots = 1
+		}
+		899 = {
+			add_extra_state_shared_building_slots = 1
+		}
+		897 = {
+			add_extra_state_shared_building_slots = 1
+		}
+		895 = {
+			add_extra_state_shared_building_slots = 1
+		}
+		905 = {
+			add_extra_state_shared_building_slots = 1
+		}
+		741 = {
+			add_extra_state_shared_building_slots = 1
+		}
+		add_to_variable = { VIN_industrialization = 10 }
+		custom_effect_tooltip = VIN_10_ind_progress
+	}
+}
+
+shared_focus = {
+	id = VIN_build_up_hainan
+	prerequisite = { focus = VIN_clear_jungles }
+	relative_position_id = VIN_clear_jungles
+	
+	icon = GFX_goal_VIN_build_up_hainan
+	x = 0
+	y = 1
+
+	cost = 2
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	cancel_if_invalid = yes
+	available_if_capitulated = yes
+
+	completion_reward = {
+		591 = {
+			add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			add_building_construction = { type = dockyard level = 1 instant_build = yes }
+			add_building_construction = { type = infrastructure level = 1 instant_build = yes }
+		}
+	}
+}
+
+shared_focus = {
+	id = VIN_riches_of_indies
+	prerequisite = { focus = VIN_invest_countryside }
+	prerequisite = { focus = VIN_invest_cities }
+	relative_position_id = VIN_invest_countryside
+	
+	icon = GFX_goal_VIN_riches_of_indies
+	x = 2
+	y = 1
+
+	cost = 2
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	cancel_if_invalid = yes
+	available_if_capitulated = yes
+
+	completion_reward = {
+		country_event = vietnam.10
+	}
+}
+
+shared_focus = {
+	id = VIN_exploiting_colonies
+	prerequisite = { focus = VIN_riches_of_indies }
+	relative_position_id = VIN_riches_of_indies
+	
+	icon = GFX_goal_VIN_exploiting_the_colonies
+	x = 0
+	y = 1
+
+	cost = 3
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	cancel_if_invalid = yes
+	available_if_capitulated = yes
+
+	completion_reward = {
+		334 = {
+			subtract_from_variable = { sphere_loyalty = 10 }
+		}
+		673 = {
+			subtract_from_variable = { sphere_loyalty = 10 }
+		}
+		668 = {
+			subtract_from_variable = { sphere_loyalty = 10 }
+		}
+		669 = {
+			subtract_from_variable = { sphere_loyalty = 10 }
+		}
+		custom_effect_tooltip = VIN_exploiting_colonies_tt
+		add_political_power = 100
+		add_to_variable = { var = income_tax_rate value = 0.03 }
+		custom_effect_tooltip = VIN_exploiting_colonies_1_tt
+	}
+}
+
+shared_focus = {
+	id = VIN_bornean_rubber_rush
+	prerequisite = { focus = VIN_exploiting_colonies }
+	relative_position_id = VIN_exploiting_colonies
+	
+	icon = GFX_goal_VIN_bornean_rubber_rush
+	x = 0
+	y = 1
+
+	cost = 3
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	cancel_if_invalid = yes
+	available_if_capitulated = yes
+
+	completion_reward = {
+		add_resource = { type = rubber amount = 24 state = 890 }
+		add_resource = { type = rubber amount = 24 state = 334 }
+		add_resource = { type = rubber amount = 24 state = 891 }	
+	}
+}
+
+shared_focus = {
+	id = VIN_formation_of_vcc
+	prerequisite = { focus = VIN_bornean_rubber_rush }
+	relative_position_id = VIN_bornean_rubber_rush
+	
+	icon = GFX_goal_VIN_form_vcc
+	x = 0
+	y = 1
+
+	cost = 4
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	cancel_if_invalid = yes
+	available_if_capitulated = yes
+
+	completion_reward = {
+		add_ideas = VIN_vcc
+	}
+}
+
+shared_focus = {
+	id = VIN_build_up_hanoi
+	prerequisite = { focus = VIN_invest_cities }
+	relative_position_id = VIN_invest_cities
+	
+	icon = GFX_goal_VIN_build_up_hanoi
+	x = 1
+	y = 1
+
+	cost = 4
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	cancel_if_invalid = yes
+	available_if_capitulated = yes
+
+	completion_reward = {
+		custom_effect_tooltip =  VIN_build_up_hanoi_tt
+	}
+}
+
+shared_focus = {
+	id = VIN_expand_saigon
+	prerequisite = { focus = VIN_build_up_hanoi }
+	relative_position_id = VIN_build_up_hanoi
+	
+	icon = GFX_goal_VIN_expand_saigons_ports
+	x = -1
+	y = 1
+
+	cost = 4
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {
+
+	}
+
+	bypass = {
+
+	}
+
+	cancel_if_invalid = yes
+	available_if_capitulated = yes
+
+	completion_reward = {
+		custom_effect_tooltip = VIN_expand_saigon_tt
+	}
+}
+
+shared_focus = {
+	id = VIN_help_bangkok
+	prerequisite = { focus = VIN_build_up_hanoi }
+	relative_position_id = VIN_build_up_hanoi
+	
+	icon = GFX_goal_VIN_help_bangkoks_harbours
+	x = 1
+	y = 1
+
+	cost = 4
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {
+
+	}
+
+	bypass = {
+
+	}
+
+	cancel_if_invalid = yes
+	available_if_capitulated = yes
+
+	completion_reward = {
+		custom_effect_tooltip = VIN_help_bangkok_tt
+	}
+}
+
+shared_focus = {
+	id = VIN_reinvest_new_towns
+	prerequisite = { focus = VIN_expand_saigon }
+	prerequisite = { focus = VIN_help_bangkok }
+	relative_position_id = VIN_expand_saigon
+	
+	#icon = 
+	x = 1
+	y = 1
+
+	cost = 4
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	cancel_if_invalid = yes
+	available_if_capitulated = yes
+
+	completion_reward = {
+		custom_effect_tooltip = VIN_reinvest_new_towns_tt
+		add_political_power = 75
+	}
+}
+
+shared_focus = {
+	id = VIN_triangle_railway
+	prerequisite = { focus = VIN_reinvest_new_towns }
+	relative_position_id = VIN_reinvest_new_towns
+	
+	icon = GFX_goal_VIN_triangle_railway
+	x = 0
+	y = 1
+
+	cost = 5
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	cancel_if_invalid = yes
+	available_if_capitulated = yes
+
+	completion_reward = {
+		custom_effect_tooltip = VIN_triangle_railway_tt
+		add_political_power = 150
+	}
+}
+
+shared_focus = {
+	id = VIN_indochinese_industrialization
+	prerequisite = { focus = VIN_full_recovery }
+	prerequisite = { focus = VIN_build_up_hainan }
+	prerequisite = { focus = VIN_formation_of_vcc }
+	prerequisite = { focus = VIN_triangle_railway }
+	relative_position_id = VIN_full_recovery
+	
+	icon = GFX_goal_VIN_complete_indochinese_industrialization
+	x = 4
+	y = 1
+
+	cost = 8
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	cancel_if_invalid = yes
+	available_if_capitulated = yes
+
+	completion_reward = {
+		hidden_effect = {	
+			if = {
+				limit = {
+					check_variable = { var = VIN_industrialization value = 50 compare = less_than }
+				}
+				add_ideas = VIN_incomplete_industrialization
+				289 = {
+					subtract_from_variable = { sphere_loyalty = 35 }
+				}
+				741 = {
+					subtract_from_variable = { sphere_loyalty = 35 }
+				}
+				670 = {
+					subtract_from_variable = { sphere_loyalty = 35 }
+				}
+				671 = {
+					subtract_from_variable = { sphere_loyalty = 35 }
+				} 
+			}
+			if = {
+				limit = {
+					check_variable = { var = VIN_industrialization value = 50 compare = greater_than_or_equals }
+					check_variable = { var = VIN_industrialization value = 90 compare = less_than }
+				
+				}
+				add_ideas = VIN_half_complete_industrialization
+			}
+			if = {
+				limit = {
+					check_variable = { var = VIN_industrialization value = 90 compare = greater_than_or_equals }
+					check_variable = { var = VIN_industrialization value = 101 compare = less_than }
+				}
+				add_ideas = VIN_complete_industrialization
+				289 = {
+					add_to_variable = { sphere_loyalty = 15 }
+				}
+				741 = {
+					add_to_variable = { sphere_loyalty = 15 }
+				}
+				670 = {
+					add_to_variable = { sphere_loyalty = 15 }
+				}
+				671 = {
+					add_to_variable = { sphere_loyalty = 15 }
+				}
+			}	
+		}
+		custom_effect_tooltip = VIN_indochinese_industrialization_tt	
+	}
+}
+
+##############
+# Army
+##############
+shared_focus = {
+	id = VIN_dragons_army
+	prerequisite = { focus = VIN_corruption }
+	relative_position_id = VIN_corruption
+	
+	#icon = 
+	x = 0
+	y = 1
+
+	cost = 5
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {
+
+	}
+
+	bypass = {
+
+	}
+
+	cancel_if_invalid = yes
+	available_if_capitulated = yes
+
+	completion_reward = {
+
+	}
+}
+
+shared_focus = {
+	id = VIN_dragon_overlord
+	prerequisite = { focus = VIN_dragons_army }
+	mutually_exclusive = { focus = VIN_dragon_oppressor }
+	relative_position_id = VIN_dragons_army
+	
+	#icon = 
+	x = -2
+	y = 1
+
+	cost = 5
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {
+
+	}
+
+	bypass = {
+
+	}
+
+	cancel_if_invalid = yes
+	available_if_capitulated = yes
+
+	completion_reward = {
+
+	}
+}
+
+shared_focus = {
+	id = VIN_pull_out_colonies
+	prerequisite = { focus = VIN_dragon_overlord }
+	relative_position_id = VIN_dragon_overlord
+	
+	#icon = 
+	x = -1
+	y = 1
+
+	cost = 5
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {
+
+	}
+
+	bypass = {
+
+	}
+
+	cancel_if_invalid = yes
+	available_if_capitulated = yes
+
+	completion_reward = {
+
+	}
+}
+
+shared_focus = {
+	id = VIN_restock_mainland_supplies
+	prerequisite = { focus = VIN_pull_out_colonies }
+	relative_position_id = VIN_pull_out_colonies
+	
+	#icon = 
+	x = 0
+	y = 1
+
+	cost = 5
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {
+
+	}
+
+	bypass = {
+
+	}
+
+	cancel_if_invalid = yes
+	available_if_capitulated = yes
+
+	completion_reward = {
+
+	}
+}
+
+shared_focus = {
+	id = VIN_setup_outposts
+	prerequisite = { focus = VIN_restock_mainland_supplies }
+	relative_position_id = VIN_restock_mainland_supplies
+	
+	#icon = 
+	x = 0
+	y = 1
+
+	cost = 5
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {
+
+	}
+
+	bypass = {
+
+	}
+
+	cancel_if_invalid = yes
+	available_if_capitulated = yes
+
+	completion_reward = {
+
+	}
+}
+
+shared_focus = {
+	id = VIN_pull_out_garrisons
+	prerequisite = { focus = VIN_setup_outposts }
+	relative_position_id = VIN_setup_outposts
+	
+	#icon = 
+	x = 0
+	y = 1
+
+	cost = 5
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {
+
+	}
+
+	bypass = {
+
+	}
+
+	cancel_if_invalid = yes
+	available_if_capitulated = yes
+
+	completion_reward = {
+
+	}
+}
+
+shared_focus = {
+	id = VIN_train_natives
+	prerequisite = { focus = VIN_dragon_overlord }
+	relative_position_id = VIN_dragon_overlord
+	
+	#icon = 
+	x = 1
+	y = 1
+
+	cost = 5
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {
+
+	}
+
+	bypass = {
+
+	}
+
+	cancel_if_invalid = yes
+	available_if_capitulated = yes
+
+	completion_reward = {
+
+	}
+}
+
+shared_focus = {
+	id = VIN_hanoi_finest
+	prerequisite = { focus = VIN_train_natives }
+	relative_position_id = VIN_train_natives
+	
+	#icon = 
+	x = 0
+	y = 1
+
+	cost = 5
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {
+
+	}
+
+	bypass = {
+
+	}
+
+	cancel_if_invalid = yes
+	available_if_capitulated = yes
+
+	completion_reward = {
+
+	}
+}
+
+shared_focus = {
+	id = VIN_leave_equipment
+	prerequisite = { focus = VIN_hanoi_finest }
+	relative_position_id = VIN_hanoi_finest
+	
+	#icon = 
+	x = 0
+	y = 1
+
+	cost = 5
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {
+
+	}
+
+	bypass = {
+
+	}
+
+	cancel_if_invalid = yes
+	available_if_capitulated = yes
+
+	completion_reward = {
+
+	}
+}
+
+shared_focus = {
+	id = VIN_let_colonies_rule_themselves
+	prerequisite = { focus = VIN_leave_equipment }
+	relative_position_id = VIN_leave_equipment
+	
+	#icon = 
+	x = 0
+	y = 1
+
+	cost = 5
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {
+
+	}
+
+	bypass = {
+
+	}
+
+	cancel_if_invalid = yes
+	available_if_capitulated = yes
+
+	completion_reward = {
+
+	}
+}
+
+shared_focus = {
+	id = VIN_dragon_oppressor
+	prerequisite = { focus = VIN_dragons_army }
+	mutually_exclusive = { focus = VIN_dragon_overlord }
+	relative_position_id = VIN_dragons_army
+	
+	#icon = 
+	x = 2
+	y = 1
+
+	cost = 5
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {
+
+	}
+
+	bypass = {
+
+	}
+
+	cancel_if_invalid = yes
+	available_if_capitulated = yes
+
+	completion_reward = {
+
+	}
+}
+
+shared_focus = {
+	id = VIN_takeover_army_matters
+	prerequisite = { focus = VIN_dragon_oppressor }
+	relative_position_id = VIN_dragon_oppressor
+	
+	#icon = 
+	x = -1
+	y = 1
+
+	cost = 5
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {
+
+	}
+
+	bypass = {
+
+	}
+
+	cancel_if_invalid = yes
+	available_if_capitulated = yes
+
+	completion_reward = {
+
+	}
+}
+
+shared_focus = {
+	id = VIN_setup_military_governments
+	prerequisite = { focus = VIN_takeover_army_matters }
+	relative_position_id = VIN_takeover_army_matters
+	
+	#icon = 
+	x = 0
+	y = 1
+
+	cost = 5
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {
+
+	}
+
+	bypass = {
+
+	}
+
+	cancel_if_invalid = yes
+	available_if_capitulated = yes
+
+	completion_reward = {
+
+	}
+}
+
+shared_focus = {
+	id = VIN_enact_martial_law
+	prerequisite = { focus = VIN_setup_military_governments }
+	relative_position_id = VIN_setup_military_governments
+	
+	#icon = 
+	x = 0
+	y = 1
+
+	cost = 5
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {
+
+	}
+
+	bypass = {
+
+	}
+
+	cancel_if_invalid = yes
+	available_if_capitulated = yes
+
+	completion_reward = {
+
+	}
+}
+
+shared_focus = {
+	id = VIN_army_in_control
+	prerequisite = { focus = VIN_enact_martial_law }
+	relative_position_id = VIN_enact_martial_law
+	
+	#icon = 
+	x = 0
+	y = 1
+
+	cost = 5
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {
+
+	}
+
+	bypass = {
+
+	}
+
+	cancel_if_invalid = yes
+	available_if_capitulated = yes
+
+	completion_reward = {
+
+	}
+}
+
+shared_focus = {
+	id = VIN_more_conscripts
+	prerequisite = { focus = VIN_dragon_oppressor }
+	relative_position_id = VIN_dragon_oppressor
+	
+	#icon = 
+	x = 1
+	y = 1
+
+	cost = 5
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {
+
+	}
+
+	bypass = {
+
+	}
+
+	cancel_if_invalid = yes
+	available_if_capitulated = yes
+
+	completion_reward = {
+
+	}
+}
+
+shared_focus = {
+	id = VIN_half_trained_overseas
+	prerequisite = { focus = VIN_more_conscripts }
+	relative_position_id = VIN_more_conscripts
+	
+	#icon = 
+	x = 0
+	y = 1
+
+	cost = 5
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {
+
+	}
+
+	bypass = {
+
+	}
+
+	cancel_if_invalid = yes
+	available_if_capitulated = yes
+
+	completion_reward = {
+
+	}
+}
+
+shared_focus = {
+	id = VIN_conscript_civilians
+	prerequisite = { focus = VIN_half_trained_overseas }
+	relative_position_id = VIN_half_trained_overseas
+	
+	#icon = 
+	x = 0
+	y = 1
+
+	cost = 5
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {
+
+	}
+
+	bypass = {
+
+	}
+
+	cancel_if_invalid = yes
+	available_if_capitulated = yes
+
+	completion_reward = {
+
+	}
+}
+
+shared_focus = {
+	id = VIN_dragon_oversees_all
+	prerequisite = { focus = VIN_conscript_civilians }
+	relative_position_id = VIN_conscript_civilians
+	
+	#icon = 
+	x = 0
+	y = 1
+
+	cost = 5
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {
+
+	}
+
+	bypass = {
+
+	}
+
+	cancel_if_invalid = yes
+	available_if_capitulated = yes
+
+	completion_reward = {
+
+	}
+}
+
+shared_focus = {
+	id = VIN_proud_army_rong
+	prerequisite = { focus = VIN_pull_out_garrisons focus = VIN_army_in_control }
+	prerequisite = { focus = VIN_let_colonies_rule_themselves focus = VIN_dragon_oversees_all }
+	relative_position_id = VIN_pull_out_garrisons
+	
+	#icon = 
+	x = 3
+	y = 1
+
+	cost = 5
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {
+
+	}
+
+	bypass = {
+
+	}
+
+	cancel_if_invalid = yes
+	available_if_capitulated = yes
+
+	completion_reward = {
+
+	}
+}
+
+##############
+# Colonial 
+##############
+
+shared_focus = {
+	id = VIN_status_colonies
+	prerequisite = { focus = VIN_corruption }
+	relative_position_id = VIN_corruption
+	
+	#icon = 
+	x = 10
+	y = 1
+
+	cost = 5
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {
+
+	}
+
+	bypass = {
+
+	}
+
+	cancel_if_invalid = yes
+	available_if_capitulated = yes
+
+	completion_reward = {
+
+	}
+}
+
+shared_focus = {
+	id = VIN_federations
+	prerequisite = { focus = VIN_status_colonies }
+	relative_position_id = VIN_status_colonies
+	
+	#icon = 
+	x = -3
+	y = 1
+
+	cost = 5
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {
+
+	}
+
+	bypass = {
+
+	}
+
+	cancel_if_invalid = yes
+	available_if_capitulated = yes
+
+	completion_reward = {
+
+	}
+}
+
+shared_focus = {
+	id = VIN_kingdoms
+	prerequisite = { focus = VIN_status_colonies }
+	relative_position_id = VIN_status_colonies
+	
+	#icon = 
+	x = 0
+	y = 1
+
+	cost = 5
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {
+
+	}
+
+	bypass = {
+
+	}
+
+	cancel_if_invalid = yes
+	available_if_capitulated = yes
+
+	completion_reward = {
+
+	}
+}
+
+shared_focus = {
+	id = VIN_republics
+	prerequisite = { focus = VIN_status_colonies }
+	relative_position_id = VIN_status_colonies
+	
+	#icon = 
+	x = 3
+	y = 1
+
+	cost = 5
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {
+
+	}
+
+	bypass = {
+
+	}
+
+	cancel_if_invalid = yes
+	available_if_capitulated = yes
+
+	completion_reward = {
+
+	}
+}
+
+shared_focus = {
+	id = VIN_investments_malaya
+	prerequisite = { focus = VIN_federations }
+	relative_position_id = VIN_federations
+	
+	#icon = 
+	x = -1
+	y = 1
+
+	cost = 5
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {
+
+	}
+
+	bypass = {
+
+	}
+
+	cancel_if_invalid = yes
+	available_if_capitulated = yes
+
+	completion_reward = {
+
+	}
+}
+
+shared_focus = {
+	id = VIN_attract_foreign_capital
+	prerequisite = { focus = VIN_investments_malaya }
+	relative_position_id = VIN_investments_malaya
+	
+	#icon = 
+	x = 0
+	y = 1
+
+	cost = 5
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {
+
+	}
+
+	bypass = {
+
+	}
+
+	cancel_if_invalid = yes
+	available_if_capitulated = yes
+
+	completion_reward = {
+
+	}
+}
+
+shared_focus = {
+	id = VIN_our_true_goal
+	prerequisite = { focus = VIN_attract_foreign_capital }
+	relative_position_id = VIN_attract_foreign_capital
+	
+	#icon = 
+	x = 0
+	y = 1
+
+	cost = 5
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {
+
+	}
+
+	bypass = {
+
+	}
+
+	cancel_if_invalid = yes
+	available_if_capitulated = yes
+
+	completion_reward = {
+
+	}
+}
+
+shared_focus = {
+	id = VIN_rooting_out_khmer_resistance
+	prerequisite = { focus = VIN_federations }
+	relative_position_id = VIN_federations
+	
+	#icon = 
+	x = 1
+	y = 1
+
+	cost = 5
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {
+
+	}
+
+	bypass = {
+
+	}
+
+	cancel_if_invalid = yes
+	available_if_capitulated = yes
+
+	completion_reward = {
+
+	}
+}
+
+shared_focus = {
+	id = VIN_pacify_cambodia
+	prerequisite = { focus = VIN_rooting_out_khmer_resistance }
+	relative_position_id = VIN_rooting_out_khmer_resistance
+	
+	#icon = 
+	x = 0
+	y = 1
+
+	cost = 5
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {
+
+	}
+
+	bypass = {
+
+	}
+
+	cancel_if_invalid = yes
+	available_if_capitulated = yes
+
+	completion_reward = {
+
+	}
+}
+
+shared_focus = {
+	id = VIN_vietnamese_efficiency
+	prerequisite = { focus = VIN_pacify_cambodia }
+	relative_position_id = VIN_pacify_cambodia
+	
+	#icon = 
+	x = 0
+	y = 1
+
+	cost = 5
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {
+
+	}
+
+	bypass = {
+
+	}
+
+	cancel_if_invalid = yes
+	available_if_capitulated = yes
+
+	completion_reward = {
+
+	}
+}
+
+shared_focus = {
+	id = VIN_federations_handled
+	prerequisite = { focus = VIN_our_true_goal focus = VIN_vietnamese_efficiency }
+	relative_position_id = VIN_our_true_goal
+	
+	#icon = 
+	x = 1
+	y = 1
+
+	cost = 5
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {
+
+	}
+
+	bypass = {
+
+	}
+
+	cancel_if_invalid = yes
+	available_if_capitulated = yes
+
+	completion_reward = {
+
+	}
+}
+
+shared_focus = {
+	id = VIN_curtail_influence
+	prerequisite = { focus = VIN_kingdoms }
+	relative_position_id = VIN_kingdoms
+	
+	#icon = 
+	x = 0
+	y = 1
+
+	cost = 5
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {
+
+	}
+
+	bypass = {
+
+	}
+
+	cancel_if_invalid = yes
+	available_if_capitulated = yes
+
+	completion_reward = {
+
+	}
+}
+
+shared_focus = {
+	id = VIN_shackle_siam_king
+	prerequisite = { focus = VIN_curtail_influence }
+	relative_position_id = VIN_curtail_influence
+	
+	#icon = 
+	x = 0
+	y = 1
+
+	cost = 5
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {
+
+	}
+
+	bypass = {
+
+	}
+
+	cancel_if_invalid = yes
+	available_if_capitulated = yes
+
+	completion_reward = {
+
+	}
+}
+
+shared_focus = {
+	id = VIN_deal_with_kingdoms
+	prerequisite = { focus = VIN_shackle_siam_king }
+	relative_position_id = VIN_shackle_siam_king
+	
+	#icon = 
+	x = 0
+	y = 1
+
+	cost = 5
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {
+
+	}
+
+	bypass = {
+
+	}
+
+	cancel_if_invalid = yes
+	available_if_capitulated = yes
+
+	completion_reward = {
+
+	}
+}
+
+shared_focus = {
+	id = VIN_nguyen_dynasty_rules
+	prerequisite = { focus = VIN_deal_with_kingdoms }
+	relative_position_id = VIN_deal_with_kingdoms
+	
+	#icon = 
+	x = 0
+	y = 1
+
+	cost = 5
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {
+
+	}
+
+	bypass = {
+
+	}
+
+	cancel_if_invalid = yes
+	available_if_capitulated = yes
+
+	completion_reward = {
+
+	}
+}
+
+shared_focus = {
+	id = VIN_emptiness_of_xi_feng
+	prerequisite = { focus = VIN_republics }
+	relative_position_id = VIN_republics
+	
+	#icon = 
+	x = -1
+	y = 1
+
+	cost = 5
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {
+
+	}
+
+	bypass = {
+
+	}
+
+	cancel_if_invalid = yes
+	available_if_capitulated = yes
+
+	completion_reward = {
+
+	}
+}
+
+shared_focus = {
+	id = VIN_vietnamese_settlers
+	prerequisite = { focus = VIN_emptiness_of_xi_feng }
+	relative_position_id = VIN_emptiness_of_xi_feng
+	
+	#icon = 
+	x = 0
+	y = 1
+
+	cost = 5
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {
+
+	}
+
+	bypass = {
+
+	}
+
+	cancel_if_invalid = yes
+	available_if_capitulated = yes
+
+	completion_reward = {
+
+	}
+}
+
+shared_focus = {
+	id = VIN_keep_eye_on_japanese
+	prerequisite = { focus = VIN_vietnamese_settlers }
+	relative_position_id = VIN_vietnamese_settlers
+	
+	#icon = 
+	x = 0
+	y = 1
+
+	cost = 5
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {
+
+	}
+
+	bypass = {
+
+	}
+
+	cancel_if_invalid = yes
+	available_if_capitulated = yes
+
+	completion_reward = {
+
+	}
+}
+
+shared_focus = {
+	id = VIN_issue_indonesia
+	prerequisite = { focus = VIN_republics }
+	relative_position_id = VIN_republics
+	
+	#icon = 
+	x = 1
+	y = 1
+
+	cost = 5
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {
+
+	}
+
+	bypass = {
+
+	}
+
+	cancel_if_invalid = yes
+	available_if_capitulated = yes
+
+	completion_reward = {
+
+	}
+}
+
+shared_focus = {
+	id = VIN_watch_foreign_colonies
+	prerequisite = { focus = VIN_issue_indonesia }
+	relative_position_id = VIN_issue_indonesia
+	
+	#icon = 
+	x = 0
+	y = 1
+
+	cost = 5
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {
+
+	}
+
+	bypass = {
+
+	}
+
+	cancel_if_invalid = yes
+	available_if_capitulated = yes
+
+	completion_reward = {
+
+	}
+}
+
+shared_focus = {
+	id = VIN_increase_monthly_transports
+	prerequisite = { focus = VIN_watch_foreign_colonies }
+	relative_position_id = VIN_watch_foreign_colonies
+	
+	#icon = 
+	x = 0
+	y = 1
+
+	cost = 5
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {
+
+	}
+
+	bypass = {
+
+	}
+
+	cancel_if_invalid = yes
+	available_if_capitulated = yes
+
+	completion_reward = {
+
+	}
+}
+
+shared_focus = {
+	id = VIN_republics_under_control
+	prerequisite = { focus = VIN_keep_eye_on_japanese focus = VIN_increase_monthly_transports }
+	relative_position_id = VIN_keep_eye_on_japanese
+	
+	#icon = 
+	x = 1
+	y = 1
+
+	cost = 5
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {
+
+	}
+
+	bypass = {
+
+	}
+
+	cancel_if_invalid = yes
+	available_if_capitulated = yes
+
+	completion_reward = {
+
+	}
+}
+
+shared_focus = {
+	id = VIN_dragon_subjects_pacified
+	prerequisite = { focus = VIN_nguyen_dynasty_rules }
+	prerequisite = { focus = VIN_federations_handled focus = VIN_republics_under_control }
+	relative_position_id = VIN_nguyen_dynasty_rules
+	
+	#icon = 
+	x = 0
+	y = 1
+
+	cost = 5
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {
+
+	}
+
+	bypass = {
+
+	}
+
+	cancel_if_invalid = yes
+	available_if_capitulated = yes
+
+	completion_reward = {
+
+	}
+}
+
+shared_focus = {
+	id = VIN_day_reckoning
+	prerequisite = { focus = VIN_proud_army_rong }
+	prerequisite = { focus = VIN_dragon_subjects_pacified }
+	prerequisite = { focus = VIN_indochinese_industrialization }
+	relative_position_id = VIN_proud_army_rong
+	
+	#icon = 
+	x = 0
+	y = 3
+
+	cost = 5
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {
+
+	}
+
+	bypass = {
+
+	}
+
+	cancel_if_invalid = yes
+	available_if_capitulated = yes
+
+	completion_reward = {
+
+	}
+}
+
+shared_focus = {
+	id = VIN_emergency_meeting
+	prerequisite = { focus = VIN_day_reckoning }
+	relative_position_id = VIN_day_reckoning
+	
+	#icon = 
+	x = 0
+	y = 1
+
+	cost = 5
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {
+
+	}
+
+	bypass = {
+
+	}
+
+	cancel_if_invalid = yes
+	available_if_capitulated = yes
+
+	completion_reward = {
+
+	}
+}

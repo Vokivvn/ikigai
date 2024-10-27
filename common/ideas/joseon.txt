@@ -1,0 +1,64 @@
+ideas = {
+
+	country = {
+		KOR_political_violence = {
+			picture = political_violence
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = no
+			}	
+			
+			modifier = {
+				political_power_gain = -0.4
+				drift_defense_factor = -0.1
+				stability_factor = -0.1
+				war_support_factor = -0.1
+				foreign_subversive_activies = 0.1
+			}
+		}
+		KOR_disjointed_government = {
+			picture = disjointed_government
+			
+			allowed = {
+				always = no
+			}
+			
+			allowed_civil_war = {
+				always = no
+			}
+			
+			modifier = {
+				stability_factor = -0.1
+				political_power_gain = -0.5
+				war_support_factor = -0.1
+				drift_defence_factor = -0.1
+				foreign_subversive_activites = 0.1
+			}
+		}
+		KOR_far_east_holdings = {
+			picture = far_east_holdings
+				
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = no
+			}	
+			
+			modifier = {
+				consumer_goods_factor = -0.1
+				local_resources_factor = 0.1
+				production_speed_buildings_factor = 0.05
+				industrial_capacity_factory = 0.05
+				industrial_capacity_factory = 0.1
+				line_change_production_efficiency_factor = 0.1
+				production_factory_efficiency_gain_factor = 0.05
+			}
+		}
+	}
+}

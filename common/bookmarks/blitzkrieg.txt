@@ -1,0 +1,84 @@
+bookmarks = {
+	bookmark = {
+		name = "West"
+		desc = "placeholder_DESC"
+		date = 1935.1.1.12
+		picture = "GFX_select_date_1936"
+		default_country = "JAP"
+
+		"RMR"={
+			history = ""
+			ideas = {
+            }
+            focuses = {
+                
+            }
+			ideology = conservative
+		}
+
+		"ENG"={
+			history = ""
+			ideas = {
+            }
+            focuses = {
+                
+            }
+			ideology = conservative
+		}
+
+		"MUS"={
+			history = ""
+            ideas = {
+				VIN_mekong_floods
+            }
+            focuses = {
+            }
+			ideology = conservative
+
+		}
+
+		"GAL"= {
+			history = ""
+			ideas = {
+            }
+            focuses = {
+            }
+			ideology = conservative
+
+		}
+
+		"AUS"= {
+			history = ""
+			ideas = {
+            }
+            focuses = {
+            }
+			ideology = conservative
+
+		}
+		
+		"SCU"= {
+			history = ""
+			ideas = {
+            }
+            focuses = {
+            }
+			ideology = conservative
+
+		}
+
+		"HAM"= {
+			history = ""
+			ideas = {
+            }
+            focuses = {
+            }
+			ideology = conservative
+
+		}
+
+		effect = {
+			randomize_weather = 12345 
+		}
+	}
+}

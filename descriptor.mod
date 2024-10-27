@@ -1,0 +1,21 @@
+version="1.10.*"
+tags={
+	"Alternative History"
+	"Balance"
+	"Events"
+	"Fixes"
+	"Gameplay"
+	"Graphics"
+	"Historical"
+	"Ideologies"
+	"Map"
+	"Military"
+	"National Focuses"
+	"Sound"
+	"Technologies"
+	"Utilities"
+}
+
+name="Ikigai"
+replace_path="history/states"
+supported_version="1.10.*"

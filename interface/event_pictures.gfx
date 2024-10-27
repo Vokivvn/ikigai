@@ -1,0 +1,7 @@
+spriteTypes = {
+
+	spriteType = {
+		name = "GFX_carry_on"
+		texturefile = "gfx/interface/event_pictures/event_carry_on.dds"
+	}
+}

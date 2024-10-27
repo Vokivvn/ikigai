@@ -1,0 +1,450 @@
+#Created by Tsar Giraldo
+defined_text = {
+	name = CHIINF_AISIN_GIORO
+	text = {
+		trigger = {
+			CHI = {
+				check_variable = {
+					var = AGU_CHI_Influence
+					value = 300
+					compare = greater_than_or_equals
+				}
+				check_variable = {
+					var = AGU_CHI_Influence
+					value = 400
+					compare = less_than
+				}
+			}
+		}
+		localization_key = CHI_AGU_HI
+	}
+	text = {
+		trigger = {
+			CHI = {
+				check_variable = {
+					var = AGU_CHI_Influence
+					value = 400
+					compare = greater_than_or_equals
+				}
+			}
+		}
+		localization_key = CHI_AGU_GOV
+	}
+	text = {
+		trigger = {
+			CHI = {
+				check_variable = {
+					var = AGU_CHI_Influence
+					value = 200
+					compare = greater_than_or_equals
+				}
+				check_variable = {
+					var = AGU_CHI_Influence
+					value = 300
+					compare = less_than
+				}
+			}
+		}
+		localization_key = CHI_AGU_AS
+	}
+	text = {
+		trigger = {
+			CHI = {
+				check_variable = {
+					var = AGU_CHI_Influence
+					value = 100
+					compare = greater_than_or_equals
+				}
+				check_variable = {
+					var = AGU_CHI_Influence
+					value = 200
+					compare = less_than
+				}
+			}
+		}
+		localization_key = CHI_AGU_ANT
+	}
+	text = {
+		trigger = {
+			CHI = {
+				check_variable = { AGU_CHI_Influence = 0 }
+			}
+		}
+		localization_key = CHI_AGU_NON
+	}
+}
+
+defined_text = {
+	name = CHIINF_MONGKUONG
+	text = {
+		trigger = {
+			CHI = {
+				check_variable = {
+					var = MNG_CHI_Influence
+					value = 300
+					compare = greater_than_or_equals
+				}
+				check_variable = {
+					var = MNG_CHI_Influence
+					value = 400
+					compare = less_than
+				}
+			}
+		}
+		localization_key = CHI_MNG_HI
+	}
+	text = {
+		trigger = {
+			CHI = {
+				check_variable = {
+					var = MNG_CHI_Influence
+					value = 400
+					compare = greater_than_or_equals
+				}
+			}
+		}
+		localization_key = CHI_MNG_GOV
+	}
+	text = {
+		trigger = {
+			CHI = {
+				check_variable = {
+					var = MNG_CHI_Influence
+					value = 200
+					compare = greater_than_or_equals
+				}
+				check_variable = {
+					var = MNG_CHI_Influence
+					value = 300
+					compare = less_than
+				}
+			}
+		}
+		localization_key = CHI_MNG_AS
+	}
+	text = {
+		trigger = {
+			CHI = {
+				check_variable = {
+					var = MNG_CHI_Influence
+					value = 100
+					compare = greater_than_or_equals
+				}
+				check_variable = {
+					var = MNG_CHI_Influence
+					value = 200
+					compare = less_than
+				}
+			}
+		}
+		localization_key = CHI_MNG_ANT
+	}
+	text = {
+		trigger = {
+			CHI = {
+				check_variable = { MNG_CHI_Influence = 0 }
+			}
+		}
+		localization_key = CHI_MNG_NON
+	}
+}
+
+defined_text = {
+	name = CHIINF_KRORAN
+	text = {
+		trigger = {
+			CHI = {
+				check_variable = {
+					var = KRO_CHI_Influence
+					value = 300
+					compare = greater_than_or_equals
+				}
+				check_variable = {
+					var = KRO_CHI_Influence
+					value = 400
+					compare = less_than
+				}
+			}
+		}
+		localization_key = CHI_KRO_HI
+	}
+	text = {
+		trigger = {
+			CHI = {
+				check_variable = {
+					var = KRO_CHI_Influence
+					value = 400
+					compare = greater_than_or_equals
+				}
+			}
+		}
+		localization_key = CHI_KRO_GOV
+	}
+	text = {
+		trigger = {
+			CHI = {
+				check_variable = {
+					var = KRO_CHI_Influence
+					value = 200
+					compare = greater_than_or_equals
+				}
+				check_variable = {
+					var = KRO_CHI_Influence
+					value = 300
+					compare = less_than
+				}
+			}
+		}
+		localization_key = CHI_KRO_AS
+	}
+	text = {
+		trigger = {
+			CHI = {
+				check_variable = {
+					var = KRO_CHI_Influence
+					value = 100
+					compare = greater_than_or_equals
+				}
+				check_variable = {
+					var = KRO_CHI_Influence
+					value = 200
+					compare = less_than
+				}
+			}
+		}
+		localization_key = CHI_KRO_ANT
+	}
+	text = {
+		trigger = {
+			CHI = {
+				check_variable = { KRO_CHI_Influence = 0 }
+			}
+		}
+		localization_key = CHI_KRO_NON
+	}
+}
+
+defined_text = {
+	name = CHIINF_RMEA
+	text = {
+		trigger = {
+			CHI = {
+				check_variable = {
+					var = RME_CHI_Influence
+					value = 300
+					compare = greater_than_or_equals
+				}
+			}
+			check_variable = {
+				var = RME_CHI_Influence
+				value = 400
+				compare = less_than
+			}
+		}
+		localization_key = CHI_RME_HI
+	}
+	text = {
+		trigger = {
+			CHI = {
+				check_variable = {
+					var = RME_CHI_Influence
+					value = 400
+					compare = greater_than_or_equals
+				}
+			}
+		}
+		localization_key = CHI_RME_GOV
+	}
+	text = {
+		trigger = {
+			CHI = {
+				check_variable = {
+					var = RME_CHI_Influence
+					value = 200
+					compare = greater_than_or_equals
+				}
+				check_variable = {
+					var = RME_CHI_Influence
+					value = 300
+					compare = less_than
+				}
+			}
+		}
+		localization_key = CHI_RME_AS
+	}
+	text = {
+		trigger = {
+			CHI = {
+				check_variable = {
+					var = RME_CHI_Influence
+					value = 100
+					compare = greater_than_or_equals
+				}
+				check_variable = {
+					var = KRO_CHI_Influence
+					value = 200
+					compare = less_than
+				}
+			}
+		}
+		localization_key = CHI_RME_ANT
+	}
+	text = {
+		trigger = {
+			CHI = {
+				check_variable = { RME_CHI_Influence = 0 }
+			}
+		}
+		localization_key = CHI_RME_NON
+	}
+}
+
+defined_text = {
+	name = CHIINF_DEIKYUM
+	text = {
+		trigger = {
+			CHI = {
+				check_variable = {
+					var = DEI_CHI_Influence
+					value = 300
+					compare = greater_than_or_equals
+				}
+			}
+			check_variable = {
+				var = DEI_CHI_Influence
+				value = 400
+				compare = less_than
+			}
+		}
+		localization_key = CHI_DEI_HI
+	}
+	text = {
+		trigger = {
+			CHI = {
+				check_variable = {
+					var = DEI_CHI_Influence
+					value = 400
+					compare = greater_than_or_equals
+				}
+			}
+		}
+		localization_key = CHI_DEI_GOV
+	}
+	text = {
+		trigger = {
+			CHI = {
+				check_variable = {
+					var = DEI_CHI_Influence
+					value = 200
+					compare = greater_than_or_equals
+				}
+				check_variable = {
+					var = DEI_CHI_Influence
+					value = 300
+					compare = less_than
+				}
+			}
+		}
+		localization_key = CHI_DEI_AS
+	}
+	text = {
+		trigger = {
+			CHI = {
+				check_variable = {
+					var = DEI_CHI_Influence
+					value = 100
+					compare = greater_than_or_equals
+				}
+				check_variable = {
+					var = DEI_CHI_Influence
+					value = 200
+					compare = less_than
+				}
+			}
+		}
+		localization_key = CHI_DEI_ANT
+	}
+	text = {
+		trigger = {
+			CHI = {
+				check_variable = { DEI_CHI_ = 0 }
+			}
+		}
+		localization_key = CHI_DEI_NON
+	}
+}
+
+defined_text = {
+	name = CHIINF_POTALKA
+	text = {
+		trigger = {
+			CHI = {
+				check_variable = {
+					var = PTK_CHI_Influence
+					value = 300
+					compare = greater_than_or_equals
+				}
+			}
+			check_variable = {
+				var = PTK_CHI_Influence
+				value = 400
+				compare = less_than
+			}
+		}
+		localization_key = CHI_PTK_HI
+	}	
+	text = {
+		trigger = {
+			CHI = {
+				check_variable = {
+					var = PTK_CHI_Influence
+					value = 400
+					compare = greater_than_or_equals
+				}
+			}
+		}
+		localization_key = CHI_PTK_GOV
+	}
+	text = {
+		trigger = {
+			CHI = {
+				check_variable = {
+					var = PTK_CHI_Influence
+					value = 200
+					compare = greater_than_or_equals
+				}
+				check_variable = {
+					var = PTK_CHI_Influence
+					value = 300
+					compare = less_than
+				}
+			}
+		}
+		localization_key = CHI_PTK_AS
+	}
+	text = {
+		trigger = {
+			CHI = {
+				check_variable = {
+					var = PTK_CHI_Influence
+					value = 100
+					compare = greater_than_or_equals
+				}
+				check_variable = {
+					var = PTK_CHI_Influence
+					value = 200
+					compare = less_than
+				}
+			}
+		}
+		localization_key = CHI_PTK_ANT
+	}
+	text = {
+		trigger = {
+			CHI = {
+				check_variable = { PTK_CHI_Influence = 0 }
+			}
+		}
+		localization_key = CHI_PTK_NON
+	}
+}

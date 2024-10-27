@@ -1,0 +1,426 @@
+##Created by Tsar Giraldo
+CHI_mongkuong_inf = { #
+	hidden_effect = {
+		if = {
+			limit = {
+				has_country_flag = CHI_influencing_mongkuong
+			}
+			add_to_variable = {
+				var = MNG_CHI_Influence
+				value = 1
+			}
+			CHI_influence_autonomy_update_MNG = yes
+			if = {
+				limit = {
+					check_variable = {
+						var = MNG_CHI_Influence
+						value = 4
+						compare = greater_than_or_equals
+					}
+				}
+				clr_country_flag = CHI_influencing_mongkuong
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_idea = CHI_influencing_a_nation
+					}
+				}
+				add_ideas = CHI_influencing_a_nation
+			}
+		}
+	}
+}
+
+CHI_kroran_inf = { #
+	hidden_effect = {
+		if = {
+			limit = {
+				has_country_flag = CHI_influencing_kroran
+			}
+			add_to_variable = {
+				var = KRO_CHI_Influence
+				value = 1
+			}
+			CHI_influence_autonomy_update_KRO = yes
+			if = {
+				limit = {
+					check_variable = {
+						var = KRO_CHI_Influence
+						value = 4
+						compare = greater_than_or_equals
+					}
+				}
+				clr_country_flag = CHI_influencing_kroran
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_idea = CHI_influencing_a_nation
+					}
+				}
+				add_ideas = CHI_influencing_a_nation
+			}
+		}
+	}
+}
+
+CHI_potalka_inf = { #
+	hidden_effect = {
+		if = {
+			limit = {
+				has_country_flag = CHI_influencing_potalka
+			}
+			add_to_variable = {
+				var = PTK_CHI_Influence
+				value = 1
+			}
+			CHI_influence_autonomy_update_PTK = yes
+			if = {
+				limit = {
+					check_variable = {
+						var = PTK_CHI_Influence
+						value = 4
+						compare = greater_than_or_equals
+					}
+				}
+				clr_country_flag = CHI_influencing_potalka
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_idea = CHI_influencing_a_nation
+					}
+				}
+				add_ideas = CHI_influencing_a_nation
+			}
+		}
+	}
+}
+
+CHI_aisin_gioro_inf = { #
+	hidden_effect = {
+		if = {
+			limit = {
+				has_country_flag = CHI_influencing_aisin_gioro
+			}
+			add_to_variable = {
+				var = AGU_CHI_Influence
+				value = 1
+			}
+			CHI_influence_autonomy_update_AGU = yes
+			if = {
+				limit = {
+					check_variable = {
+						var = AGU_CHI_Influence
+						value = 4
+						compare = greater_than_or_equals
+					}
+				}
+				clr_country_flag = CHI_influencing_aisin_gioro
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_idea = CHI_influencing_a_nation
+					}
+				}
+				add_ideas = CHI_influencing_a_nation
+			}
+		}
+	}
+}
+
+CHI_rmea_inf = { #
+	hidden_effect = {
+		if = {
+			limit = {
+				has_country_flag = CHI_influencing_rmea
+			}
+			add_to_variable = {
+				var = RME_CHI_Influence
+				value = 1
+			}
+			CHI_influence_autonomy_update_RME = yes
+			if = {
+				limit = {
+					check_variable = {
+						var = RME_CHI_Influence
+						value = 4
+						compare = greater_than_or_equals
+					}
+				}
+				clr_country_flag = CHI_influencing_rmea
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_idea = CHI_influencing_a_nation
+					}
+				}
+				add_ideas = CHI_influencing_a_nation
+			}
+		}
+	}
+}
+CHI_deikyum_inf = { #
+	hidden_effect = {
+		if = {
+			limit = {
+				has_country_flag = CHI_influencing_deikyum
+				NOT = {
+					check_variable = {
+						var = DEI_CHI_Influence
+						value = 400
+						compare = greater_than_or_equals
+					}
+				}
+			}
+			add_to_variable = {
+				var = DEI_CHI_Influence
+				value = 1
+			}
+			CHI_influence_autonomy_update_DEI = yes
+			if = {
+				limit = {
+					check_variable = {
+						var = DEI_CHI_Influence
+						value = 400
+						compare = greater_than_or_equals
+					}
+				}
+				clr_country_flag = CHI_influencing_deikyum
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_idea = CHI_influencing_a_nation
+					}
+				}
+				add_ideas = CHI_influencing_a_nation
+			}
+		}
+	}
+}
+
+CHI_influence_autonomy_update_DEI = {
+	hidden_effect = {
+		if = {
+			limit = {
+				CHI = {
+					check_variable = {
+						var = DEI_CHI_Influence
+						value = 200
+						compare = greater_than_or_equals
+					}
+					check_variable = {
+						var = DEI_CHI_Influence
+						value = 300
+						compare = less_than
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				CHI = {
+					check_variable = {
+						var = DEI_CHI_Influence
+						value = 300
+						compare = greater_than_or_equals
+					}
+					check_variable = {
+						var = DEI_CHI_Influence
+						value = 400
+						compare = less_than
+					}
+				}
+			}
+		}
+	}
+}
+
+CHI_influence_autonomy_update_MNG = {
+	hidden_effect = {
+		if = {
+			limit = {
+				CHI = {
+					check_variable = {
+						var = MNG_CHI_Influence
+						value = 200
+						compare = greater_than_or_equals
+					}
+					check_variable = {
+						var = MNG_CHI_Influence
+						value = 300
+						compare = less_than
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				CHI = {
+					check_variable = {
+						var = MNG_CHI_Influence
+						value = 300
+						compare = greater_than_or_equals
+					}
+					check_variable = {
+						var = MNG_CHI_Influence
+						value = 400
+						compare = less_than
+					}
+				}
+			}
+		}
+	}
+}
+
+CHI_influence_autonomy_update_RME = {
+	hidden_effect = {
+		if = {
+			limit = {
+				CHI = {
+					check_variable = {
+						var = RME_CHI_Influence
+						value = 200
+						compare = greater_than_or_equals
+					}
+					check_variable = {
+						var = RME_CHI_Influence
+						value = 300
+						compare = less_than
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				CHI = {
+					check_variable = {
+						var = RME_CHI_Influence
+						value = 300
+						compare = greater_than_or_equals
+					}
+					check_variable = {
+						var = RME_CHI_Influence
+						value = 400
+						compare = less_than
+					}
+				}
+			}
+		}
+	}
+}
+
+CHI_influence_autonomy_update_KRO = {
+	hidden_effect = {
+		if = {
+			limit = {
+				CHI = {
+					check_variable = {
+						var = KRO_CHI_Influence
+						value = 200
+						compare = greater_than_or_equals
+					}
+					check_variable = {
+						var = KRO_CHI_Influence
+						value = 300
+						compare = less_than
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				CHI = {
+					check_variable = {
+						var = KRO_CHI_Influence
+						value = 300
+						compare = greater_than_or_equals
+					}
+					check_variable = {
+						var = KRO_CHI_Influence
+						value = 400
+						compare = less_than
+					}
+				}
+			}
+		}
+	}
+}
+
+CHI_influence_autonomy_update_AGU = {
+	hidden_effect = {
+		if = {
+			limit = {
+				CHI = {
+					check_variable = {
+						var = AGU_CHI_Influence
+						value = 200
+						compare = greater_than_or_equals
+					}
+					check_variable = {
+						var = AGU_CHI_Influence
+						value = 300
+						compare = less_than
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				CHI = {
+					check_variable = {
+						var = AGU_CHI_Influence
+						value = 300
+						compare = greater_than_or_equals
+					}
+					check_variable = {
+						var = AGU_CHI_Influence
+						value = 400
+						compare = less_than
+					}
+				}
+			}
+		}
+	}
+}
+
+CHI_influence_autonomy_update_PTK = {
+	hidden_effect = {
+		if = {
+			limit = {
+				CHI = {
+					check_variable = {
+						var = PTK_CHI_Influence
+						value = 200
+						compare = greater_than_or_equals
+					}
+					check_variable = {
+						var = PTK_CHI_Influence
+						value = 300
+						compare = less_than
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				CHI = {
+					check_variable = {
+						var = PTK_CHI_Influence
+						value = 300
+						compare = greater_than_or_equals
+					}
+					check_variable = {
+						var = PTK_CHI_Influence
+						value = 400
+						compare = less_than
+					}
+				}
+			}
+		}
+	}
+}

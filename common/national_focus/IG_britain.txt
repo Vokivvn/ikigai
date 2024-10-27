@@ -1,0 +1,15 @@
+##Starting Focus
+focus_tree = {
+	id = ENG_starting_tree
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = ENG
+		}
+	}
+	default = no
+	shared_focus = ENG_In_Britannia_Ortu_Sois
+	shared_focus = ENG_Zombie_Economy
+	shared_focus = ENG_The_Political_Rift
+}

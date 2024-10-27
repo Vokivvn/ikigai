@@ -1,0 +1,79 @@
+RMR_RP_REVCOM_western_group_lead = {
+	check_variable = { party_popularity@social_nationalist > party_popularity@marxist }
+	check_variable = { party_popularity@social_nationalist > party_popularity@libertarian }
+	check_variable = { party_popularity@social_nationalist > party_popularity@moderate_socialist }
+}
+RMR_RP_REVCOM_tribunal_group_lead = {
+	check_variable = { party_popularity@marxist > party_popularity@social_nationalist }
+	check_variable = { party_popularity@marxist > party_popularity@libertarian }
+	check_variable = { party_popularity@marxist > party_popularity@moderate_socialist }
+	
+}
+RMR_RP_REVCOM_northeastern_army_lead = {
+	check_variable = { party_popularity@libertarian > party_popularity@social_nationalist }
+	check_variable = { party_popularity@libertarian > party_popularity@marxist }
+	check_variable = { party_popularity@libertarian > party_popularity@moderate_socialist }
+}
+RMR_RP_REVCOM_roman_group_lead = {
+	check_variable = { party_popularity@moderate_socialist > party_popularity@social_nationalist }
+	check_variable = { party_popularity@moderate_socialist > party_popularity@marxist }
+	check_variable = { party_popularity@moderate_socialist > party_popularity@libertarian }
+}
+RMR_RP_CISALPINE_tribunal_chancellery_lead = {
+	check_variable = { party_popularity@social_democrat > party_popularity@social_liberal }
+	check_variable = { party_popularity@social_democrat > party_popularity@conservative }
+}
+RMR_RP_CISALPINE_southern_group_lead = {
+	check_variable = { party_popularity@social_liberal > party_popularity@social_democrat }
+	check_variable = { party_popularity@social_liberal > party_popularity@conservative }
+}
+RMR_RP_CISALPINE_senatorial_caucus_lead = {
+	check_variable = { party_popularity@conservative > party_popularity@social_democrat }
+	check_variable = { party_popularity@conservative > party_popularity@social_liberal }
+}
+RMR_gov_stable = {
+	OR = {
+		AND = {
+			has_government = autocratic
+			check_variable = { gov_popularity > 0.49 }
+		}
+		AND = {
+			check_variable = { revcom_popularity > 0.49 }
+			OR = {
+				AND = {
+					has_government = social_nationalist
+					RMR_RP_REVCOM_western_group_lead = yes
+				}
+				AND = {
+					has_government = marxist
+					RMR_RP_REVCOM_tribunal_group_lead = yes
+				}
+				AND = {
+					has_government = libertarian
+					RMR_RP_REVCOM_northeastern_army_lead = yes
+				}
+				AND = {
+					has_government = moderate_socialist
+					RMR_RP_REVCOM_roman_group_lead = yes
+				}
+			}
+		}
+		AND = {
+			check_variable = { cisalpine_popularity > 0.49 }
+			OR = {
+				AND = {
+					has_government = social_democrat
+					RMR_RP_REVCOM_western_group_lead = yes
+				}
+				AND = {
+					has_government = social_liberal
+					RMR_RP_CISALPINE_southern_group_lead = yes
+				}
+				AND = {
+					has_government = conservative
+					RMR_RP_CISALPINE_senatorial_caucus_lead = yes
+				}
+			}
+		}
+	}
+}

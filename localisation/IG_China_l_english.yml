@@ -1,0 +1,54 @@
+﻿l_english:
+
+#Country names
+CHI:0 "Jyut Hon"
+CHI_DEF:0 "Jyut Hon"
+CHI_ADJ:0 "Chinese"
+
+#Influence GUI
+Aisin_Gioro.Autonomy:0 "§Y[ROOT.CHIINF_AISIN_GIORO]§!"
+CHI_AGU_HI:0 "§g[AGU.GetNameDef] is §Gunder heavy influence§! from [CHI.GetNameDef].§"
+CHI_AGU_GOV:0 "§g[AGU.GetNameDef] is a §ycolony§! of [CHI.GetNameDef].§"
+CHI_AGU_AS:0 "§g[AGU.GetNameDef] is an §Gassociate§! of [CHI.GetNameDef].§"
+CHI_AGU_ANT:0 "§g[AGU.GetNameDef] is §eradically against§! the actions of [CHI.GetNameDef].§"
+CHI_AGU_NON:0 "§g[AGU.GetNameDef] is §gnot under the influence§! of [CHI.GetNameDef].§"
+
+Deikyum.Autonomy:0 "§Y[ROOT.CHIINF_DEIKYUM]"
+CHI_DEI_HI:0 "§g[DEI.GetNameDef] is §Gunder heavy influence§! from [CHI.GetNameDef].§"
+CHI_DEI_GOV:0 "§g[DEI.GetNameDef] is a §ycolony§! of [CHI.GetNameDef].§§!"
+CHI_DEI_AS:0 "§g[DEI.GetNameDef] is an §Gassociate§! of [CHI.GetNameDef].§!"
+CHI_DEI_ANT:0 "§g[DEI.GetNameDef] is §eradically against§! the actions of [CHI.GetNameDef].§"
+CHI_DEI_NON:0 "§g[DEI.GetNameDef] is §gnot under the influence§! of [CHI.GetNameDef].§"
+
+Kroran.Autonomy:0 "[ROOT.CHIINF_KRORAN]"
+CHI_KRO_HI:0 "§g[KRO.GetNameDef] is §Gunder heavy influence§! from [CHI.GetNameDef].§"
+CHI_KRO_GOV:0 "§g[KRO.GetNameDef] is a §ycolony§! of [CHI.GetNameDef].§"
+CHI_KRO_AS:0 "§g[KRO.GetNameDef] is an §Gassociate§! of [CHI.GetNameDef].§"
+CHI_KRO_ANT:0 "§g[KRO.GetNameDef] is §eradically against§! the actions of [CHI.GetNameDef].§"
+CHI_KRO_NON:0 "§g[KRO.GetNameDef] is §gnot under the influence§! of [CHI.GetNameDef].§"
+
+Mongkuong.Autonomy:0 "[ROOT.CHIINF_MONGKUONG]"
+CHI_MNG_HI:0 "§g[MNG.GetNameDef] is §Gunder heavy influence§! from [CHI.GetNameDef].§"
+CHI_MNG_GOV:0 "§g[MNG.GetNameDef] is a §ycolony§! of [CHI.GetNameDef].§"
+CHI_MNG_AS:0 "§g[MNG.GetNameDef] is an §Gassociate§! of [CHI.GetNameDef].§"
+CHI_MNG_ANT:0 "§g[MNG.GetNameDef] is §eradically against§! the actions of [CHI.GetNameDef].§"
+CHI_MNG_NON:0 "§g[MNG.GetNameDef] is §gnot under the influence§! of [CHI.GetNameDef].§"
+
+Potalka.Autonomy:0 "[ROOT.CHIINF_POTALKA]"
+CHI_PTK_HI:0 "§g[PTK.GetNameDef] is §Gunder heavy influence§! from [CHI.GetNameDef].§"
+CHI_PTK_GOV:0 "§g[PTK.GetNameDef] is a §ycolony§! of [CHI.GetNameDef].§"
+CHI_PTK_AS:0 "§g[PTK.GetNameDef] is an §Gassociate§! of [CHI.GetNameDef].§"
+CHI_PTK_ANT:0 "§g[PTK.GetNameDef] is §eradically against§! the actions of [CHI.GetNameDef].§"
+CHI_PTK_NON:0 "§g[PTK.GetNameDef] is §gnot under the influence§! of [CHI.GetNameDef].§"
+
+Rmea.Autonomy:0 "[ROOT.CHIINF_RMEA]"
+CHI_RME_HI:0 "§g[RME.GetNameDef] is §Gunder heavy influence§! from [CHI.GetNameDef].§"
+CHI_RME_GOV:0 "§g[RME.GetNameDef] is a §ycolony§! of [CHI.GetNameDef].§"
+CHI_RME_AS:0 "§g[RME.GetNameDef] is an §Gassociate§! of [CHI.GetNameDef].§"
+CHI_RME_ANT:0 "§g[RME.GetNameDef] is §eradically against§! the actions of [CHI.GetNameDef].§"
+CHI_RME_NON:0 "§g[RME.GetNameDef] is §gnot under the influence§! of [CHI.GetNameDef].§"
+
+CHIInfluence.Rules:0 "§JAt the cost of political power, influence a specific nation in your sphere.§!"
+CHIInfluence.Complete:0 "§GThis country cannot be influenced any further.§!"
+CHI_influencing_a_nation:0 "Exterting our Sphere"
+CHI_influencing_a_nation_desc:0 "The dream of a united China might be impossible to many, but not to us. We dream on expanding our nation, to once again reach the other continents and nations, and for once, finally touch Beijing."

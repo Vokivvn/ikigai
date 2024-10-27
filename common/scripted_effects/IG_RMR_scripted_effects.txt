@@ -1,0 +1,16 @@
+RMR_RP_calc_internal_popularities = {
+	set_variable = { RMR.revcom_popularity = RMR.party_popularity@social_nationalist }
+	add_to_variable = { RMR.revcom_popularity = RMR.party_popularity@marxist }
+	add_to_variable = { RMR.revcom_popularity = RMR.party_popularity@libertarian }
+	add_to_variable = { RMR.revcom_popularity = RMR.party_popularity@moderate_socialist }
+	set_variable = { RMR.cisalpine_popularity = RMR.party_popularity@social_democrat }
+	add_to_variable = { RMR.cisalpine_popularity = RMR.party_popularity@social_liberal }
+	add_to_variable = { RMR.cisalpine_popularity = RMR.party_popularity@conservative }
+	set_variable = { RMR.gov_popularity = RMR.party_popularity@authoritarian_democrat }
+	add_to_variable = { RMR.gov_popularity = RMR.party_popularity@autocratic }
+	add_to_variable = { RMR.gov_popularity = RMR.party_popularity@fundamentalist }
+	set_variable = { RMR.agri_ind_influence = RMR.party_popularity@authoritarian_democrat }
+	divide_variable = { RMR.agri_ind_influence = RMR.gov_popularity }
+	set_variable = { RMR.vatican_influence = RMR.party_popularity@fundamentalist }
+	divide_variable = { RMR.vatican_influence = RMR.gov_popularity }
+}

@@ -1,0 +1,13 @@
+##Starting Focus
+focus_tree = {
+	id = min_starting_tree
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = MIN
+		}
+	}
+	default = no
+	shared_focus = MIN_our_woes
+}

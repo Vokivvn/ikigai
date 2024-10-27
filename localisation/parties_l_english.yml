@@ -1,0 +1,89 @@
+﻿l_english:
+ ###social nationalist
+ social_nationalist:0 "Social Nationalist"
+ social_nationalist_noun:0 "Social Nationalism"
+ social_nationalist_desc:0 "Social Nationalist Regime"
+ social_nationalist_subtype:0 "Social Nationalist"
+ social_nationalist_subtype_noun:0 "Social Nationalism"
+ social_nationalist_drift:0 "Social Nationalist Drift"
+ ###marxist
+ marxist:0 "Plebian"
+ marxist_desc:0 "Plebianism"
+ marxist_desc:0 "Communist Regime"
+ marxist_subtype:0 "Marxist"
+ marxist_subtype_desc:0 "Marxism"
+ marxist_drift:0 "Marxist Drift"
+ ###libertarian
+ libertarian:0 "Libertarian"
+ libertarian_noun:0 "Liberalism"
+ libertarian_desc:0 "Democratic Regime"
+ libertarian_subtype:0 "Libertarian"
+ libertarian_subtype_noun:0 "Liberalism"
+ libertarian_subtype_desc:0 "Democratic Regime"
+ libertarian_drift:0 "Libertarian Drift"
+ ###moderate_socialist
+ moderate_socialist:0 "Moderate Socialist"
+ moderate_socialist_noun:0 "Moderate Socialism"
+ moderate_socialist_desc:0 "Communist Regime"
+ moderate_socialist_subtype:0 "Moderate Socialist"
+ moderate_socialist_subtype_noun:0 "Moderate Socialism"
+ moderate_socialist_subtype_desc:0 "Communist Regime"
+ moderate_socialist_drift:0 "Moderate Socialist Drift"
+ ###social_democrat
+ social_democrat:0 "Social Democrat"
+ social_democrat_noun:0 "Social Democracy"
+ social_democrat_desc:0 "Socialist Regime"
+ social_democrat_subtype:0 "Social Democrat"
+ social_democrat_subtype_noun:0 "Social Democracy"
+ social_democrat_subtype_desc:0 "Democratic Regime"
+ social_democrat_drift:0 "Social Democratic Drift"
+ ###social_liberal
+ social_liberal:0 "Liberal"
+ social_liberal_noun:0 "Liberalism"
+ social_liberal_desc:0 "Democratic Regime"
+ social_liberal_subtype:0 "Social Liberal"
+ social_liberal_subtype_noun:0 "Social Liberalism"
+ social_liberal_subtype_desc:0 "Democratic Regime"
+ social_liberal_drift:0 "Social Liberalism Drift"
+ ###conservative
+ conservative:0 "Conservative"
+ conservative_noun:0 "Conservatism"
+ conservative_desc:0 "Democratic Regime"
+ conservative_subtype:0 "Conservative"
+ conservative_subtype_noun:0 "Conservatism"
+ conservative_subtype_desc:0 "Democratic Regime"
+ conservative_drift:0 "Conservative Drift"
+ ###authoritarian_democrat
+ authoritarian_democrat:0 "Authoritarian Dem."
+ authoritarian_democrat_noun:0 "Authoritarian Democrcy"
+ authoritarian_democrat_desc:0 "Authoritarian Regime"
+ authoritarian_democrat_subtype:0 "Authoritarian Democrat"
+ authoritarian_democrat_noun_subtype:0 "Authoritarian Democrcy"
+ authoritarian_democrat_desc_subtype:0 "Authoritarian Regime"
+ authoritarian_democrat_drft:0 "Authoritarian Democracy Drift"
+ ###autocratic
+ autocratic:0 "Autocratic"
+ autocratic_noun:0 "Autocratism"
+ autocratic_desc:0 "Authoritarian Regime"
+ autocratic_subtype:0 "Autocrat"
+ autocratic_subtype_noun:0 "Autocratism"
+ autocratic_subtype_desc:0 "Authoritarian Regime"
+ autocratic_drift:0 "Autocratic Drift"
+ ###fundamentalist
+ fundamentalist:0 "Fundamentalist"
+ fundamentalist_noun:0 "fundamentalism"
+ fundamentalist_desc:0 "Fundamentalist Regime"
+ fundamentalist_subtype:0 "Fundamentalist"
+ fundamentalist_subtype_noun:0 "fundamentalism"
+ fundamentalist_subtype_desc:0 "Fundamentalist Regime"
+ fundamentalist_drift:0 "Fundamentalist Drift"
+
+
+
+
+
+
+
+
+
+

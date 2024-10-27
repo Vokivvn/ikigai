@@ -1,0 +1,536 @@
+# Credit to Yard1 for Pie Chart Framework - https://github.com/Yard1/HoI4-Scripted-GUI-Pie-Chart
+
+scripted_gui = {
+
+	IK_economy = {
+		window_name = "economy_view"
+		context_type = player_context
+		dirty = IK_economy_GUI_dirty
+
+		visible = {
+			has_country_flag = econ_view_visible
+			econ_can_use_economy_system = yes
+		}
+
+		effects = {
+			Econ_Tab_Main_Button_click = {
+				else = {
+					set_country_flag = econ_view_visible
+					update_economy_tab = yes
+					update_all_econ_pie_charts = yes
+					add_to_variable = { IK_economy_GUI_dirty = 1 }
+				}
+				
+				if = {
+					limit = { has_country_flag = Econ_Revenue_Tab_Open }
+					clr_country_flag = Econ_Revenue_Tab_Open
+				}
+			}
+			Econ_Tab_Rev_Button_click = {
+				if = {
+					limit = { has_country_flag = Econ_Revenue_Tab_Open }
+					clr_country_flag = Econ_Revenue_Tab_Open
+				}
+				else = {
+					set_country_flag = Econ_Revenue_Tab_Open
+					update_economy_tab = yes
+					update_all_econ_pie_charts = yes
+					add_to_variable = { IK_economy_GUI_dirty = 1 }
+				}
+
+				if = {
+					limit = { has_country_flag = Econ_Expenditures_Tab_Open }
+					clr_country_flag = Econ_Expenditures_Tab_Open
+				}				
+			}
+			Econ_Tab_Exp_Button_click = {
+				if = {
+					limit = { has_country_flag = Econ_Expenditures_Tab_Open }
+					clr_country_flag = Econ_Expenditures_Tab_Open
+				}
+				else = {
+					set_country_flag = Econ_Expenditures_Tab_Open
+					update_economy_tab = yes
+					update_all_econ_pie_charts = yes
+					add_to_variable = { IK_economy_GUI_dirty = 1 }
+				}
+
+				if = {
+					limit = { has_country_flag = Econ_Revenue_Tab_Open }
+					clr_country_flag = Econ_Revenue_Tab_Open
+				}				
+			}
+		}
+		
+		properties = {
+			Econ_Sphere_Flag = {
+				image = "[THIS.GetFlag]" 
+			}
+		}
+	}
+	
+	IK_economy_revenue_tab = {
+		window_name = "economic_revenue_tab"
+		context_type = player_context
+		parent_window_token = "economy_view"
+		dirty = IK_economy_GUI_dirty
+	
+		visible = {
+			has_country_flag = Econ_Revenue_Tab_Open
+			has_country_flag = econ_view_visible
+		}
+
+		effects = {
+			Econ_Tab_Main_Button_click = {
+				else = {
+					set_country_flag = econ_view_visible
+					update_economy_tab = yes
+					update_all_econ_pie_charts = yes
+					add_to_variable = { IK_economy_GUI_dirty = 1 }
+				}
+				
+				if = {
+					limit = { has_country_flag = Econ_Revenue_Tab_Open }
+					clr_country_flag = Econ_Revenue_Tab_Open
+				}
+			}
+			Econ_Tab_Rev_Button_click = {
+				if = {
+					limit = { has_country_flag = Econ_Revenue_Tab_Open }
+				}
+				else = {
+					set_country_flag = Econ_Revenue_Tab_Open
+					update_economy_tab = yes
+					update_all_econ_pie_charts = yes
+					add_to_variable = { IK_economy_GUI_dirty = 1 }
+				}
+
+				if = {
+					limit = { has_country_flag = Econ_Expenditures_Tab_Open }
+					clr_country_flag = Econ_Expenditures_Tab_Open
+				}				
+			}
+			Econ_Tab_Exp_Button_click = {
+				if = {
+					limit = { has_country_flag = Econ_Expenditures_Tab_Open }
+					clr_country_flag = Econ_Expenditures_Tab_Open
+				}
+				else = {
+					set_country_flag = Econ_Expenditures_Tab_Open
+					update_economy_tab = yes
+					update_all_econ_pie_charts = yes
+					add_to_variable = { IK_economy_GUI_dirty = 1 }
+				}
+
+				if = {
+					limit = { has_country_flag = Econ_Revenue_Tab_Open }
+					clr_country_flag = Econ_Revenue_Tab_Open
+				}				
+			}
+		}
+	
+		properties = {
+			economic_revenue_pie0 = { frame = pie_chart_economic_revenue^0 }
+			economic_revenue_pie1 = { frame = pie_chart_economic_revenue^1 }
+			economic_revenue_pie2 = { frame = pie_chart_economic_revenue^2 }
+			economic_revenue_pie3 = { frame = pie_chart_economic_revenue^3 } 
+			economic_revenue_pie4 = { frame = pie_chart_economic_revenue^4 }
+			economic_revenue_pie5 = { frame = pie_chart_economic_revenue^5 }
+			economic_revenue_pie6 = { frame = pie_chart_economic_revenue^6 }
+			economic_revenue_pie7 = { frame = pie_chart_economic_revenue^7 }
+			economic_revenue_pie8 = { frame = pie_chart_economic_revenue^8 }
+			economic_revenue_pie9 = { frame = pie_chart_economic_revenue^9 }
+			economic_revenue_pie10 = { frame = pie_chart_economic_revenue^10 }
+			economic_revenue_pie11 = { frame = pie_chart_economic_revenue^11 }
+			economic_revenue_pie12 = { frame = pie_chart_economic_revenue^12 }
+			economic_revenue_pie13 = { frame = pie_chart_economic_revenue^13 }
+			economic_revenue_pie14 = { frame = pie_chart_economic_revenue^14 }
+			economic_revenue_pie15 = { frame = pie_chart_economic_revenue^15 }
+			economic_revenue_pie16 = { frame = pie_chart_economic_revenue^16 }
+			economic_revenue_pie17 = { frame = pie_chart_economic_revenue^17 }
+			economic_revenue_pie18 = { frame = pie_chart_economic_revenue^18 }
+			economic_revenue_pie19 = { frame = pie_chart_economic_revenue^19 }
+			economic_revenue_pie20 = { frame = pie_chart_economic_revenue^20 }
+			economic_revenue_pie21 = { frame = pie_chart_economic_revenue^21 }
+			economic_revenue_pie22 = { frame = pie_chart_economic_revenue^22 }
+			economic_revenue_pie23 = { frame = pie_chart_economic_revenue^23 }
+			economic_revenue_pie24 = { frame = pie_chart_economic_revenue^24 }
+			economic_revenue_pie25 = { frame = pie_chart_economic_revenue^25 }
+			economic_revenue_pie26 = { frame = pie_chart_economic_revenue^26 }
+			economic_revenue_pie27 = { frame = pie_chart_economic_revenue^27 }
+			economic_revenue_pie28 = { frame = pie_chart_economic_revenue^28 }
+			economic_revenue_pie29 = { frame = pie_chart_economic_revenue^29 }
+			economic_revenue_pie30 = { frame = pie_chart_economic_revenue^30 }
+			economic_revenue_pie31 = { frame = pie_chart_economic_revenue^31 }
+			economic_revenue_pie32 = { frame = pie_chart_economic_revenue^32 }
+			economic_revenue_pie33 = { frame = pie_chart_economic_revenue^33 }
+			economic_revenue_pie34 = { frame = pie_chart_economic_revenue^34 }
+			economic_revenue_pie35 = { frame = pie_chart_economic_revenue^35 }
+			economic_revenue_pie36 = { frame = pie_chart_economic_revenue^36 }
+			economic_revenue_pie37 = { frame = pie_chart_economic_revenue^37 }
+			economic_revenue_pie38 = { frame = pie_chart_economic_revenue^38 }
+			economic_revenue_pie39 = { frame = pie_chart_economic_revenue^39 }
+			economic_revenue_pie40 = { frame = pie_chart_economic_revenue^40 }
+			economic_revenue_pie41 = { frame = pie_chart_economic_revenue^41 }
+			economic_revenue_pie42 = { frame = pie_chart_economic_revenue^42 }
+			economic_revenue_pie43 = { frame = pie_chart_economic_revenue^43 }
+			economic_revenue_pie44 = { frame = pie_chart_economic_revenue^44 }
+			economic_revenue_pie45 = { frame = pie_chart_economic_revenue^45 }
+			economic_revenue_pie46 = { frame = pie_chart_economic_revenue^46 }
+			economic_revenue_pie47 = { frame = pie_chart_economic_revenue^47 }
+			economic_revenue_pie48 = { frame = pie_chart_economic_revenue^48 }
+			economic_revenue_pie49 = { frame = pie_chart_economic_revenue^49 }
+			economic_revenue_pie50 = { frame = pie_chart_economic_revenue^50 }
+			economic_revenue_pie51 = { frame = pie_chart_economic_revenue^51 }
+			economic_revenue_pie52 = { frame = pie_chart_economic_revenue^52 }
+			economic_revenue_pie53 = { frame = pie_chart_economic_revenue^53 }
+			economic_revenue_pie54 = { frame = pie_chart_economic_revenue^54 }
+			economic_revenue_pie55 = { frame = pie_chart_economic_revenue^55 }
+			economic_revenue_pie56 = { frame = pie_chart_economic_revenue^56 }
+			economic_revenue_pie57 = { frame = pie_chart_economic_revenue^57 }
+			economic_revenue_pie58 = { frame = pie_chart_economic_revenue^58 }
+			economic_revenue_pie59 = { frame = pie_chart_economic_revenue^59 }
+			economic_revenue_pie60 = { frame = pie_chart_economic_revenue^60 }
+			economic_revenue_pie61 = { frame = pie_chart_economic_revenue^61 }
+			economic_revenue_pie62 = { frame = pie_chart_economic_revenue^62 }
+			economic_revenue_pie63 = { frame = pie_chart_economic_revenue^63 }
+			economic_revenue_pie64 = { frame = pie_chart_economic_revenue^64 }
+			economic_revenue_pie65 = { frame = pie_chart_economic_revenue^65 }
+			economic_revenue_pie66 = { frame = pie_chart_economic_revenue^66 }
+			economic_revenue_pie67 = { frame = pie_chart_economic_revenue^67 }
+			economic_revenue_pie68 = { frame = pie_chart_economic_revenue^68 }
+			economic_revenue_pie69 = { frame = pie_chart_economic_revenue^69 }
+			economic_revenue_pie70 = { frame = pie_chart_economic_revenue^70 }
+			economic_revenue_pie71 = { frame = pie_chart_economic_revenue^71 }
+			economic_revenue_pie72 = { frame = pie_chart_economic_revenue^72 }
+			economic_revenue_pie73 = { frame = pie_chart_economic_revenue^73 }
+			economic_revenue_pie74 = { frame = pie_chart_economic_revenue^74 }
+			economic_revenue_pie75 = { frame = pie_chart_economic_revenue^75 }
+			economic_revenue_pie76 = { frame = pie_chart_economic_revenue^76 }
+			economic_revenue_pie77 = { frame = pie_chart_economic_revenue^77 }
+			economic_revenue_pie78 = { frame = pie_chart_economic_revenue^78 }
+			economic_revenue_pie79 = { frame = pie_chart_economic_revenue^79 }
+			economic_revenue_pie80 = { frame = pie_chart_economic_revenue^80 }
+			economic_revenue_pie81 = { frame = pie_chart_economic_revenue^81 }
+			economic_revenue_pie82 = { frame = pie_chart_economic_revenue^82 }
+			economic_revenue_pie83 = { frame = pie_chart_economic_revenue^83 }
+			economic_revenue_pie84 = { frame = pie_chart_economic_revenue^84 }
+			economic_revenue_pie85 = { frame = pie_chart_economic_revenue^85 }
+			economic_revenue_pie86 = { frame = pie_chart_economic_revenue^86 }
+			economic_revenue_pie87 = { frame = pie_chart_economic_revenue^87 }
+			economic_revenue_pie88 = { frame = pie_chart_economic_revenue^88 }
+			economic_revenue_pie89 = { frame = pie_chart_economic_revenue^89 }
+			economic_revenue_pie90 = { frame = pie_chart_economic_revenue^90 }
+			economic_revenue_pie91 = { frame = pie_chart_economic_revenue^91 }
+			economic_revenue_pie92 = { frame = pie_chart_economic_revenue^92 }
+			economic_revenue_pie93 = { frame = pie_chart_economic_revenue^93 }
+			economic_revenue_pie94 = { frame = pie_chart_economic_revenue^94 }
+			economic_revenue_pie95 = { frame = pie_chart_economic_revenue^95 }
+			economic_revenue_pie96 = { frame = pie_chart_economic_revenue^96 }
+			economic_revenue_pie97 = { frame = pie_chart_economic_revenue^97 }
+			economic_revenue_pie98 = { frame = pie_chart_economic_revenue^98 }
+			economic_revenue_pie99 = { frame = pie_chart_economic_revenue^99 }
+		}
+	}	
+		
+	IK_economy_expenditures_tab = {
+		window_name = "economic_expenditures_tab"
+		context_type = player_context
+		parent_window_token = "economy_view"
+		dirty = IK_economy_GUI_dirty
+
+		visible = {
+			has_country_flag = Econ_Expenditures_Tab_Open
+			has_country_flag = econ_view_visible
+		}
+
+		properties = {
+			economic_expenditures_pie0 = { frame = pie_chart_economic_expenditures^0 }
+			economic_expenditures_pie1 = { frame = pie_chart_economic_expenditures^1 }
+			economic_expenditures_pie2 = { frame = pie_chart_economic_expenditures^2 }
+			economic_expenditures_pie3 = { frame = pie_chart_economic_expenditures^3 }
+			economic_expenditures_pie4 = { frame = pie_chart_economic_expenditures^4 }
+			economic_expenditures_pie5 = { frame = pie_chart_economic_expenditures^5 }
+			economic_expenditures_pie6 = { frame = pie_chart_economic_expenditures^6 }
+			economic_expenditures_pie7 = { frame = pie_chart_economic_expenditures^7 }
+			economic_expenditures_pie8 = { frame = pie_chart_economic_expenditures^8 }
+			economic_expenditures_pie9 = { frame = pie_chart_economic_expenditures^9 }
+			economic_expenditures_pie10 = { frame = pie_chart_economic_expenditures^10 }
+			economic_expenditures_pie11 = { frame = pie_chart_economic_expenditures^11 }
+			economic_expenditures_pie12 = { frame = pie_chart_economic_expenditures^12 }
+			economic_expenditures_pie13 = { frame = pie_chart_economic_expenditures^13 }
+			economic_expenditures_pie14 = { frame = pie_chart_economic_expenditures^14 }
+			economic_expenditures_pie15 = { frame = pie_chart_economic_expenditures^15 }
+			economic_expenditures_pie16 = { frame = pie_chart_economic_expenditures^16 }
+			economic_expenditures_pie17 = { frame = pie_chart_economic_expenditures^17 }
+			economic_expenditures_pie18 = { frame = pie_chart_economic_expenditures^18 }
+			economic_expenditures_pie19 = { frame = pie_chart_economic_expenditures^19 }
+			economic_expenditures_pie20 = { frame = pie_chart_economic_expenditures^20 }
+			economic_expenditures_pie21 = { frame = pie_chart_economic_expenditures^21 }
+			economic_expenditures_pie22 = { frame = pie_chart_economic_expenditures^22 }
+			economic_expenditures_pie23 = { frame = pie_chart_economic_expenditures^23 }
+			economic_expenditures_pie24 = { frame = pie_chart_economic_expenditures^24 }
+			economic_expenditures_pie25 = { frame = pie_chart_economic_expenditures^25 }
+			economic_expenditures_pie26 = { frame = pie_chart_economic_expenditures^26 }
+			economic_expenditures_pie27 = { frame = pie_chart_economic_expenditures^27 }
+			economic_expenditures_pie28 = { frame = pie_chart_economic_expenditures^28 }
+			economic_expenditures_pie29 = { frame = pie_chart_economic_expenditures^29 }
+			economic_expenditures_pie30 = { frame = pie_chart_economic_expenditures^30 }
+			economic_expenditures_pie31 = { frame = pie_chart_economic_expenditures^31 }
+			economic_expenditures_pie32 = { frame = pie_chart_economic_expenditures^32 }
+			economic_expenditures_pie33 = { frame = pie_chart_economic_expenditures^33 }
+			economic_expenditures_pie34 = { frame = pie_chart_economic_expenditures^34 }
+			economic_expenditures_pie35 = { frame = pie_chart_economic_expenditures^35 }
+			economic_expenditures_pie36 = { frame = pie_chart_economic_expenditures^36 }
+			economic_expenditures_pie37 = { frame = pie_chart_economic_expenditures^37 }
+			economic_expenditures_pie38 = { frame = pie_chart_economic_expenditures^38 }
+			economic_expenditures_pie39 = { frame = pie_chart_economic_expenditures^39 }
+			economic_expenditures_pie40 = { frame = pie_chart_economic_expenditures^40 }
+			economic_expenditures_pie41 = { frame = pie_chart_economic_expenditures^41 }
+			economic_expenditures_pie42 = { frame = pie_chart_economic_expenditures^42 }
+			economic_expenditures_pie43 = { frame = pie_chart_economic_expenditures^43 }
+			economic_expenditures_pie44 = { frame = pie_chart_economic_expenditures^44 }
+			economic_expenditures_pie45 = { frame = pie_chart_economic_expenditures^45 }
+			economic_expenditures_pie46 = { frame = pie_chart_economic_expenditures^46 }
+			economic_expenditures_pie47 = { frame = pie_chart_economic_expenditures^47 }
+			economic_expenditures_pie48 = { frame = pie_chart_economic_expenditures^48 }
+			economic_expenditures_pie49 = { frame = pie_chart_economic_expenditures^49 }
+			economic_expenditures_pie50 = { frame = pie_chart_economic_expenditures^50 }
+			economic_expenditures_pie51 = { frame = pie_chart_economic_expenditures^51 }
+			economic_expenditures_pie52 = { frame = pie_chart_economic_expenditures^52 }
+			economic_expenditures_pie53 = { frame = pie_chart_economic_expenditures^53 }
+			economic_expenditures_pie54 = { frame = pie_chart_economic_expenditures^54 }
+			economic_expenditures_pie55 = { frame = pie_chart_economic_expenditures^55 }
+			economic_expenditures_pie56 = { frame = pie_chart_economic_expenditures^56 }
+			economic_expenditures_pie57 = { frame = pie_chart_economic_expenditures^57 }
+			economic_expenditures_pie58 = { frame = pie_chart_economic_expenditures^58 }
+			economic_expenditures_pie59 = { frame = pie_chart_economic_expenditures^59 }
+			economic_expenditures_pie60 = { frame = pie_chart_economic_expenditures^60 }
+			economic_expenditures_pie61 = { frame = pie_chart_economic_expenditures^61 }
+			economic_expenditures_pie62 = { frame = pie_chart_economic_expenditures^62 }
+			economic_expenditures_pie63 = { frame = pie_chart_economic_expenditures^63 }
+			economic_expenditures_pie64 = { frame = pie_chart_economic_expenditures^64 }
+			economic_expenditures_pie65 = { frame = pie_chart_economic_expenditures^65 }
+			economic_expenditures_pie66 = { frame = pie_chart_economic_expenditures^66 }
+			economic_expenditures_pie67 = { frame = pie_chart_economic_expenditures^67 }
+			economic_expenditures_pie68 = { frame = pie_chart_economic_expenditures^68 }
+			economic_expenditures_pie69 = { frame = pie_chart_economic_expenditures^69 }
+			economic_expenditures_pie70 = { frame = pie_chart_economic_expenditures^70 }
+			economic_expenditures_pie71 = { frame = pie_chart_economic_expenditures^71 }
+			economic_expenditures_pie72 = { frame = pie_chart_economic_expenditures^72 }
+			economic_expenditures_pie73 = { frame = pie_chart_economic_expenditures^73 }
+			economic_expenditures_pie74 = { frame = pie_chart_economic_expenditures^74 }
+			economic_expenditures_pie75 = { frame = pie_chart_economic_expenditures^75 }
+			economic_expenditures_pie76 = { frame = pie_chart_economic_expenditures^76 }
+			economic_expenditures_pie77 = { frame = pie_chart_economic_expenditures^77 }
+			economic_expenditures_pie78 = { frame = pie_chart_economic_expenditures^78 }
+			economic_expenditures_pie79 = { frame = pie_chart_economic_expenditures^79 }
+			economic_expenditures_pie80 = { frame = pie_chart_economic_expenditures^80 }
+			economic_expenditures_pie81 = { frame = pie_chart_economic_expenditures^81 }
+			economic_expenditures_pie82 = { frame = pie_chart_economic_expenditures^82 }
+			economic_expenditures_pie83 = { frame = pie_chart_economic_expenditures^83 }
+			economic_expenditures_pie84 = { frame = pie_chart_economic_expenditures^84 }
+			economic_expenditures_pie85 = { frame = pie_chart_economic_expenditures^85 }
+			economic_expenditures_pie86 = { frame = pie_chart_economic_expenditures^86 }
+			economic_expenditures_pie87 = { frame = pie_chart_economic_expenditures^87 }
+			economic_expenditures_pie88 = { frame = pie_chart_economic_expenditures^88 }
+			economic_expenditures_pie89 = { frame = pie_chart_economic_expenditures^89 }
+			economic_expenditures_pie90 = { frame = pie_chart_economic_expenditures^90 }
+			economic_expenditures_pie91 = { frame = pie_chart_economic_expenditures^91 }
+			economic_expenditures_pie92 = { frame = pie_chart_economic_expenditures^92 }
+			economic_expenditures_pie93 = { frame = pie_chart_economic_expenditures^93 }
+			economic_expenditures_pie94 = { frame = pie_chart_economic_expenditures^94 }
+			economic_expenditures_pie95 = { frame = pie_chart_economic_expenditures^95 }
+			economic_expenditures_pie96 = { frame = pie_chart_economic_expenditures^96 }
+			economic_expenditures_pie97 = { frame = pie_chart_economic_expenditures^97 }
+			economic_expenditures_pie98 = { frame = pie_chart_economic_expenditures^98 }
+			economic_expenditures_pie99 = { frame = pie_chart_economic_expenditures^99 }
+
+
+		}
+
+		effects = {
+			Econ_Tab_Main_Button_click = {
+				if = {
+					limit = { has_country_flag = Econ_Expenditures_Tab_Open }
+					clr_country_flag = Econ_Expenditures_Tab_Open
+				}
+				else = {
+					set_country_flag = econ_view_visible
+					update_economy_tab = yes
+					update_all_econ_pie_charts = yes
+					add_to_variable = { IK_economy_GUI_dirty = 1 }
+				}
+			}
+			Econ_Tab_Rev_Button_click = {
+				if = {
+					limit = { has_country_flag = Econ_Revenue_Tab_Open }
+					clr_country_flag = Econ_Revenue_Tab_Open
+				}
+				else = {
+					set_country_flag = Econ_Revenue_Tab_Open
+					update_economy_tab = yes
+					update_all_econ_pie_charts = yes
+					add_to_variable = { IK_economy_GUI_dirty = 1 }
+				}
+
+				if = {
+					limit = { has_country_flag = Econ_Expenditures_Tab_Open }
+					clr_country_flag = Econ_Expenditures_Tab_Open
+				}				
+			}
+			Econ_Tab_Exp_Button_click = {
+				if = {
+					limit = { has_country_flag = Econ_Expenditures_Tab_Open }
+				}
+				else = {
+					set_country_flag = Econ_Expenditures_Tab_Open
+					update_economy_tab = yes
+					update_all_econ_pie_charts = yes
+					add_to_variable = { IK_economy_GUI_dirty = 1 }
+				}
+
+				if = {
+					limit = { has_country_flag = Econ_Revenue_Tab_Open }
+					clr_country_flag = Econ_Revenue_Tab_Open
+				}				
+			}
+			# Construction Budget
+			increase_construction_budget_click = {
+				add_political_power = -25
+				increase_construction_budget = yes
+				hidden_effect = {
+					update_economy_tab = yes
+					update_all_econ_pie_charts = yes
+				}
+				add_to_variable = { IK_economy_GUI_dirty = 1 }
+			}
+			decrease_construction_budget_click = {
+				add_political_power = -25
+				decrease_construction_budget = yes
+				hidden_effect = {
+					update_economy_tab = yes
+					update_all_econ_pie_charts = yes
+				}
+				add_to_variable = { IK_economy_GUI_dirty = 1 }
+			}
+			# Civilian Budget
+			increase_civilian_budget_click = {
+				add_timed_idea = { idea = civilian_budget_boost days = 120 }
+				hidden_effect = {
+					update_economy_tab = yes
+					update_all_econ_pie_charts = yes
+				}
+			}
+			decrease_civilian_budget_click = {
+				add_timed_idea = { idea = civilian_budget_cuts days = 120 }
+				hidden_effect = {
+					update_economy_tab = yes
+					update_all_econ_pie_charts = yes
+				}
+			}
+			# Military Budget
+			increase_military_budget_click = {
+				add_timed_idea = { idea = military_budget_boost days = 120 }
+				hidden_effect = {
+					update_economy_tab = yes
+					update_all_econ_pie_charts = yes
+				}
+			}
+			decrease_military_budget_click = {
+				add_timed_idea = { idea = military_budget_cuts days = 120 }
+				hidden_effect = {
+					update_economy_tab = yes
+					update_all_econ_pie_charts = yes
+				}
+			}
+			# Reserves
+			invest_liquid_reserves_click = {
+				invest_money_reserves = yes
+				hidden_effect = {
+					update_economy_tab = yes
+					update_all_econ_pie_charts = yes
+				}
+			}
+			dump_liquid_reserves_click = {
+				money_reserves_to_debt = yes
+				hidden_effect = {
+					update_economy_tab = yes
+					update_all_econ_pie_charts = yes
+				}
+			}
+		}
+
+		triggers = {
+			increase_construction_budget_click_enabled = {
+				has_political_power > 24
+				NOT = { has_idea = construction_level_20 }
+			}
+			decrease_construction_budget_click_enabled = {
+				has_political_power > 24
+				NOT = { has_idea = construction_level_0 }
+			}
+
+			increase_military_budget_click_enabled = {
+				econ_can_add_modifier_military = yes
+			}
+			decrease_military_budget_click_enabled = {
+				econ_can_add_modifier_military = yes
+			}
+
+			increase_civilian_budget_click_enabled = {
+				econ_can_add_modifier_civilian = yes
+			}
+			decrease_civilian_budget_click_enabled = {
+				econ_can_add_modifier_civilian = yes
+			}
+
+			invest_liquid_reserves_click_enabled = {
+				check_variable = { money_reserves > 0 }
+			}
+			dump_liquid_reserves_click_enabled = {
+				check_variable = { money_reserves > 0 }
+				check_variable = { national_debt > 0 }
+			}
+		}
+	}
+
+	IK_economy_top_bar = {
+		window_name = "topbar_economy"
+		context_type = player_context
+		parent_window_token = top_bar
+	}
+
+	IK_economy_window_open = {
+		context_type = player_context
+		parent_window_token = politics_tab
+		window_name = "ik_economy_window_open"
+
+		effects = {
+			economy_button_click = {
+				if = { 
+					limit = { NOT = { has_country_flag = econ_view_visible } }
+					set_country_flag = econ_view_visible
+				}
+				else = {
+					clr_country_flag = econ_view_visible
+				}
+				update_economy_tab = yes
+				update_all_econ_pie_charts = yes
+				add_to_variable = { IK_economy_GUI_dirty = 1 }
+
+				set_variable = { national_debt_payoff_liquid = 0 }
+				set_variable = { gdp_increase_liquid = 0 }
+				
+				
+				clr_country_flag = Econ_Revenue_Tab_Open
+			}
+		}
+
+		triggers = {
+			economy_button_click_enabled = {
+				econ_can_use_economy_system = yes
+			}
+		}
+	}
+}

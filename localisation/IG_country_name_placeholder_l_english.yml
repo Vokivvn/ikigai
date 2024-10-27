@@ -1,0 +1,211 @@
+﻿l_english:
+
+#Country names
+COR:0 "Sardinia"
+COR_DEF:0 "Sardinia"
+COR_ADJ:0 "Sardinian"
+
+OMA:0 "Muscat-Oman"
+OMA_DEF:0 "the Sultanate of Muscat and Oman"
+OMA_ADJ:0 "Muscat-Omani"
+
+PER:0 "Imperial State of Persia"
+PER_DEF:0 "the Imperial State of Persia"
+PER_ADJ:0 "Persian"
+
+TUR:0 "Anatolia"
+TUR_DEF:0 "Anatolia"
+TUR_ADJ:0 "Anatolian"
+
+ETH:0 "Ethiopian Empire"
+ETH_DEF:0 "the Ethiopian Empire"
+ETH_ADJ:0 "Ethiopian"
+
+MRT:0 "Numidia"
+MRT_DEF:0 "Numidia"
+MRT_ADJ:0 "Numidian"
+
+MOR:0 "Morocco"
+MOR_DEF:0 "Morocco"
+MOR_ADJ:0 "Moroccan"
+
+PAL:0 "Palestine"
+PAL_DEF:0 "Palestine"
+PAL_ADJ:0 "Palestinian"
+
+SYR:0 "Syria"
+SYR_DEF:0 "Syria"
+SYR_ADJ:0 "Syrian"
+
+LIT:0 "Confederation of Lithuania"
+LIT_DEF:0 "the Confederation of Lithuania"
+LIT_ADJ:0 "Lithuanian"
+
+LAT:0 "Kingdom of Livonia"
+LAT_DEF:0 "the Kingdom of Livonia"
+LAT_ADJ:0 "Livonian"
+
+IRE:0 "Ireland"
+IRE_DEF:0 "Ireland"
+IRE_ADJ:0 "Irish"
+
+DEN:0 "Denmark"
+DEN_DEF:0 "Denmark"
+DEN_ADJ:0 "Danish"
+
+MON:0 "Mongolia"
+MON_DEF:0 "Mongolia"
+MON_ADJ:0 "Mongolian"
+
+
+AFG:0 "Afghanistan"
+AFG_DEF:0 "Afghanistan"
+AFG_ADJ:0 "Afghan"
+
+BHU:0 "Bhutan"
+BHU_DEF:0 "Bhutan"
+BHU_ADJ:0 "Bhutannese"
+
+NEP:0 "Nepal"
+NEP_DEF:0 "Nepal"
+NEP_ADJ:0 "Nepalese"
+
+SWI:0 "Switzerland"
+SWI_DEF:0 "Switzerland"
+SWI_ADJ:0 "Swiss"
+
+MAC:0 "Macedonia"
+MAC_DEF:0 "Macedonia"
+MAC_ADJ:0 "Macedonian"
+
+JAP:0 "Shogunate of Japan"
+JAP_DEF:0 "the Shogunate of Japan"
+JAP_ADJ:0 "Japanese"
+
+BUR:0 "Buryatia"
+BUR_DEF:0 "Buryatia"
+BUR_ADJ:0 "Buryat"
+
+RAJ:0 "India"
+RAJ_DEF:0 "India"
+RAJ_ADJ:0 "Indian"
+
+EVN:0 "Evenk"
+EVN_DEF:0 "Evenk"
+EVN_ADJ:0 "Evenki"
+
+ALT:0 "Altai"
+ALT_DEF:0 "Altai"
+ALT_ADJ:0 "Altai"
+
+KAK:0 "Khakassia"
+KAK_DEF:0 "Khakassia"
+KAK_ADJ:0 "Khakas"
+
+CUL:0 "Chulymnia"
+CUL_DEF:0 "Chulymnia"
+CUL_ADJ:0 "Chulymniat"
+
+SIB:0 "Sibir"
+SIB_DEF:0 "Sibir"
+SIB_ADJ:0 "Sibir"
+
+TAY:0 "Taymyria"
+TAY_DEF:0 "Taymyria"
+TAY_ADJ:0 "Dolgan"
+
+YAM:0 "Yamalia"
+YAM_DEF:0 "Yamalia"
+YAM_ADJ:0 "Nenets"
+
+YRG:0 "Khanty-Mansia"
+YRG_DEF:0 "Khanty-Mansia"
+YRG_ADJ:0 "Khanty-Mansiysk"
+
+KAZ:0 "Kazakharia"
+KAZ_DEF:0 "Kazakharia"
+KAZ_ADJ:0 "Kazakh"
+
+ORE:0 "Orenburg"
+ORE_DEF:0 "Orenburg"
+ORE_ADJ:0 "Orenburgen"
+
+BSH:0 "Bashkortostan"
+BSH_DEF:0 "Bashkortostan"
+BSH_ADJ:0 "Bashkir"
+
+TAT:0 "Tatarstan"
+TAT_DEF:0 "Tatarstan"
+TAT_ADJ:0 "Tatar"
+
+VGR:0 "Volga Germany" #Wolgadeutschland
+VGR_DEF:0 "Volga Germany"
+VGR_ADJ:0 "Volga German"
+
+KAL:0 "Kalmykia"
+KAL_DEF:0 "Kalmykia"
+KAL_ADJ:0 "Kalmyk"
+
+SIK:0 "East Turkestan"
+SIK_DEF:0 "East Turkestan"
+SIK_ADJ:0 "East Turkestani"
+
+TNG:0 "Tunganistan"
+TNG_DEF:0 "Tunganistan"
+TNG_ADJ:0 "Tungani"
+
+KRO:0 "Dzungaria"
+KRO_DEF:0 "Dzungaria"
+KRO_ADJ:0 "Dzungari"
+
+BAL:0 "Balochistan"
+BAL_DEF:0 "Balochistan"
+BAL_ADJ:0 "Balochi"
+
+INS:0 "Nusantaran Republic"
+INS_DEF:0 "the Nusantaran Republic"
+INS_ADJ:0 "Nusantaran"
+
+BRM:0 "Burmese Republic"
+BRM_DEF:0 "the Burmese Republic"
+BRM_ADJ:0 "Burmese"
+
+BAN:0 "Bengali Islamic Republic"
+BAN_DEF:0 "the Bengali Islamic Republic"
+BAN_ADJ:0 "Bengali"
+
+ORI:0 "Orissa"
+ORI_DEF:0 "Orissa"
+ORI_ADJ:0 "Orissan"
+
+DRA:0 "Dravidia"
+DRA_DEF:0 "Dravidia"
+DRA_ADJ:0 "Dravidian"
+
+HYD:0 "Hyderabad"
+HYD_DEF:0 "Hyderabad"
+HYD_ADJ:0 "Hyderabadi"
+
+BOM:0 "Bombay"
+BOM_DEF:0 "Bombay"
+BOM_ADJ:0 "Bombay"
+
+KAS:0 "Jammu and Kashmir"
+KAS_DEF:0 "the Protectorated Territory of Jammu and Kashmir"
+KAS_ADJ:0 "Kashmiri"
+
+YUN:0 "Yunnan Autonomous Province"
+YUN_DEF:0 "Yunnan Autonomous Province"
+YUN_ADJ:0 "Yunnanese"
+
+MAY:0 "Malayan Federation"
+MAY_DEF:0 "Malayan Federation"
+MAY_ADJ:0 "Malayan"
+
+RIN:0 "Republic of Indonesia"
+RIN_DEF:0 "Republic of Indonesia"
+RIN_ADJ:0 "Indonesian"
+
+VXI:0 "Xi Feng"
+VXI_DEF:0 "Vietnamese Xi Feng"
+VXI_ADJ:0 "Xi Fenger"

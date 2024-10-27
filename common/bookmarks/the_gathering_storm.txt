@@ -1,0 +1,91 @@
+bookmarks = {
+	bookmark = {
+		name = "East"
+		desc = "placeholder_DESC"
+		date = 1935.1.1.12
+		picture = "GFX_select_date_1936"
+		default_country = "JAP"
+
+		"JAP"={
+			history = ""
+			ideas = {
+            }
+            focuses = {
+                
+            }
+			ideology = conservative
+		}
+
+		"UPK"={
+			history = ""
+			ideas = {
+            }
+            focuses = {
+                
+            }
+			ideology = conservative
+		}
+
+				
+		"MIN"= {
+			history = ""
+			ideas = {
+				MIN_political_dissidents
+				MIN_sunset_crash
+				MIN_treaty_of_seoul
+            }
+            focuses = {
+            }
+			ideology = fundamentalist
+
+		}
+
+		"VIN"={
+			history = ""
+            ideas = {
+				VIN_mekong_floods
+            }
+            focuses = {
+				VIN_status_colonies
+				VIN_status_economy
+				VIN_dragons_army
+            }
+			ideology = conservative
+
+		}
+
+		"KOR"= {
+			history = ""
+			ideas = {
+            }
+            focuses = {
+            }
+			ideology = conservative
+
+		}
+				
+		"SIR"= {
+			history = ""
+			ideas = {
+            }
+            focuses = {
+            }
+			ideology = conservative
+
+		}
+				
+		"PTK"= {
+			history = ""
+			ideas = {
+            }
+            focuses = {
+            }
+			ideology = conservative
+
+		}
+
+		effect = {
+			randomize_weather = 12345 
+		}
+	}
+}

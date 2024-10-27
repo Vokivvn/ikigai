@@ -1,0 +1,212 @@
+﻿add_namespace = gallia
+
+country_event = {
+	id = gallia.1
+	title = gallia.1.t
+	desc = gallia.1.d
+	picture = GFX_carry_on
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = gallia.1.a
+	}
+}
+
+country_event = {
+	id = gallia.2
+	title = gallia.2.t
+	desc = gallia.2.d
+	picture = GFX_carry_on
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = gallia.2.a
+		hidden_effect = {
+			country_event = { id = gallia.3 days = 5 }
+		}
+	}
+}
+
+country_event = {
+	id = gallia.3
+	title = gallia.3.t
+	desc = gallia.3.d
+	picture = GFX_carry_on
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = gallia.3.a
+		hidden_effect = {
+			country_event = { id = gallia.4 days = 30 }
+		}
+	}
+}
+
+country_event = {
+	id = gallia.4
+	title = gallia.4.t
+	desc = gallia.4.d
+	picture = GFX_carry_on
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = gallia.4.a
+		hidden_effect = {
+			country_event = { id = gallia.5 days = 30 }
+		}
+	}
+}
+
+country_event = {
+	id = gallia.5
+	title = gallia.5.t
+	desc = gallia.5.d
+	picture = GFX_carry_on
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = gallia.5.a
+		hidden_effect = {
+			country_event = { id = gallia.6 days = 30 }
+		}
+	}
+}
+
+country_event = {
+	id = gallia.6
+	title = gallia.6.t
+	desc = gallia.6.d
+	picture = GFX_carry_on
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = gallia.6.a
+		hidden_effect = {
+			country_event = { id = gallia.7 days = 45 }
+		}
+	}
+}
+
+country_event = {
+	id = gallia.7
+	title = gallia.7.t
+	desc = gallia.7.d
+	picture = GFX_carry_on
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = gallia.7.a
+		hidden_effect = {
+			country_event = { id = gallia.8 days = 45 }
+		}
+	}
+}
+
+country_event = {
+	id = gallia.8
+	title = gallia.8.t
+	desc = gallia.8.d
+	picture = GFX_carry_on
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = gallia.8.a
+		hidden_effect = {
+			country_event = { id = gallia.9 days = 45 }
+		}
+	}
+}
+
+country_event = {
+	id = gallia.9
+	title = gallia.9.t
+	desc = gallia.9.d
+	picture = GFX_carry_on
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = gallia.9.a
+		
+	}
+}
+
+country_event = {
+	id = gallia.10
+	title = gallia.10.t
+	desc = gallia.10.d
+	picture = GFX_carry_on
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = gallia.10.a
+		send_equipment = {
+			target = FROM
+			type = infantry_equipment
+			amount = 2000
+		}
+		send_equipment = {
+			target = FROM
+			type = artillery_equipment
+			amount = 200
+		}
+		GAL = {
+			effect_tooltip = { GAL_upgrade_foreign_support = yes }
+			country_event = gallia.11
+		}
+	}
+	option = {
+		name = gallia.10.b
+		GAL = {
+			country_event = gallia.12
+		}
+	}
+}
+country_event = {
+	id = gallia.11
+	title = gallia.11.t
+	desc = gallia.11.d
+	picture = GFX_carry_on
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = gallia.11.a
+		effect_tooltip = {
+			FROM = {
+				send_equipment = {
+					target = GAL
+					type = infantry_equipment
+					amount = 2000
+				}
+				send_equipment = {
+					target = GAL
+					type = artillery_equipment
+					amount = 200
+				}
+			}
+		}
+		GAL_upgrade_foreign_support = yes
+	}
+}
+country_event = {
+	id = gallia.12
+	title = gallia.12.t
+	desc = gallia.12.d
+	picture = GFX_carry_on
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = gallia.12.a
+	}
+}

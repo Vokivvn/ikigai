@@ -1,0 +1,799 @@
+##Created by Tsar Giraldo
+scripted_gui = {
+
+	chi_influence_window_open = {
+		context_type = player_context
+		parent_window_token = politics_tab
+		window_name = "chi_influence_window_open"
+
+		visible = {
+			tag = CHI
+			NOT = {
+				CHI = {
+					is_puppet = yes
+				}
+			}
+		}
+
+		effects = {
+			chi_influence_menu_open_click = {
+				if = {
+					limit = {
+						NOT = { has_country_flag = CHI_influence_window_open_flag }
+					}
+					set_country_flag = CHI_influence_window_open_flag
+				}
+				else_if = {
+					limit = {
+						has_country_flag = CHI_influence_window_open_flag
+					}
+					clr_country_flag = CHI_influence_window_open_flag
+				}
+			}
+		}
+	}
+
+	chi_influence_window_main_open = {
+		context_type = player_context
+		window_name = "chi_influence_window_main"
+		visible = {
+			has_country_flag = CHI_influence_window_open_flag
+			NOT = {
+				CHI = {
+					is_puppet = yes
+				}
+			}
+		}
+
+		triggers = {
+
+			AGU_LVL1_visible = {
+				CHI = {
+					check_variable = {
+						var = AGU_CHI_Influence
+						value = 100
+						compare = greater_than_or_equals
+					}
+					check_variable = {
+						var = AGU_CHI_Influence
+						value = 200
+						compare = less_than
+					}
+				}
+			}
+			AGU_LVL2_visible = {
+				CHI = {
+					check_variable = {
+						var = AGU_CHI_Influence
+						value = 200
+						compare = greater_than_or_equals
+					}
+					check_variable = {
+						var = AGU_CHI_Influence
+						value = 300
+						compare = less_than
+					}
+				}
+			}
+			AGU_LVL3_visible = {
+				CHI = {
+					check_variable = {
+						var = AGU_CHI_Influence
+						value = 300
+						compare = greater_than_or_equals
+					}
+					check_variable = {
+						var = AGU_CHI_Influence
+						value = 400
+						compare = less_than
+					}
+				}
+			}
+			AGU_LVL4_visible = {
+				CHI = {
+					check_variable = {
+						var = AGU_CHI_Influence
+						value = 400
+						compare = greater_than_or_equals
+					}
+				}
+			}
+
+			KRO_LVL1_visible = {
+				CHI = {
+					check_variable = {
+						var = KRO_CHI_Influence
+						value = 100
+						compare = greater_than_or_equals
+					}
+					check_variable = {
+						var = KRO_CHI_Influence
+						value = 200
+						compare = less_than
+					}
+				}
+			}
+			KRO_LVL2_visible = {
+				CHI = {
+					check_variable = {
+						var = KRO_CHI_Influence
+						value = 200
+						compare = greater_than_or_equals
+					}
+					check_variable = {
+						var = KRO_CHI_Influence
+						value = 300
+						compare = less_than
+					}
+				}
+			}
+			KRO_LVL3_visible = {
+				CHI = {
+					check_variable = {
+						var = KRO_CHI_Influence
+						value = 300
+						compare = greater_than_or_equals
+					}
+					check_variable = {
+						var = KRO_CHI_Influence
+						value = 400
+						compare = less_than
+					}
+				}
+			}
+			KRO_LVL4_visible = {
+				CHI = {
+					check_variable = {
+						var = KRO_CHI_Influence
+						value = 400
+						compare = greater_than_or_equals
+					}
+				}
+			}
+
+			MNG_LVL1_visible = {
+				CHI = {
+					check_variable = {
+						var = MNG_CHI_Influence
+						value = 100
+						compare = greater_than_or_equals
+					}
+					check_variable = {
+						var = MNG_CHI_Influence
+						value = 200
+						compare = less_than
+					}
+				}
+			}
+			MNG_LVL2_visible = {
+				CHI = {
+					check_variable = {
+						var = MNG_CHI_Influence
+						value = 200
+						compare = greater_than_or_equals
+					}
+					check_variable = {
+						var = MNG_CHI_Influence
+						value = 300
+						compare = less_than
+					}
+				}
+			}
+			MNG_LVL3_visible = {
+				CHI = {
+					check_variable = {
+						var = MNG_CHI_Influence
+						value = 300
+						compare = greater_than_or_equals
+					}
+					check_variable = {
+						var = MNG_CHI_Influence
+						value = 400
+						compare = less_than
+					}
+				}
+			}
+			MNG_LVL4_visible = {
+				CHI = {
+					check_variable = {
+						var = MNG_CHI_Influence
+						value = 400
+						compare = greater_than_or_equals
+					}
+				}
+			}
+
+			RME_LVL1_visible = {
+				CHI = {
+					check_variable = {
+						var = RME_CHI_Influence
+						value = 100
+						compare = greater_than_or_equals
+					}
+					check_variable = {
+						var = RME_CHI_Influence
+						value = 200
+						compare = less_than
+					}
+				}
+			}
+			RME_LVL2_visible = {
+				CHI = {
+					check_variable = {
+						var = RME_CHI_Influence
+						value = 200
+						compare = greater_than_or_equals
+					}
+					check_variable = {
+						var = RME_CHI_Influence
+						value = 300
+						compare = less_than
+					}
+				}
+			}
+			RME_LVL3_visible = {
+				CHI = {
+					check_variable = {
+						var = RME_CHI_Influence
+						value = 300
+						compare = greater_than_or_equals
+					}
+					check_variable = {
+						var = RME_CHI_Influence
+						value = 400
+						compare = less_than
+					}
+				}
+			}
+			RME_LVL4_visible = {
+				CHI = {
+					check_variable = {
+						var = RME_CHI_Influence
+						value = 400
+						compare = greater_than_or_equals
+					}
+				}
+			}
+
+			DEI_LVL1_visible = {
+				CHI = {
+					check_variable = {
+						var = DEI_CHI_Influence
+						value = 100
+						compare = greater_than_or_equals
+					}
+					check_variable = {
+						var = DEI_CHI_Influence
+						value = 200
+						compare = less_than
+					}
+				}
+			}
+			DEI_LVL2_visible = {
+				CHI = {
+					check_variable = {
+						var = DEI_CHI_Influence
+						value = 200
+						compare = greater_than_or_equals
+					}
+					check_variable = {
+						var = DEI_CHI_Influence
+						value = 300
+						compare = less_than
+					}
+				}
+			}
+			DEI_LVL3_visible = {
+				CHI = {
+					check_variable = {
+						var = DEI_CHI_Influence
+						value = 300
+						compare = greater_than_or_equals
+					}
+					check_variable = {
+						var = DEI_CHI_Influence
+						value = 400
+						compare = less_than
+					}
+				}
+			}
+			DEI_LVL4_visible = {
+				CHI = {
+					check_variable = {
+						var = DEI_CHI_Influence
+						value = 400
+						compare = greater_than_or_equals
+					}
+				}
+			}
+
+			PTK_LVL1_visible = {
+				CHI = {
+					check_variable = {
+						var = PTK_CHI_Influence
+						value = 100
+						compare = greater_than_or_equals
+					}
+					check_variable = {
+						var = PTK_CHI_Influence
+						value = 200
+						compare = less_than
+					}
+				}
+			}
+			PTK_LVL2_visible = {
+				CHI = {
+					check_variable = {
+						var = PTK_CHI_Influence
+						value = 200
+						compare = greater_than_or_equals
+					}
+					check_variable = {
+						var = PTK_CHI_Influence
+						value = 300
+						compare = less_than
+					}
+				}
+			}
+			PTK_LVL3_visible = {
+				CHI = {
+					check_variable = {
+						var = PTK_CHI_Influence
+						value = 300
+						compare = greater_than_or_equals
+					}
+					check_variable = {
+						var = PTK_CHI_Influence
+						value = 400
+						compare = less_than
+					}
+				}
+			}
+			PTK_LVL4_visible = {
+				CHI = {
+					check_variable = {
+						var = PTK_CHI_Influence
+						value = 400
+						compare = greater_than_or_equals
+					}
+				}
+			}
+
+			AGU_SphereButtonCheck_visible = {
+				CHI = {
+					check_variable = {
+						var = AGU_CHI_Influence
+						value = 400
+						compare = greater_than_or_equals
+					}
+				}
+				AGU = {
+					is_subject_of = CHI
+				}
+			}
+
+			MNG_SphereButtonCheck_visible = {
+				CHI = {
+					check_variable = {
+						var = MNG_CHI_Influence
+						value = 400
+						compare = greater_than_or_equals
+					}
+				}
+				MNG = {
+					is_subject_of = CHI
+				}
+			}
+
+			KRO_SphereButtonCheck_visible = {
+				CHI = {
+					check_variable = {
+						var = KRO_CHI_Influence
+						value = 400
+						compare = greater_than_or_equals
+					}
+				}
+				KRO = {
+					is_subject_of = CHI
+				}
+			}
+
+			RME_SphereButtonCheck_visible = {
+				CHI = {
+					check_variable = {
+						var = RME_CHI_Influence
+						value = 400
+						compare = greater_than_or_equals
+					}
+				}
+				RME = {
+					is_subject_of = CHI
+				}
+			}
+
+			DEI_SphereButtonCheck_visible = {
+				CHI = {
+					check_variable = {
+						var = DEI_CHI_Influence
+						value = 400
+						compare = greater_than_or_equals
+					}
+				}
+				DEI = {
+					is_subject_of = CHI
+				}
+			}
+
+			PTK_SphereButtonCheck_visible = {
+				CHI = {
+					check_variable = {
+						var = PTK_CHI_Influence
+						value = 400
+						compare = greater_than_or_equals
+					}
+				}
+				PTK = {
+					is_subject_of = CHI
+				}
+			}
+			
+			##countries
+			
+			Jyut_Hon_Diplo_GUI_State_Mongkuong_visible = {
+				MNG = {
+					is_subject_of = CHI
+				}
+			}
+			
+			Jyut_Hon_Diplo_GUI_State_Kroran_visible = {
+				KRO = {
+					is_subject_of = CHI
+				}
+			}
+			
+			Jyut_Hon_Diplo_GUI_State_Aisin_Gioro_visible = {
+				AGU = {
+					is_subject_of = CHI
+				}
+			}
+			
+			Jyut_Hon_Diplo_GUI_State_Potalka_visible = {
+				PTK = {
+					is_subject_of = CHI
+				}
+			}
+			
+			Jyut_Hon_Diplo_GUI_State_Rmea_visible = {
+				RME = {
+					is_subject_of = CHI
+				}
+			}
+			
+			Jyut_Hon_Diplo_GUI_State_Deikyum_visible = {
+				DEI = {
+					is_subject_of = CHI
+				}
+			}
+		}
+
+		effects = {
+			CHI_Diplo_GUI_Close_Button_click = {
+				clr_country_flag = chi_influence_window_open_flag
+			}
+		}
+	}
+
+	chi_influence_windowbuttons_open = {
+		context_type = player_context
+		parent_window_name = chi_influence_window_main_open
+		window_name = "chi_influence_windowbuttons_open"
+
+		visible = {
+			has_country_flag = CHI_influence_window_open_flag
+		}
+
+		triggers = {
+			AGU_blank_sphere_button_visible = {
+				CHI = {
+					NOT = {
+						check_variable = {
+							var = AGU_CHI_Influence
+							value = 400
+							compare = greater_than_or_equals
+						}
+					}
+					NOT = {
+						has_country_flag = CHI_influencing_aisin_gioro
+					}
+				}
+				AGU = {
+					is_subject_of = CHI
+				}
+			}
+
+			AGU_full_sphere_button_visible = {
+				CHI = {
+					NOT = {
+						check_variable = {
+							var = AGU_CHI_Influence
+							value = 400
+							compare = greater_than_or_equals
+						}
+					}
+					has_country_flag = CHI_influencing_aisin_gioro
+				}
+				AGU = {
+					is_subject_of = CHI
+				}
+			}
+
+			MNG_blank_sphere_button_visible = {
+				CHI = {
+					NOT = {
+						check_variable = {
+							var = MNG_CHI_Influence
+							value = 400
+							compare = greater_than_or_equals
+						}
+					}
+					NOT = {
+						has_country_flag = CHI_influencing_mongkuong
+					}
+				}
+				MNG = {
+					is_subject_of = CHI
+				}
+			}
+
+			MNG_full_sphere_button_visible = {
+				CHI = {
+					NOT = {
+						check_variable = {
+							var = MNG_CHI_Influence
+							value = 400
+							compare = greater_than_or_equals
+						}
+					}
+					has_country_flag = CHI_influencing_mongkuong
+				}
+				MNG = {
+					is_subject_of = CHI
+				}
+			}
+
+			KRO_blank_sphere_button_visible = {
+				CHI = {
+					NOT = {
+						check_variable = {
+							var = KRO_CHI_Influence
+							value = 400
+							compare = greater_than_or_equals
+						}
+					}
+					NOT = {
+						has_country_flag = CHI_influencing_kroran
+					}
+				}
+				KRO = {
+					is_subject_of = CHI
+				}
+			}
+
+			KRO_full_sphere_button_visible = {
+				CHI = {
+					NOT = {
+						check_variable = {
+							var = KRO_CHI_Influence
+							value = 400
+							compare = greater_than_or_equals
+						}
+					}
+					has_country_flag = CHI_influencing_kroran
+				}
+				KRO = {
+					is_subject_of = CHI
+				}
+			}
+
+			RME_blank_sphere_button_visible = {
+				CHI = {
+					NOT = {
+						check_variable = {
+							var = RME_CHI_Influence
+							value = 400
+							compare = greater_than_or_equals
+						}
+					}
+					NOT = {
+						has_country_flag = CHI_influencing_rmea
+					}
+				}
+				RME = {
+					is_subject_of = CHI
+				}
+			}
+
+			RME_full_sphere_button_visible = {
+				CHI = {
+					NOT = {
+						check_variable = {
+							var = RME_CHI_Influence
+							value = 400
+							compare = greater_than_or_equals
+						}
+					}
+					has_country_flag = CHI_influencing_rmea
+				}
+				RME = {
+					is_subject_of = CHI
+				}
+			}
+
+			DEI_blank_sphere_button_visible = {
+				CHI = {
+					NOT = {
+						check_variable = {
+							var = DEI_CHI_Influence
+							value = 400
+							compare = greater_than_or_equals
+						}
+					}
+					NOT = {
+						has_country_flag = CHI_influencing_deikyum
+					}
+				}
+				DEI = {
+					is_subject_of = CHI
+				}
+			}
+
+			DEI_full_sphere_button_visible = {
+				CHI = {
+					NOT = {
+						check_variable = {
+							var = DEI_CHI_Influence
+							value = 400
+							compare = greater_than_or_equals
+						}
+					}
+					has_country_flag = CHI_influencing_deikyum
+				}
+				DEI = {
+					is_subject_of = CHI
+				}
+			}
+
+			PTK_blank_sphere_button_visible = {
+				CHI = {
+					NOT = {
+						check_variable = {
+							var = PTK_CHI_Influence
+							value = 400
+							compare = greater_than_or_equals
+						}
+					}
+					NOT = {
+						has_country_flag = CHI_influencing_potalka
+					}
+				}
+				PTK = {
+					is_subject_of = CHI
+				}
+			}
+
+			PTK_full_sphere_button_visible = {
+				CHI = {
+					NOT = {
+						check_variable = {
+							var = PTK_CHI_Influence
+							value = 400
+							compare = greater_than_or_equals
+						}
+					}
+					has_country_flag = CHI_influencing_potalka
+				}
+				PTK = {
+					is_subject_of = CHI
+				}
+			}
+		}
+
+		effects = {
+			AGU_blank_sphere_button_click = {
+				if = {
+					limit = {
+						NOT = { has_country_flag = CHI_influencing_aisin_gioro
+							has_country_flag = CHI_influencing_nation
+						}
+					}
+					set_country_flag = CHI_influencing_aisin_gioro
+					set_country_flag = CHI_influencing_nation
+				}
+			}
+			AGU_full_sphere_button_click = {
+				clr_country_flag = CHI_influencing_aisin_gioro
+				clr_country_flag = CHI_influencing_nation
+			}
+
+			MNG_blank_sphere_button_click = {
+				if = {
+					limit = {
+						NOT = { has_country_flag = CHI_influencing_mongkuong
+							has_country_flag = CHI_influencing_nation
+						}
+					}
+					set_country_flag = CHI_influencing_mongkuong
+					set_country_flag = CHI_influencing_nation
+				}
+			}
+			MNG_full_sphere_button_click = {
+				clr_country_flag = CHI_influencing_mongkuong
+				clr_country_flag = CHI_influencing_nation
+			}
+
+			KRO_blank_sphere_button_click = {
+				if = {
+					limit = {
+						NOT = { has_country_flag = CHI_influencing_kroran
+							has_country_flag = CHI_influencing_nation
+						}
+					}
+					set_country_flag = CHI_influencing_kroran
+					set_country_flag = CHI_influencing_nation
+				}
+			}
+			KRO_full_sphere_button_click = {
+				clr_country_flag = CHI_influencing_kroran
+				clr_country_flag = CHI_influencing_nation
+			}
+
+			RME_blank_sphere_button_click = {
+				if = {
+					limit = {
+						NOT = { has_country_flag = CHI_influencing_rmea
+							has_country_flag = CHI_influencing_nation
+						}
+					}
+					set_country_flag = CHI_influencing_rmea
+					set_country_flag = CHI_influencing_rmea
+				}
+			}
+			RME_full_sphere_button_click = {
+				clr_country_flag = CHI_influencing_rmea
+				clr_country_flag = CHI_influencing_nation
+			}
+
+			DEI_blank_sphere_button_click = {
+				if = {
+					limit = {
+						NOT = { has_country_flag = CHI_influencing_deikyum
+							has_country_flag = CHI_influencing_nation
+						}
+					}
+					set_country_flag = CHI_influencing_deikyum
+					set_country_flag = CHI_influencing_nation
+				}
+			}
+			DEI_full_sphere_button_click = {
+				clr_country_flag = CHI_influencing_deikyum
+				clr_country_flag = CHI_influencing_nation
+			}
+
+			PTK_blank_sphere_button_click = {
+				if = {
+					limit = {
+						NOT = { has_country_flag = CHI_influencing_potalka
+							has_country_flag = CHI_influencing_nation
+						}
+					}
+					set_country_flag = CHI_influencing_potalka
+					set_country_flag = CHI_influencing_nation
+				}
+			}
+			PTK_full_sphere_button_click = {
+				clr_country_flag = CHI_influencing_potalka
+				clr_country_flag = CHI_influencing_nation
+			}
+		}
+	}
+}

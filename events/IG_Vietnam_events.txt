@@ -1,0 +1,136 @@
+add_namespace = vietnam
+
+country_event = {
+	id = vietnam.1  #### Vietnamese Modern Struggle
+	title = vietnam.1.t
+	desc = vietnam.1.d
+	#picture =
+
+	fire_only_once = yes
+	
+	option = {
+		name = vietnam.1.a
+	}
+}
+
+country_event = {
+	id = vietnam.2 ##### Cover-ups and Corruptions
+	title = vietnam.2.t
+	desc = vietnam.2.d
+	#picture =
+	
+	fire_only_once = yes
+
+	option = {
+		name = vietnam.2.a
+	}
+}
+
+country_event = {
+	id = vietnam.3 #### Status of the Economy
+	title = vietnam.3.t
+	desc = vietnam.3.d
+	#picture =
+	
+	fire_only_once = yes
+
+	option = {
+		name = vietnam.3.a
+	}
+}
+
+country_event = {
+	id = vietnam.4 ##### Looking for Trade Opportunities
+	title = vietnam.4.t
+	desc = vietnam.4.d
+	#picture =
+
+	fire_only_once = yes
+	
+	option = {
+		name = vietnam.4.a
+		country_event = vietnam.5
+	}
+}
+
+country_event = {
+	id = vietnam.5 ##### Japan as Trade Partner
+	title = vietnam.5.t
+	desc = vietnam.5.d
+	#picture =
+
+	fire_only_once = yes
+
+	option = {
+		name = vietnam.5.a
+		country_event = vietnam.6
+	}
+}
+
+country_event = {
+	id = vietnam.6 ##### Joseon as Trade Partner
+	title = vietnam.6.t
+	desc = vietnam.6.d
+	#picture =
+
+	fire_only_once = yes
+
+	option = {
+		name = vietnam.6.a
+		country_event = vietnam.7
+	}
+}
+
+country_event = {
+	id = vietnam.7 ##### Shun Republic as Trade Partner
+	title = vietnam.7.t
+	desc = vietnam.7.d
+	#picture =
+
+	fire_only_once = yes
+	
+	option = {
+		name = vietnam.7.a
+		country_event = vietnam.8
+	}
+}
+
+country_event = {
+	id = vietnam.8 ##### Orissa as Trade Partner
+	title = vietnam.8.t
+	desc = vietnam.8.d
+	#picture =
+
+	fire_only_once = yes
+
+	option = {
+		name = vietnam.8.a
+		country_event = vietnam.9
+	}
+}
+
+country_event = {
+	id = vietnam.9 ##### Kowai? (not sure) as Trade Partner
+	title = vietnam.9.t
+	desc = vietnam.9.d
+	#picture =
+
+	fire_only_once = yes
+	
+	option = {
+		name = vietnam.9.a
+	}
+}
+
+country_event = {
+	id = vietnam.10 #### Event talking about the riches of the indies
+	title = vietnam.10.t
+	desc = vietnam.10.d
+	#picture =
+
+	fire_only_once = yes
+	
+	option = {
+		name = vietnam.10.a
+	}
+}

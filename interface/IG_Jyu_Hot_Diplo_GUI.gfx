@@ -1,0 +1,88 @@
+spriteTypes = {
+
+	spriteType = {
+		name = "GFX_ikigai_closebutton"
+		texturefile = "gfx/interface/ikigai_closebutton.dds"
+	}
+
+	spriteType = {
+		name = "GFX_CHI_The_Game"
+		texturefile = "gfx/interface/jyut_hon_diplo_gui/GFX_CHI_The_Game.dds"
+	}
+
+	spriteType = {
+		name = "GFX_Jyut_Hon_Diplo_GUI_bg"
+		texturefile = "gfx/interface/jyut_hon_diplo_gui/Jyut_Hon_Diplo_GUI_bg.dds"
+	}
+
+	spriteType = {
+		name = "GFX_Jyut_Hon_Diplo_GUI_Info_Button"
+		texturefile = "gfx/interface/jyut_hon_diplo_gui/Jyut_Hon_Diplo_GUI_Info_Button.dds"
+	}
+	spriteType = {
+		name = "GFX_Jyut_Hon_Diplo_GUI_Propaganda_Button"
+		texturefile = "gfx/interface/jyut_hon_diplo_gui/Jyut_Hon_Diplo_GUI_Propaganda_Button.dds"
+	}
+	spriteType = {
+		name = "GFX_Jyut_Hon_Diplo_GUI_Trade_Button"
+		texturefile = "gfx/interface/jyut_hon_diplo_gui/Jyut_Hon_Diplo_GUI_Trade_Button.dds"
+	}
+	spriteType = {
+		name = "GFX_Jyut_Hon_Diplo_GUI_Level_4"
+		texturefile = "gfx/interface/jyut_hon_diplo_gui/Jyut_Hon_Diplo_GUI_Level_4.dds"
+	}
+	spriteType = {
+		name = "GFX_Jyut_Hon_Diplo_GUI_Level_3"
+		texturefile = "gfx/interface/jyut_hon_diplo_gui/Jyut_Hon_Diplo_GUI_Level_3.dds"
+	}
+	spriteType = {
+		name = "GFX_Jyut_Hon_Diplo_GUI_Level_2"
+		texturefile = "gfx/interface/jyut_hon_diplo_gui/Jyut_Hon_Diplo_GUI_Level_2.dds"
+	}
+	spriteType = {
+		name = "GFX_Jyut_Hon_Diplo_GUI_Level_1"
+		texturefile = "gfx/interface/jyut_hon_diplo_gui/Jyut_Hon_Diplo_GUI_Level_1.dds"
+	}
+
+	spriteType = {
+		name = "GFX_Jyut_Hon_Diplo_GUI_Check"
+		texturefile = "gfx/interface/jyut_hon_diplo_gui/Jyut_Hon_Diplo_GUI_Check.dds"
+	}
+	spriteType = {
+		name = "GFX_Jyut_Hon_Diplo_GUI_Button_Empty"
+		texturefile = "gfx/interface/jyut_hon_diplo_gui/Jyut_Hon_Diplo_GUI_Button_Empty.dds"
+	}
+	spriteType = {
+		name = "GFX_Jyut_Hon_Diplo_GUI_Button_Full"
+		texturefile = "gfx/interface/jyut_hon_diplo_gui/Jyut_Hon_Diplo_GUI_Button_Full.dds"
+	}
+
+	spriteType = {
+		name = "GFX_Jyut_Hon_Diplo_GUI_State_Aisin_Gioro"
+		texturefile = "gfx/interface/jyut_hon_diplo_gui/Jyut_Hon_Diplo_GUI_State_Aisin_Gioro.dds"
+	}
+	spriteType = {
+		name = "GFX_Jyut_Hon_Diplo_GUI_State_Deikyum"
+		texturefile = "gfx/interface/jyut_hon_diplo_gui/Jyut_Hon_Diplo_GUI_State_Deikyum.dds"
+	}
+	spriteType = {
+		name = "GFX_Jyut_Hon_Diplo_GUI_State_Kroran"
+		texturefile = "gfx/interface/jyut_hon_diplo_gui/Jyut_Hon_Diplo_GUI_State_Kroran.dds"
+	}
+	spriteType = {
+		name = "GFX_Jyut_Hon_Diplo_GUI_State_Mongkuong"
+		texturefile = "gfx/interface/jyut_hon_diplo_gui/Jyut_Hon_Diplo_GUI_State_Mongkuong.dds"
+	}
+	spriteType = {
+		name = "GFX_Jyut_Hon_Diplo_GUI_State_Potalka"
+		texturefile = "gfx/interface/jyut_hon_diplo_gui/Jyut_Hon_Diplo_GUI_State_Potalka.dds"
+	}
+	spriteType = {
+		name = "GFX_Jyut_Hon_Diplo_GUI_State_Rmea"
+		texturefile = "gfx/interface/jyut_hon_diplo_gui/Jyut_Hon_Diplo_GUI_State_Rmea.dds"
+	}
+	spriteType = {
+		name = "GFX_Jyut_Hon_Diplo_GUI_State_Jyut_Hon"
+		texturefile = "gfx/interface/jyut_hon_diplo_gui/Jyut_Hon_Diplo_GUI_State_Jyut_Hon.dds"
+	}
+}

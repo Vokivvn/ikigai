@@ -1,0 +1,70 @@
+guiTypes = {
+	
+	containerWindowType = {
+		name = "IG_super_event_frame_moon_landing_test"
+		size = { width = 322 height = 676 }
+		position = { x=0 y=0 }
+		Orientation = center
+		Origo = center
+		clipping = no
+				
+		background = {
+			name = "Background"
+			quadTextureSprite ="GFX_tiled_window_superevent_border"
+		}
+
+		instantTextBoxType = {
+			name = "Title"
+			position = { x = -130 y = 126 }
+			font = "nikkyou_30"
+			text = "IG_MOON_LANDING_TEST_T"	
+			maxWidth = 580
+			maxHeight = 24
+			format = centre
+		}
+
+		buttonType = {
+			name = "Option"
+			text = "IG_MOON_LANDING_TEST_A"
+			shortcut = "ESCAPE"
+			position = { x = -138 y = 290 }
+			quadTextureSprite ="GFX_button_superevent"
+			buttonFont = "nikkyou_30"
+			Orientation = center
+		}
+		instantTextBoxType = {
+			name = "text"
+			position = {  x= -175 y = -125 }
+			font = "nikkyou_30"
+			text = "IG_MOON_LANDING_TEST_D"	
+			maxWidth = 455
+			maxHeight = 173
+			fixedsize = yes
+			format = right
+			Orientation = lower_left
+		}
+	}
+
+	containerWindowType = {
+		name = "IG_super_event_moon_landing_test"
+		size = { width = 450 height = 600 }
+		position = { x=0 y=0 }
+		Orientation = center
+		Origo = center 
+		clipping = no
+		show_sound = snake_eater
+				 
+		iconType = {
+			name ="image"
+			spriteType = "GFX_superevent_moon_landing_test" 
+			position = { x= -200 y = -200 }
+			Orientation = center
+			alwaystransparent = yes
+		}
+		
+	}
+}
+
+	
+
+	

@@ -1,0 +1,142 @@
+KOW_organized_crime = {
+    UPK_crackdown_on_the_zhou_family_in_north_seattle = {
+
+
+      available = {
+
+      }
+      visible = {
+
+      }
+      cost = 10
+      days_remove = 10
+      ai_will_do = {
+          factor = 100
+      }
+      remove_effect = {
+          add_to_variable = {
+              north_seattle_mafia_influence = -5
+          }
+      }
+      complete_effect = {
+
+      }
+  }
+  UPK_crackdown_on_the_qiao_family_in_north_seattle = {
+
+
+      available = {
+
+      }
+      visible = {
+
+      }
+      cost = 10
+      days_remove = 10
+      ai_will_do = {
+          factor = 100
+      }
+      remove_effect = {
+          add_to_variable = {
+              north_seattle_mafia_influence = -5
+          }
+      }
+      complete_effect = {
+
+      }
+  }
+  UPK_crackdown_on_the_liadong_family_in_north_seattle = {
+
+
+      available = {
+
+      }
+      visible = {
+
+      }
+      cost = 10
+      days_remove = 10
+      ai_will_do = {
+          factor = 100
+      }
+      remove_effect = {
+          add_to_variable = {
+              north_seattle_mafia_influence = -5
+          }
+      }
+      complete_effect = {
+
+      }
+  }
+
+
+  UPK_crackdown_on_the_zhou_family_in_south_seattle = {
+
+
+      available = {
+
+      }
+      visible = {
+
+      }
+      cost = 10
+      days_remove = 10
+      ai_will_do = {
+          factor = 100
+      }
+      remove_effect = {
+          add_to_variable = {
+              south_seattle_mafia_influence = -5
+          }
+      }
+      complete_effect = {
+
+      }
+  }
+  UPK_crackdown_on_the_qiao_family_in_south_seattle = {
+
+
+      available = {
+
+      }
+      visible = {
+
+      }
+      cost = 10
+      days_remove = 10
+      ai_will_do = {
+          factor = 100
+      }
+      remove_effect = {
+          add_to_variable = {
+              south_seattle_mafia_influence = -5
+          }
+      }
+      complete_effect = {
+
+      }
+  }
+  UPK_crackdown_on_the_liadong_family_in_south_seattle = {
+
+
+      available = {
+
+      }
+      visible = {
+
+      }
+      cost = 10
+      days_remove = 10
+      ai_will_do = {
+          factor = 100
+      }
+      remove_effect = {
+          add_to_variable = {
+              south_seattle_mafia_influence = -5
+          }
+      }
+      complete_effect = {
+
+      }
+  }
+}

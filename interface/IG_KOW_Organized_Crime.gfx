@@ -1,0 +1,10 @@
+spriteTypes = {
+    spriteType = {
+        name = "GFX_IG_kowai_north_seattle"
+        textureFile = "gfx/interface/kowai_crime_gui/northseattle.dds"
+    }
+    spriteType = {
+        name = "GFX_IG_kowai_south_seattle"
+        textureFile = "gfx/interface/kowai_crime_gui/southseattle.dds"
+    }
+}

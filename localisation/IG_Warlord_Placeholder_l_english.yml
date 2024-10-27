@@ -1,0 +1,258 @@
+﻿l_english:
+
+#Country names
+AUS:0 "Wien"
+AUS_DEF:0 "the Imperial Government of Wien"
+AUS_ADJ:0 "Wiener"
+
+PRE:0 "Königsberg"
+PRE_DEF:0 "the Duchy of Königsberg"
+PRE_ADJ:0 "Königsberger"
+
+SSL:0 "Breslau"
+SSL_DEF:0 "the Free Territories of Breslau"
+SSL_ADJ:0 "Breslauer"
+
+WSL:0 "Fürstenwalde"
+WSL_DEF:0 "the Fürstenwalde Republic"
+WSL_ADJ:0 "Fürstenwalden"
+
+ESL:0 "Sleza"
+ESL_DEF:0 "the Slezian Autonomous Republic"
+ESL_ADJ:0 "Slezian"
+
+PPR:0 "Prskati"
+PPR_DEF:0 "the Duchy of Prskati"
+PPR_ADJ:0 "Prskatian"
+
+POM:0 "Pomerelia"
+POM_DEF:0 "the Deutschordensstaat"
+POM_ADJ:0 "Deutschordensstaatenist"
+
+PMR:0 "Pomerania"
+PMR_DEF:0 "the Duchy of Pomerania"
+PMR_ADJ:0 "Pomeranian"
+
+BDB:0 "Brandenburg"
+BDB_DEF:0 "the National Liberation Front of Germania in Brandenburg"
+BDB_ADJ:0 "Brandenburgian"
+
+WEI:0 "Weimar"
+WEI_DEF:0 "the Weimar Republic"
+WEI_ADJ:0 "Weimaren"
+
+BER:0 "Berlin"
+BER_DEF:0 "the Roman Garrison of Berolini"
+BER_ADJ:0 "Berolini"
+
+CKR:0 "Carpatho-Oukraina"
+CKR_DEF:0 "the Carpatho-Oukrainian Free Republic"
+CKR_ADJ:0 "Carpatho-Oukrainian"
+
+HAM:0 "Hamburg"
+HAM_DEF:0 "the Free and Hanseatic Duchy of Hamburg"
+HAM_ADJ:0 "Hamburger"
+
+WPH:0 "Westfalen"
+WPH_DEF:0 "the Duchy of Westfalen"
+WPH_ADJ:0 "Westfalen"
+
+LSX:0 "Alcisen Saxony"
+LSX_DEF:0 "the Alcisen Duchy of Saxony"
+LSX_ADJ:0 "Alcisen-Saxon"
+
+FFT:0 "Frankfurt"
+FFT_DEF:0 "the Imperial Free State of Frankfurt"
+FFT_ADJ:0 "Frankfurter"
+
+SAR:0 "Saarstaat"
+SAR_DEF:0 "the Saarstaat"
+SAR_ADJ:0 "Saar"
+
+ALS:0 "Lotharingia Inferior"
+ALS_DEF:0 "the Authority of Lotharingia Inferior"
+ALS_ADJ:0 "Lotharingian"
+
+RHI:0 "Rhine"
+RHI_DEF:0 "Rhenish Republic"
+RHI_ADJ:0 "Rhenish"
+
+NBY:0 "Franken"
+NBY_DEF:0 "the Franken Black League"
+NBY_ADJ:0 "Franken"
+
+BAY:0 "Munich"
+BAY_DEF:0 "the Royal Authority of Bavaria in Munich"
+BAY_ADJ:0 "Munichen"
+
+WUR:0 "Württemberg"
+WUR_DEF:0 "the Württemberg People's Republic"
+WUR_ADJ:0 "Württemberger"
+
+FRI:0 "Friesland"
+FRI_DEF:0 "the Lordship of Friesland"
+FRI_ADJ:0 "Frisian"
+
+SDE:0 "Slesvig"
+SDE_DEF:0 "the Duchy of Slesvig"
+SDE_ADJ:0 "Slesviger"
+
+SHL:0 "Holstein"
+SHL_DEF:0 "the Hyperborean Duchy of Holstein"
+SHL_ADJ:0 "Holsteiner"
+
+MRV:0 "Moravia"
+MRV_DEF:0 "the Moravian Empire"
+MRV_ADJ:0 "Moravian"
+
+SZE:0 "Szeklerland"
+SZE_DEF:0 "the Sovereign Territories of the Székelys"
+SZE_ADJ:0 "Szekler"
+
+PIC:0 "Bagacum"
+PIC_DEF:0 "the Bagacumian State"
+PIC_ADJ:0 "Bagacumian"
+
+PRS:0 "Lutetia"
+PRS_DEF:0 "the Lutetian Republic"
+PRS_ADJ:0 "Lutetian"
+
+NRM:0 "Soissons"
+NRM_DEF:0 "the Domain of Soissons"
+NRM_ADJ:0 "Soissonic"
+
+CHM:0 "Austrasia"
+CHM_DEF:0 "the Domain of Austrasia"
+CHM_ADJ:0 "Austrasian"
+
+ORL:0 "Orléans"
+ORL_DEF:0 "the Free Kingdom of Orléans"
+ORL_ADJ:0 "Orléanais"
+
+GAS:0 "Bordele"
+GAS_DEF:0 "the Protectorate of Bordele"
+GAS_ADJ:0 "Bordeleon"
+
+GYE:0 "Gascony"
+GYE_DEF:0 "the Duchy of Gascony"
+GYE_ADJ:0 "Mediolanum"
+
+BRG:0 "Burgundy"
+BRG_DEF:0 "the Free Counties of Burgundy"
+BRG_ADJ:0 "Burgundian"
+
+AND:0 "Narbona"
+AND_DEF:0 "the Kingdom of Narbona"
+AND_ADJ:0 "Narbonan"
+
+BRB:0 "Zeeland-Brabant"
+BRB_DEF:0 "the Free County of Zeeland and Brabant"
+BRB_ADJ:0 "Zeelander-Brabantian"
+
+WAL:0 "Belgica"
+WAL_DEF:0 "the Province of Belgica"
+WAL_ADJ:0 "Belgican"
+
+BEL:0 "Flandern"
+BEL_DEF:0 "the Kingdom of Flandern"
+BEL_ADJ:0 "Flanderner"
+
+ARA:0 "Aragón"
+ARA_DEF:0 "the Confederation of Aragón"
+ARA_ADJ:0 "Aragónese"
+
+MDR:0 "La Mancha"
+MDR_DEF:0 "the Republic of La Mancha"
+MDR_ADJ:0 "Manchego"
+
+CAS:0 "Castellae"
+CAS_DEF:0 "the Kingdom of Castellae"
+CAS_ADJ:0 "Castellaen"
+
+SHS:0 "Baetica"
+SHS_DEF:0 "the Roman Garrison of Baetica"
+SHS_ADJ:0 "Baetican"
+
+PLS:0 "Polesie"
+PLS_DEF:0 "the Polesie Territories"
+PLS_ADJ:0 "Polesien"
+
+BIA:0 "Białystok"
+BIA_DEF:0 "the Duchy of Białystok"
+BIA_ADJ:0 "Białystokat"
+
+LSI:0 "Lusitania"
+LSI_DEF:0 "the State of Lusitania"
+LSI_ADJ:0 "Lusitanian"
+
+PRT:0 "Porto"
+PRT_DEF:0 "the Free County of Porto"
+PRT_ADJ:0 "Portuense"
+
+HUN:0 "Hungary"
+HUN_DEF:0 "the Duchy of Hungary"
+HUN_ADJ:0 "Hungarian"
+
+POL:0 "Poland"
+POL_DEF:0 "the Commonwealth of Poland"
+POL_ADJ:0 "Polish"
+
+TRA:0 "Transylvania"
+TRA_DEF:0 "the Free Voivodeship of Transylvania"
+TRA_ADJ:0 "Transylvanian"
+
+SLO:0 "Slovakia"
+SLO_DEF:0 "the Free Army of Slovakia"
+SLO_ADJ:0 "Slovakian"
+
+MOL:0 "Moldova"
+MOL_DEF:0 "the Principality of Moldova"
+MOL_ADJ:0 "Moldovan"
+
+ROM:0 "Wallachia"
+ROM_DEF:0 "the Principality of Wallachia"
+ROM_ADJ:0 "Wallachian"
+
+SAX:0 "Saxony"
+SAX_DEF:0 "the Duchy of Saxony"
+SAX_ADJ:0 "Saxon"
+
+MEK:0 "Mecklenburg"
+MEK_DEF:0 "the People's Revolutionary Council of Mecklenburg"
+MEK_ADJ:0 "Mecklenburger"
+
+HAN:0 "Hannover"
+HAN_DEF:0 "the Duchy of Hannover"
+HAN_ADJ:0 "Hannover"
+
+OCC:0 "Occitanie"
+OCC_DEF:0 "the Kingdom of Occitanie"
+OCC_ADJ:0 "Occitanian"
+
+HOL:0 "Holland"
+HOL_DEF:0 "the Commune of Holland"
+HOL_ADJ:0 "Hollander"
+
+CAT:0 "Catalonia"
+CAT_DEF:0 "the Free State of Catalonia"
+CAT_ADJ:0 "Catalonian"
+
+NAV:0 "Navarre"
+NAV_DEF:0 "the Free Country of Navarre"
+NAV_ADJ:0 "Navarren"
+
+GLC:0 "Asturias"
+GLC_DEF:0 "the Commune of Asturias"
+GLC_ADJ:0 "Galician"
+
+ADU:0 "Murcia"
+ADU_DEF:0 "the Liberation Army of Murcia"
+ADU_ADJ:0 "Murcian"
+
+POR:0 "Lisbon"
+POR_DEF:0 "the Government of Lisbon"
+POR_ADJ:0 "Lisboner"
+
+FRA:0 "Anjou"
+FRA_DEF:0 "the Blue League of Anjou"
+FRA_ADJ:0 "Anjoun"

@@ -1,0 +1,27 @@
+scripted_gui = {
+
+	IG_super_event_moon_landing_test = {
+		context_type = player_context
+		window_name = "IG_super_event_moon_landing_test"
+
+		visible = {
+			has_country_flag = super_event_moon_landing_test
+		}
+	}
+
+	IG_super_event_frame_moon_landing_test = {
+		context_type = player_context
+		window_name = "IG_super_event_frame_moon_landing_test"
+
+		visible = {
+			has_country_flag = super_event_moon_landing_test
+		}
+
+		effects = {
+			Option_click = {
+				clr_country_flag = super_event_moon_landing_test
+			}
+		}
+	}
+
+}

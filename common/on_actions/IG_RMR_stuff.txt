@@ -1,0 +1,7 @@
+on_actions = {
+	on_daily_RMR = {
+		effect = {
+			RMR_RP_calc_internal_popularities = yes
+		}
+	}
+}

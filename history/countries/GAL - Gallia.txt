@@ -1,0 +1,42 @@
+capital = 16
+
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+}
+
+set_convoys = 20
+
+country_event = { id = gallia.1 hours = 2 }
+
+add_ideas = {
+	GAL_political_concerns_idea
+	GAL_rubicon
+}
+
+set_politics = {	
+	ruling_party = social_democrat
+	last_election = "1936.1.1"
+	election_frequency = 48
+	elections_allowed = yes
+}	
+	
+set_popularities = {	
+	social_nationalist = 20
+	marxist = 15
+	libertarian = 0
+	moderate_socialist = 0
+	social_democrat = 45
+	social_liberal = 10
+	conservative = 5
+	authoritarian_democrat = 2
+	autocratic = 0
+	fundamentalist = 3
+}	
+	
+create_country_leader = {	
+	name = "Estella Joudain"
+	desc = ""
+	picture = "Portrait_GAL_Estella_Joudain.tga"
+	ideology = social_democrat_subtype
+}	

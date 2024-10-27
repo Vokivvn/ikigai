@@ -1,0 +1,20 @@
+######################################
+category = {
+ name = "NICE"
+ soundeffects = {
+	nice_ok
+	nice_hum
+	nice_open
+ }
+ 
+ compressor = 
+ {
+	enabled = yes
+	pregain = 3.0
+	postgain = 1.0
+	ratio = 2.0
+	threshold = -10.0
+	attacktime = 0.03
+	releasetime = 0.0
+ }
+}

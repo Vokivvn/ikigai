@@ -1,0 +1,732 @@
+defined_text = {
+	name = get_topbar_economy_button_tt
+	text = {
+		trigger = {
+			is_warlord = yes
+		}
+		localization_key = topbar_economy_button_tt_warlord
+	}
+	text = {
+		trigger = {
+
+		}
+		localization_key = topbar_economy_button_tt_normal
+	}
+}
+
+defined_text = {
+	name = Get_deficit_ratio
+	text = {
+		trigger = {
+			check_variable = { deficit_ratio < 0.4 }
+		}
+		localization_key = deficit_ratio_green
+	}
+	text = {
+		trigger = {
+			check_variable = { deficit_ratio < 0.7 }
+		}
+		localization_key = deficit_ratio_yellow
+	}
+	text = {
+		localization_key = deficit_ratio_red
+	}
+}
+
+defined_text = {
+	name = Get_GDP
+	text = {
+		trigger = {
+			check_variable = { GDP < 1 }
+		}
+		localization_key = GDP_million
+	}
+	text = {
+		trigger = {
+			check_variable = { GDP > 999 }
+		}
+		localization_key = GDP_trillion
+	}
+	text = {
+		localization_key = GDP_billion
+	}
+}
+
+defined_text = {
+	name = Get_GDP_topbar
+	text = {
+		trigger = {
+			check_variable = { GDP < 1 }
+		}
+		localization_key = GDP_million_topbar
+	}
+	text = {
+		trigger = {
+			check_variable = { GDP > 999 }
+		}
+		localization_key = GDP_trillion_topbar
+	}
+	text = {
+		localization_key = GDP_billion_topbar
+	}
+}
+
+defined_text = {
+	name = Get_annual_debt_payments
+	text = {
+		trigger = {
+			check_variable = { GDP < 0.001 } #already converted to billion
+		}
+		localization_key = annual_debt_payments_thousand
+	}
+	text = {
+		trigger = {
+			check_variable = { GDP > 1.0 } #already converted to billion
+		}
+		localization_key = annual_debt_payments_billion
+	}
+	text = {
+		localization_key = annual_debt_payments_million
+	}
+}
+
+
+defined_text = {
+	name = Get_total_budget
+	text = {
+		trigger = {
+			AND = {
+				check_variable = { total_budget < 1 }
+				check_variable = { total_budget > -1 }
+			}
+		}
+		localization_key = total_budget_thousand
+	}
+	text = {
+		trigger = {
+			OR = {
+				check_variable = { total_budget > 1000 }
+				check_variable = { total_budget < -1000 }
+			}
+		}
+		localization_key = total_budget_billion
+	}
+	text = {
+		localization_key = total_budget_million
+	}
+}
+
+defined_text = {
+	name = Get_total_expenditures
+	text = {
+		trigger = {
+			check_variable = { total_expenditures < 1 }
+		}
+		localization_key = total_expenditures_thousand
+	}
+	text = {
+		trigger = {
+			check_variable = { total_expenditures > 1000 }
+		}
+		localization_key = total_expenditures_billion
+	}
+	text = {
+		localization_key = total_expenditures_million
+	}
+}
+
+defined_text = {
+	name = Get_civilian_expenditures
+	text = {
+		trigger = {
+			check_variable = { civilian_expenditures < 1 }
+		}
+		localization_key = civilian_expenditures_thousand
+	}
+	text = {
+		trigger = {
+			check_variable = { civilian_expenditures > 1000 }
+		}
+		localization_key = civilian_expenditures_billion
+	}
+	text = {
+		localization_key = civilian_expenditures_million
+	}
+}
+
+defined_text = {
+	name = Get_civilian_expenditures_topbar
+	text = {
+		trigger = {
+			check_variable = { civilian_expenditures < 1 }
+		}
+		localization_key = civilian_expenditures_thousand_topbar
+	}
+	text = {
+		trigger = {
+			check_variable = { civilian_expenditures > 1000 }
+		}
+		localization_key = civilian_expenditures_billion_topbar
+	}
+	text = {
+		localization_key = civilian_expenditures_million_topbar
+	}
+}
+
+defined_text = {
+	name = Get_military_expenditures
+	text = {
+		trigger = {
+			check_variable = { military_expenditures < 1 }
+		}
+		localization_key = military_expenditures_thousand
+	}
+	text = {
+		trigger = {
+			check_variable = { military_expenditures > 1000 }
+		}
+		localization_key = military_expenditures_billion
+	}
+	text = {
+		localization_key = military_expenditures_million
+	}
+}
+
+defined_text = {
+	name = Get_military_expenditures_topbar
+	text = {
+		trigger = {
+			check_variable = { military_expenditures < 1 }
+		}
+		localization_key = military_expenditures_thousand_topbar
+	}
+	text = {
+		trigger = {
+			check_variable = { military_expenditures > 1000 }
+		}
+		localization_key = military_expenditures_billion_topbar
+	}
+	text = {
+		localization_key = military_expenditures_million_topbar
+	}
+}
+
+
+defined_text = {
+	name = Get_construction_expenditures
+	text = {
+		trigger = {
+			check_variable = { construction_expenditures < 1 }
+		}
+		localization_key = construction_expenditures_thousand
+	}
+	text = {
+		trigger = {
+			check_variable = { construction_expenditures > 1000 }
+		}
+		localization_key = construction_expenditures_billion
+	}
+	text = {
+		localization_key = construction_expenditures_million
+	}
+}
+
+defined_text = {
+	name = Get_money_reserves
+	text = {
+		trigger = {
+			check_variable = { money_reserves < 0.001 } #already converted to billion
+		}
+		localization_key = money_reserves_thousand
+	}
+	text = {
+		trigger = {
+			check_variable = { money_reserves > 1.0 } #already converted to billion
+		}
+		localization_key = money_reserves_billion
+	}
+	text = {
+		localization_key = money_reserves_million
+	}
+}
+
+defined_text = {
+	name = Get_national_debt
+	text = {
+		trigger = {
+			check_variable = { national_debt < 1 }
+		}
+		localization_key = national_debt_million
+	}
+	text = {
+		trigger = {
+			check_variable = { national_debt > 999 }
+		}
+		localization_key = national_debt_trillion
+	}
+	text = {
+		localization_key = national_debt_billion
+	}
+}
+
+defined_text = {
+	name = Get_national_debt_topbar
+	text = {
+		trigger = {
+			check_variable = { national_debt < 1 }
+		}
+		localization_key = national_debt_million_topbar
+	}
+	text = {
+		trigger = {
+			check_variable = { national_debt > 999 }
+		}
+		localization_key = national_debt_trillion_topbar
+	}
+	text = {
+		localization_key = national_debt_billion_topbar
+	}
+}
+
+defined_text = {
+	name = Get_deficit
+	text = {
+		trigger = {
+			AND = {
+				check_variable = { deficit < 1 }
+				check_variable = { deficit > 0 }
+			}
+		}
+		localization_key = deficit_thousand
+	}
+	text = {
+		trigger = {
+			OR = {
+				check_variable = { deficit > 1000 }
+				check_variable = { deficit < -1000 }
+			}
+		}
+		localization_key = deficit_billion
+	}
+	text = {
+		localization_key = deficit_million
+	}
+}
+
+defined_text = {
+	name = Get_manpower_costs
+	text = {
+		trigger = {
+			check_variable = { manpower_costs < 1 }
+		}
+		localization_key = manpower_costs_thousand
+	}
+	text = {
+		trigger = {
+			check_variable = { manpower_costs > 1000 }
+		}
+		localization_key = manpower_costs_billion
+	}
+	text = {
+		localization_key = manpower_costs_million
+	}
+}
+
+defined_text = {
+	name = Get_military_factory_costs
+	text = {
+		trigger = {
+			check_variable = { military_factory_costs < 1 }
+		}
+		localization_key = military_factory_costs_thousand
+	}
+	text = {
+		trigger = {
+			check_variable = { military_factory_costs > 1000 }
+		}
+		localization_key = military_factory_costs_billion
+	}
+	text = {
+		localization_key = military_factory_costs_million
+	}
+}
+
+defined_text = {
+	name = Get_misc_costs
+	text = {
+		trigger = {
+			check_variable = { misc_costs_display < 1 }
+		}
+		localization_key = misc_costs_thousand
+	}
+	text = {
+		trigger = {
+			check_variable = { misc_costs_display > 1000 }
+		}
+		localization_key = misc_costs_billion
+	}
+	text = {
+		localization_key = misc_costs_million
+	}
+}
+
+defined_text = {
+	name = Get_misc_costs_topbar
+	text = {
+		trigger = {
+			check_variable = { misc_costs_display < 1 }
+		}
+		localization_key = misc_costs_thousand_topbar
+	}
+	text = {
+		trigger = {
+			check_variable = { misc_costs_display > 1000 }
+		}
+		localization_key = misc_costs_billion_topbar
+	}
+	text = {
+		localization_key = misc_costs_million_topbar
+	}
+}
+
+
+defined_text = {
+	name = Get_misc_income
+	text = {
+		trigger = {
+			check_variable = { misc_income_display < 1 }
+		}
+		localization_key = misc_income_thousand
+	}
+	text = {
+		trigger = {
+			check_variable = { misc_income_display > 1000 }
+		}
+		localization_key = misc_income_billion
+	}
+	text = {
+		localization_key = misc_income_million
+	}
+}
+
+defined_text = {
+	name = Get_misc_income_topbar
+	text = {
+		trigger = {
+			check_variable = { misc_income_display < 1 }
+		}
+		localization_key = misc_income_thousand_topbar
+	}
+	text = {
+		trigger = {
+			check_variable = { misc_income_display > 1000 }
+		}
+		localization_key = misc_income_billion_topbar
+	}
+	text = {
+		localization_key = misc_income_million_topbar
+	}
+}
+
+#tempoarary modifiers#
+defined_text = {
+	name = Get_military_budget_modifier
+	text = {
+		trigger = {
+			has_idea = military_budget_boost
+		}
+		localization_key = military_budget_boost_gui
+	}
+	text = {
+		trigger = {
+			has_idea = military_budget_cuts
+		}
+		localization_key = military_budget_cuts_gui
+	}
+	text = {
+		trigger = {
+			has_idea = military_budget_cuts_heavy
+		}
+		localization_key = military_budget_cuts_heavy_gui
+	}
+	text = {
+		trigger = {
+			has_idea = bankrupt_military
+		}
+		localization_key = bankrupt_military_gui
+	}
+}
+
+defined_text = {
+	name = Get_civilian_budget_modifier
+	text = {
+		trigger = {
+			has_idea = civilian_budget_boost
+		}
+		localization_key = civilian_budget_boost_gui
+	}
+	text = {
+		trigger = {
+			has_idea = civilian_budget_cuts
+		}
+		localization_key = civilian_budget_cuts_gui
+	}
+	text = {
+		trigger = {
+			has_idea = civilian_budget_cuts_heavy
+		}
+		localization_key = civilian_budget_cuts_heavy_gui
+	}
+	text = {
+		trigger = {
+			has_idea = bankrupt_civilian
+		}
+		localization_key = bankrupt_civilian_gui
+	}
+}
+
+defined_text = {
+	name = Get_1_Loot_cost_tooltip
+	text = {
+		trigger = {
+			check_variable = { loot_amount > 1 }
+		}
+		localization_key = decision_cost_loot_1
+	}
+	text = {
+		localization_key = decision_cost_loot_1_blocked
+	}
+}
+
+defined_text = {
+	name = Get_2_Loot_cost_tooltip
+	text = {
+		trigger = {
+			check_variable = { loot_amount > 2 }
+		}
+		localization_key = decision_cost_loot_2
+	}
+	text = {
+		localization_key = decision_cost_loot_2_blocked
+	}
+}
+
+defined_text = {
+	name = Get_3_Loot_cost_tooltip
+	text = {
+		trigger = {
+			check_variable = { loot_amount > 3 }
+		}
+		localization_key = decision_cost_loot_3
+	}
+	text = {
+		localization_key = decision_cost_loot_3_blocked
+	}
+}
+
+defined_text = {
+	name = Get_4_Loot_cost_tooltip
+	text = {
+		trigger = {
+			check_variable = { loot_amount > 4 }
+		}
+		localization_key = decision_cost_loot_4
+	}
+	text = {
+		localization_key = decision_cost_loot_4_blocked
+	}
+}
+
+defined_text = {
+	name = Get_5_Loot_cost_tooltip
+	text = {
+		trigger = {
+			check_variable = { loot_amount > 5 }
+		}
+		localization_key = decision_cost_loot_5
+	}
+	text = {
+		localization_key = decision_cost_loot_5_blocked
+	}
+}
+
+defined_text = {
+	name = GetCominformMonetaryValue
+	text = {
+		trigger = {
+			check_variable = { global.COMECON_monetary_fund_value < 1 }
+		}
+		localization_key = COMECON_monetary_fund_thousand
+	}
+	text = {
+		trigger = {
+			check_variable = { global.COMECON_monetary_fund_value > 1000 }
+		}
+		localization_key = COMECON_monetary_fund_billion
+	}
+	text = {
+		localization_key = COMECON_monetary_fund_million
+	}
+}
+
+defined_text = {
+	name = GetCominformDefenseValue
+	text = {
+		trigger = {
+			check_variable = { global.COMECON_collective_defense_value < 1 }
+		}
+		localization_key = COMECON_defense_fund_thousand
+	}
+	text = {
+		trigger = {
+			check_variable = { global.COMECON_collective_defense_value > 1000 }
+		}
+		localization_key = COMECON_defense_fund_billion
+	}
+	text = {
+		localization_key = COMECON_defense_fund_million
+	}
+}
+
+defined_text = {
+	name = econ_graph_year
+	text = {
+		trigger = { 
+			set_temp_variable = { i = segment_idx }
+			add_to_temp_variable = { i = 1 }
+			set_temp_variable = { months = econ_graph_months^i }
+			divide_temp_variable = { months = 12 }
+			subtract_from_temp_variable = { months = 0.49 }
+			round_temp_variable = months
+			set_temp_variable = { year = 61 }
+			add_to_temp_variable = { year = months }
+		}
+		localization_key = econ_year
+	}
+}
+
+defined_text = {
+	name = econ_graph_month
+	text = {
+		trigger = { 
+			set_temp_variable = { i = segment_idx }
+			add_to_temp_variable = { i = 1 }
+			set_temp_variable = { months = econ_graph_months^i }
+			modulo_temp_variable = { months = 12 }
+			check_variable = { months = 0 } 
+		}
+		localization_key = econ_month_0
+	}
+	text = {
+		trigger = { 
+			set_temp_variable = { i = segment_idx }
+			add_to_temp_variable = { i = 1 }
+			set_temp_variable = { months = econ_graph_months^i }
+			modulo_temp_variable = { months = 12 }
+			check_variable = { months = 1 } 
+		}
+		localization_key = econ_month_1
+	}
+	text = {
+		trigger = { 
+			set_temp_variable = { i = segment_idx }
+			add_to_temp_variable = { i = 1 }
+			set_temp_variable = { months = econ_graph_months^i }
+			modulo_temp_variable = { months = 12 }
+			check_variable = { months = 2 } 
+		}
+		localization_key = econ_month_2
+	}
+	text = {
+		trigger = { 
+			set_temp_variable = { i = segment_idx }
+			add_to_temp_variable = { i = 1 }
+			set_temp_variable = { months = econ_graph_months^i }
+			modulo_temp_variable = { months = 12 }
+			check_variable = { months = 3 } 
+		}
+		localization_key = econ_month_3
+	}
+	text = {
+		trigger = { 
+			set_temp_variable = { i = segment_idx }
+			add_to_temp_variable = { i = 1 }
+			set_temp_variable = { months = econ_graph_months^i }
+			modulo_temp_variable = { months = 12 }
+			check_variable = { months = 4 } 
+		}
+		localization_key = econ_month_4
+	}
+	text = {
+		trigger = { 
+			set_temp_variable = { i = segment_idx }
+			add_to_temp_variable = { i = 1 }
+			set_temp_variable = { i = segment_idx }
+			add_to_temp_variable = { i = 1 }
+			set_temp_variable = { months = econ_graph_months^i }
+			modulo_temp_variable = { months = 12 }
+			check_variable = { months = 5 } 
+		}
+		localization_key = econ_month_5
+	}
+	text = {
+		trigger = { 
+			set_temp_variable = { i = segment_idx }
+			add_to_temp_variable = { i = 1 }
+			set_temp_variable = { months = econ_graph_months^i }
+			modulo_temp_variable = { months = 12 }
+			check_variable = { months = 6 } 
+		}
+		localization_key = econ_month_6
+	}
+	text = {
+		trigger = { 
+			set_temp_variable = { i = segment_idx }
+			add_to_temp_variable = { i = 1 }
+			set_temp_variable = { months = econ_graph_months^i }
+			modulo_temp_variable = { months = 12 }
+			check_variable = { months = 7 } 
+		}
+		localization_key = econ_month_7
+	}
+	text = {
+		trigger = { 
+			set_temp_variable = { i = segment_idx }
+			add_to_temp_variable = { i = 1 }
+			set_temp_variable = { months = econ_graph_months^i }
+			modulo_temp_variable = { months = 12 }
+			check_variable = { months = 8 } 
+		}
+		localization_key = econ_month_8
+	}
+	text = {
+		trigger = { 
+			set_temp_variable = { i = segment_idx }
+			add_to_temp_variable = { i = 1 }
+			set_temp_variable = { months = econ_graph_months^i }
+			modulo_temp_variable = { months = 12 }
+			check_variable = { months = 9 } 
+		}
+		localization_key = econ_month_9
+	}
+	text = {
+		trigger = { 
+			set_temp_variable = { i = segment_idx }
+			add_to_temp_variable = { i = 1 }
+			set_temp_variable = { months = econ_graph_months^i }
+			modulo_temp_variable = { months = 12 }
+			check_variable = { months = 10 } 
+		}
+		localization_key = econ_month_10
+	}
+	text = {
+		trigger = { 
+			set_temp_variable = { i = segment_idx }
+			add_to_temp_variable = { i = 1 }
+			set_temp_variable = { months = econ_graph_months^i }
+			modulo_temp_variable = { months = 12 }
+			check_variable = { months = 11 } 
+		}
+		localization_key = econ_month_11
+	}
+}

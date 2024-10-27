@@ -1,0 +1,180 @@
+﻿l_english:
+
+#Country names
+ENG:0 "Kingdom of Brittania"
+ENG_DEF:0 "The Kingdom of Brittania"
+ENG_ADJ:0 "Britannian"
+
+#Events
+britannia.1.t:0 "The Britannian Paradigma"
+britannia.1.d:0 "The Kingdom of Britannia, the shining jewel of the West, the Empire of the Rising Moon, has once again awoken from the heavy shambles. Water droplets fall in the enchanted lands of mystery, the mist settles upon the lush forest, and the drums of war are there... once again, once again a war against everyone, Rome fell, Germania fell, but we didn't, and never will."
+britannia.1.a:0 "God Save the Empire"
+
+#National Focuses
+ENG_Zombie_Economy:0 "Zombie Economy"
+ENG_Zombie_Economy_desc:0 "Testing."
+
+ENG_The_scars_of_the_Tokyo_Crash:0 "The Scars of the Tokyo Crash"
+ENG_The_scars_of_the_Tokyo_Crash_desc:0 "Testing."
+
+ENG_Review_our_production:0 "Review Our Production"
+ENG_Review_our_production_desc:0 "Testing."
+
+ENG_The_one_to_blame_is....:0 "The one to blame is..."
+ENG_The_one_to_blame_is...._desc:0 "Testing."
+
+ENG_The_Parliment:0 "The Parliament!"
+ENG_The_Parlimemt_desc:0 "Testing."
+
+ENG_The_Royal_Forces:0 "The Royal Forces!"
+ENG_The_Royal_Forces_desc:0 "Testing."
+
+ENG_The_Private_Companies:0 "The Private Companies!"
+ENG_The_Private_Companies_desc:0 "Testing."
+
+ENG_Execute_the_responsible:0 "Exectute those Responcible"
+ENG_Execute_the_responsible_desc:0 "Testing."
+
+ENG_Never_Again:0 "Never Again"
+ENG_Never_Again_desc:0 "Testing."
+
+ENG_New_Economic_Policies:0 "New Economic Policies"
+ENG_New_Economic_Policies_desc:0 "Testing."
+
+ENG_Invest_in_the_Military_Industry:0 "Invest in the Military Industry"
+ENG_Invest_in_the_Military_Industry_desc:0 "Testing."
+
+ENG_Nationalise_Japanese_Assets:0 "Nationalise Japanese Assets"
+ENG_Nationalise_Japanese_Assets_desc:0 "Testing."
+
+ENG_Solaris_Law:0 "Solaris Law"
+ENG_Solaris_Law_desc:0 "Testing."
+
+ENG_National_Economic_Congress:0 "National Economic Congress"
+ENG_National_Economic_Congress_desc:0 "Testing."
+
+ENG_Roman_Sphere:0 "Roman Sphere"
+ENG_Roman_Sphere_desc:0 "Testing."
+
+ENG_The_light_of_the_weak:0 "The Light of the Weak"
+ENG_The_light_of_the_weak_desc:0 "Testing."
+
+ENG_Ad_Britanniam_Invicta:0 "Ad Britanniam Invicta"
+ENG_Ad_Britanniam_Invicta_desc:0 "Testing"
+
+ENG_Colonial_Exploitation:0 "Colonial Exploitation"
+ENG_Colonial_Exploitation_desc:0 "Testing."
+
+ENG_Industrialize_the_German_Concessions:0 "Industrialize the German Consessions"
+ENG_Industrialize_the_German_Concessions_desc:0 "Testing."
+
+ENG_Saint_George_Program:0 "Saint George Program."
+ENG_Saint_George_Program_desc:0 "Testing."
+
+ENG_Impose_Sanctions_on_the_German_Companies:0 "Impose Sanctions on the German Companies."
+ENG_Impose_Sanctions_on_the_German_Companies_desc:0 "Testing."
+
+ENG_The_State_of_Brittany:0 "The State of Brittany"
+ENG_The_State_of_Brittany_desc:0 "Testing."
+
+ENG_Economic_Placebo:0 "Economic Placebo"
+ENG_Economic_Placebo_desc:0 "Testing."
+
+ENG_Luna_X:0 "Luna X"
+ENG_Luna_X_desc:0 "Testing."
+
+ENG_Imperial_Nights:0 "Imperial Nights"
+ENG_Imperial_Nights_desc:0 "Testing."
+
+ENG_Et_Eqi_Lora:0 "Et Eqi Lora."
+ENG_Et_Eqi_Lora_desc:0 "Testing."
+
+ENG_In_Britannia_Ortu_Sois:0 "In Britannia Ortu Sois"
+ENG_In_Britannia_Ortu_Sois_desc:0 "Testing."
+
+ENG_Royal_Bells:0 "Royal Bells."
+ENG_Royal_Bells_desc:0 "Testing."
+
+ENG_A_Greater_Hold:0 "A Greater Hold"
+ENG_A_Greater_Hold_desc:0 "Testing."
+
+ENG_Impero:0 "Impero"
+ENG_Impero_desc:0 "Testing."
+
+ENG_God_Protects_Britannia:0 "God Protects Britannia"
+ENG_God_Protects_Britannia_desc:0 "Testing."
+
+ENG_Propoganda_Campaign:0 "Propaganda Campaigns"
+ENG_Propoganda_Campaign_desc:0 "Testing"
+
+ENG_Columbus_Star:0 "Columbus Star"
+ENG_Columbus_Star_desc:0 "Testing."
+
+ENG_Afternoon_Tea_with_the_Prime_Minister:0 "Afternoon Tea with the Prime Minister"
+ENG_Afternoon_Tea_with_the_Prime_Minister_desc:0 "Testing."
+
+ENG_Yes_we_can:0 "Yes we can"
+ENG_Yes_we_can_desc:0 "Testing."
+
+ENG_Its_just_a_merry_little_thought...:0 "It's just a merry little thought"
+ENG_Its_just_a_merry_little_thought..._desc:0 "Testing."
+
+ENG_Eyes_over_the_Channel:0 "Eyes over the Channel"
+ENG_Eyes_over_the_Channel_desc:0 "Testing."
+
+ENG_The_Drums_are_coming:0 "The Drums are coming."
+ENG_The_Drums_are_coming_desc:0 "Testing."
+
+ENG_Ears_on_the_Radio:0 "Ears on the Radio"
+ENG_Ears_on_the_Radio_desc:0 "Testing."
+
+ENG_God_help_us:0 "God Help us..."
+ENG_God_help_us_desc:0 "Testing."
+
+ENG_The_drums_are_beating:0 "The Drums are beating"
+ENG_The_drums_are_beating_desc:0 "Testing."
+
+ENG_The_Political_Rift:0 "The Political Rift"
+ENG_The_Political_Rift_desc:0 "Testing."
+
+ENG_National_Consolidation:0 "National Consolidation"
+ENG_National_Consolidation_desc:0 "Testing."
+
+ENG_A_Divided_Parliment:0 "A Divided Parliament"
+ENG_A_Divided_Parliment_desc:0 "Testing."
+
+ENG_Good_news_from_Kaerlud:0 "Goods News from Kaerlud"
+ENG_Good_news_from_Kaerlud_desc:0 "Testing."
+
+ENG_Whos_our_Enemy:0 "Who's our Enemy?"
+ENG_Whos_our_Enemy_desc:0 "Testing."
+
+ENG_Consolidate_with_our_Opponents:0 "Consolidate with our Opponents."
+ENG_Consolidate_with_our_Opponents_desc:0 "Testing."
+
+ENG_Third_Congress:0 "Third Congress"
+ENG_Third_Congress_desc:0 "Testing."
+
+ENG_A_shining_path:0 "A Shining Path"
+ENG_A_shining_path_desc:0 "Testing."
+
+ENG_Order_57:0 "Order 57"
+ENG_Order_57_desc:0 "Testing."
+
+ENG_A_hold_to_the_opposition:0 "A Hold to the Opposition"
+ENG_A_hold_to_the_opposition_desc:0 "Testing."
+
+ENG_The_Imperial_Army_above_all:0 "The Imperial Army Above All"
+ENG_The_Imperial_Army_above_all_desc:0 "Testing."
+
+ENG_Pass_the_Ludite_Laws:0 "Pass the Luddite Laws"
+ENG_Pass_the_Ludite_Laws_desc:0 "Testing."
+
+ENG_We_control_them:0 "We Control Them."
+ENG_We_control_them_desc:0 "Testing."
+
+ENG_The_Lion_Awakens:0 "The Lion Awakens"
+ENG_The_Lion_Awakens_desc:0 "Testing."
+
+ENG_The_Border_Incident:0 "The Border Incident"
+ENG_The_Border_Incident_desc:0 "Testing."

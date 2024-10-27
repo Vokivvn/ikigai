@@ -1,0 +1,878 @@
+VIN_industrialization = {
+	VIN_mountain_transport = {
+
+			icon = generic_construction
+	
+			available = {
+				has_completed_focus = VIN_invest_countryside
+				NOT = { has_completed_focus = VIN_indochinese_industrialization }
+			}
+	
+			fire_only_once = yes
+	
+			cost = 40
+			days_remove = 28
+
+			ai_will_do = {
+				factor = 1
+			}
+	
+			visible = {
+				has_completed_focus = VIN_invest_countryside
+			}
+	
+			remove_effect = {
+				671 = {
+					add_building_construction = { type = infrastructure level = 1 instant_build = yes }
+				}
+				670 = {
+					add_building_construction = { type = infrastructure level = 1 instant_build = yes }
+				}
+				add_to_variable = { VIN_industrialization = 1 }
+				custom_effect_tooltip = VIN_1_ind_progress
+		}
+	}
+	VIN_clear_serepok = {
+
+		icon = generic_construction
+
+		available = {
+			has_completed_focus = VIN_invest_countryside
+			NOT = { has_completed_focus = VIN_indochinese_industrialization }
+		}
+
+		fire_only_once = yes
+
+		cost = 20
+		days_remove = 14
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		visible = {
+			has_completed_focus = VIN_invest_countryside
+		}
+
+		remove_effect = {
+			895 = {
+				add_building_construction = { type = infrastructure level = 1 instant_build = yes }
+				add_extra_state_shared_building_slots = 1
+			}
+			add_to_variable = { VIN_industrialization = 1 }
+			custom_effect_tooltip = VIN_1_ind_progress
+		}
+	}
+	VIN_modern_farmer_tools = {
+
+		icon = generic_construction
+
+		available = {
+			has_completed_focus = VIN_invest_countryside
+			NOT = { has_completed_focus = VIN_indochinese_industrialization }
+		}
+
+		fire_only_once = yes
+
+		cost = 50
+		days_remove = 56
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		visible = {
+			has_completed_focus = VIN_invest_countryside
+		}
+
+		remove_effect = {
+			add_tech_bonus = {
+				name = industry_bonus
+				bonus = 1.0
+				uses = 1
+				category = industry
+			}
+			add_to_variable = { VIN_industrialization = 2 }
+			custom_effect_tooltip = VIN_2_ind_progress
+		}
+	}
+	VIN_help_mekong_villages = {
+
+		icon = generic_construction
+
+		available = {
+			has_completed_focus = VIN_invest_countryside
+			NOT = { has_completed_focus = VIN_indochinese_industrialization }
+		}
+
+		fire_only_once = yes
+
+		cost = 50
+		days_remove = 45
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		visible = {
+			has_completed_focus = VIN_invest_countryside
+		}
+
+		remove_effect = {
+			add_stability = 0.025
+			894 = {
+				add_extra_state_shared_building_slots = 1
+			}
+			905 = {
+				add_extra_state_shared_building_slots = 1
+			}
+			add_to_variable = { VIN_industrialization = 1 }
+			custom_effect_tooltip = VIN_1_ind_progress
+			set_country_flag = VIN_mekong_decisions
+		}
+	}
+	VIN_build_mekong_factories = {
+
+		icon = generic_construction
+
+		available = {
+			has_completed_focus = VIN_invest_countryside
+			has_country_flag = VIN_mekong_decisions
+			NOT = { has_completed_focus = VIN_indochinese_industrialization }
+		}
+
+		fire_only_once = yes
+
+		cost = 150
+		days_remove = 90
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		visible = {
+			has_completed_focus = VIN_invest_countryside
+		}
+
+		remove_effect = {
+			894 = {
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+				add_building_construction = { type = infrastructure level = 1 instant_build = yes }
+			}
+			905 = {
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+				add_building_construction = { type = infrastructure level = 1 instant_build = yes }
+			}
+			add_to_variable = { VIN_industrialization = 5 }
+			custom_effect_tooltip = VIN_5_ind_progress
+			set_country_flag = VIN_mekong_decisions
+		}
+	}
+	VIN_improve_chiang_mai_infrastructure = {
+
+		icon = generic_construction
+
+		available = {
+			has_completed_focus = VIN_invest_countryside
+			NOT = { has_completed_focus = VIN_indochinese_industrialization }
+		}
+
+		fire_only_once = yes
+
+		cost = 50
+		days_remove = 45
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		visible = {
+			has_completed_focus = VIN_invest_countryside
+		}
+
+		remove_effect = {
+			899 = {
+				add_building_construction = { type = infrastructure level = 1 instant_build = yes }
+			}
+			add_to_variable = { VIN_industrialization = 1 }
+			custom_effect_tooltip = VIN_1_ind_progress
+		}
+	}
+	VIN_increase_government_farms = {
+
+		icon = generic_construction
+
+		available = {
+			has_completed_focus = VIN_invest_countryside
+			NOT = { has_completed_focus = VIN_indochinese_industrialization }
+		}
+
+		fire_only_once = yes
+
+		cost = 75
+		days_remove = 60
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		visible = {
+			has_completed_focus = VIN_invest_countryside
+		}
+
+		remove_effect = {
+			898 = {
+				add_extra_state_shared_building_slots = 2
+			}
+			896 = {
+				add_extra_state_shared_building_slots = 1
+			}
+			893 = {
+				add_extra_state_shared_building_slots = 1
+			}
+			add_to_variable = { VIN_industrialization = 2 }
+			custom_effect_tooltip = VIN_2_ind_progress
+		}
+	}
+	VIN_tonle_sap = {
+
+		icon = generic_construction
+
+		available = {
+			has_completed_focus = VIN_invest_countryside
+			NOT = { has_completed_focus = VIN_indochinese_industrialization }
+		}
+
+		fire_only_once = yes
+
+		cost = 75
+		days_remove = 60
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		visible = {
+			has_completed_focus = VIN_invest_countryside
+		}
+
+		remove_effect = {
+			741 = {
+				add_extra_state_shared_building_slots = 2
+			}
+			905 = {
+				add_extra_state_shared_building_slots = 2
+			}
+			add_to_variable = { VIN_industrialization = 2 }
+			custom_effect_tooltip = VIN_2_ind_progress
+		}
+	}
+	VIN_hanoi_decision = {
+		icon = generic_construction
+
+		available = {
+			has_completed_focus = VIN_build_up_hanoi
+			NOT = { has_completed_focus = VIN_indochinese_industrialization }
+		}
+
+		fire_only_once = yes
+
+		cost = 75
+		days_remove = 60
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		visible = {
+			has_completed_focus = VIN_invest_cities
+		}
+
+		remove_effect = {
+			671 = {
+				add_building_construction = { type = industrial_complex level = 3 instant_build = yes  }
+			}
+			add_to_variable = { VIN_industrialization = 5 }
+			custom_effect_tooltip = VIN_5_ind_progress
+		}
+	}
+	VIN_saigon_decision = {
+		icon = generic_construction
+
+		available = {
+			has_completed_focus = VIN_expand_saigon
+			NOT = { has_completed_focus = VIN_indochinese_industrialization }
+		}
+
+		fire_only_once = yes
+
+		cost = 75
+		days_remove = 60
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		visible = {
+			has_completed_focus = VIN_invest_cities
+		}
+
+		remove_effect = {
+			286 = {
+				add_building_construction = { type = dockyard level = 2 instant_build = yes  }
+			}
+			add_to_variable = { VIN_industrialization = 5 }
+			custom_effect_tooltip = VIN_5_ind_progress
+		}
+	}
+	VIN_bangkok_decision = {
+		icon = generic_construction
+
+		available = {
+			has_completed_focus = VIN_help_bangkok
+			NOT = { has_completed_focus = VIN_indochinese_industrialization }
+		}
+
+		fire_only_once = yes
+
+		cost = 50
+		days_remove = 60
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		visible = {
+			has_completed_focus = VIN_invest_cities
+		}
+
+		remove_effect = {
+			289 = {
+				add_building_construction = { type = dockyard level = 1 instant_build = yes  }
+			}
+			add_to_variable = { VIN_industrialization = 5 }
+			custom_effect_tooltip = VIN_5_ind_progress
+		}
+	}
+	VIN_reinvest_da_nang = {
+		icon = generic_construction
+
+		available = {
+			has_completed_focus = VIN_reinvest_new_towns
+			NOT = { has_completed_focus = VIN_indochinese_industrialization }
+		}
+
+		fire_only_once = yes
+
+		cost = 50
+		days_remove = 60
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		visible = {
+			has_completed_focus = VIN_invest_cities
+		}
+
+		remove_effect = {
+			903 = {
+				add_building_construction = { type = infrastructure level = 1 instant_build = yes  }
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+			add_to_variable = { VIN_industrialization = 5 }
+			custom_effect_tooltip = VIN_5_ind_progress
+		}
+	}
+	VIN_phnom_penh_prosperity = {
+		icon = generic_construction
+
+		available = {
+			has_completed_focus = VIN_reinvest_new_towns
+			NOT = { has_completed_focus = VIN_indochinese_industrialization }
+		}
+
+		fire_only_once = yes
+
+		cost = 50
+		days_remove = 40
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		visible = {
+			has_completed_focus = VIN_invest_cities
+		}
+
+		remove_effect = {
+			741 = {
+				add_building_construction = { type = infrastructure level = 1 instant_build = yes  }
+				add_building_construction = { type = industrial_complex level = 2 instant_build = yes }
+			}
+			add_to_variable = { VIN_industrialization = 5 }
+			custom_effect_tooltip = VIN_5_ind_progress
+		}
+	}
+	VIN_vientiane_jungle_capital = {
+		icon = generic_construction
+
+		available = {
+			has_completed_focus = VIN_reinvest_new_towns
+			NOT = { has_completed_focus = VIN_indochinese_industrialization }
+		}
+
+		fire_only_once = yes
+
+		cost = 50
+		days_remove = 40
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		visible = {
+			has_completed_focus = VIN_invest_cities
+		}
+
+		remove_effect = {
+			670 = {
+				add_building_construction = { type = infrastructure level = 1 instant_build = yes  }
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+				add_extra_state_shared_building_slots = 1
+			}
+			add_to_variable = { VIN_industrialization = 5 }
+			custom_effect_tooltip = VIN_5_ind_progress
+		}
+	}
+	VIN_start_at_hanoi = {
+		icon = generic_construction
+
+		available = {
+			has_completed_focus = VIN_triangle_railway
+			NOT = { has_completed_focus = VIN_indochinese_industrialization }
+		}
+
+		fire_only_once = yes
+
+		cost = 50
+		days_remove = 40
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		visible = {
+			has_completed_focus = VIN_triangle_railway
+		}
+
+		remove_effect = {
+			671 = {
+				add_building_construction = { type = infrastructure level = 1 instant_build = yes  }
+			}
+			set_country_flag = VIN_hanoi_railway
+			add_to_variable = { VIN_industrialization = 5 }
+			custom_effect_tooltip = VIN_5_ind_progress
+		}
+	}
+	VIN_through_to_vientiane = {
+		icon = generic_construction
+
+		available = {
+			has_completed_focus = VIN_triangle_railway
+			has_country_flag = VIN_hanoi_railway
+			NOT = { has_completed_focus = VIN_indochinese_industrialization }
+		}
+
+		fire_only_once = yes
+
+		cost = 50
+		days_remove = 40
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		visible = {
+			has_completed_focus = VIN_triangle_railway
+		}
+
+		remove_effect = {
+			670 = {
+				add_building_construction = { type = infrastructure level = 1 instant_build = yes  }
+			}
+			set_country_flag = VIN_vientiane_railway
+			add_to_variable = { VIN_industrialization = 5 }
+			custom_effect_tooltip = VIN_5_ind_progress
+		}
+	}
+	VIN_down_coast_to_da_nang = {
+		icon = generic_construction
+
+		available = {
+			has_completed_focus = VIN_triangle_railway
+			has_country_flag = VIN_hanoi_railway
+			NOT = { has_completed_focus = VIN_indochinese_industrialization }
+		}
+
+		fire_only_once = yes
+
+		cost = 75
+		days_remove = 50
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		visible = {
+			has_completed_focus = VIN_triangle_railway
+		}
+
+		remove_effect = {
+			904 = {
+				add_building_construction = { type = infrastructure level = 1 instant_build = yes  }
+			}
+			903 = {
+				add_building_construction = { type = infrastructure level = 1 instant_build = yes  }
+			}
+			set_country_flag = VIN_da_nang_railway
+			add_to_variable = { VIN_industrialization = 5 }
+			custom_effect_tooltip = VIN_5_ind_progress
+		}
+	}
+	VIN_across_mekong_to_phitsanulok = {
+		icon = generic_construction
+
+		available = {
+			has_completed_focus = VIN_triangle_railway
+			has_country_flag = VIN_vientiane_railway
+			NOT = { has_completed_focus = VIN_indochinese_industrialization }
+		}
+
+		fire_only_once = yes
+
+		cost = 75
+		days_remove = 50
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		visible = {
+			has_completed_focus = VIN_triangle_railway
+		}
+
+		remove_effect = {
+			896 = {
+				add_building_construction = { type = infrastructure level = 1 instant_build = yes  }
+			}
+			289 = {
+				add_building_construction = { type = infrastructure level = 1 instant_build = yes }
+			}
+			set_country_flag = VIN_phitsanulok_railway
+			add_to_variable = { VIN_industrialization = 5 }
+			custom_effect_tooltip = VIN_5_ind_progress
+		}
+	}
+	VIN_make_stop_at_saigon = {
+		icon = generic_construction
+
+		available = {
+			has_completed_focus = VIN_triangle_railway
+			has_country_flag = VIN_da_nang_railway
+			NOT = { has_completed_focus = VIN_indochinese_industrialization }
+		}
+
+		fire_only_once = yes
+
+		cost = 75
+		days_remove = 50
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		visible = {
+			has_completed_focus = VIN_triangle_railway
+		}
+
+		remove_effect = {
+			902 = {
+				add_building_construction = { type = infrastructure level = 1 instant_build = yes  }
+			}
+			286 = {
+				add_building_construction = { type = infrastructure level = 1 instant_build = yes }
+			}
+			set_country_flag = VIN_saigon_railway
+			add_to_variable = { VIN_industrialization = 5 }
+			custom_effect_tooltip = VIN_5_ind_progress
+		}
+	}
+	VIN_head_to_bangkok = {
+		icon = generic_construction
+
+		available = {
+			has_completed_focus = VIN_triangle_railway
+			has_country_flag = VIN_phitsanulok_railway
+			NOT = { has_completed_focus = VIN_indochinese_industrialization }
+		}
+
+		fire_only_once = yes
+
+		cost = 50
+		days_remove = 40
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		visible = {
+			has_completed_focus = VIN_triangle_railway
+		}
+
+		remove_effect = {
+			289 = {
+				add_building_construction = { type = infrastructure level = 1 instant_build = yes  }
+			}
+			set_country_flag = VIN_bangkok_railway
+			add_to_variable = { VIN_industrialization = 5 }
+			custom_effect_tooltip = VIN_5_ind_progress
+		}
+	}
+	VIN_connect_saigon_to_bangkok = {
+		icon = generic_construction
+
+		available = {
+			has_completed_focus = VIN_triangle_railway
+			has_country_flag = VIN_bangkok_railway
+			has_country_flag = VIN_saigon_railway
+			NOT = { has_completed_focus = VIN_indochinese_industrialization }
+		}
+
+		fire_only_once = yes
+
+		cost = 100
+		days_remove = 75
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		visible = {
+			has_completed_focus = VIN_triangle_railway
+		}
+
+		remove_effect = {
+			894 = {
+				add_building_construction = { type = infrastructure level = 1 instant_build = yes  }
+			}
+			741 = {
+				add_building_construction = { type = infrastructure level = 1 instant_build = yes  }
+			}
+			893 = {
+				add_building_construction = { type = infrastructure level = 1 instant_build = yes  }
+			}
+			add_ideas = VIN_complete_railway
+			add_to_variable = { GDP_growth = 0.002 }
+			custom_effect_tooltip = VIN_connect_saigon_to_bangkok_tt
+			add_to_variable = { VIN_industrialization = 5 }
+			custom_effect_tooltip = VIN_5_ind_progress
+		}
+	}
+	VIN_connect_coast_to_roads = {
+		icon = generic_construction
+
+		available = {
+			has_completed_focus = VIN_invest_coast
+			NOT = { has_completed_focus = VIN_indochinese_industrialization }
+		}
+
+		fire_only_once = yes
+
+		cost = 30
+		days_remove = 15
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		visible = {
+			has_completed_focus = VIN_invest_coast
+		}
+
+		remove_effect = {
+			901 = {
+				add_building_construction = { type = infrastructure level = 1 instant_build = yes  }
+			}
+			724 = {
+				add_building_construction = { type = infrastructure level = 1 instant_build = yes  }
+			}
+			set_country_flag = VIN_connected_roads
+			add_to_variable = { VIN_industrialization = 1 }
+			custom_effect_tooltip = VIN_1_ind_progress
+		}
+	}
+	VIN_improve_tourism = {
+		icon = generic_construction
+
+		available = {
+			has_completed_focus = VIN_invest_coast
+			has_country_flag = VIN_connected_roads
+			NOT = { has_completed_focus = VIN_indochinese_industrialization }
+		}
+
+		fire_only_once = yes
+
+		cost = 50
+		days_remove = 25
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		visible = {
+			has_completed_focus = VIN_invest_coast
+		}
+
+		remove_effect = {
+			add_ideas = VIN_indochinese_tourism 
+			add_to_variable = { VIN_industrialization = 2 }
+			custom_effect_tooltip = VIN_2_ind_progress
+			set_country_flag = VIN_started_indochina_tourism
+			hidden_effect = {
+				add_to_variable = { var = GDP_growth value = 0.0025 }
+			}
+		}
+	}
+	VIN_come_visit_indochina = {
+		icon = generic_construction
+
+		available = {
+			has_completed_focus = VIN_invest_coast
+			has_country_flag = VIN_started_indochina_tourism
+			NOT = { has_completed_focus = VIN_indochinese_industrialization }
+		}
+
+		fire_only_once = yes
+
+		cost = 75
+		days_remove = 35
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		visible = {
+			has_completed_focus = VIN_invest_coast
+		}
+
+		remove_effect = {
+			swap_ideas = {
+				remove_idea = VIN_indochinese_tourism
+				add_idea = VIN_indochinese_tourism_1
+			}
+			add_to_variable = { VIN_industrialization = 2 }
+			custom_effect_tooltip = VIN_2_ind_progress
+			hidden_effect = {
+				add_to_variable = { var = GDP_growth value = 0.0025 }
+			}
+		}
+	}
+	VIN_clear_space_for_farms = {
+		icon = generic_construction
+
+		available = {
+			has_completed_focus = VIN_help_farmers_red_river
+			NOT = { has_completed_focus = VIN_indochinese_industrialization }
+		}
+
+		fire_only_once = yes
+
+		cost = 30
+		days_remove = 15
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		visible = {
+			has_completed_focus = VIN_help_farmers_red_river
+		}
+
+		remove_effect = {
+			671 = {
+				add_extra_state_shared_building_slots = 2
+			}
+			set_country_flag = VIN_cleared_space_farms
+			add_to_variable = { VIN_industrialization = 1 }
+			custom_effect_tooltip = VIN_1_ind_progress
+		}
+	}
+	VIN_better_fishing_vessels = {
+		icon = generic_construction
+
+		available = {
+			has_completed_focus = VIN_help_farmers_red_river
+			has_country_flag = VIN_cleared_space_farms
+			NOT = { has_completed_focus = VIN_indochinese_industrialization }
+		}
+
+		fire_only_once = yes
+
+		cost = 50
+		days_remove = 25
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		visible = {
+			has_completed_focus = VIN_help_farmers_red_river
+		}
+
+		remove_effect = {
+			add_tech_bonus = {
+				name = naval_equipment_research
+				bonus = 1.0
+				uses = 1
+				category = naval_equipment
+			}
+			subtract_from_variable = { GDP = 0.25 }
+			custom_effect_tooltip = VIN_better_fishing_vessels_tt
+			set_country_flag = VIN_improved_fishing_vessels
+			add_to_variable = { VIN_industrialization = 2 }
+			custom_effect_tooltip = VIN_2_ind_progress
+		}
+	}
+	VIN_increased_harvests = {
+		icon = generic_construction
+
+		available = {
+			has_completed_focus = VIN_help_farmers_red_river
+			has_country_flag = VIN_improved_fishing_vessels
+			NOT = { has_completed_focus = VIN_indochinese_industrialization }
+		}
+
+		fire_only_once = yes
+
+		cost = 75
+		days_remove = 35
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		visible = {
+			has_completed_focus = VIN_help_farmers_red_river
+		}
+
+		remove_effect = {
+			add_ideas = VIN_increased_harvests
+			add_to_variable = { VIN_industrialization = 2 }
+			custom_effect_tooltip = VIN_2_ind_progress
+		}
+	}	
+}
+
+VIN_the_parliament = {
+}

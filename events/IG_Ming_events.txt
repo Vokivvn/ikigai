@@ -1,0 +1,64 @@
+add_namespace = ming
+add_namespace = ming_actions
+
+### Ming domestic policies
+country_event = {
+	id = ming.1
+	title = ming.1.t
+	desc = ming.1.d
+	major = yes
+
+	option = {
+		name = ming.1.a
+		ai_chance = { factor = 1}
+	}
+}
+
+country_event = {
+	id = ming.2
+	title = ming.2.t
+	desc = ming.2.d
+	major = yes
+
+	option = {
+		name = ming.2.a
+		ai_chance = { factor = 1}
+	}
+}
+
+country_event = {
+	id = ming.3
+	title = ming.3.t
+	desc = ming.3.d
+	major = yes
+
+	option = {
+		name = ming.3.a
+		ai_chance = { factor = 1}
+	}
+}
+
+country_event = {
+	id = ming.4
+	title = ming.4.t
+	desc = ming.4.d
+	major = yes
+
+	option = {
+		name = ming.4.a
+		ai_chance = { factor = 1}
+	}
+}
+
+### Ming does a bunch of shit that angers the world
+news_event = {
+	id = ming_actions.1
+	title = ming_actions.1.t
+	desc = ming_actions.1.d
+	major = yes
+
+	option = {
+		name = ming_actions.1.a
+		ai_chance = { factor = 1}
+	}
+}

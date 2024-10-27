@@ -1,0 +1,7 @@
+scripted_gui = {
+    IG_UPK_organized_crime_scripted_gui = {
+        window_name = "IG_KOW_organized_crime_container"
+        context_type = decision_category
+    }
+
+}

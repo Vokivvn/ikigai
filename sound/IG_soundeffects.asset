@@ -1,0 +1,11 @@
+
+soundeffect = {
+	name = nice_hum
+	sounds = {
+		sound = nice_hum
+	} 
+	volume = 0.2
+	delay_random_offset = { 0.0 0.3 }
+	loop = yes
+	random_sound_when_looping = no
+}

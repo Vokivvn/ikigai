@@ -1,0 +1,18 @@
+spriteTypes = {
+	corneredTileSpriteType = {
+		name = "GFX_tiled_window_superevent_border"
+		size= { x=192 y=243 }
+		textureFile = "gfx//interface//tiles//tiled_window_superevent_border.dds"
+		borderSize = { x=64 y=71 }
+		tilingCenter = yes
+		effectFile = "gfx/FX/buttonstate_nodowneffect.lua"
+	}
+	spriteType = {
+		name = "GFX_button_superevent"
+		textureFile = "gfx/interface/button_superevent.dds"
+	}
+}
+
+	
+
+	

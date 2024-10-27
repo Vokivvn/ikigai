@@ -1,0 +1,80 @@
+spriteTypes = {
+	spriteType = {
+		name = "GFX_money1"
+		texturefile = "gfx/interface/economy_gui/money1.dds"
+	}
+	spriteType = {
+		name = "GFX_money2"
+		texturefile = "gfx/interface/economy_gui/money2.dds"
+	}
+	spriteType = {
+		name = "GFX_spend_button"
+		texturefile = "gfx/interface/economy_gui/spend.dds"
+	}
+	spriteType = {
+		name = "GFX_save_button"
+		texturefile = "gfx/interface/economy_gui/save.dds"
+	}
+	spriteType = {
+		name = "GFX_flag_frame_large_econ"
+		textureFile = "gfx/interface/flag_frame_large_econ.dds"
+	}
+
+	spriteType = {
+		name = "GFX_flag_overlay_large_econ"
+		textureFile = "gfx/interface/flag_overlay_large_econ.dds"
+	}
+
+	spriteType = {
+		name = "GFX_economy_button"
+		textureFile = "gfx/interface/economy_gui/economy_button.dds"
+	}
+	
+	# Credit to Yard1 for Pie Chart Framework - https://github.com/Yard1/HoI4-Scripted-GUI-Pie-Chart
+	spriteType = {
+		name = "GFX_pie_chart_segments_economic_revenue"
+		texturefile = "gfx/interface/economy_gui/pie_chart_segments_economic_revenue.png"
+		noOfFrames = 3 # change to how many frames you have, index starts at 1
+	}
+	spriteType = {
+		name = "GFX_pie_chart_segments_economic_employment"
+		texturefile = "gfx/interface/economy_gui/pie_chart_segments_economic_employment.png"
+		noOfFrames = 4 # change to how many frames you have, index starts at 1
+	}
+	spriteType = { 
+		name = "GFX_pie_chart_segments_economic_expenditures"
+		texturefile = "gfx/interface/economy_gui/pie_chart_segments_economic_expenditures.png"
+		noOfFrames = 4 # change to how many frames you have, index starts at 1
+	}
+
+	spriteType = {
+		name = "GFX_NICE_GUI_bg"
+		texturefile = "gfx/interface/economy_gui/NICE_GUI_bg.dds"
+	}
+
+	spriteType = {
+		name = "GFX_economy_main_button"
+		texturefile = "gfx/interface/economy_gui/button_main.dds"
+	}
+
+	spriteType = {
+		name = "GFX_economy_rev_button"
+		texturefile = "gfx/interface/economy_gui/button_rev.dds"
+	}
+
+	spriteType = {
+		name = "GFX_economy_exp_button"
+		texturefile = "gfx/interface/economy_gui/button_exp.dds"
+	}
+
+	frameAnimatedSpriteType = {
+		name = "GFX_NICE_animation"
+		texturefile = "gfx/interface/economy_gui/nice_animation.dds"
+		noOfFrames = 18
+		animation_rate_fps = 12
+		looping = yes
+		play_on_show = yes
+		pause_on_loop = 0.0
+		alwaystransparent = yes
+	}
+}

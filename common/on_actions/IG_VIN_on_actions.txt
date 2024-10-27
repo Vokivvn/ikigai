@@ -1,0 +1,11 @@
+on_actions = {
+    on_startup = {
+        effect = {
+
+            VIN = {
+            vietnam_parliament_init_parliament = yes
+            }
+
+        }
+    }
+}

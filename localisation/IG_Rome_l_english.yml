@@ -1,0 +1,63 @@
+﻿l_english:
+
+#Country names
+RMR:0 "Roman Republic"
+RMR_DEF:0 "The Roman Republic"
+RMR_ADJ:0 "Roman"
+
+#Parties
+
+RMR_social_nationalist_party_long:0 "Rerum Novarum - Revolutionary Committee (Western Group)"
+RMR_social_nationalist_party:0 "Rerum Novarum (Revolutionary Committee)"
+
+RMR_marxist_party_long:0 "Rerum Novarum - Revolutionary Committee (Tribunal Group)"
+RMR_marxist_party:0 "Rerum Novarum (Revolutionary Committee)"
+
+RMR_libertarian_party_long:0 "Rerum Novarum - Revolutionary Committee (Northeastern Army)"
+RMR_libertarian_party:0 "Rerum Novarum (Revolutionary Committee)"
+
+RMR_moderate_socialist_party_long:0 "Rerum Novarum - Revolutionary Committee (Roman Group)"
+RMR_moderate_socialist_party:0 "Rerum Novarum (Revolutionary Committee)"
+
+RMR_social_democrat_party_long:0 "Rerum Novarum - Cisalpine Group (Tribunal Chancellery)"
+RMR_social_democrat_party:0 "Rerum Novarum (Cisalpine Group)"
+
+RMR_social_liberal_party_long:0 "Rerum Novarum - Cisalpine Group (Southern Group)"
+RMR_social_liberal_party:0 "Rerum Novarum (Cisalpine Group)"
+
+RMR_conservative_party_long:0 "Rerum Novarum - Cisalpine Group (Senatorial Caucus)"
+RMR_conservative_party:0 "Rerum Novarum (Cisalpine Group)"
+
+RMR_authoritarian_democrat_party_long:0 "Rerum Novarum (Agrarian-Industrial Lobby)"
+RMR_authoritarian_democrat_party:0 "Rerum Novarum"
+
+RMR_autocratic_coup_party_long:0 "Rerum Novarum (Praetorian High Command)"
+RMR_autocratic_coup_party:0 "Rerum Novarum"
+
+RMR_autocratic_party_long:0 "Rerum Novarum (Praetorian High Command)"
+RMR_autocratic_party:0 "Rerum Novarum"
+
+RMR_fundamentalist_party_long:0 "Rerum Novarum (Vatican Chancellery)"
+RMR_fundamentalist_party:0 "Rerum Novarum"
+
+# Decisions
+
+RMR_PRNP_factions:0 "The Control of the State"
+RMR_PRNP_factions_desc:0 "The Revolutionary Party with desc and stuffs\n\nThe Party is [RMR.GetRMRRPisgovstable].\n\nThe Revolutionary Committee with descs and stuffs\n\nThey are currently [RMR.GetRMRRPrevcomunity].\n\nThey are currently [RMR.GetRMRRPrevcominfluence].\n\nTheir loyalty is [RMR.GetRMRRPrevcomloyalty].\n\n[RMR.GetRMRRPRevComLeadornot]\n\nThe Cisalpine Group with descs and stuffs\n\nThey are currently [RMR.GetRMRRPcisalpineunity].\n\nThey are currently [RMR.GetRMRRPcisalpineinfluence].\n\nTheir loyalty is [RMR.GetRMRRPcisalpineloyalty].\n\n[RMR.GetRMRRPCisalpineLeadornot][RMR.GetRMRRPhasauthoritariangov]\n\nThe Revolutionary Army with descs and stuffs\n\nAnti-governmental sentiments within the ranks are §Gcontained§!.\n\nThe Supreme Command's loyalty is §Yquestionable§!."
+RMR_RP_REVCOM_LEAD:0 "The §Y[RMR.GetRMRRPRevComLead]§! is the most powerful faction of the Revolutionary Committee."
+RMR_RP_CISALPINE_LEAD:0 "The §Y[RMR.GetRMRRPCisalpineLead]§! is the most powerful faction of the Revolutionary Committee."
+RMR_RP_REVCOM_NO_LEAD:0 "No faction of the Revolutionary Committee currently has an edge."
+RMR_RP_CISALPINE_NO_LEAD:0 "No faction of the Cisalpine Group currently has an edge."
+RMR_RP_GOV_STABLE:0 "§Gstable§!"
+RMR_RP_GOV_NOT_STABLE:0 "§Runstable§!"
+RMR_RP_faction_irrelevant:0 "§Girrelevant§!"
+RMR_RP_faction_somewhat_influential:0 "§Ysomewhat influential§!"
+RMR_RP_faction_worryingly_influential:0 "§Yworryingly influential§!"
+RMR_RP_faction_dangerously_influential:0 "§Rdangerously influential§!"
+RMR_RP_faction_loyalty_absent:0 "§Rabsent§!"
+RMR_RP_faction_loyalty_questionable:0 "§Yquestionable§!"
+RMR_RP_faction_loyalty_unquestionable:0 "§Bunquestionable§!"
+RMR_RP_faction_loyalty_absolute:0 "§Gabsolute§!"
+RMR_RP_faction_disunited:0 "§Gdisunited§!"
+RMR_RP_faction_united:0 "§Runited§!"
+RMR_RP_auth_party_lead_control:0 "\n\n[RMR.GetLeader]'s governmental cliques with descs and stuff\n\n[RMR.GetLeader] currently §Gcontrols§! the governmental factions.\n\nThe Agrarian-Industrial Clique §Gapproves§! of [RMR.GetLeader]'s actions.\nThey are currently [RMR.GetRMRRPagriindinfluence].\n\nThe Vatican Circle §Rdisapproves§! of [RMR.GetLeader]'s actions.\nThey are currently [RMR.GetRMRRPvaticaninfluence]"

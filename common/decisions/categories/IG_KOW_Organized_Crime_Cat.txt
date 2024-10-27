@@ -1,0 +1,9 @@
+KOW_organized_crime  = {
+  allowed = {
+    tag = UPK
+  }
+  visible = {
+  }
+  
+  scripted_gui = IG_UPK_organized_crime_scripted_gui
+}

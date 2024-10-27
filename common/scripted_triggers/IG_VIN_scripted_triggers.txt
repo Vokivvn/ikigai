@@ -1,0 +1,94 @@
+VIN_state_part_of_kingdom = {
+	is_owned_and_controlled_by = VIN
+	is_core_of = VIN
+	OR = {
+		VIN_state_part_of_cambodia = yes
+		VIN_state_part_of_indonesia = yes
+		VIN_state_part_of_laos = yes
+		VIN_state_part_of_malaya = yes
+		VIN_state_part_of_siam = yes
+		VIN_state_part_of_vietnam = yes
+		VIN_state_part_of_xi_feng = yes
+		VIN_state_part_of_yunnan = yes
+	}
+}
+
+VIN_state_part_of_cambodia = {
+	OR = {
+		state = 741
+		state = 905
+	}
+}
+
+VIN_state_part_of_indonesia = {
+	OR = {
+		state = 334
+		state = 523
+		state = 668
+		state = 669
+		state = 673
+		state = 738
+		state = 890
+		state = 891
+		state = 892
+	}
+}
+
+VIN_state_part_of_laos = {
+	OR = {
+		state = 670
+		state = 897
+	}
+}
+
+VIN_state_part_of_malaya = {
+	state = 336
+}
+
+VIN_state_part_of_siam = {
+	OR = {
+		state = 289
+		state = 724
+		state = 893
+		state = 896
+		state = 898
+		state = 899
+		state = 900
+		state = 901
+	}
+}
+
+VIN_state_part_of_vietnam = {
+	OR = {
+		state = 286
+		state = 671
+		state = 894
+		state = 895
+		state = 902
+		state = 903
+		state = 904
+	}
+}
+
+VIN_state_part_of_xi_feng = {
+	OR = {
+		state = 285
+		state = 517
+		state = 518
+		state = 519
+		state = 520
+		state = 522
+		state = 674
+		state = 906
+		state = 907
+		state = 908
+		state = 909
+	}
+}
+
+VIN_state_part_of_yunnan = {
+	OR = {
+		state = 325
+		state = 747
+	}
+}

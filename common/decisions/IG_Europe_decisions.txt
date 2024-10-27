@@ -1,0 +1,137 @@
+Europe_renovatio_imperii_cat = {
+	ROM_Integrate_Region = {
+		icon = eng_trade_unions_support
+
+		visible = {
+			any_owned_state = {
+				is_core_of = FROM
+				NOT = {
+					is_core_of = ROOT
+				}
+			}
+			FROM = {
+				exists = no
+			}
+		}
+
+		days_remove = 100
+		fire_only_once = no
+		cancel_if_not_visible = yes
+		target_non_existing = yes
+
+		target_array = global.roman_tags_array
+		target_root_trigger = { 
+			is_in_array = { global.roman_tags_array = THIS }
+		}
+		target_trigger = {
+			FROM = { exists = no }
+		}
+
+		modifier = {
+			political_power_cost = 0.25
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove ROM_Integrate_Region target: [From.GetName]"
+			every_owned_state = {
+				limit = {
+					is_core_of = FROM
+				}
+				remove_core_of = FROM
+				add_core_of = ROOT
+			}
+		}
+	}
+	form_romana = {
+		icon = GFX_decision_generic_intelligence_operation
+		allowed = {
+			OR = {
+				original_tag = GAL
+				original_tag = OCC
+				original_tag = BRG
+				original_tag = AND
+			}
+		}
+		available = {
+			is_subject = no
+			owns_state = 21 # GAL states
+			owns_state = 32
+			owns_state = 20 # OCC states
+			owns_state = 22
+			owns_state = 26
+			owns_state = 27 # BRG states
+			owns_state = 31 # AND states
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision form_romana"
+			every_state = {
+				limit = {
+					OR = {
+						state = 21 # GAL states
+						state = 32
+						state = 20 # OCC states
+						state = 22
+						state = 26
+						state = 27 # BRG states
+						state = 31 # AND states
+					}
+				}
+				add_core_of = ROOT
+			}
+			set_cosmetic_tag = ROM_ROMANA
+			set_country_flag = ROM_first_level_uniter
+			custom_effect_tooltip = ROM_first_level_uniter_tt
+		}
+		ai_will_do = {
+			factor = 200
+		}
+	}
+	restore_rome = {
+		icon = GFX_decision_generic_intelligence_operation
+		visible = {
+			NOT = {
+				original_tag = RMR
+			}
+			NOT = {
+				tag = event_target:rome
+			}
+			# add exemptions for warlords here
+			if = {
+				limit = {
+					original_tag = RMR
+				}
+				has_government = marxism
+			}
+		}
+		available = {
+			NOT = {
+				country_exists = event_target:rome
+			}
+			is_subject = no
+			owns_state = 2
+			has_country_flag = ROM_second_level_uniter
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision restore_rome"
+			save_global_event_target_as = rome
+			set_variable = {
+				global.rome_var = THIS
+			}
+			set_capital = 2
+			every_state = {
+				limit = {
+					region = 23 # Italy
+				}
+				add_core_of = ROOT
+			}
+			set_cosmetic_tag = ROM_EMP
+		}
+		ai_will_do = {
+			factor = 200
+		}
+	}
+}

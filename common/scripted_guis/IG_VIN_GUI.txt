@@ -1,0 +1,310 @@
+scripted_gui = {
+	### Dai Hung Sphere GUI
+	VIN_sphere_open = {
+		context_type = player_context
+		parent_window_token = politics_tab
+		window_name = "VIN_sphere_open_container"
+
+		visible = {
+			tag = VIN
+			is_ai = no
+		}
+
+		effects = {
+			VIN_sphere_open_button_click = {
+				if = {
+					limit = {
+						check_variable = { show_VIN_sphere > 0 }
+					}
+					clear_variable = show_VIN_sphere
+				}
+				else = {
+					set_variable = { show_VIN_sphere = 1 }
+				}
+			}
+		}
+	}
+
+	VIN_sphere = {
+		context_type = player_context
+		window_name = "VIN_sphere_container"
+		dirty = show_VIN_sphere
+
+		visible = {
+			check_variable = { show_VIN_sphere > 0 }
+		}
+
+		effects = {
+			VIN_sphere_debug_button_click = {
+				set_temp_variable = { temp = 334 }
+				VIN_sphere_subject_display = yes
+			}
+			VIN_sphere_1_button_click = {
+				set_temp_variable = { temp = 828 }
+				VIN_sphere_subject_display = yes
+			}
+			VIN_sphere_2_button_click = {
+				set_temp_variable = { temp = 822 }
+				VIN_sphere_subject_display = yes
+			}
+			VIN_sphere_3_button_click = {
+				set_temp_variable = { temp = 295 }
+				VIN_sphere_subject_display = yes
+			}
+			VIN_sphere_4_button_click = {
+				set_temp_variable = { temp = 660 }
+				VIN_sphere_subject_display = yes
+			}
+			VIN_sphere_5_button_click = {
+				set_temp_variable = { temp = 819 }
+				VIN_sphere_subject_display = yes
+			}
+			VIN_sphere_6_button_click = {
+				set_temp_variable = { temp = 539 }
+				VIN_sphere_subject_display = yes
+			}
+			VIN_sphere_7_button_click = {
+				set_temp_variable = { temp = 274 }
+				VIN_sphere_subject_display = yes
+			}
+			VIN_sphere_8_button_click = {
+				set_temp_variable = { temp = 671 }
+				VIN_sphere_subject_display = yes
+			}
+			VIN_sphere_9_button_click = {
+				set_temp_variable = { temp = 591 }
+				VIN_sphere_subject_display = yes
+			}
+			VIN_sphere_10_button_click = {
+				set_temp_variable = { temp = 670 }
+				VIN_sphere_subject_display = yes
+			}
+			VIN_sphere_11_button_click = {
+				set_temp_variable = { temp = 741 }
+				VIN_sphere_subject_display = yes
+			}
+			VIN_sphere_12_button_click = {
+				set_temp_variable = { temp = 285 }
+				VIN_sphere_subject_display = yes
+			}
+			VIN_sphere_13_button_click = {
+				set_temp_variable = { temp = 325 }
+				VIN_sphere_subject_display = yes
+			}
+			VIN_sphere_14_button_click = {
+				set_temp_variable = { temp = 289 }
+				VIN_sphere_subject_display = yes
+			}
+			VIN_sphere_15_button_click = {
+				set_temp_variable = { temp = 336 }
+				VIN_sphere_subject_display = yes
+			}
+			VIN_sphere_16_button_click = {
+				set_temp_variable = { temp = 334 }
+				VIN_sphere_subject_display = yes
+			}
+			VIN_sphere_17_button_click = {
+				set_temp_variable = { temp = 673 }
+				VIN_sphere_subject_display = yes
+			}
+			VIN_sphere_18_button_click = {
+				set_temp_variable = { temp = 668 }
+				VIN_sphere_subject_display = yes
+			}
+			VIN_sphere_19_button_click = {
+				set_temp_variable = { temp = 669 }
+				VIN_sphere_subject_display = yes
+			}
+			VIN_sphere_20_button_click = {
+				set_temp_variable = { temp = 522 }
+				VIN_sphere_subject_display = yes
+			}
+			VIN_sphere_close_button_click = {
+				clear_variable = show_VIN_sphere
+				clear_variable = show_VIN_sphere_subject
+				clear_array = sphere_subject_target_array
+			}
+		}
+	}
+
+	VIN_sphere_subject = {
+		context_type = player_context
+		window_name = "VIN_sphere_subject_container"
+		dirty = show_sphere_subject_dirty
+
+		visible = {
+			check_variable = { show_VIN_sphere_subject > 0 }
+		}
+
+		dynamic_lists = {
+			VIN_sphere_subject_target_grid = {
+				array = sphere_subject_target_array
+				index = sphere_subject_target_index
+				change_scope = yes
+				entry_container = VIN_sphere_subject_target_entry
+			}
+		}
+
+		effects = {
+			VIN_loyalty_payment_slider_subtract_button_click = {
+				set_temp_variable = { temp_value = -1 }
+				VIN_modify_loyalty = yes
+			}
+			VIN_loyalty_payment_slider_subtract_button_control_click = {
+				set_temp_variable = { temp_value = -5 }
+				VIN_modify_loyalty = yes
+			}
+			VIN_loyalty_payment_slider_subtract_button_shift_click = {
+				set_temp_variable = { temp_value = -10 }
+				VIN_modify_loyalty = yes
+			}
+			VIN_loyalty_payment_slider_add_button_click = {
+				set_temp_variable = { temp_value = 1 }
+				VIN_modify_loyalty = yes
+			}
+			VIN_loyalty_payment_slider_add_button_control_click = {
+				set_temp_variable = { temp_value = 5 }
+				VIN_modify_loyalty = yes
+			}
+			VIN_loyalty_payment_slider_add_button_shift_click = {
+				set_temp_variable = { temp_value = 10 }
+				VIN_modify_loyalty = yes
+			}
+			VIN_suppression_manpower_subtract_button_click = {
+				set_temp_variable = { temp_value = -1 }
+				VIN_modify_suppression = yes
+			}
+			VIN_suppression_manpower_subtract_button_control_click = {
+				set_temp_variable = { temp_value = -5 }
+				VIN_modify_suppression = yes
+			}
+			VIN_suppression_manpower_subtract_button_shift_click = {
+				set_temp_variable = { temp_value = -10 }
+				VIN_modify_suppression = yes
+			}
+			VIN_suppression_manpower_add_button_click = {
+				set_temp_variable = { temp_value = 1 }
+				VIN_modify_suppression = yes
+			}
+			VIN_suppression_manpower_add_button_control_click = {
+				set_temp_variable = { temp_value = 5 }
+				VIN_modify_suppression = yes
+			}
+			VIN_suppression_manpower_add_button_shift_click = {
+				set_temp_variable = { temp_value = 10 }
+				VIN_modify_suppression = yes
+			}
+			VIN_sphere_subject_close_button_click = {
+				clear_variable = show_VIN_sphere_subject
+			}
+		}
+
+		properties = {
+			VIN_loyalty_payment_slider_drager = {
+				x = slider_x_position
+			}
+		}
+	}
+
+	VIN_parliament_scripted_gui = {
+		window_name = "vietnam_parliament_gui_container"
+		context_type = decision_category
+
+		visible = {
+		}
+
+		dynamic_lists = {
+			vietnam_parliament_diagram = {
+				array = vietnam_parliament_seat_x
+				change_scope = no
+				entry_container = vietnam_parliament_seat
+				index = seat_idx
+			}
+		}
+
+		properties = {
+			vietnam_parliament_dot_icon = {
+				x = vietnam_parliament_seat_x^seat_idx
+				y = vietnam_parliament_seat_y^seat_idx
+				frame = vietnam_parliament_seat_frame^seat_idx
+			}
+		}
+	}
+
+	### State Leaders GUI
+	VIN_state_leader_open = {
+		context_type = selected_state_context
+		parent_window_token = selected_state_view
+		window_name = "VIN_state_leader_open_container"
+
+		visible = {
+			ROOT = {
+				tag = VIN
+				is_ai = no
+			}
+			VIN_state_part_of_kingdom = yes
+		}
+
+		effects = {
+			VIN_state_leader_open_button_click = {
+				if = {
+					limit = {
+						check_variable = { ROOT.show_VIN_state_leader > 0 }
+					}
+					clear_variable = ROOT.show_VIN_state_leader
+				}
+				else = {
+					set_variable = { ROOT.show_VIN_state_leader = 1 }
+				}
+				add_to_variable = { show_VIN_state_leader_dirty = 1 }
+			}
+		}
+	}
+
+	VIN_state_leader = {
+		context_type = selected_state_context
+		parent_window_token = selected_state_view
+		window_name = "VIN_state_leader_container"
+		dirty = show_VIN_state_leader_dirty
+
+		visible = {
+			check_variable = { ROOT.show_VIN_state_leader > 0 }
+			VIN_state_part_of_kingdom = yes
+		}
+
+		dynamic_lists = {
+			VIN_state_leader_grid = {
+				array = VIN.VIN_state_leader_array
+				index = VIN_state_leader_index
+				change_scope = no
+				entry_container = "[GetVINStateLeaderEntry]"
+			}
+		}
+
+		effects = {
+			VIN_state_leader_close_button_click = {
+				clear_variable = ROOT.show_VIN_state_leader
+				add_to_variable = { show_VIN_state_leader_dirty = 1 }
+			}
+		}
+
+		properties = {
+			VIN_state_leader_portrait = {
+				image = "[GetVINStateLeaderPortrait]"
+			}
+		}
+	}
+	
+	
+	VIN_industralization_progressbar_scripted_gui = {
+		window_name = "VIN_industrialization_progressbar_container"
+		context_type = decision_category
+
+		properties = {
+		    vin_industralization_pbar = { frame = VIN_industrialization }
+		}
+	}
+	
+	
+	
+}

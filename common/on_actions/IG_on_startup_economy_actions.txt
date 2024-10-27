@@ -1,0 +1,154 @@
+###VARIABLE DEFINITIONS
+
+on_actions = {
+	on_startup = {
+		effect = {
+			#Experimental GDP autogeneration script
+			every_country = {
+				every_owned_state = {
+					generate_state_gdps = yes
+					log = "[GetDateText]: [THIS.Owner.GetName]:  [THIS.GetName]: ran autogeneration script - state GDP is [?state_value] - state value factor is [?state_value_factor]"
+				}
+			}
+			every_country = {
+				calculate_total_gdp = yes
+			}
+			every_country = {
+				set_variable = { econ_army_expenditures_slider_value = 10 }
+				set_variable = { econ_naval_expenditures_slider_value = 10 }
+				set_variable = { econ_research_expenditures_slider_value = 10 }
+				set_variable = { econ_construction_expenditures_slider_value = 10 }
+				set_variable = { econ_social_expenditures_slider_value = 10 }
+				set_variable = { econ_admin_expenditures_slider_value = 10 }
+
+				set_variable = { econ_army_expenditures_minimal_x = 84 }
+				set_variable = { econ_army_expenditures_maximal_x = 192 }
+				
+				set_variable = { econ_naval_expenditures_minimal_x = 84 }
+				set_variable = { econ_naval_expenditures_maximal_x = 192 }
+				
+				set_variable = { econ_research_expenditures_minimal_x = 84 }
+				set_variable = { econ_research_expenditures_maximal_x = 192 }
+				
+				set_variable = { econ_construction_expenditures_minimal_x = 84 }
+				set_variable = { econ_construction_expenditures_maximal_x = 192 }
+				
+				set_variable = { econ_social_expenditures_minimal_x = 84 }
+				set_variable = { econ_social_expenditures_maximal_x = 192 }
+				
+				set_variable = { econ_admin_expenditures_minimal_x = 84 }
+				set_variable = { econ_admin_expenditures_maximal_x = 192 }
+			}
+
+			every_country = {	
+				set_variable = { ROOT.total_pop = 0 }
+				every_owned_state = {
+					add_to_variable = { ROOT.total_pop = state_population_k }
+				}
+				set_variable = { ROOT.total_pop_m = ROOT.total_pop }
+				divide_variable = { ROOT.total_pop_m = 1000 }
+			}
+
+			every_country = {
+				set_variable = { DivLimiterEscalatorPerm = 1 }
+			}
+
+			every_country = { ### Laws
+				add_dynamic_modifier = { modifier = IK_army_funding_dynamic_modifier }
+				add_dynamic_modifier = { modifier = IK_naval_funding_dynamic_modifier }
+				add_dynamic_modifier = { modifier = IK_research_funding_dynamic_modifier }
+				add_dynamic_modifier = { modifier = IK_admin_funding_dynamic_modifier }
+				
+				IK_update_policy_effectiveness = yes
+			}
+
+			every_country = {
+				limit = {
+					check_variable = { GDP = 0.0 } #already converted to billion
+				}
+				generate_country_gdp = yes
+			}
+
+			every_country = {
+				resolve_excessive_state_gdp = yes
+				IK_div_limiter_calculate_unit_cap = yes
+				add_ideas = economy_multiplicative_modifiers_base
+				calculate_display_variables = yes				
+			}
+
+			every_state = {
+				set_variable = { IK_combined_factory_total = arms_factory_level }
+				add_to_variable = { IK_combined_factory_total = industrial_complex_level }
+			}
+
+			set_global_flag = log_spammed_with_gdp
+
+			every_country = {
+				limit = {
+					NOT = {
+						has_idea = construction_level_1
+						has_idea = construction_level_2
+						has_idea = construction_level_3
+						has_idea = construction_level_4
+						has_idea = construction_level_5
+						has_idea = construction_level_6
+						has_idea = construction_level_7
+						has_idea = construction_level_8
+						has_idea = construction_level_9
+						has_idea = construction_level_not_applicable
+					}
+					econ_can_use_economy_system = yes
+				}
+				add_ideas = construction_level_0
+			}
+
+			every_country = {
+				limit = {
+					NOT = {
+						has_idea = construction_level_1
+						has_idea = construction_level_2
+						has_idea = construction_level_3
+						has_idea = construction_level_4
+						has_idea = construction_level_5
+						has_idea = construction_level_6
+						has_idea = construction_level_7
+						has_idea = construction_level_8
+						has_idea = construction_level_9
+						has_idea = construction_level_0
+					}
+					NOT = {
+						econ_can_use_economy_system = yes
+					}
+				}
+				add_ideas = construction_level_not_applicable
+			}
+
+			every_country = {
+				limit = {
+					econ_can_use_economy_system = yes
+				}
+				econ_simulate_dynamic_y_value = yes
+			}
+
+			every_country = { ### This looks really weird, but HOI4 seems to have trouble with scripted effects firing other scripted effects on startup.
+				update_economy_tab = yes
+				calculate_taxable_population = yes
+				calculate_total_budget = yes
+				calculate_civilian_expenditures = yes
+				calculate_construction_expenditures = yes
+				calculate_military_expenditures = yes
+				calculate_total_expenditures = yes
+			
+				set_variable = { deficit = 0 }
+				set_variable = { deficit = total_expenditures }
+				subtract_from_variable = { deficit = total_budget }
+			
+				set_variable = { deficit_ratio = deficit }
+				divide_variable = { deficit_ratio = total_budget }
+			
+			
+				calculate_display_variables = yes
+			}
+		}
+	}
+}

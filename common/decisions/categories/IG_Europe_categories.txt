@@ -1,0 +1,19 @@
+Europe_renovatio_imperii_cat = {
+	allowed = {
+		OR = {
+			original_tag = RMR 
+			original_tag = GAL 
+			original_tag = OCC 
+			original_tag = GYE 
+			original_tag = GAS 
+			original_tag = ORL  
+			original_tag = PRS 
+			original_tag = NRM 
+			original_tag = CHM  
+			original_tag = WAL
+		}
+	}
+	icon = GFX_decision_cat_annexation
+	picture = GFX_decision_cat_generic_roman_empire
+	visible_when_empty = yes
+}

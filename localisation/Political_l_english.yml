@@ -1,0 +1,61 @@
+﻿l_english:
+
+##################
+### Ideologies ###
+##################
+
+### Names ###
+liberal:0 "Liberalism"
+conservative:0 "Conservatism"
+socialist:0 "Socialism"
+plebeianism:0 "Plebeianism"
+fascism:0 "Fascism"
+autocracy:0 "Autocracy"
+authoritarian_democrat:0 "Authoritarian Democracy"
+despotic:0 "Despotism"
+populism:0 "Populism"
+
+### Nouns ###
+liberal_noun:0 "Liberalism"
+conservative_noun:0 "Conservatism"
+socialist_noun:0 "Socialism"
+plebeianism_noun:0 "Plebeianism"
+fascism_noun:0 "Fascism"
+autocracy_noun:0 "Autocracy"
+authoritarian_democrat_noun:0 "Authoritarian Democracy"
+despotic_noun:0 "Despotism"
+populism_noun:0 "Populism"
+
+### Desc ###
+
+liberal_desc:0 "Liberal"
+conservative_desc:0 "Conservative"
+socialist_desc:0 "Revolutionary"
+plebeianism_desc:0 "Revolutionary"
+fascism_desc:0 "Authoritarian"
+autocracy_desc:0 "Authoritarian"
+authoritarian_democrat_desc:0 "Authoritarian"
+despotic_desc:0 "Authoritarian"
+populism_desc:0 "Authoritarian"
+
+### Subtype Descriptions ###
+liberal_subtype_desc:0 "Liberalism political description."
+conservative_subtype_desc:0 "Conservatism political description."
+socialist_subtype_desc:0 "Socialism political description."
+plebeianism_subtype_desc:0 "Plebeianism political description."
+fascism_subtype_desc:0 "Fascism political description."
+autocracy_subtype_desc:0 "Autocracy political description."
+authoritarian_democrat_subtype_desc:0 "Authoritarian Democracy political description."
+despotic_subtype_desc:0 "Despotism political description."
+populism_subtype_desc:0 "Populism political description."
+
+### Drift ###
+liberal_drift:0 "Daily Social Liberal support"
+conservative_drift:0 "Daily Social Conservative support"
+socialist_drift:0 "Daily Socialism Support"
+plebeianism_drift:0 "Daily Plebeianism Support"
+fascism_drift:0 "Daily Fascism Support"
+autocracy_drift:0 "Daily Autocracy Support"
+authoritarian_democrat_drift:0 "Daily Authoritarian Democracy Support"
+despotic_drift:0 "Daily Despotism Support"
+populism_drift:0 "Daily Populism Support"

@@ -1,0 +1,401 @@
+bitmapfonts = {
+
+	bitmapfont = {
+		name = "nikkyou_30"
+		path = "gfx/fonts/nikkyou_30"
+		color = 0xffb2c9c2
+		textcolors = {
+			M = { 35 206 255 }
+			L = { 195 176 145 }
+			W = { 255 255 255 }
+			B = { 47 138 135 }
+			G = { 133 234 142 }
+			R = { 224 130 130 }
+			b = { 0 0 0 }
+			g = { 176 176 176 }
+			Y = { 220 218 80 }
+			H = { 220 218 80 }
+			T = { 47 138 135 }
+			O = { 234 161 14 } #orange
+			C = { 253 100 144 } #pinker
+			P = { 169 27 79 } #pink
+			r = { 132 50 0 } #brown
+			w = { 211 201 0 } #yellow
+			e = { 146 0 0 } #red
+			p = { 204 0 204 }
+			j = { 153 102 51 } #Brown-ish
+			S = { 255 128 114 } #Salmon
+			x = { 255 0 0 } #uber-red
+			y = { 0 255 0} #uber-green
+			z = { 0 0 255 } #uber-blu
+			l = { 147 112 219 } #Lavender
+			n = { 60 180 60 } #Dark Green
+			q = { 65 65 65 } #Dark Grey
+			k = { 210 180 140 } #Light Brown
+			D = { 101 235 246 } #Default
+			Q = { 0 84 142 } #Prussian blue
+			I = { 101 51 203 } #Burgundian purple
+
+			###GUI Colors###
+			d = { 225 225 225 }
+			m = { 0 174 239 }
+			h = { 161 16 107 }
+			s = { 137 137 137 }
+
+			### Other ###
+			a = { 34 200 247 }	# Light (Neon) Blue
+			v = { 0 0 255 }		# Deep Blue
+			c = { 169 27 79 }	# Magenta
+			V = { 213 40 20 }	# Scarlet
+			E = { 152 40 92 }	# Purple
+			f = { 255 193 12 }	# Yellow
+			i = { 46 60 169 }	# Periwinkle-ish Blue
+			J = { 213 87 57 }	# Light Orange
+			K = { 45 152 40 }	# Emerald Green
+			N = { 152 40 92 }	# Magenta
+			o = { 129 88 56 }	# Brown
+		}
+	}
+
+	bitmapfont = {
+		name = "nikkyou_20"
+		path = "gfx/fonts/nikkyou_20"
+		color = 0xffb2c9c2
+		textcolors = {
+			M = { 35 206 255 }
+			L = { 195 176 145 }
+			W = { 255 255 255 }
+			B = { 47 138 135 }
+			G = { 133 234 142 }
+			R = { 224 130 130 }
+			b = { 0 0 0 }
+			g = { 176 176 176 }
+			Y = { 220 218 80 }
+			H = { 220 218 80 }
+			T = { 47 138 135 }
+			O = { 234 161 14 } #orange
+			C = { 253 100 144 } #pinker
+			P = { 169 27 79 } #pink
+			r = { 132 50 0 } #brown
+			w = { 211 201 0 } #yellow
+			e = { 146 0 0 } #red
+			p = { 204 0 204 }
+			j = { 153 102 51 } #Brown-ish
+			S = { 255 128 114 } #Salmon
+			x = { 255 0 0 } #uber-red
+			y = { 0 255 0} #uber-green
+			z = { 0 0 255 } #uber-blu
+			l = { 147 112 219 } #Lavender
+			n = { 60 180 60 } #Dark Green
+			q = { 65 65 65 } #Dark Grey
+			k = { 210 180 140 } #Light Brown
+			D = { 101 235 246 } #Default
+			Q = { 0 84 142 } #Prussian blue
+			I = { 101 51 203 } #Burgundian purple
+
+			###GUI Colors###
+			d = { 225 225 225 }
+			m = { 0 174 239 }
+			h = { 161 16 107 }
+			s = { 137 137 137 }
+
+			### Other ###
+			a = { 34 200 247 }	# Light (Neon) Blue
+			v = { 0 0 255 }		# Deep Blue
+			c = { 169 27 79 }	# Magenta
+			V = { 213 40 20 }	# Scarlet
+			E = { 152 40 92 }	# Purple
+			f = { 255 193 12 }	# Yellow
+			i = { 46 60 169 }	# Periwinkle-ish Blue
+			J = { 213 87 57 }	# Light Orange
+			K = { 45 152 40 }	# Emerald Green
+			N = { 152 40 92 }	# Magenta
+			o = { 129 88 56 }	# Brown
+		}
+	}
+
+	bitmapfont = {
+		name = "nikkyou_18"
+		path = "gfx/fonts/nikkyou_18"
+		color = 0xffb2c9c2
+		textcolors = {
+			M = { 35 206 255 }
+			L = { 195 176 145 }
+			W = { 255 255 255 }
+			B = { 47 138 135 }
+			G = { 133 234 142 }
+			R = { 224 130 130 }
+			b = { 0 0 0 }
+			g = { 176 176 176 }
+			Y = { 220 218 80 }
+			H = { 220 218 80 }
+			T = { 47 138 135 }
+			O = { 234 161 14 } #orange
+			C = { 253 100 144 } #pinker
+			P = { 169 27 79 } #pink
+			r = { 132 50 0 } #brown
+			w = { 211 201 0 } #yellow
+			e = { 146 0 0 } #red
+			p = { 204 0 204 }
+			j = { 153 102 51 } #Brown-ish
+			S = { 255 128 114 } #Salmon
+			x = { 255 0 0 } #uber-red
+			y = { 0 255 0} #uber-green
+			z = { 0 0 255 } #uber-blu
+			l = { 147 112 219 } #Lavender
+			n = { 60 180 60 } #Dark Green
+			q = { 65 65 65 } #Dark Grey
+			k = { 210 180 140 } #Light Brown
+			D = { 101 235 246 } #Default
+			Q = { 0 84 142 } #Prussian blue
+			I = { 101 51 203 } #Burgundian purple
+
+			###GUI Colors###
+			d = { 225 225 225 }
+			m = { 0 174 239 }
+			h = { 161 16 107 }
+			s = { 137 137 137 }
+
+			### Other ###
+			a = { 34 200 247 }	# Light (Neon) Blue
+			v = { 0 0 255 }		# Deep Blue
+			c = { 169 27 79 }	# Magenta
+			V = { 213 40 20 }	# Scarlet
+			E = { 152 40 92 }	# Purple
+			f = { 255 193 12 }	# Yellow
+			i = { 46 60 169 }	# Periwinkle-ish Blue
+			J = { 213 87 57 }	# Light Orange
+			K = { 45 152 40 }	# Emerald Green
+			N = { 152 40 92 }	# Magenta
+			o = { 129 88 56 }	# Brown
+		}
+	}
+
+	bitmapfont = {
+		name = "terminal_16"
+		path = "gfx/fonts/terminal_16"
+		color = 0xffb2c9c2
+		textcolors = {
+			M = { 35 206 255 }
+			L = { 195 176 145 }
+			W = { 255 255 255 }
+			B = { 47 138 135 }
+			G = { 133 234 142 }
+			R = { 224 130 130 }
+			b = { 0 0 0 }
+			g = { 176 176 176 }
+			Y = { 220 218 80 }
+			H = { 220 218 80 }
+			T = { 47 138 135 }
+			O = { 234 161 14 } #orange
+			C = { 253 100 144 } #pinker
+			P = { 169 27 79 } #pink
+			r = { 132 50 0 } #brown
+			w = { 211 201 0 } #yellow
+			e = { 146 0 0 } #red
+			p = { 204 0 204 }
+			j = { 153 102 51 } #Brown-ish
+			S = { 255 128 114 } #Salmon
+			x = { 255 0 0 } #uber-red
+			y = { 0 255 0} #uber-green
+			z = { 0 0 255 } #uber-blu
+			l = { 147 112 219 } #Lavender
+			n = { 60 180 60 } #Dark Green
+			q = { 65 65 65 } #Dark Grey
+			k = { 210 180 140 } #Light Brown
+			D = { 101 235 246 } #Default
+			Q = { 0 84 142 } #Prussian blue
+			I = { 101 51 203 } #Burgundian purple
+
+			###GUI Colors###
+			d = { 225 225 225 }
+			m = { 0 174 239 }
+			h = { 161 16 107 }
+			s = { 137 137 137 }
+
+			### Other ###
+			a = { 34 200 247 }	# Light (Neon) Blue
+			v = { 0 0 255 }		# Deep Blue
+			c = { 169 27 79 }	# Magenta
+			V = { 213 40 20 }	# Scarlet
+			E = { 152 40 92 }	# Purple
+			f = { 255 193 12 }	# Yellow
+			i = { 46 60 169 }	# Periwinkle-ish Blue
+			J = { 213 87 57 }	# Light Orange
+			K = { 45 152 40 }	# Emerald Green
+			N = { 152 40 92 }	# Magenta
+			o = { 129 88 56 }	# Brown
+		}
+	}
+
+	bitmapfont = {
+		name = "terminal_18"
+		path = "gfx/fonts/terminal_18"
+		color = 0xffb2c9c2
+		textcolors = {
+			M = { 35 206 255 }
+			L = { 195 176 145 }
+			W = { 255 255 255 }
+			B = { 47 138 135 }
+			G = { 133 234 142 }
+			R = { 224 130 130 }
+			b = { 0 0 0 }
+			g = { 176 176 176 }
+			Y = { 220 218 80 }
+			H = { 220 218 80 }
+			T = { 47 138 135 }
+			O = { 234 161 14 } #orange
+			C = { 253 100 144 } #pinker
+			P = { 169 27 79 } #pink
+			r = { 132 50 0 } #brown
+			w = { 211 201 0 } #yellow
+			e = { 146 0 0 } #red
+			p = { 204 0 204 }
+			j = { 153 102 51 } #Brown-ish
+			S = { 255 128 114 } #Salmon
+			x = { 255 0 0 } #uber-red
+			y = { 0 255 0} #uber-green
+			z = { 0 0 255 } #uber-blu
+			l = { 147 112 219 } #Lavender
+			n = { 60 180 60 } #Dark Green
+			q = { 65 65 65 } #Dark Grey
+			k = { 210 180 140 } #Light Brown
+			D = { 101 235 246 } #Default
+			Q = { 0 84 142 } #Prussian blue
+			I = { 101 51 203 } #Burgundian purple
+
+			###GUI Colors###
+			d = { 225 225 225 }
+			m = { 0 174 239 }
+			h = { 161 16 107 }
+			s = { 137 137 137 }
+
+			### Other ###
+			a = { 34 200 247 }	# Light (Neon) Blue
+			v = { 0 0 255 }		# Deep Blue
+			c = { 169 27 79 }	# Magenta
+			V = { 213 40 20 }	# Scarlet
+			E = { 152 40 92 }	# Purple
+			f = { 255 193 12 }	# Yellow
+			i = { 46 60 169 }	# Periwinkle-ish Blue
+			J = { 213 87 57 }	# Light Orange
+			K = { 45 152 40 }	# Emerald Green
+			N = { 152 40 92 }	# Magenta
+			o = { 129 88 56 }	# Brown
+		}
+	}
+
+	bitmapfont = {
+		name = "terminal_24"
+		path = "gfx/fonts/terminal_24"
+		color = 0xffb2c9c2
+		textcolors = {
+			M = { 35 206 255 }
+			L = { 195 176 145 }
+			W = { 255 255 255 }
+			B = { 47 138 135 }
+			G = { 133 234 142 }
+			R = { 224 130 130 }
+			b = { 0 0 0 }
+			g = { 176 176 176 }
+			Y = { 220 218 80 }
+			H = { 220 218 80 }
+			T = { 47 138 135 }
+			O = { 234 161 14 } #orange
+			C = { 253 100 144 } #pinker
+			P = { 169 27 79 } #pink
+			r = { 132 50 0 } #brown
+			w = { 211 201 0 } #yellow
+			e = { 146 0 0 } #red
+			p = { 204 0 204 }
+			j = { 153 102 51 } #Brown-ish
+			S = { 255 128 114 } #Salmon
+			x = { 255 0 0 } #uber-red
+			y = { 0 255 0} #uber-green
+			z = { 0 0 255 } #uber-blu
+			l = { 147 112 219 } #Lavender
+			n = { 60 180 60 } #Dark Green
+			q = { 65 65 65 } #Dark Grey
+			k = { 210 180 140 } #Light Brown
+			D = { 101 235 246 } #Default
+			Q = { 0 84 142 } #Prussian blue
+			I = { 101 51 203 } #Burgundian purple
+
+			###GUI Colors###
+			d = { 225 225 225 }
+			m = { 0 174 239 }
+			h = { 161 16 107 }
+			s = { 137 137 137 }
+
+			### Other ###
+			a = { 34 200 247 }	# Light (Neon) Blue
+			v = { 0 0 255 }		# Deep Blue
+			c = { 169 27 79 }	# Magenta
+			V = { 213 40 20 }	# Scarlet
+			E = { 152 40 92 }	# Purple
+			f = { 255 193 12 }	# Yellow
+			i = { 46 60 169 }	# Periwinkle-ish Blue
+			J = { 213 87 57 }	# Light Orange
+			K = { 45 152 40 }	# Emerald Green
+			N = { 152 40 92 }	# Magenta
+			o = { 129 88 56 }	# Brown
+		}
+	}
+
+	bitmapfont = {
+		name = "terminal_30"
+		path = "gfx/fonts/terminal_30"
+		color = 0xffb2c9c2
+		textcolors = {
+			M = { 35 206 255 }
+			L = { 195 176 145 }
+			W = { 255 255 255 }
+			B = { 47 138 135 }
+			G = { 133 234 142 }
+			R = { 224 130 130 }
+			b = { 0 0 0 }
+			g = { 176 176 176 }
+			Y = { 220 218 80 }
+			H = { 220 218 80 }
+			T = { 47 138 135 }
+			O = { 234 161 14 } #orange
+			C = { 253 100 144 } #pinker
+			P = { 169 27 79 } #pink
+			r = { 132 50 0 } #brown
+			w = { 211 201 0 } #yellow
+			e = { 146 0 0 } #red
+			p = { 204 0 204 }
+			j = { 153 102 51 } #Brown-ish
+			S = { 255 128 114 } #Salmon
+			x = { 255 0 0 } #uber-red
+			y = { 0 255 0} #uber-green
+			z = { 0 0 255 } #uber-blu
+			l = { 147 112 219 } #Lavender
+			n = { 60 180 60 } #Dark Green
+			q = { 65 65 65 } #Dark Grey
+			k = { 210 180 140 } #Light Brown
+			D = { 101 235 246 } #Default
+			Q = { 0 84 142 } #Prussian blue
+			I = { 101 51 203 } #Burgundian purple
+
+			###GUI Colors###
+			d = { 225 225 225 }
+			m = { 0 174 239 }
+			h = { 161 16 107 }
+			s = { 137 137 137 }
+
+			### Other ###
+			a = { 34 200 247 }	# Light (Neon) Blue
+			v = { 0 0 255 }		# Deep Blue
+			c = { 169 27 79 }	# Magenta
+			V = { 213 40 20 }	# Scarlet
+			E = { 152 40 92 }	# Purple
+			f = { 255 193 12 }	# Yellow
+			i = { 46 60 169 }	# Periwinkle-ish Blue
+			J = { 213 87 57 }	# Light Orange
+			K = { 45 152 40 }	# Emerald Green
+			N = { 152 40 92 }	# Magenta
+			o = { 129 88 56 }	# Brown
+		}
+	}
+}

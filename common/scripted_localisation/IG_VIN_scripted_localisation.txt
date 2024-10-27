@@ -1,0 +1,260 @@
+defined_text = {
+	name = GetVINSphereSubjectName
+	text = {
+		trigger = {
+			check_variable = { show_VIN_sphere_subject = 671 }
+		}
+		localization_key = VIN_sphere_subject_vietnam
+	}
+	text = {
+		trigger = {
+			check_variable = { show_VIN_sphere_subject = 670 }
+		}
+		localization_key = VIN_sphere_subject_laos
+	}
+	text = {
+		trigger = {
+			check_variable = { show_VIN_sphere_subject = 741 }
+		}
+		localization_key = VIN_sphere_subject_cambodia
+	}
+	text = {
+		trigger = {
+			check_variable = { show_VIN_sphere_subject = 289 }
+		}
+		localization_key = VIN_sphere_subject_siam
+	}
+	text = {
+		trigger = {
+			check_variable = { show_VIN_sphere_subject = 334 }
+		}
+		localization_key = VIN_sphere_subject_borneo
+	}
+	text = {
+		trigger = {
+			check_variable = { show_VIN_sphere_subject = 673 }
+		}
+		localization_key = VIN_sphere_subject_sulawesi
+	}
+	text = {
+		trigger = {
+			check_variable = { show_VIN_sphere_subject = 669 }
+		}
+		localization_key = VIN_sphere_subject_papua
+	}
+	text = {
+		trigger = {
+			check_variable = { show_VIN_sphere_subject = 285 }
+		}
+		localization_key = VIN_sphere_subject_east_xi_feng
+	}
+	text = {
+		trigger = {
+			check_variable = { show_VIN_sphere_subject = 522 }
+		}
+		localization_key = VIN_sphere_subject_west_xi_feng
+	}
+	text = {
+		trigger = {
+			check_variable = { show_VIN_sphere_subject = 336 }
+		}
+		localization_key = VIN_sphere_subject_malaya
+	}
+	text = {
+		trigger = {
+			check_variable = { show_VIN_sphere_subject > 0 }
+		}
+		localization_key = "[?show_VIN_sphere_subject.GetName]"
+	}
+}
+
+defined_text = {
+	name = GetVINSphereSubjectInfoName
+	text = {
+		trigger = { state = 671 }
+		localization_key = VIN_sphere_subject_vietnam
+	}
+	text = {
+		trigger = { state = 670 }
+		localization_key = VIN_sphere_subject_laos
+	}
+	text = {
+		trigger = { state = 741 }
+		localization_key = VIN_sphere_subject_cambodia
+	}
+	text = {
+		trigger = { state = 289 }
+		localization_key = VIN_sphere_subject_siam
+	}
+	text = {
+		trigger = { state = 334 }
+		localization_key = VIN_sphere_subject_borneo
+	}
+	text = {
+		trigger = { state = 673 }
+		localization_key = VIN_sphere_subject_sulawesi
+	}
+	text = {
+		trigger = { state = 669 }
+		localization_key = VIN_sphere_subject_papua
+	}
+	text = {
+		trigger = { state = 285 }
+		localization_key = VIN_sphere_subject_east_xi_feng
+	}
+	text = {
+		trigger = { state = 522 }
+		localization_key = VIN_sphere_subject_west_xi_feng
+	}
+	text = {
+		trigger = { state = 336 }
+		localization_key = VIN_sphere_subject_malaya
+	}
+	text = {
+		localization_key = "[THIS.GetName]"
+	}
+}
+
+defined_text = {
+	name = GetVINSphereSubjectInfo
+	text = {
+		trigger = {
+			set_temp_variable = { target = THIS }
+			set_temp_variable = { temp_loyalty = sphere_loyalty }
+			set_temp_variable = { temp_suppression = sphere_suppression }
+			set_temp_variable = { temp_loyalty_payment = loyalty_payment }
+			set_temp_variable = { temp_suppression_manpower = suppression_manpower }
+			check_variable = { temp_suppression_manpower > -1 }
+		}
+		localization_key = VIN_sphere_subject_info
+	}
+}
+
+defined_text = {
+	name = GetVINStateLeaderTitle
+	text = {
+		trigger = { VIN_state_part_of_cambodia = yes }
+		localization_key = VIN_state_leader_cambodia
+	}
+	text = {
+		trigger = { VIN_state_part_of_indonesia = yes }
+		localization_key = VIN_state_leader_indonesia
+	}
+	text = {
+		trigger = { VIN_state_part_of_laos = yes }
+		localization_key = VIN_state_leader_laos
+	}
+	text = {
+		trigger = { VIN_state_part_of_malaya = yes }
+		localization_key = VIN_state_leader_malaya
+	}
+	text = {
+		trigger = { VIN_state_part_of_siam = yes }
+		localization_key = VIN_state_leader_siam
+	}
+	text = {
+		trigger = { VIN_state_part_of_vietnam = yes }
+		localization_key = VIN_state_leader_vietnam
+	}
+	text = {
+		trigger = { VIN_state_part_of_xi_feng = yes }
+		localization_key = VIN_state_leader_xi_feng
+	}
+	text = {
+		trigger = { VIN_state_part_of_yunnan = yes }
+		localization_key = VIN_state_leader_yunnan
+	}
+}
+
+defined_text = {
+	name = GetVINStateLeaderPortrait
+	text = {
+		trigger = { VIN_state_part_of_laos = yes }
+		localization_key = "GFX_Portrait_LAO_Boun_Oum"
+	}
+	text = {
+		trigger = { VIN_state_part_of_siam = yes }
+		localization_key = "GFX_Portrait_SIA_Prajadhipok"
+	}
+	text = {
+		trigger = { VIN_state_part_of_vietnam = yes }
+		localization_key = "GFX_Portrait_VIN_Thanh_Thai"
+	}
+}
+
+defined_text = {
+	name = GetVINStateLeaderName
+	text = {
+		trigger = { VIN_state_part_of_cambodia = yes }
+		localization_key = VIN_state_leader_cambodia_name
+	}
+	text = {
+		trigger = { VIN_state_part_of_indonesia = yes }
+		localization_key = VIN_state_leader_indonesia_name
+	}
+	text = {
+		trigger = { VIN_state_part_of_laos = yes }
+		localization_key = VIN_state_leader_laos_name
+	}
+	text = {
+		trigger = { VIN_state_part_of_malaya = yes }
+		localization_key = VIN_state_leader_malaya_name
+	}
+	text = {
+		trigger = { VIN_state_part_of_siam = yes }
+		localization_key = VIN_state_leader_siam_name
+	}
+	text = {
+		trigger = { VIN_state_part_of_vietnam = yes }
+		localization_key = VIN_state_leader_vietnam_name
+	}
+	text = {
+		trigger = { VIN_state_part_of_xi_feng = yes }
+		localization_key = VIN_state_leader_xi_feng_name
+	}
+	text = {
+		trigger = { VIN_state_part_of_yunnan = yes }
+		localization_key = VIN_state_leader_yunnan_name
+	}
+}
+
+defined_text = {
+	name = GetVINStateLeaderEntry
+	text = {
+		trigger = {
+			check_variable = { VIN.show_VIN_state_leader > 0 }
+		}
+		localization_key = "VIN_state_leader_entry"
+	}
+	text = {
+		localization_key = "VIN_state_leader_entry"
+	}
+}
+
+defined_text = {
+	name = GetVINIndustrializationProgress
+	text = {
+		trigger = {
+			if = {
+				limit = { check_variable = { var = VIN_industrialization value = 50 compare = less_than } }	
+			}
+		}
+		localization_key = VIN_industrialization_red_progress
+	}
+	text = {
+		trigger = {
+			if = {
+				limit = { check_variable = { var = VIN_industrialization value = 90 compare = less_than } }	
+			}
+		}
+		localization_key = VIN_industrialization_medium_progress
+	}
+	text = {
+		trigger = {
+			if = {
+				limit = { check_variable = { var = VIN_industrialization value = 100 compare = less_than_or_equals } }	
+			}
+		}
+		localization_key = VIN_industrialization_green_progress
+	}
+}

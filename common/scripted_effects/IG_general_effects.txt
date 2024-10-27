@@ -1,0 +1,202 @@
+first_every_month_script = {
+	log = "[GetDateText]: [Root.GetName]: first_every_month_script"
+	add_to_variable = { month_counter = 1 }
+	if = {
+		limit = {
+			check_variable = {
+				month_counter = 13
+			}
+		}
+		set_variable = { month_counter = 1 }
+		first_every_year_script = yes
+	}
+
+	every_country = {
+		limit = {
+			econ_can_use_economy_system = yes
+		}
+	}
+
+	set_variable = { ROOT.total_pop = 0 }
+	every_owned_state = {
+		add_to_variable = { ROOT.total_pop = state_population_k }
+	}
+	set_variable = { ROOT.total_pop_m = ROOT.total_pop }
+	divide_variable = { ROOT.total_pop_m = 1000 }
+
+	every_country = {
+		if = {
+			limit = {
+				econ_can_use_economy_system = yes
+			}
+			if = {
+				limit = { NOT = { has_idea = economy_multiplicative_modifiers_base } }
+				add_ideas = economy_multiplicative_modifiers_base
+			}
+			calculate_total_budget = yes
+			calculate_civilian_expenditures = yes
+			calculate_construction_expenditures = yes
+			calculate_military_expenditures = yes
+			calculate_total_expenditures = yes
+			calculate_total_expenditures_factor = yes
+			calculate_deficit = yes			
+			calculate_GDP_growth = yes
+			update_economy_tab = yes
+		}
+		if = {
+			limit = {
+				check_variable = { modifier@monthly_population < -1 }
+			}
+			properly_reduce_population = yes
+		}
+	}
+
+	every_state = {
+		generate_state_gdps = yes
+	}
+	every_country = {
+		limit = {
+			check_variable = { GDP = 0.0 } #already converted to billion
+		}
+		generate_country_gdp = yes
+	}
+	every_country = {
+		calculate_total_gdp = yes
+	}
+	every_country = {
+		resolve_excessive_state_gdp = yes
+	}
+
+#for when monthly_population is less than -1
+properly_reduce_population = {
+	set_temp_variable = { manpower_to_remove_k = 0 }
+	every_owned_state = {
+		set_temp_variable = { manpower_to_remove_k = PREV.modifier@monthly_population }
+		add_to_temp_variable = { manpower_to_remove_k = 1 } #e.g. -1.5 means to remove 50% of the growth rate
+		multiply_temp_variable = { manpower_to_remove_k = state_population_k }
+		multiply_temp_variable = { manpower_to_remove_k = 0.0013 } #base pop growth
+		add_to_temp_variable = { PREV.manpower_to_remove_k = manpower_to_remove_k }
+	}
+	multiply_temp_variable = { manpower_to_remove_k = 1000 }
+	log = "[GetDateText]: [GetName]: removed [?manpower_to_remove_k] manpower "
+	add_manpower = manpower_to_remove_k
+}
+
+first_every_year_script = {
+	log = "[GetDateText]: [Root.GetName]: first_every_year_script"
+	every_country = {
+		limit = {
+			econ_can_use_economy_system = yes
+		}
+		save_event_target_as = my_country
+		#log = "[GetDateText]: [This.GetName]: running civ growth effect"
+		set_temp_variable = { civs_to_build = 0 }
+		add_to_variable = { civ_buildup = GDP_growth }
+		set_temp_variable = { civ_proportion = 1 }
+		set_temp_variable = { num_civs = num_of_civilian_factories }
+		add_to_temp_variable = { num_civs = 1 }
+		divide_temp_variable = { civ_proportion = num_civs }
+		#log = "[GetDateText]: [This.GetName]: civ_buildup = [?civ_buildup]; civ_proportion = [?civ_proportion];"
+		resize_array = {
+			array = while_array
+			size = 100
+		}
+		for_each_loop = {
+			array = while_array
+			if = {
+				limit = {
+					check_variable = { civ_buildup > civ_proportion }
+				}
+				subtract_from_variable = { civ_buildup = civ_proportion }
+				add_to_temp_variable = { civs_to_build = 1 }
+				else = {
+					set_temp_variable = { break = 0 }
+				}
+			}
+		}
+		clear_array = while_array
+		#log = "[GetDateText]: [This.GetName]: civ_buildup = [?civ_buildup]; civ_proportion = [?civ_proportion];"
+		#log = "[GetDateText]: [This.GetName]: civs_to_build = [?civs_to_build];"
+		for_each_scope_loop = {
+			array = owned_controlled_states
+
+			set_temp_variable = { civ_weight = industrial_complex_level }
+			divide_temp_variable = { civ_weight = event_target:my_country.num_civs }
+			set_temp_variable = { civ_chance = random }
+			divide_temp_variable = { civ_chance = 2 }
+			clamp_temp_variable = {
+				var = civ_chance
+				min = 0
+				max = 0.5
+			}
+			if = {
+				limit = {
+					var:owned_controlled_states^v = { has_state_category = megalopolis }
+				}
+				multiply_temp_variable = { civ_weight = 5 }
+			}
+			else_if = {
+				limit = {
+					var:owned_controlled_states^v = { has_state_category = metropolis }
+				}
+				multiply_temp_variable = { civ_weight = 4 }
+			}
+			else_if = {
+				limit = {
+					var:owned_controlled_states^v = { has_state_category = large_city }
+				}
+				multiply_temp_variable = { civ_weight = 3 }
+				else = {
+					multiply_temp_variable = { civ_weight = 2 }
+				}
+			}
+			#log = "[GetDateText]: [This.Owner.GetName]: [This.GetName]: civ_chance = [?civ_chance]; civ_weight = [?civ_weight]"
+			if = {
+				limit = {
+					check_variable = { event_target:my_country.civs_to_build > 0 }
+					var:owned_controlled_states^v = {
+						free_building_slots = {
+							building = industrial_complex
+							size > 0
+							include_locked = yes
+						}
+					}
+					check_variable = { civ_chance < civ_weight }
+				}
+				#log = "[GetDateText]: [This.Owner.GetName]: all criteria met."
+				var:owned_controlled_states^v = {
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+					subtract_from_temp_variable = { event_target:my_country.civs_to_build = 1 }
+					log = "[GetDateText]: [This.Owner.GetName]: Civilian Factory Built in [This.GetName]"
+				}
+			}
+			else_if = {
+				limit = {
+					check_variable = { PREV.civs_to_build < 1 }
+				}
+				#log = "[GetDateText]: [This.Owner.GetName]: No Civilian Factory Built in [This.GetName]"
+				set_temp_variable = { break = 0 }
+			}
+		}
+		if = {
+			limit = {
+				check_variable = { civs_to_build > 0 }
+			}
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = civs_to_build
+				add_building_construction = {
+					type = industrial_complex
+					level = civs_to_build
+					instant_build = yes
+				}
+				log = "[GetDateText]: [This.Owner.GetName]: Backup Civilian Factories Built in [This.GetName]"
+				set_temp_variable = { civs_to_build = 0 }
+			}
+		}
+	}
+}

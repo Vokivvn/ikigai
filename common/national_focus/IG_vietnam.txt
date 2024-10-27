@@ -1,0 +1,13 @@
+##Starting Focus
+focus_tree = {
+	id = vin_starting_tree
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = vin
+		}
+	}
+	default = no
+	shared_focus = VIN_vietnamese_modern_struggle
+}

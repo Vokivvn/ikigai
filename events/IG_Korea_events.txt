@@ -1,0 +1,19 @@
+add_namespace = IG_korea_meme
+
+country_event = {
+	id = IG_korea_meme.1
+	title = IG_korea_meme.1.t
+	desc = IG_korea_meme.1.d
+	picture = GFX_carry_on
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = IG_korea_meme.1.a
+    
+    set_cosmetic_tag = KOR_joeson
+		ai_chance = {
+			factor = 100
+		}
+	}
+}

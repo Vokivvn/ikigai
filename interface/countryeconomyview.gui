@@ -1,0 +1,2625 @@
+# Credit to Yard1 for Pie Chart Framework - https://github.com/Yard1/HoI4-Scripted-GUI-Pie-Chart
+
+guiTypes = {
+
+	containerWindowType = {    
+		name = "topbar_economy"  
+		position = { x=128 y=38 }
+		size = { width=100%% height=100%% }   
+
+		iconType = {
+			name = "economy_topbar_GDP_bg" 
+			spriteType = "GFX_generic_box_96" 
+			position = { x=699 y=-33 }
+			Orientation = "UPPER_LEFT"
+		}
+
+		iconType = {
+			name = "economy_GDP_topbar_icon"
+			spriteType = "GFX_money1"
+			position = { x= 699 y = -31 }
+			Orientation = "UPPER_LEFT"
+			pdx_tooltip = "economy_topbar_GDP_short_tt"
+			pdx_tooltip_delayed = "economy_topbar_GDP_long_tt"
+		}
+
+		instantTextboxType = {
+			name = "economy_topbar_GDP"
+			position = { x = 713 y = -30 }
+			textureFile = ""
+			font = "nikkyou_18"
+			borderSize = {x = 0 y = 0}
+			text = "economy_topbar_GDP_text"  
+
+			maxWidth = 80
+			maxHeight = 20
+			format = center
+ 
+			pdx_tooltip = "economy_topbar_GDP_short_tt"
+			pdx_tooltip_delayed = "economy_topbar_GDP_long_tt"
+		}
+
+		iconType ={  
+			name = "economy_topbar_debt_bg"
+			spriteType = "GFX_generic_box_96"
+			position = { x=798 y=-33 }
+			Orientation = "UPPER_LEFT"
+		}
+
+		iconType = {
+			name = "economy_debt_topbar_icon"
+			spriteType = "GFX_money2"
+			position = { x = 798 y = -31 }
+			Orientation = "UPPER_LEFT"
+			pdx_tooltip = "economy_topbar_debt_short_tt"
+			pdx_tooltip_delayed = "economy_topbar_debt_long_tt"
+		}
+
+		instantTextboxType = {
+			name = "economy_topbar_debt"
+			position = { x = 812 y = -30 }
+			textureFile = ""
+			font = "nikkyou_18"
+			borderSize = {x = 0 y = 0}
+			text = "economy_topbar_debt_text"
+
+			maxWidth = 80
+			maxHeight = 20
+			format = center
+
+			pdx_tooltip = "economy_topbar_debt_short_tt"
+			pdx_tooltip_delayed = "economy_topbar_debt_long_tt"
+		}
+	}
+
+	containerWindowType = {
+		name = "ik_economy_window_open" 
+		position = { x=-150 y=700 }
+		size = { width=100%% height=100%% } 
+
+		buttonType = {
+			name = "economy_button"
+			position = { x = 279 y = -2 }
+			quadTextureSprite = "GFX_economy_button"
+			Orientation = "UPPER_LEFT"
+			clicksound = nice_open
+			oversound = ui_menu_over
+
+			pdx_tooltip = "topbar_economy_button_tt"
+		}
+	}
+
+	containerWindowType = {
+		name = "economy_view"
+		position = { x = 550 y = 80 }
+		size = { width = 910 height = 753 }
+		clipping = no
+		moveable = yes
+
+		iconType = {
+			name = "NICE_background"
+			spriteType = "GFX_NICE_GUI_bg"
+			position = { x = 50 y = -70 }
+			pdx_tooltip = ""
+		}
+
+		buttonType = {
+			name = "Econ_Tab_Main_Button"
+			position = { x = 232 y = 135 }
+			quadTextureSprite = "GFX_economy_main_button"
+			clicksound = nice_ok
+			oversound = ui_menu_over
+		}
+
+		buttonType = {
+			name = "Econ_Tab_Rev_Button"
+			position = { x = 342 y = 135 }
+			quadTextureSprite = "GFX_economy_rev_button"
+			clicksound = nice_ok
+			oversound = ui_menu_over
+		}
+
+		buttonType = {
+			name = "Econ_Tab_Exp_Button"
+			position = { x = 452 y = 135 }
+			quadTextureSprite = "GFX_economy_exp_button"
+			clicksound = nice_ok
+			oversound = ui_menu_over
+		}
+
+		iconType = {
+			name ="nice_animation"
+			spriteType = "GFX_NICE_animation"
+			position = { x= -200 y = 170 }
+			Orientation = center  
+			alwaystransparent = yes
+		}
+		
+		containerWindowType = {
+			name = "economy_data"           
+			position = { x = 205 y = 40 }
+			size = { width = 0 height = 0 }
+
+			
+			instantTextboxType = { 
+				name = "GDP_Title"
+				position = { x = 0 y = 265 } 
+				font = "terminal_24" 
+				text = "economy_view_GDP"  
+				maxWidth = 350
+				maxHeight = 20
+				format = center
+			}
+
+			instantTextboxType = {
+				name = "Total_GDP"
+				font = "terminal_18"
+				position = { x = 4 y = 295 }
+				text = "gdp_value"
+				maxWidth = 350
+				maxHeight = 20
+				format = left
+				pdx_tooltip = "gdp_value_tooltip"
+			}
+			instantTextboxType = {
+				name = "Total_GDP_Value"
+				font = "terminal_18"
+				position = { x = -4 y = 295 }
+				text = "gdp_value_number"
+				maxWidth = 350
+				maxHeight = 20
+				format = right
+				pdx_tooltip = "gdp_value_tooltip"
+			}
+
+			instantTextboxType = {
+				name = "GDP_Growth"
+				position = { x = 4 y = 320 }
+				font = "terminal_18"
+				text = "gdp_growth_value"
+				maxWidth = 350
+				maxHeight = 20
+				format = left
+			}
+			instantTextboxType = {
+				name = "GDP_Growth_Value"
+				position = { x = -4 y = 320 }
+				font = "terminal_18"
+				text = "gdp_growth_value_number"
+				maxWidth = 350
+				maxHeight = 20
+				format = right
+			}
+
+			instantTextboxType = {
+				name = "Debt_Title"
+				position = { x = 0 y = 345 }
+				font = "terminal_24"
+				text = "economy_view_debt"
+				maxWidth = 350
+				maxHeight = 20
+				format = center
+			}
+
+			instantTextboxType = {
+				name = "National_Debt"
+				position = { x = 4 y = 375 }
+				font = "terminal_18"
+				text = "national_debt_value"
+				maxWidth = 350
+				maxHeight = 20
+				format = left
+				pdx_tooltip = "national_debt_value_short_tt"
+				pdx_tooltip_delayed = "national_debt_value_tt"
+			}
+			instantTextboxType = {
+				name = "National_Debt_Value"
+				position = { x = -4 y = 375 }
+				font = "terminal_18"
+				text = "national_debt_value_number"
+				maxWidth = 350
+				maxHeight = 20
+				format = right
+				pdx_tooltip = "national_debt_value_short_tt"
+				pdx_tooltip_delayed = "national_debt_value_tt"
+			}
+
+			instantTextboxType = {
+				name = "Debt_Interest"
+				position = { x = 4 y = 400 }
+				textureFile = ""
+				font = "terminal_18"
+				borderSize = {x = 0 y = 0}
+				text = "national_debt_interest_value"
+				maxWidth = 350
+				maxHeight = 20
+				format = left
+			}
+			instantTextboxType = {
+				name = "Debt_Interest_Value"
+				position = { x = -4 y = 400 }
+				textureFile = ""
+				font = "terminal_18"
+				borderSize = {x = 0 y = 0}
+				text = "national_debt_interest_value_number"
+				maxWidth = 350
+				maxHeight = 20
+				format = right
+			}
+			
+			instantTextboxType = {
+				name = "Deficient_Reserves_Title"
+				position = { x = 0 y = 445 }
+				font = "terminal_24"
+				text = "economy_view_deficit_reserves"
+				maxWidth = 350
+				maxHeight = 20
+				format = center
+			}
+			
+			instantTextboxType = {
+				name = "Deficit_Value"
+				position = { x = 4 y = 490 }
+				font = "terminal_18"
+				text = "deficit_value"
+				maxWidth = 350
+				maxHeight = 20
+				format = left
+				pdx_tooltip = "deficit_value_short_tt"
+			}
+			instantTextboxType = {
+				name = "Deficit_Value_Value"
+				position = { x = -4 y = 490 }
+				font = "terminal_18"
+				text = "deficit_value_number"
+				maxWidth = 350
+				maxHeight = 20
+				format = right
+				pdx_tooltip = "deficit_value_short_tt"
+			}
+
+			instantTextboxType = {
+				name = "Reserves_Value"
+				position = { x = 4 y = 515 }
+				font = "terminal_18"
+				text = "money_reserves_value"
+				maxWidth = 350
+				maxHeight = 20
+				format = left
+			}
+			instantTextboxType = {
+				name = "Reserves_Value_Value"
+				position = { x = -4 y = 515 }
+				font = "terminal_18"
+				text = "money_reserves_value_number"
+				maxWidth = 350
+				maxHeight = 20
+				format = right
+			}
+		}
+		
+		containerWindowType = {
+			name = "economic_sphere"
+			position = { x = -64 y = 170 }
+			size = { width = 0 height = 0 }
+			
+			iconType = {
+				name = "Econ_Sphere_Flag"
+				quadTextureSprite = "GFX_shield_medium"
+				position = { x = 405 y = 60 }
+			}
+			
+			iconType = {
+				name = "Econ_Sphere_Flag_Overlay"
+				position = { x = 403 y = 58 }
+				spriteType = "GFX_flag_overlay_large_econ"
+				alwaystransparent = yes
+			}
+
+			iconType = {
+				name = "Econ_Sphere_Flag_Frame"
+				position = { x = 403 y = 58 }
+				spriteType = "GFX_flag_frame_large_econ"
+				alwaystransparent = yes
+			}
+
+		}
+	}
+
+	containerWindowType = {
+		name = "economic_revenue_tab"
+		position = { x = 550 y = 80 }
+		size = { width = 910 height = 753 }
+		clipping = no
+		moveable = yes
+	
+		iconType = {
+			name = "NICE_background"
+			spriteType = "GFX_NICE_GUI_bg"
+			position = { x = 50 y = -70 }
+			pdx_tooltip = ""
+		}
+
+		buttonType = {
+			name = "Econ_Tab_Main_Button"
+			position = { x = 232 y = 135 }
+			quadTextureSprite = "GFX_economy_main_button"
+			clicksound = nice_ok
+			oversound = ui_menu_over
+		}
+
+		buttonType = {
+			name = "Econ_Tab_Rev_Button"
+			position = { x = 342 y = 135 }
+			quadTextureSprite = "GFX_economy_rev_button"
+			clicksound = nice_ok
+			oversound = ui_menu_over
+		}
+
+		buttonType = {
+			name = "Econ_Tab_Exp_Button"
+			position = { x = 452 y = 135 }
+			quadTextureSprite = "GFX_economy_exp_button"
+			clicksound = nice_ok
+			oversound = ui_menu_over
+		}
+		
+		containerWindowType = {
+			name = "economic_data_scrollbar"
+			position = { x = 240 y = 220 }
+			size = { width = 550 height = 74% } # Try converting to static
+			margin = { top = 12 bottom = 14 }
+			clipping = yes
+			
+			containerWindowType = {
+				name = "economic_data_items"
+				position = { x = 0 y = 0 }
+				size = { width = 550 height = 686 }
+				
+				background = {
+					name = "econ_data_background"
+					quadTextureSprite = "GFX_tiled_window_transparent"
+					#quadTextureSprite = "GFX_tiled_bg"
+				}
+				
+				containerWindowType = {
+					name = "economic_revenue"
+					position = { x = 3 y = 0 }
+					size = { width = 552 height = 0 }
+					
+					instantTextboxType = {
+						name = "Econ_Revenue"
+						position = { x = 9 y = 109 }
+						font = "terminal_24"
+						text = econ_revenue_header
+						maxWidth = 265
+						maxHeight = 20
+						format = center
+					}
+					
+					containerWindowType = {
+						name = "economic_revenue_pie_container"
+						position = { x = -288 y = -70 }
+						size = { width = 250 height = 250 }
+						moveable = yes
+						orientation = upper_right
+						origo = upper_right
+						
+						containerWindowType = {
+							name = "economic_revenue_pie_chart_container"
+							position = { x = 0 y = 0 }
+							clipping = no
+							orientation = center
+							origo = center
+							scale = 0.1
+							
+							iconType = {
+								name = "economic_revenue_pie0"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 0
+							}
+
+							iconType = {
+								name = "economic_revenue_pie1"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 0.0628318531
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie2"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 0.1256637061
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie3"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 0.1884955592
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie4"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 0.2513274123
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie5"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 0.3141592654
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie6"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 0.3769911184
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie7"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 0.4398229715
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie8"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 0.5026548246
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie9"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 0.5654866776
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie10"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 0.6283185307
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie11"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 0.6911503838
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie12"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 0.7539822369
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie13"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 0.8168140899
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie14"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 0.8796459430
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie15"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 0.9424777961
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie16"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 1.0053096491
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie17"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 1.0681415022
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie18"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 1.1309733553
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie19"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 1.1938052084
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie20"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 1.2566370614
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie21"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 1.3194689145
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie22"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 1.3823007676
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie23"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 1.4451326207
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie24"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 1.5079644737
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie25"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 1.5707963268
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie26"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 1.6336281799
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie27"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 1.6964600329
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie28"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 1.7592918860
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie29"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 1.8221237391
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie30"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 1.8849555922
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie31"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 1.9477874452
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie32"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 2.0106192983
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie33"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 2.0734511514
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie34"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 2.1362830044
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie35"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 2.1991148575
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie36"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 2.2619467106
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie37"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 2.3247785637
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie38"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 2.3876104167
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie39"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 2.4504422698
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie40"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 2.5132741229
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie41"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 2.5761059759
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie42"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 2.6389378290
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie43"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 2.7017696821
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie44"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 2.7646015352
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie45"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 2.8274333882
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie46"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 2.8902652413
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie47"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 2.9530970944
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie48"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 3.0159289474
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie49"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 3.0787608005
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie50"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 3.1415926536
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie51"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 3.2044245067
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie52"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 3.2672563597
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie53"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 3.3300882128
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie54"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 3.3929200659
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie55"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 3.4557519189
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie56"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 3.5185837720
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie57"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 3.5814156251
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie58"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 3.6442474782
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie59"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 3.7070793312
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie60"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 3.7699111843
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie61"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 3.8327430374
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie62"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 3.8955748905
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie63"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 3.9584067435
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie64"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 4.0212385966
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie65"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 4.0840704497
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie66"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 4.1469023027
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie67"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 4.2097341558
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie68"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 4.2725660089
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie69"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 4.3353978620
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie70"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 4.3982297150
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie71"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 4.4610615681
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie72"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 4.5238934212
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie73"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 4.5867252742
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie74"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 4.6495571273
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie75"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 4.7123889804
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie76"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 4.7752208335
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie77"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 4.8380526865
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie78"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 4.9008845396
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie79"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 4.9637163927
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie80"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 5.0265482457
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie81"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 5.0893800988
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie82"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 5.1522119519
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie83"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 5.2150438050
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie84"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 5.2778756580
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie85"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 5.3407075111
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie86"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 5.4035393642
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie87"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 5.4663712172
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie88"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 5.5292030703
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie89"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 5.5920349234
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie90"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 5.6548667765
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie91"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 5.7176986295
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie92"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 5.7805304826
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie93"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 5.8433623357
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie94"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 5.9061941887
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie95"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 5.9690260418
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie96"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 6.0318578949
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie97"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 6.0946897480
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie98"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 6.1575216010
+							}
+
+
+							iconType = {
+								name = "economic_revenue_pie99"
+								quadTextureSprite = "GFX_pie_chart_segments_economic_revenue"
+								centerPosition = yes
+								alwaystransparent = yes
+								rotation = 6.2203534541
+							}
+						}
+						
+						iconType = {
+							name = "economic_revenue_pie_overlay"
+							quadTextureSprite = "GFX_pol_piechart_overlay_63x63"
+							position = { x = 70 y = 68 }
+							scale = 0.90
+						}
+					}
+					
+					instantTextboxType = {
+						name = "Econ_income_tax_rate"
+						position = { x = 9 y = 155 }
+						font = "terminal_18"
+						text = econ_income_rate_txt
+						maxWidth = 265
+						maxHeight = 20
+						format = left
+					}
+					instantTextboxType = {
+						name = "Econ_income_tax_rate_Value"
+						position = { x = 9 y = 155 }
+						font = "terminal_18"
+						text = econ_income_rate_txt_number
+						maxWidth = 265
+						maxHeight = 20
+						format = right
+					}
+					
+					instantTextboxType = {
+						name = "Econ_business_tax_rate"
+						position = { x = 9 y = 185 }
+						font = "terminal_18"
+						text = econ_business_rate_txt
+						maxWidth = 265
+						maxHeight = 20
+						format = left
+					}
+					instantTextboxType = {
+						name = "Econ_business_tax_rate_Value"
+						position = { x = 9 y = 185 }
+						font = "terminal_18"
+						text = econ_business_rate_txt_number
+						maxWidth = 265
+						maxHeight = 20
+						format = right
+					}
+					
+					instantTextboxType = {
+						name = "Econ_income_tax_revenue"
+						position = { x = 9 y = 215 }
+						font = "terminal_18"
+						text = econ_income_revenue_txt
+						maxWidth = 265
+						maxHeight = 20
+						format = left
+					}
+					instantTextboxType = {
+						name = "Econ_income_tax_revenue_Value"
+						position = { x = 9 y = 215 }
+						font = "terminal_18"
+						text = econ_income_revenue_txt_number
+						maxWidth = 265
+						maxHeight = 20
+						format = right
+					}
+					
+					instantTextboxType = {
+						name = "Econ_business_tax_revenue"
+						position = { x = 9 y = 245 }
+						font = "terminal_18"
+						text = econ_business_revenue_txt
+						maxWidth = 265
+						maxHeight = 20
+						format = left
+					}
+					instantTextboxType = {
+						name = "Econ_business_tax_revenue_Value"
+						position = { x = 9 y = 245 }
+						font = "terminal_18"
+						text = econ_business_revenue_txt_number
+						maxWidth = 265
+						maxHeight = 20
+						format = right
+					}
+					
+					instantTextboxType = {
+						name = "Econ_other_revenue"
+						position = { x = 9 y = 275 }
+						font = "terminal_18"
+						text = econ_other_revenue_txt
+						maxWidth = 265
+						maxHeight = 20
+						format = left
+					}
+					instantTextboxType = {
+						name = "Econ_other_revenue_Value"
+						position = { x = 9 y = 275 }
+						font = "terminal_18"
+						text = econ_other_revenue_txt_number
+						maxWidth = 265
+						maxHeight = 20
+						format = right
+					}
+					
+					instantTextboxType = {
+						name = "Econ_total_revenue"
+						position = { x = 9 y = 305 }
+						font = "terminal_18"
+						text = econ_total_revenue_txt
+						maxWidth = 265
+						maxHeight = 20 
+						format = left
+					}
+					instantTextboxType = {
+						name = "Econ_total_revenue_Value"
+						position = { x = 9 y = 305 }
+						font = "terminal_18"
+						text = econ_total_revenue_txt_number
+						maxWidth = 265
+						maxHeight = 20 
+						format = right
+					}
+				}
+			}
+		}
+	}
+	
+	containerWindowType = {
+		name = "economic_expenditures_tab"
+		position = { x = 550 y = 80 }
+		size = { width = 910 height = 753 }
+		clipping = no
+		moveable = yes
+
+		iconType = {
+			name = "NICE_background"
+			spriteType = "GFX_NICE_GUI_bg"
+			position = { x = 50 y = -70 }
+			pdx_tooltip = ""
+		}
+
+		buttonType = {
+			name = "Econ_Tab_Main_Button"
+			position = { x = 232 y = 135 }
+			quadTextureSprite = "GFX_economy_main_button"
+			clicksound = nice_ok
+			oversound = ui_menu_over
+		}
+
+		buttonType = {
+			name = "Econ_Tab_Rev_Button"
+			position = { x = 342 y = 135 }
+			quadTextureSprite = "GFX_economy_rev_button"
+			clicksound = nice_ok
+			oversound = ui_menu_over
+		}
+
+		buttonType = {
+			name = "Econ_Tab_Exp_Button"
+			position = { x = 452 y = 135 }
+			quadTextureSprite = "GFX_economy_exp_button"
+			clicksound = nice_ok
+			oversound = ui_menu_over
+		}
+
+		containerWindowType = { 
+			name = "economic_expenditures" 
+			position = { x = 240 y = 220 }
+			size = { width = 552 height = 0 }
+
+			buttonType = {
+				name ="increase_military_budget"
+				spriteType = "GFX_save_button"
+				position = { x= 25 y = 420 }
+				pdx_tooltip = "increase_military_budget_tt"
+				pdx_tooltip_delayed = "increase_military_budget_tt_delayed"
+			}
+
+			buttonType = { 
+				name ="decrease_military_budget"
+				spriteType = "GFX_spend_button"
+				position = { x = 160 y = 420 }
+
+				pdx_tooltip = "decrease_military_budget_tt"
+				pdx_tooltip_delayed = "decrease_military_budget_tt_delayed"
+			}
+
+			buttonType = {
+				name ="increase_construction_budget"
+				spriteType = "GFX_save_button"
+				position = { x= 25 y = 150 }
+				pdx_tooltip = "increase_construction_budget_tt"
+				pdx_tooltip_delayed = "increase_construction_budget_tt_delayed"
+			}
+
+			buttonType = { 
+				name ="decrease_construction_budget"
+				spriteType = "GFX_spend_button"
+				position = { x = 160 y = 150 }
+
+				pdx_tooltip = "decrease_construction_budget_tt"
+				pdx_tooltip_delayed = "decrease_construction_budget_tt_delayed"
+			}
+
+			buttonType = {
+				name ="increase_civilian_budget"
+				spriteType = "GFX_save_button"
+				position = { x= 25 y = 240 }
+				pdx_tooltip = "increase_civilian_budget_tt"
+				pdx_tooltip_delayed = "increase_civilian_budget_tt_delayed"
+			}
+
+			buttonType = { 
+				name ="decrease_civilian_budget"
+				spriteType = "GFX_spend_button"
+				position = { x = 160 y = 240 }
+
+				pdx_tooltip = "decrease_civilian_budget_tt"
+				pdx_tooltip_delayed = "decrease_civilian_budget_tt_delayed"
+			}
+
+			buttonType = {
+				name ="invest_liquid_reserves"
+				spriteType = "GFX_save_button"
+				position = { x= 25 y = 330 }
+				pdx_tooltip = "invest_liquid_reserves_tt"
+				pdx_tooltip_delayed = "invest_liquid_reserves_tt_delayed"
+			}
+
+			buttonType = { 
+				name ="dump_liquid_reserves"
+				spriteType = "GFX_spend_button"
+				position = { x = 160 y = 330 }
+
+				pdx_tooltip = "dump_liquid_reserves_tt"
+				pdx_tooltip_delayed = "dump_liquid_reserves_tt_delayed"
+			}
+			
+			instantTextboxType = {
+				name = "Econ_expenditures"          
+				position = { x = 12 y = 109 }
+				font = "terminal_24"
+				text = econ_expenditures_header
+				maxWidth = 265
+				maxHeight = 20
+				format = center
+			}
+			
+			containerWindowType = {
+				name = "economic_expenditures_pie_container"
+				position = { x = -281 y = -70 }
+				size = { width = 250 height = 250 }
+				moveable = yes
+				orientation = upper_right
+				origo = upper_right
+				
+				containerWindowType = {
+					name = "economic_expenditures_pie_chart_container"
+					position = { x = 0 y = 0 }
+					clipping = no
+					orientation = center
+					origo = center
+					scale = 0.1
+				
+					iconType = {
+						name = "economic_expenditures_pie0"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 0
+					}
+
+					iconType = {
+						name = "economic_expenditures_pie1"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 0.0628318531
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie2"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 0.1256637061
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie3"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 0.1884955592
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie4"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 0.2513274123
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie5"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 0.3141592654
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie6"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 0.3769911184
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie7"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 0.4398229715
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie8"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 0.5026548246
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie9"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 0.5654866776
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie10"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 0.6283185307
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie11"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 0.6911503838
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie12"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 0.7539822369
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie13"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 0.8168140899
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie14"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 0.8796459430
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie15"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 0.9424777961
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie16"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 1.0053096491
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie17"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 1.0681415022
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie18"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 1.1309733553
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie19"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 1.1938052084
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie20"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 1.2566370614
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie21"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 1.3194689145
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie22"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 1.3823007676
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie23"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 1.4451326207
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie24"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 1.5079644737
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie25"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 1.5707963268
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie26"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 1.6336281799
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie27"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 1.6964600329
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie28"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 1.7592918860
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie29"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 1.8221237391
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie30"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 1.8849555922
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie31"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 1.9477874452
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie32"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 2.0106192983
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie33"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 2.0734511514
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie34"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 2.1362830044
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie35"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 2.1991148575
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie36"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 2.2619467106
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie37"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 2.3247785637
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie38"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 2.3876104167
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie39"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 2.4504422698
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie40"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 2.5132741229
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie41"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 2.5761059759
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie42"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 2.6389378290
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie43"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 2.7017696821
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie44"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 2.7646015352
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie45"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 2.8274333882
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie46"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 2.8902652413
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie47"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 2.9530970944
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie48"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 3.0159289474
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie49"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 3.0787608005
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie50"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 3.1415926536
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie51"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 3.2044245067
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie52"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 3.2672563597
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie53"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 3.3300882128
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie54"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 3.3929200659
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie55"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 3.4557519189
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie56"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 3.5185837720
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie57"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 3.5814156251
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie58"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 3.6442474782
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie59"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 3.7070793312
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie60"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 3.7699111843
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie61"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 3.8327430374
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie62"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 3.8955748905
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie63"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 3.9584067435
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie64"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 4.0212385966
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie65"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 4.0840704497
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie66"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 4.1469023027
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie67"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 4.2097341558
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie68"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 4.2725660089
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie69"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 4.3353978620
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie70"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 4.3982297150
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie71"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 4.4610615681
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie72"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 4.5238934212
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie73"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 4.5867252742
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie74"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 4.6495571273
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie75"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 4.7123889804
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie76"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 4.7752208335
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie77"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 4.8380526865
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie78"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 4.9008845396
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie79"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 4.9637163927
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie80"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 5.0265482457
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie81"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 5.0893800988
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie82"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 5.1522119519
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie83"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 5.2150438050
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie84"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 5.2778756580
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie85"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 5.3407075111
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie86"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 5.4035393642
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie87"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 5.4663712172
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie88"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 5.5292030703
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie89"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 5.5920349234
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie90"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 5.6548667765
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie91"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 5.7176986295
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie92"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 5.7805304826
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie93"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 5.8433623357
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie94"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 5.9061941887
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie95"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 5.9690260418
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie96"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 6.0318578949
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie97"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 6.0946897480
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie98"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 6.1575216010
+					}
+
+
+					iconType = {
+						name = "economic_expenditures_pie99"
+						quadTextureSprite = "GFX_pie_chart_segments_economic_expenditures"
+						centerPosition = yes
+						alwaystransparent = yes
+						rotation = 6.2203534541
+					}
+				}
+				
+				iconType = {
+					name = "economic_expenditures_pie_overlay"
+					quadTextureSprite = "GFX_pol_piechart_overlay_63x63"
+					position = { x = 67 y = 68 }
+					scale = 0.90
+				}
+			}
+
+			#####################
+			# MILITARY SPENDING #
+			#####################
+			containerWindowType = {
+				name = "Econ_mil_spending_container"
+				position = { x = 0 y = 25 }
+
+				instantTextboxType = {
+					name = "Econ_mil_spending"
+					position = { x = 21 y = 400 }
+					font = "terminal_18"
+					text = econ_mil_spending_txt
+					maxWidth = 265
+					maxHeight = 20
+					format = left
+				}
+
+				instantTextboxType = {
+					name = "Econ_mil_spending_Value"
+					position = { x = 5 y = 400 }
+					font = "terminal_18"
+					text = econ_mil_spending_txt_number
+					maxWidth = 265
+					maxHeight = 20
+					format = right
+				}
+			}
+
+			##################### 
+			# LIQUID SPENDING #
+			#####################
+			containerWindowType = {
+				name = "Econ_liq_spending_container"
+				position = { x = 0 y = 70 }
+
+				instantTextboxType = {
+					name = "Econ_liq_spending"
+					position = { x = 21 y = 265 }
+					font = "terminal_18"
+					text = reserves_buttons_value
+					maxWidth = 265
+					maxHeight = 20
+					format = left
+				}
+			}
+
+			#####################
+			# CIVILIAN SPENDING #
+			#####################
+			containerWindowType = {
+				name = "Econ_civ_spending_container"
+				position = { x = 0 y = -15 }
+
+				instantTextboxType = {     
+					name = "Econ_civ_spending"
+					position = { x = 21 y = 260 }
+					font = "terminal_18"
+					text = econ_civ_spending_txt
+					maxWidth = 265
+					maxHeight = 20
+					format = left 
+				}
+				instantTextboxType = {
+					name = "Econ_civ_spending_Value"
+					position = { x = 5 y = 260 }
+					font = "terminal_18"
+					text = econ_civ_spending_txt_number
+					maxWidth = 265
+					maxHeight = 20
+					format = right
+				}
+			}
+
+			#########################
+			# CONSTRUCTION SPENDING # 
+			#########################
+			containerWindowType = {
+				name = "Econ_construction_spending_container"
+				position = { x = 0 y = 0 }
+
+				instantTextboxType = {  
+					name = "Econ_construction_spending"
+					position = { x = 21 y = 155 }
+					font = "terminal_18"
+					text = econ_constr_spending_txt  
+					maxWidth = 265
+					maxHeight = 20
+					format = left
+				}
+
+				instantTextboxType = {
+					name = "Econ_construction_spending_Value"
+					position = { x = 5 y = 155 }
+					font = "terminal_18"
+					text = econ_constr_spending_txt_number
+					maxWidth = 265
+					maxHeight = 20
+					format = right
+				}
+			}
+
+			instantTextboxType = {
+				name = "Econ_total_spending"
+				position = { x = 21 y = 555 }
+				font = "terminal_18"
+				text = econ_total_spending_txt
+				maxWidth = 265
+				maxHeight = 20
+				format = left
+			}
+			instantTextboxType = {
+				name = "Econ_total_spending_Value"
+				position = { x = 5 y = 555 }
+				font = "terminal_18"
+				text = econ_total_spending_txt_number
+				maxWidth = 265
+				maxHeight = 20
+				format = right
+			}
+
+			instantTextboxType = {
+				name = "Econ_other_spending"
+				position = { x = 21 y = 530 }
+				font = "terminal_18"
+				text = econ_other_spending_txt
+				maxWidth = 265
+				maxHeight = 20
+				format = left
+			}
+			instantTextboxType = {
+				name = "Econ_other_spending_Value"
+				position = { x = 5 y = 530 }
+				font = "terminal_18"
+				text = econ_other_spending_txt_number
+				maxWidth = 265
+				maxHeight = 20
+				format = right
+			}
+		}
+	}
+}

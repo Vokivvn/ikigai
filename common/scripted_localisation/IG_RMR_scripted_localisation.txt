@@ -1,0 +1,332 @@
+defined_text = {
+	name = GetRMRRPRevComLead
+	text = {
+		trigger = {
+			RMR_RP_REVCOM_western_group_lead = yes
+		}
+		localization_key = "Western Group"
+	}
+	text = {
+		trigger = {
+			RMR_RP_REVCOM_tribunal_group_lead = yes
+		}
+		localization_key = "Tribunal Group"
+	}
+	text = {
+		trigger = {
+			RMR_RP_REVCOM_northeastern_army_lead = yes
+		}
+		localization_key = "Northeastern Army"
+	}
+	text = {
+		trigger = {
+			RMR_RP_REVCOM_roman_group_lead = yes
+		}
+		localization_key = "Roman Group"
+	}
+}
+defined_text = {
+	name = GetRMRRPCisalpineLead
+	text = {
+		trigger = {
+			RMR_RP_CISALPINE_tribunal_chancellery_lead = yes
+		}
+		localization_key = "Tribunal Chancellery"
+	}
+	text = {
+		trigger = {
+			RMR_RP_CISALPINE_southern_group_lead = yes
+		}
+		localization_key = "Southern Group"
+	}
+	text = {
+		trigger = {
+			RMR_RP_CISALPINE_senatorial_caucus_lead = yes
+		}
+		localization_key = "Senatorial Caucus"
+	}
+}
+defined_text = {
+	name = GetRMRRPRevComLeadornot
+	text = {
+		trigger = {
+			OR = {
+				RMR_RP_REVCOM_western_group_lead = yes
+				RMR_RP_REVCOM_tribunal_group_lead = yes
+				RMR_RP_REVCOM_northeastern_army_lead = yes
+				RMR_RP_REVCOM_roman_group_lead = yes
+			}
+		}
+		localization_key = RMR_RP_REVCOM_LEAD
+	}
+	text = {
+		trigger = {
+			AND = {
+				RMR_RP_REVCOM_western_group_lead = no
+				RMR_RP_REVCOM_tribunal_group_lead = no
+				RMR_RP_REVCOM_northeastern_army_lead = no
+				RMR_RP_REVCOM_roman_group_lead = no
+			}
+		}
+		localization_key = RMR_RP_REVCOM_NO_LEAD
+	}
+}
+defined_text = {
+	name = GetRMRRPCisalpineLeadornot
+	text = {
+		trigger = {
+			OR = {
+				RMR_RP_CISALPINE_tribunal_chancellery_lead = yes
+				RMR_RP_CISALPINE_southern_group_lead = yes
+				RMR_RP_CISALPINE_senatorial_caucus_lead = yes
+			}
+		}
+		localization_key = RMR_RP_CISALPINE_LEAD
+	}
+	text = {
+		trigger = {
+			AND = {
+				RMR_RP_CISALPINE_tribunal_chancellery_lead = no
+				RMR_RP_CISALPINE_southern_group_lead = no
+				RMR_RP_CISALPINE_senatorial_caucus_lead = no
+			}
+		}
+		localization_key = RMR_RP_CISALPINE_NO_LEAD
+	}
+}
+defined_text = {
+	name = GetRMRRPisgovstable
+	text = {
+		trigger = {
+			RMR_gov_stable = yes
+		}
+		localization_key = RMR_RP_GOV_STABLE
+	}
+	text = {
+		trigger = {
+			RMR_gov_stable = no
+		}
+		localization_key = RMR_RP_GOV_NOT_STABLE
+	}
+}
+defined_text = {
+	name = GetRMRRPrevcominfluence
+	text = {
+		trigger = {
+			check_variable = { revcom_popularity < 0.11 }
+		}
+		localization_key = RMR_RP_faction_irrelevant
+	}
+	text = {
+		trigger = {
+			check_variable = { revcom_popularity > 0.10 }
+			check_variable = { revcom_popularity < 0.41 }
+		}
+		localization_key = RMR_RP_faction_somewhat_influential
+	}
+	text = {
+		trigger = {
+			check_variable = { revcom_popularity > 0.40 }
+			check_variable = { revcom_popularity < 0.71 }
+		}
+		localization_key = RMR_RP_faction_worryingly_influential
+	}
+	text = {
+		trigger = {
+			check_variable = { revcom_popularity > 0.70 }
+		}
+		localization_key = RMR_RP_faction_dangerously_influential
+	}
+}
+defined_text = {
+	name = GetRMRRPrevcomloyalty
+	text = {
+		trigger = {
+			check_variable = { revcom_loyalty < 0.11 }
+		}
+		localization_key = RMR_RP_faction_loyalty_absent
+	}
+	text = {
+		trigger = {
+			check_variable = { revcom_loyalty > 0.10 }
+			check_variable = { revcom_loyalty < 0.41 }
+		}
+		localization_key = RMR_RP_faction_loyalty_questionable
+	}
+	text = {
+		trigger = {
+			check_variable = { revcom_loyalty > 0.40 }
+			check_variable = { revcom_loyalty < 0.71 }
+		}
+		localization_key = RMR_RP_faction_loyalty_unquestionable
+	}
+	text = {
+		trigger = {
+			check_variable = { revcom_loyalty > 0.70 }
+		}
+		localization_key = RMR_RP_faction_loyalty_absolute
+	}
+}
+defined_text = {
+	name = GetRMRRPrevcomunity
+	text = {
+		trigger = {
+			check_variable = { revcom_unity < 0.51 }
+		}
+		localization_key = RMR_RP_faction_disunited
+	}
+	text = {
+		trigger = {
+			check_variable = { revcom_unity > 0.50 }
+		}
+		localization_key = RMR_RP_faction_united
+	}
+}
+defined_text = {
+	name = GetRMRRPcisalpineinfluence
+	text = {
+		trigger = {
+			check_variable = { cisalpine_popularity < 0.11 }
+		}
+		localization_key = RMR_RP_faction_irrelevant
+	}
+	text = {
+		trigger = {
+			check_variable = { cisalpine_popularity > 0.10 }
+			check_variable = { cisalpine_popularity < 0.41 }
+		}
+		localization_key = RMR_RP_faction_somewhat_influential
+	}
+	text = {
+		trigger = {
+			check_variable = { cisalpine_popularity > 0.40 }
+			check_variable = { cisalpine_popularity < 0.71 }
+		}
+		localization_key = RMR_RP_faction_worryingly_influential
+	}
+	text = {
+		trigger = {
+			check_variable = { cisalpine_popularity > 0.70 }
+		}
+		localization_key = RMR_RP_faction_dangerously_influential
+	}
+}
+defined_text = {
+	name = GetRMRRPcisalpineloyalty
+	text = {
+		trigger = {
+			check_variable = { cisalpine_loyalty < 0.11 }
+		}
+		localization_key = RMR_RP_faction_loyalty_absent
+	}
+	text = {
+		trigger = {
+			check_variable = { cisalpine_loyalty > 0.10 }
+			check_variable = { cisalpine_loyalty < 0.41 }
+		}
+		localization_key = RMR_RP_faction_loyalty_questionable
+	}
+	text = {
+		trigger = {
+			check_variable = { cisalpine_loyalty > 0.40 }
+			check_variable = { cisalpine_loyalty < 0.71 }
+		}
+		localization_key = RMR_RP_faction_loyalty_unquestionable
+	}
+	text = {
+		trigger = {
+			check_variable = { cisalpine_loyalty > 0.70 }
+		}
+		localization_key = RMR_RP_faction_loyalty_absolute
+	}
+}
+defined_text = {
+	name = GetRMRRPcisalpineunity
+	text = {
+		trigger = {
+			check_variable = { cisalpine_unity < 0.51 }
+		}
+		localization_key = RMR_RP_faction_disunited
+	}
+	text = {
+		trigger = {
+			check_variable = { cisalpine_unity > 0.50 }
+		}
+		localization_key = RMR_RP_faction_united
+	}
+}
+defined_text = {
+	name = GetRMRRPhasauthoritariangov
+	text = {
+		trigger = {
+			has_government = autocratic
+		}
+		localization_key = RMR_RP_auth_party_lead_control
+	}
+	text = {
+		NOT = {
+			trigger = {
+				has_government = autocratic
+			}
+		}
+		localization_key = ""
+	}
+}
+defined_text = {
+	name = GetRMRRPagriindinfluence
+	text = {
+		trigger = {
+			check_variable = { agri_ind_influence < 0.11 }
+		}
+		localization_key = RMR_RP_faction_irrelevant
+	}
+	text = {
+		trigger = {
+			check_variable = { agri_ind_influence > 0.10 }
+			check_variable = { agri_ind_influence < 0.41 }
+		}
+		localization_key = RMR_RP_faction_somewhat_influential
+	}
+	text = {
+		trigger = {
+			check_variable = { agri_ind_influence > 0.40 }
+			check_variable = { agri_ind_influence < 0.71 }
+		}
+		localization_key = RMR_RP_faction_worryingly_influential
+	}
+	text = {
+		trigger = {
+			check_variable = { agri_ind_influence > 0.70 }
+		}
+		localization_key = RMR_RP_faction_dangerously_influential
+	}
+}
+defined_text = {
+	name = GetRMRRPvaticaninfluence
+	text = {
+		trigger = {
+			check_variable = { vatican_influence < 0.11 }
+		}
+		localization_key = RMR_RP_faction_irrelevant
+	}
+	text = {
+		trigger = {
+			check_variable = { vatican_influence > 0.10 }
+			check_variable = { vatican_influence < 0.41 }
+		}
+		localization_key = RMR_RP_faction_somewhat_influential
+	}
+	text = {
+		trigger = {
+			check_variable = { vatican_influence > 0.40 }
+			check_variable = { vatican_influence < 0.71 }
+		}
+		localization_key = RMR_RP_faction_worryingly_influential
+	}
+	text = {
+		trigger = {
+			check_variable = { vatican_influence > 0.70 }
+		}
+		localization_key = RMR_RP_faction_dangerously_influential
+	}
+}

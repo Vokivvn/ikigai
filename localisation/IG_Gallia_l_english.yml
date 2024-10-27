@@ -1,0 +1,209 @@
+﻿l_english:
+
+#Country names
+GAL:0 "Gallia"
+GAL_DEF:0 "the Gallian Liberation Army"
+GAL_ADJ:0 "Gallian"
+
+# Ideas
+
+GAL_political_concerns_idea:0 "Internal Divisions"
+GAL_political_concerns_idea_desc:0 "Bands of refugees flood us from the East every month, and settlers of every ideological strain come to our borders to find a new cause. While we are all dismayed with the Republic, we all did so for different reasons, and far from all of them stand with the Legate."
+
+GAL_rubicon:0 "Beyond the Rubicon"
+GAL_rubicon_desc:0 "Two thousand years ago, Caesar crossed the Rubicon, setting off the chain of events which would lead to the birth of the eternal Empire. Now, we have fled beyond it, once more in Gaul. Our soldiers are in high spirits and ready to fight as long as it takes to return to Roma once more."
+
+GAL_tria_decreta:0 "Tria Decreta Populi"
+GAL_tria_decreta_desc:0 "Nationalism - government of the people. The maintenance of Roman unity which always has been and always should be.\n\nFreedom - government by the people. The recognition of the failure of the autocratic Dominate as well as the brutal Giuratian Republic, and the need for a constitutional regime instead.\n\nLivelihood - government for the people. The unquestioned duty of the government to provide for every person, rich or poor, via any method deemed appropriate."
+
+GAL_telo_martius_academy:0 "Telo Martius Military Academy"
+GAL_western_expedition_preps:0 "Preparation for the Western Expedition"
+GAL_foreign_support:0 "Foreign Support"
+
+# Tooltips
+
+GAL_recover_from_the_long_march_tt:0 "£nato_unit_infantry_icon_small Raise two §YRegular Armies§! with 8 §YInfantry§! battalions and 1 §YArtillery§! battalion."
+
+# National focus
+
+GAL_recover_from_the_long_march:0 "Legacy of the Long March"
+GAL_recover_from_the_long_march_desc:0 ""
+
+GAL_nationalism:0 "Nationalism!"
+GAL_nationalism_desc:0 ""
+
+GAL_liberty:0 "Freedom!"
+GAL_liberty_desc:0 ""
+
+GAL_prosperity:0 "Livelihood!"
+GAL_prosperity_desc:0 ""
+
+GAL_three_principles:0 "Tria Decreta Populi Study Groups"
+GAL_three_principles_desc:0 ""
+
+GAL_political_concerns:0 "Assess the Political Situation"
+GAL_political_concerns_desc:0 ""
+
+GAL_close_republican_border:0 "Close the Republican Border"
+GAL_close_republican_border_desc:0 ""
+
+GAL_conscription:0 "Implement Conscription"
+GAL_conscription_desc:0 ""
+
+GAL_telo_martius_academy:0 "Telo Martius Military Academy"
+GAL_telo_martius_academy_desc:0 ""
+
+GAL_seek_support_japan:0 "Seek Japanese Support"
+GAL_seek_support_japan_desc:0 ""
+
+GAL_seek_support_kowai:0 "Seek Kowaian Support"
+GAL_seek_support_kowai_desc:0 ""
+
+GAL_seek_support_china:0 "Seek Jyut Hai Support"
+GAL_seek_support_china_desc:0 ""
+
+GAL_prepare_for_expeditions:0 "The Great Expeditions"
+GAL_prepare_for_expeditions_desc:0 ""
+
+GAL_dare_to_die:0 "Organize Dare-to-Die Corps"
+GAL_dare_to_die_desc:0 ""
+
+GAL_asian_contact_equipment:0 "Asian-Contact Equipment Shipments"
+GAL_asian_contact_equipment_desc:0 ""
+
+GAL_inspire_the_exiles:0 "Inspire the Exiles"
+GAL_inspire_the_exiles_desc:0 ""
+
+GAL_western_expedition:0 "The Western Expedition"
+GAL_western_expedition_desc:0 ""
+
+GAL_legate_emergency:0 "The Young Legate's State of Emergency"
+GAL_legate_emergency_desc:0 ""
+
+GAL_dismantle_cliques:0 "Dismantle Local Military Cliques"
+GAL_dismantle_cliques_desc:0 ""
+
+GAL_three_principles_oath:0 "Oaths of Loyalty to the Tria Decreta"
+GAL_three_principles_oath_desc:0 ""
+
+GAL_liberal_party:0 "Round Table Talks with Factio Liberalis"
+GAL_liberal_party_desc:0 ""
+
+GAL_bureau_of_investigation:0 "Tabularium Inquisitionum"
+GAL_bureau_of_investigation_desc:0 ""
+
+GAL_princess_permanent_guard:0 "The Princess' Permanent Guard"
+GAL_princess_permanent_guard_desc:0 ""
+
+GAL_new_local_governments:0 "Install New Local Governments"
+GAL_new_local_governments_desc:0 ""
+
+GAL_anarchist_trials:0 "Trials for the Anarchists"
+GAL_anarchist_trials_desc:0 ""
+
+GAL_democrats_lenient:0 "Integrate Democrats into the Government"
+GAL_democrats_lenient_desc:0 ""
+
+GAL_democrats_harsh:0 "Appoint Nonpartisan Ministers"
+GAL_democrats_harsh_desc:0 ""
+
+GAL_plebs_lenient:0 "Integrate Plebians into the Liberation Army"
+GAL_plebs_lenient_desc:0 ""
+
+GAL_plebs_harsh:0 "The Telo Martius Purges"
+GAL_plebs_harsh_desc:0 ""
+
+GAL_free_empire:0 "The Dream of a Free Empire"
+GAL_free_empire_desc:0 ""
+
+GAL_renaissance:0 "Renaissance"
+GAL_renaissance_desc:0 ""
+
+GAL_civilian_industry_1:0 "Modernize Local Agriculture"
+GAL_civilian_industry_1_desc:0 ""
+
+GAL_military_industry_1:0 "Small-Scale Manufacturing"
+GAL_military_industry_1_desc:0 ""
+
+GAL_renaissance_1_complete:0 "Sense of Dedication"
+GAL_renaissance_1_complete_desc:0 ""
+
+# Events
+
+gallia.1.t:0 "The Gallian Liberation Army"
+gallia.1.d:0 "Estella Joudain, a warlord of firm character and perseverance, has created one of the largest warlord regions of the Frank empire during its short lived time. Born in the Roman Empire, her father was one of the regional consultants in the Imperial Court. He met lots of nobles, and many new contacts. When she was 14, she was already interested in Roman politics, and wished for one day being in the Royal Court of the Empire. In 1902, the Empire fell into chaos, thousands of immigrants escaped to the countryside, and others returned to the newly established Roman Republic. One of these though, was the Emperor of Rome, regent of the nation. He was killed by a gunshot when escaping the palace, but the empress survived, and managed to escape to the countryside. Joudain’s life quickly changed into the one of being the royal babysitter of the princess, while she trained with the remnants of the Imperial Roman army in Gallia, one of the largest forces, that renamed itself into the Gallian Liberation Army. Her dreams never ceased, and she proved to be an excellent strategist who led the armies into expanding their borders for the new "Free" empire of Rome. Her dream became stronger, and the goal of getting to Rome and forming that long lost free empire are greater than ever. But with the Britannian menace, and the constant attempts to assassinate her and the Princess... the dream is at stake, for liberty and freedom, and for the empire!"
+gallia.1.a:0 "Ave Roma!"
+
+gallia.2.t:0 "Midnight"
+gallia.2.d:0 "The night was quiet, it felt as though nothing was wrong, something stirred her in her sleep, eyes squinted she saw an outline, no outlines, people were in her room. "Can I help you?" Estella asked.\n\nThe question was only answered by a swift swing from a knife, she quickly moved away and quickly went for her own dagger. The men came charging at her, but after dimming the candle that lay undisturbed on her bedside cabinet, she slowly picked them off one by one.\n\nUpon her own small investigation, she finds that the now dead men bear the mark of Rome, these were not men of her own country, these were assassins of the Roman Republic."
+gallia.2.a:0 "Disgusting..."
+
+gallia.3.t:0 "Second Atalanta"
+gallia.3.d:0 "Blossoms in spring, the water droplets falling from the concrete roofs, accompanied by the ticking sound of an old wooden clock on a wall. She gazed at the window, crossed her arms and sighed as she rested her head on the wall. The week, to put it short, was exhausting. She enjoyed those things nevertheless, reading those bulky books covered in dust, talking with her father’s friends about the Imperial situation, and trying to be better than the “common folk,” learning new things everyday, things that life would pay for in the future.\n\nWithout a doubt, she was born into a loving mother and father, those specks of the past consisted in exploring the local woods, and trying to play war games with the local boys. You see, she never really liked what her mother wanted of her. Just another noble, another useless person in the court. Only because she wasn’t born as a man, she was forced to stay those grueling nights with her perfect tutors. Either way, she slipped past them, and tried playing with the boys, who loved those violent games. They would wrap the Japanese flag and burn it, attacking it with sticks for those memories of the past invasions.\n\n"But what do we have here, Ms. Idiot."\n\n"Hey don’t call her like that!" a blonde boy with blue, diamond eyes stepped forwards with a killing frown. He clenched his fists, and tilted his head a bit, "you stupid idiot."\n\n"Aww, defending your girlfriend!" the other boy cackled, "maybe it’s-"\n\nHis eyes widened as a fist crashed with his face.\n\n"You- you-"\n\n"Come on Estelle, let’s go," the blonde boy said after spitting on his 'friend'. The two would escape into the woods, and play fight games occasionally with other boys, if they decided to come of course.\n\nSomething that of course, everyone noticed through time was one thing. She was a brilliant strategist, and she wanted to show it. Back home, near a vineyard in the countryside, it was often a symbol of noble grandeur and Roman encouraged brilliance. One that could laugh of many storms, some might mistake it for a castle at the best of times. But no matter what happened, and no matter her age there was one dream that lived in her, and outlasted any age. Rome.\n\nSo often when she climbed into bed she often pondered if she could truly climb the ladder of Rome, and grace the halls of the Royal Court. Whether she would, anc ould, there was the need to sharpen her mind, show that she is as capable as any man, she needs to show the world a second Atalanta."
+gallia.3.a:0 "Ave Roma..."
+
+gallia.4.t:0 "The Princess"
+gallia.4.d:0 "The blood was still fresh on both her hands and her dagger, Rome had now branded her as a traitor.\n\n"Cowards!" She yelled.\n\nHer yell broke the disturbing silence that had now replaced the brief struggle, she got up and got dressed in her uniform, she called to her guards, they retrieved the bodies, but almost immediately she sent out a phone call to her inner circle.\n\nShe sent a message to watch their backs and to stay safe, after this she made sure the princesses quarters were safe, entering she saw the young brown haired princess lying asleep, ushering her awake, her deep blue eyes became apparent.\n\n“Princess, you-”\n\n“Don’t say it,” the princess threw a tired face, ”I also heard about the accident, didn’t you think that I would-”\n\n“Shut up,” Estella glared, “you didn’t even know what I was going to ask.”\n\n“I knew-” she paused, shaking her head, “nothing, I still don’t want to hear your questions, I’m fine okay, I’m not a little girl, you can stop checking on me when things like this happen.”\n\n“Fine,” Estella straightened herself, turned back, and raised her voice again, “there’s a gun in the left locker, if someone that you don’t recognize tries to get through those doors again, you know what to do.”\n\nIgnoring the muffled words of the princess, Estella closed the doors. She sighed, resting a hand on the dirty wood. A memory crossed her mind. She shared a glance with the soldiers, and ushered them away."
+gallia.4.a:0 "The die is cast."
+
+gallia.5.t:0 "Second Atalanta?"
+gallia.5.d:0 "The day was a warm blue and white, the rain had not yet come and was destined to fall around nightfall, in the garden of Estella’s home there was a fountain, where a small baby toddler played by the lush forests, a maid keeping her busy while Estella herself talked with her parents.\n\n“You can't be serious?” Estella asked.\n\nHer father was clearly on edge, this conversation had been going on for the last few minutes and it seemed to be at a climax.\n\n“I know it’s not what you wanted but it was the closest thing I could get you in service, you know our legions don't allow women amongst the ranks.”\n\nEstella let out a large puff of air, she wished to serve the country, to serve Rome, but her gender seemed to be deciding her life now more than ever.\n\n“Is it because I outsmarted Lucifer? Estella asked. “Is it because I was able to out smart him in front of his tutors? Hmm, was it?”\n\nHer mother and her father began to walk away, he would not play to her fantasies any longer, Estella punched the wall near her, nearly breaking her hand for how hard she punched it, but after regretting it deeply, she stepped out into the warm sunlight and felt it hit her face immediately, she could only remember these days, from her even younger youth.\n\nFrom afar she could see him, a blonde man now, with those aged diamond eyes, he was sparing with his tutors, the bruises from their last spare still visible on his face.\n\nShe walked forward, motioning the maid back to her usual duties, picking the Toddler up she made sure she wouldn't drop the innocent child Estella took the young and perhaps the second most powerful person of Rome inside, but with the child being so small and weak, she felt as though she was the most powerful person made by Rome and finally for Rome. Princess Lunaris, regent of the Roman Empire."
+gallia.5.a:0 "It was a difficult time."
+
+gallia.6.t:0 "The Young Legate"
+gallia.6.d:0 "The meeting was nearly over, it had been soul draining, her inner circle was splitting in two, it felt as though her cabinet had forgotten her opinion, some wanted peace, others wanted the warlords that surrounded them put down, like the dirty hounds they were.\n\nSoldier stood outside, ready to come in on a minute's notice, Estella had taken to writing in a notebook, what she was writing was secret, not even he circle could know, no one could know.\n\nAn argument had spilled into the air, she hated it, the two sides were now in a full blown screaming match, like a petty child they squabble over a decision which is out of their hands!\n\n“Idiots…” Estella murmured “Complete and utter fools I say” She said again. It was just getting louder.\n\n“Everyone shut up!” Estella yelled. “You hear me now! Shut up the lot of you!”\n\nLike a mother tending to a crying bunch of children, they all stopped, gathered themselves and sat down.\n\n“We will do as I say, alright! I lead us! Me! Just me. No one else, you advice, none of you lead! I will lead us here and now! And on the battlefield!” The meeting falls silent.\n\nEverything was blurry. She heard the Britannian drums in the north, marching with their powerful armies, remembering a mirror of the past."
+gallia.6.a:0 "The fire burns..."
+
+gallia.7.t:0 "Care"
+gallia.7.d:0 "She was finally speaking, though Estella, knowing that the princess can finally move away from the goo goos and ga ga’s, now the teaching can begin, her mother was nowhere to be seen and her father was in Rome, a long long way away.\n\nShe doesn't need what I got, Estella thought again, she doesn't need to be smothered in what girls do, she needs what I would do, she needs to be extinct.\n\n“If you're going to wear a crown on your head, you best have a bit of iron inside you rather than on you.” The young child giggled and the world around them seemed lighter.\n\nThe sound of boots clapped on the floor, two people marched in the room, putting the Princess down, Estella faced the two, those familiar diamond eyes met hers, he now wore a uniform, the one of Rome’s finest minds.\n\n“Hello Lucifer,” Estella said. “I see you brought a friend.” \n\n“Yes I did.” Lucifer replied.\n\n“Well state why you're here?” \n\nThe man held a briefcase, in it was clearly state business, it had to do with the princess, it had to be, or else they wouldn't be here, it was never her. “We came to inspect the princess, we wanted to see how much progress she has made.” Estella gave them both a look over, the gray sky, pierced the room, giving it a wet and gloomy mood.\n\n“She is doing good, she’s been a bit out of control lately, but knowing that at her age well, you know, things get a little bit out of control, only 21 and already thinking of raising that flag.”\n\n“Is that all?” The man asked.\n\n“Yes,” Estella replied. “That's all that is asked of me, develop her mind and keep her safe.” The men departed the room, shaking their heads."
+gallia.7.a:0 "They never change."
+
+gallia.8.t:0 "They Changed!"
+gallia.8.d:0 "The names! The names, so many names in her journal, so many untrustworthy, so many conspiring, all want power all are corrupt, these were the thoughts going through Estella’s mind. She began to ponder how to tackle this issue, the assassin problem was still looming over her, how many more would come, how many were here in the midst, she needed to out her opponents in her inner circle, she needed to purify her governance.\n\nShe will find a way, she always finds a way.\n\nJust like when she escaped from the chaos, when Rome was consumed by fire."
+gallia.8.a:0 "Gallia needs to follow its Legate!"
+
+gallia.9.t:0 "The Fall of Rome"
+gallia.9.d:0 "All across the empire reports came in, Rome was slipping, Iberia was the first to begin stirring trouble, Northern Gallia, the reports were not clear. But the challenge of protecting the princess was getting difficult, the local town was battling the local police, so food was getting harder to come by. She needed to take the princess away from here, and secure it before joining this fight. A fight for the empire.\n\nThe carriage was prepared and they both rushed in, Lucifer was guarding them. "Take us into the country sir. We have a safe area to plan out our next move." he demanded.\n\nThe driver nodded and off they went. The carriage ride was silent, the sound of gunshots in the East thundered the skies. The moon twirled with the stars, under the sermon of the seven seas, and where the Princess could hear the steps of the death. \n\n“The Emperor is dead! Long live the Republic!”"
+gallia.9.a:0 "Towards Telo Martius..."
+
+gallia.10.t:0 "Gallia Requests Support"
+gallia.10.d:0 "A message has reached us from the so-called Gallian Liberation Army in the former Roman Empire - they request our support for their battle against the tyrannical regime in Rome, in the form of weapons and advisors. Should we help this European faction or should we leave it to their devices?"
+gallia.10.a:0 "We will help the poor Europeans"
+gallia.10.b:0 "No need"
+
+if_accepted:0 "If they accept:\n"
+
+gallia.11.t:0 "[From.GetName] Agrees"
+gallia.11.d:0 "The government of [From.GetName] has accepted our request, and their shipments of weapons, artillery pieces, and trained advisors have already reached Telo Martius. With their support, we will be able to turn the Gallian Liberation Army into a truly powerful force!"
+gallia.11.a:0 "To everlasting friendship between Rome and [From.GetName]!"
+
+gallia.12.t:0 "[From.GetName] Declines"
+gallia.12.d:0 "The government of [From.GetName] has declined our request for reasons we have not been made privy to - however, we should have expected this from the beginning, the Asian empires which humiliated Roma so brutally would certainly be uninterested in helping it recover."
+gallia.12.a:0 "Bastards! Idiots!"
+
+# Europe warlords
+
+Europe_renovatio_imperii_cat:0 "Renovatio Imperii"
+Europe_renovatio_imperii_cat_desc:0 "In 1902, the Imperium fell, marking an end to two thousand years of practically uninterrupted rule from Urbs Aeterna. Dozens of petty claimants and warlords have risen in their wake, surrounding a weak Roman Republic which claims overlordship over it all. However, Rome cannot stay disunited forever. Eventually, one clique or another will rise to restore the legacy of Rome and bring it to a new era - we have to do everything in our power to ensure that it is us."
+
+restore_rome:0 "Restore Rome"
+restore_rome_desc:0 "The Eternal City is ours, and all our enemies have been slain! Let us bask in the glory of a restored Roman hegemony, and an end to the Century of Humiliation!"
+ROM_Integrate_Region:0 "Integrate §Y[From.GetName]§!"
+
+ROM_EMP:0 "Romana"
+ROM_EMP_DEF:0 "Romana"
+ROM_EMP_ADJ:0 "Roman"
+
+# Level 1 Uniters
+
+ROM_first_level_uniter:0 "Has formed a §Ylevel 1§! sub-region"
+ROM_first_level_uniter_tt:0 "This is considered a §Ylevel 1§! sub-region."
+
+form_romana:0 "Form Romana"
+ROM_ROMANA:0 "Roman Empire"
+ROM_ROMANA_DEF:0 "the Roman Empire"
+ROM_ROMANA_ADJ:0 "Roman"
+
+# Level 2 Uniters
+
+ROM_second_level_uniter:0 "Has formed a §Ylevel 2§! sub-region"

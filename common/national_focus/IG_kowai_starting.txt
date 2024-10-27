@@ -1,0 +1,847 @@
+	shared_focus = {
+		id = UPK_Nighthawks
+		
+		icon = GFX_goal_UPK_Nighthawks
+		x = 4
+		y = 1
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+
+		}
+	}
+
+	shared_focus = {
+		id = UPK_Kowaian_Gothic
+		prerequisite = { focus = UPK_Nighthawks }
+		icon = GFX_goal_UPK_Kowaian_Gothic
+		x = 4
+		y = 2
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+
+		}
+	}
+
+	shared_focus = {
+		id = UPK_Another_Year_of_Stagnation
+		prerequisite = { focus = UPK_Kowaian_Gothic }
+		icon = GFX_goal_UPK_Kowaian_Stagnation
+		x = 4
+		y = 3
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+
+		}
+	}
+
+	shared_focus = {
+		id = UPK_The_Game_of_Cards
+		prerequisite = { focus = UPK_Another_Year_of_Stagnation }
+		icon = GFX_goal_UPK_Game_Of_Cards
+		x = 2
+		y = 4
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+
+		}
+	}
+
+	shared_focus = {
+		id = UPK_Review_the_Deparment_of_Agriculture
+		prerequisite = { focus = UPK_The_Game_of_Cards }
+		icon = GFX_goal_UPK_Review_Department_of_Agriculture
+		x = 1
+		y = 5
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+
+		}
+	}
+
+	shared_focus = {
+		id = UPK_Talk_with_the_Senators
+		prerequisite = { focus = UPK_The_Game_of_Cards }
+		icon = GFX_goal_UPK_Talk_with_the_Senators
+		x = 3
+		y = 5
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+
+		}
+	}
+
+	shared_focus = {
+		id = UPK_Pull_the_Strings
+		prerequisite = { focus = UPK_Talk_with_the_Senators }
+		prerequisite = { focus = UPK_Review_the_Deparment_of_Agriculture }
+		icon = GFX_goal_UPK_Pull_the_Strings
+		x = 2
+		y = 6
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+
+		}
+	}
+
+	shared_focus = {
+		id = UPK_Agricultural_Spiral
+		prerequisite = { focus = UPK_Another_Year_of_Stagnation }
+		icon = GFX_goal_UPK_Agricultural_Spiral
+		x = 6
+		y = 4
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+
+		}
+	}
+
+	shared_focus = {
+		id = UPK_The_Dust_Bowl
+		prerequisite = { focus = UPK_Agricultural_Spiral }
+		icon = GFX_goal_UPK_The_Dust_Bowl
+		x = 7
+		y = 5
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+
+		}
+	}
+
+	shared_focus = {
+		id = UPK_Blight_Management
+		prerequisite = { focus = UPK_Agricultural_Spiral }
+		icon = GFX_goal_UPK_Blight_Management
+		x = 5
+		y = 5
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+
+		}
+	}
+
+	shared_focus = {
+		id = UPK_Pass_the_Resolution
+		prerequisite = { focus = UPK_The_Dust_Bowl }
+		prerequisite = { focus = UPK_Blight_Management }
+		icon = GFX_goal_UPK_Pass_the_Resolution
+		x = 6
+		y = 6
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+
+		}
+	}
+
+	shared_focus = {
+		id = UPK_Bad_can_be_Good 
+		prerequisite = { focus = UPK_Pull_the_Strings }
+		prerequisite = { focus = UPK_Pass_the_Resolution }
+		icon = GFX_goal_UPK_Bad_can_be_Good
+		x = 4
+		y = 7
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+
+		}
+	}
+
+	shared_focus = {
+		id = UPK_A_Presidential_Scare
+		prerequisite = { focus = UPK_Bad_can_be_Good }
+		icon = GFX_goal_UPK_A_Presidential_Scare
+		x = 4
+		y = 8
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+
+		}
+	}
+
+	shared_focus = {
+		id = UPK_Meet_with_the_Agriculture_Secretary 
+		prerequisite = { focus = UPK_A_Presidential_Scare }
+		icon = GFX_goal_UPK_Meet_with_the_Agriculture_Secretary
+		x = 3
+		y = 9
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+
+		}
+	}
+
+	shared_focus = {
+		id = UPK_The_Keys_to_success_are_Lost 
+		prerequisite = { focus = UPK_A_Presidential_Scare }
+		icon = GFX_goal_UPK_The_Keys_to_success_are_Lost
+		x = 5
+		y = 9
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+
+		}
+	}
+
+	shared_focus = {
+		id = UPK_The_Kowaian_Way 
+		prerequisite = { focus = UPK_The_Keys_to_success_are_Lost  }
+		prerequisite = { focus = UPK_Meet_with_the_Agriculture_Secretary }
+		icon = GFX_goal_UPK_The_Kowaian_Way
+		x = 4
+		y = 10
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+
+		}
+	}
+
+	shared_focus = {
+		id = UPK_And_the_Loop_starts_Again 
+		prerequisite = { focus = UPK_The_Kowaian_Way  }
+		icon = GFX_goal_UPK_And_the_Loop_starts_Again
+		x = 4
+		y = 11
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+
+		}
+	}
+
+	shared_focus = {
+		id = UPK_To_the_back_of_our_minds
+		mutually_exclusive = { focus = UPK_Eyes_on_Europe }
+		icon = GFX_goal_UPK_To_the_back_of_our_minds
+		x = 10
+		y = 1
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+
+		}
+	}
+
+	shared_focus = {
+		id = UPK_Its_Never_going_to_Stop
+		prerequisite = { focus = UPK_To_the_back_of_our_minds focus = UPK_Eyes_on_Europe }
+
+		icon = GFX_goal_UPK_Its_Never_going_to_Stop
+		x = 11
+		y = 2
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+
+		}
+	}
+
+	shared_focus = {
+		id = UPK_Let_the_Sailors_Sleep
+		prerequisite = { focus =  UPK_Its_Never_going_to_Stop }
+		icon = GFX_goal_UPK_Let_the_Sailors_Sleep
+		x = 11
+		y = 3
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+
+		}
+	}
+
+	shared_focus = {
+		id = UPK_Where_No_One_Cares
+		prerequisite = { focus =  UPK_Let_the_Sailors_Sleep }
+		icon = GFX_goal_UPK_Where_No_One_Cares
+		x = 10
+		y = 4
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+
+		}
+	}
+
+	shared_focus = {
+		id = UPK_Eyes_on_Europe
+		icon = GFX_goal_UPK_Eyes_on_Europe
+		x = 12
+		y = 1
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+
+		}
+	}
+
+	shared_focus = {
+		id = UPK_More_support_to_the_Romans
+		prerequisite = { focus = UPK_Eyes_on_Europe }
+		icon = GFX_goal_UPK_More_support_to_the_Romans
+		x = 13
+		y = 2
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+
+		}
+	}
+
+	shared_focus = {
+		id = UPK_Interijensu_Shirei_in_Germania
+		prerequisite = { focus = UPK_More_support_to_the_Romans }
+		icon = GFX_goal_UPK_Interijensu_Shirei_in_Germania
+		x = 13
+		y = 3
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+
+		}
+	}
+
+	shared_focus = {
+		id = UPK_Ignore_the_Strikes
+		prerequisite = { focus = UPK_Interijensu_Shirei_in_Germania focus = UPK_Let_the_Sailors_Sleep }
+		icon = GFX_goal_UPK_Ignore_the_Strikes
+		x = 12
+		y = 4
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+
+		}
+	}
+
+	shared_focus = {
+		id = UPK_Track_Down_the_Opponents_in_the_Army
+		prerequisite = { focus = UPK_Ignore_the_Strikes }
+		icon = GFX_goal_UPK_Track_Down_the_Opponents_in_the_Army
+		x = 12
+		y = 5
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+
+		}
+	}
+
+	shared_focus = {
+		id = UPK_The_Endless_Dreams
+		prerequisite = { focus = UPK_Track_Down_the_Opponents_in_the_Army }
+		icon = GFX_goal_UPK_The_Endless_Dreams
+		x = 12
+		y = 6
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+
+		}
+	}
+
+	shared_focus = {
+		id = UPK_Change_can_come_later.....
+		prerequisite = { focus = UPK_The_Endless_Dreams }
+		icon = GFX_goal_UPK_Change_can_come_later
+		x = 12
+		y = 7
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		completion_reward = {
+
+		}
+	}
+
+
+
+

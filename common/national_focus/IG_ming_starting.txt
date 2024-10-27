@@ -1,0 +1,867 @@
+shared_focus = {
+	id = MIN_our_woes
+	
+	#icon = 
+	x = 8
+	y = 0
+
+	cost = 1
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {}
+	completion_reward = {
+		country_event = ming.1
+	}
+}
+
+shared_focus = {
+	id = MIN_thrashed_economy
+	prerequisite = { focus = MIN_our_woes }
+	relative_position_id = MIN_our_woes
+	
+	#icon = 
+	x = -1
+	y = 1
+
+	cost = 1
+
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {}
+	completion_reward = {
+		country_event = ming.2
+	}
+}
+
+shared_focus = {
+	id = MIN_traitors_of_ming
+	prerequisite = { focus = MIN_our_woes }
+	relative_position_id = MIN_our_woes
+	
+	#icon = 
+	x = 1
+	y = 1
+
+	cost = 1
+
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {}
+	completion_reward = {
+		country_event = ming.3
+	}
+}
+
+shared_focus = {
+	id = MIN_our_goals_in_motion
+	prerequisite = { focus = MIN_thrashed_economy }
+	prerequisite = { focus = MIN_traitors_of_ming }
+	relative_position_id = MIN_thrashed_economy
+	
+	#icon = 
+	x = 1
+	y = 1
+
+	cost = 1
+
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {}
+	completion_reward = {
+		country_event = ming.4
+	}
+}
+
+shared_focus = {
+	id = MIN_march_on_lu
+	prerequisite = { focus = MIN_thrashed_economy }
+	relative_position_id = MIN_our_goals_in_motion
+	
+	#icon = 
+	x = 0
+	y = 1
+
+	cost = 2
+
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {}
+	completion_reward = {
+		MIN = {
+			annex_country = {
+				target = GON
+			}
+		}
+		news_event = ming_actions.1
+		add_threat = 2
+	}
+}
+
+shared_focus = {
+	id = MIN_purging_the_traitors
+	prerequisite = { focus = MIN_march_on_lu }
+	relative_position_id = MIN_march_on_lu
+	
+	#icon = 
+	x = 5
+	y = 1
+
+	cost = 1
+
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {}
+	completion_reward = {}
+}
+
+shared_focus = {
+	id = MIN_plebian_trash
+	prerequisite = { focus = MIN_purging_the_traitors }
+	relative_position_id = MIN_purging_the_traitors
+	
+	#icon = 
+	x = -2
+	y = 1
+
+	cost = 1
+
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {}
+	completion_reward = {}
+}
+
+shared_focus = {
+	id = MIN_disrupt_their_meetings
+	prerequisite = { focus = MIN_plebian_trash }
+	relative_position_id = MIN_plebian_trash
+	
+	#icon = 
+	x = 0
+	y = 1
+
+	cost = 1
+
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {}
+	completion_reward = {}
+}
+
+shared_focus = {
+	id = MIN_bomb_countryside_into_dust
+	prerequisite = { focus = MIN_disrupt_their_meetings }
+	relative_position_id = MIN_disrupt_their_meetings
+	
+	#icon = 
+	x = 0
+	y = 1
+
+	cost = 1
+
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {}
+	completion_reward = {}
+}
+
+shared_focus = {
+	id = MIN_hang_yu_lan
+	prerequisite = { focus = MIN_bomb_countryside_into_dust }
+	relative_position_id = MIN_bomb_countryside_into_dust
+	
+	#icon = 
+	x = 0
+	y = 1
+
+	cost = 1
+
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {}
+	completion_reward = {}
+}
+
+shared_focus = {
+	id = MIN_socialist_scum
+	prerequisite = { focus = MIN_purging_the_traitors }
+	relative_position_id = MIN_purging_the_traitors
+	
+	#icon = 
+	x = 0
+	y = 1
+
+	cost = 1
+
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {}
+	completion_reward = {}
+}
+
+shared_focus = {
+	id = MIN_mass_student_arrests
+	prerequisite = { focus = MIN_socialist_scum }
+	relative_position_id = MIN_socialist_scum
+	
+	#icon = 
+	x = 0
+	y = 1
+
+	cost = 1
+
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {}
+	completion_reward = {}
+}
+
+shared_focus = {
+	id = MIN_remove_socialist_teachings
+	prerequisite = { focus = MIN_mass_student_arrests }
+	relative_position_id = MIN_mass_student_arrests
+	
+	#icon = 
+	x = 0
+	y = 1
+
+	cost = 1
+
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {}
+	completion_reward = {}
+}
+
+shared_focus = {
+	id = MIN_burn_socialism_into_ash
+	prerequisite = { focus = MIN_remove_socialist_teachings }
+	relative_position_id = MIN_remove_socialist_teachings
+	
+	#icon = 
+	x = 0
+	y = 1
+
+	cost = 1
+
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {}
+	completion_reward = {}
+}
+
+shared_focus = {
+	id = MIN_democratic_waste
+	prerequisite = { focus = MIN_purging_the_traitors }
+	relative_position_id = MIN_purging_the_traitors
+	
+	#icon = 
+	x = 2
+	y = 1
+
+	cost = 1
+
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {}
+	completion_reward = {}
+}
+
+shared_focus = {
+	id = MIN_disappear_democrats
+	prerequisite = { focus = MIN_democratic_waste }
+	relative_position_id = MIN_democratic_waste
+	
+	#icon = 
+	x = 0
+	y = 1
+
+	cost = 1
+
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {}
+	completion_reward = {}
+}
+
+shared_focus = {
+	id = MIN_destroy_democratic_ideals
+	prerequisite = { focus = MIN_disappear_democrats }
+	relative_position_id = MIN_disappear_democrats
+	
+	#icon = 
+	x = 0
+	y = 1
+
+	cost = 1
+
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {}
+	completion_reward = {}
+}
+
+shared_focus = {
+	id = MIN_annihilate_image_of_democracy
+	prerequisite = { focus = MIN_destroy_democratic_ideals }
+	relative_position_id = MIN_destroy_democratic_ideals
+	
+	#icon = 
+	x = 0
+	y = 1
+
+	cost = 1
+
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {}
+	completion_reward = {}
+}
+
+shared_focus = {
+	id = MIN_operation_mie
+	prerequisite = { focus = MIN_hang_yu_lan }
+	prerequisite = { focus = MIN_burn_socialism_into_ash }
+	prerequisite = { focus = MIN_annihilate_image_of_democracy }
+	relative_position_id = MIN_burn_socialism_into_ash
+	
+	#icon = 
+	x = 0
+	y = 1
+
+	cost = 1
+
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {}
+	completion_reward = {}
+}
+
+shared_focus = {
+	id = MIN_chiang_kai_sheks_realm_secured
+	prerequisite = { focus = MIN_operation_mie }
+	relative_position_id = MIN_operation_mie
+	
+	#icon = 
+	x = 0
+	y = 1
+
+	cost = 1
+
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {}
+	completion_reward = {}
+}
+
+shared_focus = {
+	id = MIN_fixing_the_capitalists_mistakes
+	prerequisite = { focus = MIN_march_on_lu }
+	relative_position_id = MIN_march_on_lu
+	
+	#icon = 
+	x = -5
+	y = 1
+
+	cost = 1
+
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {
+		has_completed_focus = MIN_chiang_kai_sheks_realm_secured
+	}
+	completion_reward = {}
+}
+
+shared_focus = {
+	id = MIN_uighurs_manipulation
+	prerequisite = { focus = MIN_fixing_the_capitalists_mistakes }
+	relative_position_id = MIN_fixing_the_capitalists_mistakes
+	
+	#icon = 
+	x = -3
+	y = 2
+
+	cost = 1
+
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {}
+	completion_reward = {}
+}
+
+shared_focus = {
+	id = MIN_uighurs_are_subhuman
+	prerequisite = { focus = MIN_uighurs_manipulation }
+	relative_position_id = MIN_uighurs_manipulation
+	
+	#icon = 
+	x = -1
+	y = 1
+
+	cost = 1
+
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {}
+	completion_reward = {}
+}
+
+shared_focus = {
+	id = MIN_but_they_control_the_economy
+	prerequisite = { focus = MIN_uighurs_manipulation }
+	relative_position_id = MIN_uighurs_manipulation
+	
+	#icon = 
+	x = 1
+	y = 1
+
+	cost = 1
+
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = { has_completed_focus = MIN_uighurs_are_subhuman }
+	completion_reward = {}
+}
+
+shared_focus = {
+	id = MIN_and_so_they_shall_be_wiped_out
+	prerequisite = { focus = MIN_uighurs_are_subhuman }
+	prerequisite = { focus = MIN_but_they_control_the_economy }
+	relative_position_id = MIN_uighurs_are_subhuman
+	
+	#icon = 
+	x = 1
+	y = 1
+
+	cost = 1
+
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {}
+	completion_reward = {}
+}
+
+shared_focus = {
+	id = MIN_with_fire_and_steel
+	prerequisite = { focus = MIN_and_so_they_shall_be_wiped_out }
+	relative_position_id = MIN_and_so_they_shall_be_wiped_out
+	
+	#icon = 
+	x = 0
+	y = 1
+
+	cost = 1
+
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {}
+	completion_reward = {}
+}
+
+shared_focus = {
+	id = MIN_declare_unemployment_as_a_public_enemy
+	prerequisite = { focus = MIN_fixing_the_capitalists_mistakes }
+	relative_position_id = MIN_fixing_the_capitalists_mistakes
+	
+	#icon = 
+	x = 0
+	y = 1
+
+	cost = 1
+
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {}
+	completion_reward = {}
+}
+
+shared_focus = {
+	id = MIN_chiangs_infrastructure_plans
+	prerequisite = { focus = MIN_declare_unemployment_as_a_public_enemy }
+	relative_position_id = MIN_declare_unemployment_as_a_public_enemy
+	
+	#icon = 
+	x = 0
+	y = 1
+
+	cost = 1
+
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {}
+	completion_reward = {}
+}
+
+shared_focus = {
+	id = MIN_striving_for_autarky
+	prerequisite = { focus = MIN_chiangs_infrastructure_plans }
+	relative_position_id = MIN_chiangs_infrastructure_plans
+	
+	#icon = 
+	x = 0
+	y = 1
+
+	cost = 1
+
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {}
+	completion_reward = {}
+}
+
+shared_focus = {
+	id = MIN_exploit_the_lands_wealth
+	prerequisite = { focus = MIN_striving_for_autarky }
+	relative_position_id = MIN_striving_for_autarky
+	
+	#icon = 
+	x = 0
+	y = 1
+
+	cost = 1
+
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {}
+	completion_reward = {}
+}
+
+shared_focus = {
+	id = MIN_the_death_of_unemployment
+	prerequisite = { focus = MIN_exploit_the_lands_wealth }
+	relative_position_id = MIN_exploit_the_lands_wealth
+	
+	#icon = 
+	x = 0
+	y = 1
+
+	cost = 1
+
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {}
+	completion_reward = {}
+}
+
+shared_focus = {
+	id = MIN_sharp_decline
+	prerequisite = { focus = MIN_fixing_the_capitalists_mistakes }
+	relative_position_id = MIN_fixing_the_capitalists_mistakes
+	
+	#icon = 
+	x = 4
+	y = 1
+
+	cost = 1
+
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {}
+	completion_reward = {}
+}
+
+shared_focus = {
+	id = MIN_crawling_out_of_the_pit
+	prerequisite = { focus = MIN_sharp_decline }
+	relative_position_id = MIN_sharp_decline
+	
+	#icon = 
+	x = 0
+	y = 1
+
+	cost = 1
+
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {}
+	completion_reward = {}
+}
+
+shared_focus = {
+	id = MIN_blinding_debt
+	prerequisite = { focus = MIN_crawling_out_of_the_pit }
+	relative_position_id = MIN_crawling_out_of_the_pit
+	
+	#icon = 
+	x = -1
+	y = 1
+
+	cost = 1
+
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {}
+	completion_reward = {}
+}
+
+shared_focus = {
+	id = MIN_cutting_the_budget
+	prerequisite = { focus = MIN_blinding_debt }
+	relative_position_id = MIN_blinding_debt
+	
+	#icon = 
+	x = 0
+	y = 1
+
+	cost = 1
+
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {}
+	completion_reward = {}
+}
+
+shared_focus = {
+	id = MIN_refuse_to_acknowledge_our_war_debt
+	prerequisite = { focus = MIN_cutting_the_budget }
+	relative_position_id = MIN_cutting_the_budget
+	
+	#icon = 
+	x = 0
+	y = 1
+
+	cost = 1
+
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {}
+	completion_reward = {}
+}
+
+shared_focus = {
+	id = MIN_monotonous_gdp
+	prerequisite = { focus = MIN_crawling_out_of_the_pit }
+	relative_position_id = MIN_crawling_out_of_the_pit
+	
+	#icon = 
+	x = 1
+	y = 1
+
+	cost = 1
+
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {}
+	completion_reward = {}
+}
+
+shared_focus = {
+	id = MIN_adapt_more_machines_into_factories
+	prerequisite = { focus = MIN_monotonous_gdp }
+	relative_position_id = MIN_monotonous_gdp
+	
+	#icon = 
+	x = 0
+	y = 1
+
+	cost = 1
+
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {}
+	completion_reward = {}
+}
+
+shared_focus = {
+	id = MIN_increase_our_agricultural_productivity
+	prerequisite = { focus = MIN_adapt_more_machines_into_factories }
+	relative_position_id = MIN_adapt_more_machines_into_factories
+	
+	#icon = 
+	x = 0
+	y = 1
+
+	cost = 1
+
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {}
+	completion_reward = {}
+}
+
+shared_focus = {
+	id = MIN_the_mistake_righted
+	prerequisite = { focus = MIN_with_fire_and_steel }
+	prerequisite = { focus = MIN_the_death_of_unemployment }
+	prerequisite = { focus = MIN_refuse_to_acknowledge_our_war_debt }
+	prerequisite = { focus = MIN_increase_our_agricultural_productivity }
+	relative_position_id = MIN_with_fire_and_steel
+	
+	#icon = 
+	x = 3
+	y = 1
+
+	cost = 1
+
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {}
+	completion_reward = {}
+}
+
+shared_focus = {
+	id = MIN_slash_the_treaty_of_seoul
+	prerequisite = { focus = MIN_chiang_kai_sheks_realm_secured }
+	prerequisite = { focus = MIN_the_mistake_righted }
+	relative_position_id = MIN_the_mistake_righted
+	
+	#icon = 
+	x = 5
+	y = 2
+
+	cost = 1
+
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {}
+	completion_reward = {}
+}
+
+shared_focus = {
+	id = MIN_remilitarization_of_huangshan
+	prerequisite = { focus = MIN_slash_the_treaty_of_seoul }
+	relative_position_id = MIN_slash_the_treaty_of_seoul
+	
+	#icon = 
+	x = 0
+	y = 1
+
+	cost = 1
+
+
+	ai_will_do = {
+		factor = 2
+	}
+
+	available = {}
+	completion_reward = {
+		749 = {
+			set_demilitarized_zone = no
+		}
+		add_threat = 1
+	}
+}

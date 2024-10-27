@@ -1,0 +1,30 @@
+capital = 473
+
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+}
+
+set_convoys = 20
+
+set_politics = {
+	ruling_party = democratic
+	last_election = "1936.1.1"
+	election_frequency = 48
+	elections_allowed = yes
+}
+
+set_popularities = {
+	democratic = 80
+	fascism = 20
+}
+
+create_country_leader = {
+	name = "Carlos Alberto Brenes"
+	desc = ""
+	picture = "carlosalbertobrenes.dds"
+	ideology = liberalism
+}
+
+set_variable = { north_seattle_mafia_influence = 60 }
+set_variable = { south_seattle_mafia_influence = 45 }

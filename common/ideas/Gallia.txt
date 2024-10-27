@@ -1,0 +1,252 @@
+ideas = {
+
+##############
+# Country ideas
+##############
+	country = {
+		GAL_political_concerns_idea = {
+			on_add = { log = "[GetDateText]: [Root.GetName]: add idea GAL_political_concerns_idea"}
+			picture = dd
+			modifier = {
+				political_power_factor = -0.5
+				stability_factor = -0.2
+				war_support_factor = -0.2
+			}
+		}
+		GAL_political_concerns_2 = {
+			on_add = { log = "[GetDateText]: [Root.GetName]: add idea GAL_political_concerns_idea"}
+			name = GAL_political_concerns_idea
+			picture = dd
+			modifier = {
+				political_power_factor = -0.5
+				stability_factor = -0.1
+				war_support_factor = -0.1
+			}
+		}
+		GAL_political_concerns_3 = {
+			on_add = { log = "[GetDateText]: [Root.GetName]: add idea GAL_political_concerns_idea"}
+			name = GAL_political_concerns_idea
+			picture = dd
+			modifier = {
+				political_power_factor = -0.25
+				stability_factor = -0.1
+				war_support_factor = -0.1
+			}
+		}
+		GAL_rubicon = {
+			on_add = { log = "[GetDateText]: [Root.GetName]: add idea GAL_rubicon"}
+			picture = dd
+			modifier = {
+				army_core_defence_factor = 0.1
+				army_morale_factor = 0.1
+			}
+		}
+		
+		GAL_tria_decreta_nat = {
+			on_add = { log = "[GetDateText]: [Root.GetName]: add idea GAL_tria_decreta_nat"}
+			name = GAL_tria_decreta
+			picture = dd
+			modifier = {
+				conscription = 0.02
+			}
+		}
+		GAL_tria_decreta_natfre = {
+			on_add = { log = "[GetDateText]: [Root.GetName]: add idea GAL_tria_decreta_natfre"}
+			name = GAL_tria_decreta
+			picture = dd
+			modifier = {
+				conscription = 0.02
+				army_org_factor = 0.1
+			}
+		}
+		GAL_tria_decreta_natpro = {
+			on_add = { log = "[GetDateText]: [Root.GetName]: add idea GAL_tria_decreta_natpro"}
+			name = GAL_tria_decreta
+			picture = dd
+			modifier = {
+				conscription = 0.02
+				production_factory_max_efficiency_factor = 0.1
+			}
+		}
+		GAL_tria_decreta_natfrepro = {
+			on_add = { log = "[GetDateText]: [Root.GetName]: add idea GAL_tria_decreta_natfrepro"}
+			name = GAL_tria_decreta
+			picture = dd
+			modifier = {
+				conscription = 0.02
+				army_org_factor = 0.1
+				production_factory_max_efficiency_factor = 0.05
+			}
+		}
+		GAL_tria_decreta_natprofre = {
+			on_add = { log = "[GetDateText]: [Root.GetName]: add idea GAL_tria_decreta_natprofre"}
+			name = GAL_tria_decreta
+			picture = dd
+			modifier = {
+				conscription = 0.02
+				production_factory_max_efficiency_factor = 0.1
+				army_org_factor = 0.05
+			}
+		}
+		GAL_tria_decreta_fre = {
+			on_add = { log = "[GetDateText]: [Root.GetName]: add idea GAL_tria_decreta_fre"}
+			name = GAL_tria_decreta
+			picture = dd
+			modifier = {
+				army_org_factor = 0.1
+				army_morale_factor = 0.05
+			}
+		}
+		GAL_tria_decreta_frenat = {
+			on_add = { log = "[GetDateText]: [Root.GetName]: add idea GAL_tria_decreta_frenat"}
+			name = GAL_tria_decreta
+			picture = dd
+			modifier = {
+				army_org_factor = 0.1
+				army_morale_factor = 0.05
+				conscription = 0.01
+			}
+		}
+		GAL_tria_decreta_frepro = {
+			on_add = { log = "[GetDateText]: [Root.GetName]: add idea GAL_tria_decreta_frepro"}
+			name = GAL_tria_decreta
+			picture = dd
+			modifier = {
+				army_org_factor = 0.1
+				army_morale_factor = 0.05
+				production_factory_max_efficiency_factor = 0.1
+			} 
+		}
+		GAL_tria_decreta_frenatpro = {
+			on_add = { log = "[GetDateText]: [Root.GetName]: add idea GAL_tria_decreta_frenatpro"}
+			name = GAL_tria_decreta
+			picture = dd
+			modifier = {
+				army_org_factor = 0.1
+				army_morale_factor = 0.05
+				conscription = 0.01
+				production_factory_max_efficiency_factor = 0.05
+			}
+		}
+		GAL_tria_decreta_frepronat = {
+			on_add = { log = "[GetDateText]: [Root.GetName]: add idea GAL_tria_decreta_frepronat"}
+			name = GAL_tria_decreta
+			picture = dd
+			modifier = {
+				army_org_factor = 0.1
+				army_morale_factor = 0.05
+				production_factory_max_efficiency_factor = 0.1
+				conscription_factor = 0.05
+			}
+		}
+		GAL_tria_decreta_pro = {
+			on_add = { log = "[GetDateText]: [Root.GetName]: add idea GAL_tria_decreta_pro"}
+			name = GAL_tria_decreta
+			picture = dd
+			modifier = {
+				production_factory_efficiency_gain_factor = 0.05
+				production_factory_max_efficiency_factor = 0.1
+			}
+		}
+		GAL_tria_decreta_pronat = {
+			on_add = { log = "[GetDateText]: [Root.GetName]: add idea GAL_tria_decreta_pronat"}
+			name = GAL_tria_decreta
+			picture = dd
+			modifier = {
+				production_factory_efficiency_gain_factor = 0.05
+				production_factory_max_efficiency_factor = 0.1
+				conscription = 0.01
+			}
+		}
+		GAL_tria_decreta_profre = {
+			on_add = { log = "[GetDateText]: [Root.GetName]: add idea GAL_tria_decreta_profre"}
+			name = GAL_tria_decreta
+			picture = dd
+			modifier = {
+				production_factory_efficiency_gain_factor = 0.05
+				production_factory_max_efficiency_factor = 0.1
+				army_org_factor = 0.1
+			}
+		}
+		GAL_tria_decreta_pronatfre = {
+			on_add = { log = "[GetDateText]: [Root.GetName]: add idea GAL_tria_decreta_pronatfre"}
+			name = GAL_tria_decreta
+			picture = dd
+			modifier = {
+				production_factory_efficiency_gain_factor = 0.05
+				production_factory_max_efficiency_factor = 0.1
+				conscription = 0.01
+				army_org_factor = 0.05
+			}
+		}
+		GAL_tria_decreta_profrenat = {
+			on_add = { log = "[GetDateText]: [Root.GetName]: add idea GAL_tria_decreta_profrenat"}
+			name = GAL_tria_decreta
+			picture = dd
+			modifier = {
+				production_factory_efficiency_gain_factor = 0.05
+				production_factory_max_efficiency_factor = 0.1
+				army_org_factor = 0.1
+				conscription_factor = 0.05
+			}
+		}
+		GAL_telo_martius_academy = {
+			on_add = { log = "[GetDateText]: [Root.GetName]: add idea GAL_telo_martius_academy"}
+			picture = dd
+			modifier = {
+				army_leader_start_planning_level = 1
+				experience_gain_army = 0.03
+			}
+		}
+		GAL_western_expedition_preps = {
+			on_add = { log = "[GetDateText]: [Root.GetName]: add idea GAL_western_expedition_preps"}
+			picture = dd
+			modifier = {
+				army_defence_factor = 0.1
+				army_attack_factor = 0.1
+			}
+		}
+		GAL_western_expedition_preps_2 = {
+			on_add = { log = "[GetDateText]: [Root.GetName]: add idea GAL_western_expedition_preps"}
+			picture = dd
+			name = GAL_western_expedition_preps
+			modifier = {
+				army_defence_factor = 0.1
+				army_attack_factor = 0.1
+			}
+			equipment_bonus = {
+				infantry_equipment = {
+					build_cost_ic = -0.1
+					instant = yes
+				}
+			}
+		}
+		GAL_foreign_support_1 = {
+			on_add = { log = "[GetDateText]: [Root.GetName]: add idea GAL_foreign_support_1"}
+			name = GAL_foreign_support
+			picture = dd
+			modifier = {
+				army_org_factor = 0.05
+				experience_gain_army_factor = 0.1
+			}
+		}
+		GAL_foreign_support_2 = {
+			on_add = { log = "[GetDateText]: [Root.GetName]: add idea GAL_foreign_support_2"}
+			name = GAL_foreign_support
+			picture = dd
+			modifier = {
+				army_org_factor = 0.05
+				experience_gain_army_factor = 0.2
+			}
+		}
+		GAL_foreign_support_3 = {
+			on_add = { log = "[GetDateText]: [Root.GetName]: add idea GAL_foreign_support_3"}
+			name = GAL_foreign_support
+			picture = dd
+			modifier = {
+				army_org_factor = 0.05
+				experience_gain_army_factor = 0.3
+			}
+		}
+	}
+}
